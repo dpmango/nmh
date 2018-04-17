@@ -4,14 +4,14 @@ html(lang="en")
   head
     include _head
 
-  body(class=bodyClass)
+  body
     // place where pjax bindings happen's
     #barba-wrapper
       block header
         include ../components/_header
     
       // what should be changed with every pjax
-      .page(class=outClass)
+      .page
         .page__content
           block content
 

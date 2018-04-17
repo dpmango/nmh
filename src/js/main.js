@@ -144,36 +144,46 @@ $(document).ready(function(){
     var slickNextArrow = '<div class="slick-prev"><svg class="ico ico-back-arrow"><use xlink:href="img/sprite.svg#ico-back-arrow"></use></svg></div>';
     var slickPrevArrow = '<div class="slick-next"><svg class="ico ico-next-arrow"><use xlink:href="img/sprite.svg#ico-next-arrow"></use></svg></div>'
 
-    // General purpose sliders
-    $('[js-slider]').each(function(i, slider){
-      var self = $(slider);
-
-      // set data attributes on slick instance to control
-      if (self && self !== undefined) {
-        self.slick({
-          autoplay: self.data('slick-autoplay') !== undefined ? true : false,
-          dots: self.data('slick-dots') !== undefined ? true : false,
-          arrows: self.data('slick-arrows') !== undefined ? true : false,
-          prevArrow: slickNextArrow,
-          nextArrow: slickPrevArrow,
-          infinite: self.data('slick-infinite') !== undefined ? true : true,
-          speed: 300,
-          slidesToShow: 1,
-          accessibility: false,
-          adaptiveHeight: true,
-          draggable: self.data('slick-no-controls') !== undefined ? false : true,
-          swipe: self.data('slick-no-controls') !== undefined ? false : true,
-          swipeToSlide: self.data('slick-no-controls') !== undefined ? false : true,
-          touchMove: self.data('slick-no-controls') !== undefined ? false : true
-        });
-      }
-
+    // Why carousel
+    new Swiper('[js-hot-slider]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "hot-slider__slide",
+      direction: 'horizontal',
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: true,
+      spaceBetween: 0,
+      slidesPerView: 4,
+      normalizeSlideIndex: true,
+      grabCursor: true,
+      freeMode: true,
+      navigation: {
+        nextEl: '.hot-slider__next',
+        prevEl: '.hot-slider__prev',
+      },
+    })
+    $('[js-hotCard-slider]').each(function(i, slider){
+      new Swiper($(slider), {
+        wrapperClass: "swiper-wrapper",
+        slideClass: "hot-card__image",
+        direction: 'horizontal',
+        nested: true,
+        loop: true,
+        watchOverflow: false,
+        setWrapperSize: true,
+        spaceBetween: 0,
+        slidesPerView: 1,
+        effect: 'fade',
+        normalizeSlideIndex: true,
+        navigation: {
+          nextEl: '.hot-card__images-next',
+          prevEl: '.hot-card__images-prev',
+        },
+      })
     })
 
-    // other individual sliders goes here
-    $('[js-myCustomSlider]').slick({
 
-    })
+
 
   }
 
@@ -308,14 +318,14 @@ $(document).ready(function(){
       }, 100, {
         'leading': true
       }));
-      elWatcher.exitViewport(throttle(function() {
-        $(el).removeClass(animationClass);
-        $(el).css({
-          'animation-name': 'none',
-          'animation-delay': 0,
-          'visibility': 'hidden'
-        });
-      }, 100));
+      // elWatcher.exitViewport(throttle(function() {
+      //   $(el).removeClass(animationClass);
+      //   $(el).css({
+      //     'animation-name': 'none',
+      //     'animation-delay': 0,
+      //     'visibility': 'hidden'
+      //   });
+      // }, 100));
     });
 
   }

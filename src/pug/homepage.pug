@@ -1,123 +1,13 @@
 ---
 title: Homepage title
-bodyClass: homepage
 ---
 extends shared/_layout
 block content
 
-  // HERO
-  .hero
-    .container
-      .hero__wrapper
-        .b-heading.b-heading--white
-          h1.heading.wow Позвольте найти ваш дом
-          .subheading.wow(data-animation-delay=".1s") дома, таунхаусы и земельные участки в Новой Москве
-        
-        .hero__search
-          .search-form(action="#")
-            .search-form__name.wow(data-animation-delay=".3s")
-              .ui-group.ui-group--search
-                input(type="text" placeholder="Название")
-                +icon('ico-search')
-            .search-form__category.wow(data-animation-delay=".4s")
-              label категория
-              .ui-group
-                select(js-selectric placeholder="Категория")
-                  option Дом
-                  option Участок
-                  option Таунхаус
-                  
-            .search-form__price.wow(data-animation-delay=".5s")
-              label стоимость
-              .search-form__price-row
-                .ui-group
-                  input(type="text" placeholder="от" js-mask-number)
-                .ui-group
-                  input(type="text" placeholder="до" js-mask-number)
-            
-            .search-form__cta.wow(data-animation-delay=".6s")
-              button(type="submit").btn.btn-primary
-                span поиск
-                  
-  // POPULAR
-  .popular
-    .container
-      .b-heading
-        h2.heading.heading--h2.wow Новая Москва
-        .subheading.wow(data-animation-delay=".1s") Популярные запросы
-                
-      .popular__wrapper
-        .popular__col.wow(data-animation-delay=".3s")
-          a(href="#").popular-card
-            .popular-card__bg
-              img(src='img/popularCard_1.jpg' srcset='img/popularCard_1@2x.jpg 2x')
-            .popular-card__content
-              .popular-card__name Дома в Новой Москве
-              .popular-card__count 113 предложений
-        //col
-        .popular__col.wow(data-animation-delay=".4s")
-          a(href="#").popular-card
-            .popular-card__bg
-              img(src='img/popularCard_2.jpg' srcset='img/popularCard_2@2x.jpg 2x')
-            .popular-card__content
-              .popular-card__name Земельные участки в Новой Москве
-              .popular-card__count 70 предложений
-        //col
-        .popular__col.wow(data-animation-delay=".5s")
-          a(href="#").popular-card
-            .popular-card__bg
-              img(src='img/popularCard_3.jpg' srcset='img/popularCard_3@2x.jpg 2x')
-            .popular-card__content
-              .popular-card__name Таунхаусы в Новой Москве
-              .popular-card__count 12 предложений
-        //col
-        .popular__col.wow(data-animation-delay=".6s")
-          a(href="#").popular-card
-            .popular-card__bg
-              img(src='img/popularCard_4.jpg' srcset='img/popularCard_4@2x.jpg 2x')
-            .popular-card__content
-              .popular-card__name Элитная  недвижимость
-              .popular-card__count 49 предложений
-
-  // BENEFITS
-  .benefits
-    .container
-      .b-heading
-        h2.heading.heading--h2.wow Мы работаем на вас
-        .b-heading__tabs(js-tabs)
-          .subheading.wow.is-active(data-animation-delay=".1s" data-tab="benefits_1") преимущества работы с нами
-          .subheading.wow(data-animation-delay=".2s" data-tab="benefits_2") ПРИЧИНЫ ВЫБРАТЬ НОВУЮ МОСКВУ
+  include components/_hero
+  include components/_popular
+  include components/_benefits 
+  include components/_hot
+  include components/_about
+  include components/_blog
       
-      .benefits__wrapper
-        .benefits__col.wow(data-animation-delay=".3s")
-          .benefits-card
-            .benefits-card__icon
-              i.icon.icon-benefits-1
-            .benefits-card__name Партнерство  с другими агентствами
-            .benefits-card__desc Мы сотрудничаем с крупными агентствами недвижимости и частными риэлторами, поэтому наши клиенты никогда не ограничены при выборе.
-        
-        //col
-        .benefits__col.wow(data-animation-delay=".4s")
-          .benefits-card
-            .benefits-card__icon
-              i.icon.icon-benefits-2
-            .benefits-card__name Цены от собственников  и застройщиков
-            .benefits-card__desc Мы предлагаем настоящие цены на недвижимость благодаря нашему прямому сотрудничеству с собственниками недвижимости.
-            
-        //col
-        .benefits__col.wow(data-animation-delay=".5s")
-          .benefits-card
-            .benefits-card__icon
-              i.icon.icon-benefits-3
-            .benefits-card__name Сопровождение операций  с недвижимостью
-            .benefits-card__desc Мы сопровождаем вас на протяжении всего процесса, от просмотра объекта до получения ключей от вашего дома.
-            
-  // hot
-  .hot
-    .container
-      .b-heading
-        h2.heading.heading--h2.wow Интересные предложения
-      
-      .hot-slider
-        .hot-card
-            
