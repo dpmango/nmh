@@ -1,4 +1,181 @@
 // INDEX
+.hero
+  background: url('../img/heroBg.jpg')
+  background-position: center center
+  background-size: cover
+  &__wrapper
+    min-height: 520px
+    /* header offset
+    padding: 60px 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    text-align: center
+    color: white
+  &__search
+    margin-top: 65px
 
-.hello
-  display: none
+.search-form
+  display: flex
+  align-items: flex-end
+  width: 100%
+  text-align: left
+  &__name
+    flex: 0 1 47%
+    margin-right: 25px
+  &__category
+    flex: 0 1 13%
+    margin-right: 25px
+  &__price
+    flex: 0 1 21%
+    margin-right: 25px
+    &-row
+      display: flex
+      .ui-group
+        flex: 0 1 50%
+        margin-right: 10px
+        &:last-child
+          margin-right: 0
+  &__cta
+    flex: 0 0 150px
+    .btn
+      width: 100%
+
+
+
+  label
+    font-size: 14px
+    color: rgba(white, .5)
+    display: block
+    margin-bottom: 5px
+
+
+
+
+
+.popular
+  margin-top: 70px
+  margin-bottom: 80px
+  &__heading
+    text-align: center
+
+  &__wrapper
+    display: flex
+    margin-left: -15px
+    margin-right: -15px
+    margin-top: 50px
+  &__col
+    flex: 0 1 25%
+    max-width: 25%
+    min-width: 1px
+    min-height: 0
+    padding: 15px
+
+
+.popular-card
+  display: block
+  position: relative
+  z-index: 1
+  overflow: hidden
+  background: #171717
+  box-shadow: 0 6px 15px 0 rgba(184,178,178,0.50)
+  border-radius: 4px
+  min-height: 200px
+  display: flex
+  flex-direction: column
+  transition: box-shadow .25s $ease, transform .25s ease
+  &:hover
+    transform: translate(0,-5px)
+    box-shadow: none
+  &__bg
+    position: absolute
+    z-index: 1
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    width: 100%
+    font-size: 0
+  &__content
+    position: relative
+    z-index: 2
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+    text-align: center
+    color: white
+    padding: 10px
+
+  &__name
+    position: relative
+    font-size: 14px
+    line-height: 1.42
+    font-weight: 700
+    letter-spacing: 0.028em
+    text-transform: uppercase
+    max-width: 175px
+    margin: auto
+    padding-bottom: 15px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      left: 50%
+      bottom: 0
+      transform: translateX(-50%)
+      size: 50px 1px
+      background: rgba(white, .7)
+  &__count
+    position: absolute
+    bottom: 10px
+    left: 50%
+    transform: translateX(-50%)
+    font-size: 14px
+
+
+
+/* Benefits
+.benefits
+  margin: 70px 0
+  &__wrapper
+    display: flex
+    margin-left: -15px
+    margin-right: -15px
+    margin-top: 50px
+  &__col
+    flex: 0 1 33.3%
+    max-width: 33.3%
+    min-width: 1px
+    min-height: 0
+    padding: 15px
+
+.benefits-card
+  background: #FFFFFF
+  border: 1px solid #F5F2F2
+  border-radius: 4px
+  padding: 15px 30px
+  transition: .25s $ease
+  &:hover
+    box-shadow: 0 6px 15px 0 rgba(224,224,224,0.50)
+
+  &__icon
+    min-height: 100px
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 0
+  &__name
+    margin-top: 40px
+    font-family: $noto
+    font-weight: 700
+    font-size: 18px
+    letter-spacing: 0.054em
+
+  &__desc
+    font-size: 18px
+    color: rgba($fontColor, .7)
+    margin-top: 20px
+    margin-bottom: 20px
+    letter-spacing: 0.028em
+
+
+.hot

@@ -1,11 +1,74 @@
 $sprite: (
-	logo: (
+	benefits-1: (
 		offset-x: 0px,
 		offset-y: 0px,
-		width: 300px,
-		height: 70px,
-		total-width: 300px,
-		total-height: 70px,
+		width: 100px,
+		height: 64px,
+		total-width: 287px,
+		total-height: 143px,
+		image: '../img/sprite.png'
+	),
+	benefits-2: (
+		offset-x: 0px,
+		offset-y: -74px,
+		width: 82px,
+		height: 69px,
+		total-width: 287px,
+		total-height: 143px,
+		image: '../img/sprite.png'
+	),
+	benefits-3: (
+		offset-x: -110px,
+		offset-y: 0px,
+		width: 52px,
+		height: 67px,
+		total-width: 287px,
+		total-height: 143px,
+		image: '../img/sprite.png'
+	),
+	logo-black: (
+		offset-x: -172px,
+		offset-y: -77px,
+		width: 72px,
+		height: 29px,
+		total-width: 287px,
+		total-height: 143px,
+		image: '../img/sprite.png'
+	),
+	logo-white: (
+		offset-x: -172px,
+		offset-y: -38px,
+		width: 73px,
+		height: 29px,
+		total-width: 287px,
+		total-height: 143px,
+		image: '../img/sprite.png'
+	),
+	play: (
+		offset-x: -110px,
+		offset-y: -77px,
+		width: 29px,
+		height: 31px,
+		total-width: 287px,
+		total-height: 143px,
+		image: '../img/sprite.png'
+	),
+	sberbank: (
+		offset-x: -172px,
+		offset-y: 0px,
+		width: 115px,
+		height: 28px,
+		total-width: 287px,
+		total-height: 143px,
+		image: '../img/sprite.png'
+	),
+	social-insta: (
+		offset-x: -255px,
+		offset-y: -38px,
+		width: 24px,
+		height: 24px,
+		total-width: 287px,
+		total-height: 143px,
 		image: '../img/sprite.png'
 	),
 );
@@ -64,6 +127,27 @@ $sprite: (
 
 
 
-	.icon-logo {
-		@include sprite(logo)
+	.icon-benefits-1 {
+		@include sprite(benefits-1)
+	}
+	.icon-benefits-2 {
+		@include sprite(benefits-2)
+	}
+	.icon-benefits-3 {
+		@include sprite(benefits-3)
+	}
+	.icon-logo-black {
+		@include sprite(logo-black)
+	}
+	.icon-logo-white {
+		@include sprite(logo-white)
+	}
+	.icon-play {
+		@include sprite(play)
+	}
+	.icon-sberbank {
+		@include sprite(sberbank)
+	}
+	.icon-social-insta {
+		@include sprite(social-insta)
 	}

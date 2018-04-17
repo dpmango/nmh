@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="21px" viewBox="0 0 12 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow-left</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="desktop_home_1920p" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-394.000000, -1955.000000)">
+        <g id="Property-previews" transform="translate(375.000000, 1772.000000)" fill="#FFFFFF">
+            <g id="bg-копия">
+                <g id="property_preview_270px" transform="translate(0.000000, 102.000000)">
+                    <path d="M23.676822,86.7258453 L15.0768962,94.9547669 C14.5299235,95.4778613 14.5299235,96.327786 15.0768962,96.8501157 C15.623673,97.3731938 16.5107678,97.3731938 17.0575166,96.8501157 L24.6666702,89.5688521 L32.2758238,96.8501157 C32.8227965,97.3731938 33.7096673,97.3731938 34.2564161,96.8501157 C34.8034169,96.327786 34.8034169,95.4778613 34.2564161,94.9540023 L25.6567424,86.7250806 C25.383256,86.4639158 25.0250751,86.3333333 24.6666702,86.3333333 C24.3082653,86.3333333 23.9498604,86.4646804 23.676822,86.7258453 Z" id="arrow-left" transform="translate(24.666667, 91.787879) scale(-1, -1) rotate(90.000000) translate(-24.666667, -91.787879) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

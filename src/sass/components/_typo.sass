@@ -1,0 +1,73 @@
+.b-heading
+  position: relative
+  color: $fontColor
+  text-align: center
+  padding-bottom: 25px
+  &::after
+    display: inline-block
+    content: ' '
+    position: absolute
+    left: 50%
+    bottom: 0
+    transform: translateX(-50%)
+    size: 50px 1px
+    background: rgba($fontColor, .5)
+  &--white
+    color: white
+    .subheading
+      color: rgba(white, .7)
+    &::after
+      background: rgba(white, .7)
+
+  &__tabs
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 6px 0 8px
+    text-transform: lowercase
+    .subheading
+      margin-right: 40px
+      cursor: pointer
+      &:last-child
+        margin-right: 0
+      &:hover
+        &::after
+          right: 0
+
+
+
+.heading
+  font-size: 40px
+  font-family: $noto
+  font-weight: 700
+  letter-spacing: 0.08em
+  text-transform: uppercase
+  margin: 0
+  margin-bottom: 5px
+  &--h2
+    font-size: 30px
+
+.subheading
+  position: relative
+  font-size: 18px
+  line-height: 1.33
+  font-weight: 400
+  color: rgba($fontColor, .5)
+  margin: 0
+  &::after
+    display: inline-block
+    content: ' '
+    position: absolute
+    bottom: -7px
+    left: 0
+    right: 100%
+    height: 3px
+    background: currentColor
+    transition: .25s $ease
+  &:hover, &.is-active
+    &::after
+      right: 0
+
+  &.is-active
+    &::after
+      background: $colorPrimary

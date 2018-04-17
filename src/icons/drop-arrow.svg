@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="24px" viewBox="0 0 28 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>drop-arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-11.7%" y="-7.2%" width="123.3%" height="120.1%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.517485119   0 0 0 0 0.517485119   0 0 0 0 0.517485119  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="desktop_home_1920p" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1066.000000, -342.000000)">
+        <g id="Hero-image-with-search" transform="translate(-5.000000, -5.000000)" fill="#404042">
+            <g id="filter" transform="translate(380.000000, 303.000000)">
+                <g id="1-str">
+                    <g id="dropdown_desktop" transform="translate(575.000000, 0.000000)">
+                        <g id="Группа-1-копия" filter="url(#filter-1)">
+                            <path d="M129.497134,48.218114 L125.196894,52.770089 C124.92339,53.059448 124.92339,53.529599 125.196894,53.818535 C125.4703,54.107885 125.913876,54.107885 126.187268,53.818535 L129.99209,49.790774 L133.796912,53.818535 C134.070416,54.107885 134.51388,54.107885 134.787272,53.818535 C135.06079,53.529599 135.06079,53.059448 134.787272,52.769666 L130.487158,48.217691 C130.350406,48.073223 130.171304,48.000989 129.99209,48.000989 C129.812876,48.000989 129.633662,48.073646 129.497134,48.218114 Z" id="drop-arrow"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

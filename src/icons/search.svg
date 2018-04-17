@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>search</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="desktop_home_1920p" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-389.000000, -338.000000)">
+        <g id="Hero-image-with-search" transform="translate(-5.000000, -5.000000)" fill="#404042">
+            <g id="search" transform="translate(395.000000, 344.000000)">
+                <path d="M12.4208707,16.1188969 L21.816923,16.1188969 C21.8870429,16.1188969 21.9438967,16.3427203 21.9438967,16.6188119 L21.9438967,17.6189819 C21.9438967,17.8950684 21.8870429,18.1188969 21.816923,18.1188969 L12.4208707,18.1188969 C12.3507406,18.1188969 12.2938971,17.8950684 12.2938971,17.6189819 L12.2938971,16.6188119 C12.2938971,16.3427203 12.3507406,16.1188969 12.4208707,16.1188969 Z" id="Rounded-Rectangle-1" opacity="0.304630888" transform="translate(17.118897, 17.118897) rotate(45.000000) translate(-17.118897, -17.118897) "></path>
+                <path d="M7,15 C2.581722,15 -1,11.418278 -1,7 C-1,2.581722 2.581722,-1 7,-1 C11.418278,-1 15,2.581722 15,7 C15,11.418278 11.418278,15 7,15 Z M7,13 C10.3137085,13 13,10.3137085 13,7 C13,3.6862915 10.3137085,1 7,1 C3.6862915,1 1,3.6862915 1,7 C1,10.3137085 3.6862915,13 7,13 Z" id="Oval" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

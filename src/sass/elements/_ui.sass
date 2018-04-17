@@ -4,7 +4,6 @@
 // WORKS KIND OF bootstrap - group have label and input
 .ui-group
   position: relative
-  margin-bottom: 20px
   label
     display: block
     margin-bottom: 10px
@@ -13,10 +12,27 @@
     width: 100%
     -webkit-appearance: none
     background: white
-    color: $grayColor
-    border: 1px solid $borderColor
+    color: $fontColor
+    border: 2px solid transparent
     border-radius: 4px
-    padding: 12px 15px
+    font-size: 16px
+    padding: 14px 15px
+    transition: .25s $ease
+    &::placeholder
+      color: rgba($fontColor, .5)
+    &:focus
+      border-color: $colorPrimary
+  &--search
+    input
+      padding-left: 50px
+    .ico
+      position: absolute
+      left: 15px
+      top: 50%
+      transform: translateY(-50%)
+      &-search
+        font-size: 22px
+        fill: rgba($fontColor, .3)
   textarea
     resize: vertical
 

@@ -27,6 +27,7 @@ $(document).ready(function(){
     updateHeaderActiveClass();
     initHeaderScroll();
 
+    initSelectric();
     initPopups();
     initSliders();
     initScrollMonitor();
@@ -229,6 +230,32 @@ $(document).ready(function(){
   // UI
   ////////////
 
+  function initSelectric(){
+    $('[js-selectric]').selectric({
+      maxHeight: 300,
+      arrowButtonMarkup: '<b class="button"><svg class="ico ico-drop-arrow"><use xlink:href="img/sprite.svg#ico-drop-arrow"></use></svg></b>',
+
+      onInit: function(element, data){
+        var $elm = $(element),
+            $wrapper = $elm.closest('.' + data.classes.wrapper);
+
+        $wrapper.find('.label').html($elm.attr('placeholder'));
+      },
+      onBeforeOpen: function(element, data){
+        var $elm = $(element),
+            $wrapper = $elm.closest('.' + data.classes.wrapper);
+
+        $wrapper.find('.label').data('value', $wrapper.find('.label').html()).html($elm.attr('placeholder'));
+      },
+      onBeforeClose: function(element, data){
+        var $elm = $(element),
+            $wrapper = $elm.closest('.' + data.classes.wrapper);
+
+        $wrapper.find('.label').html($wrapper.find('.label').data('value'));
+      }
+    });
+  }
+
   // textarea autoExpand
   _document
     .one('focus.autoExpand', '.ui-group textarea', function(){
@@ -248,6 +275,7 @@ $(document).ready(function(){
   function initMasks(){
     $("[js-dateMask]").mask("99.99.99",{placeholder:"ДД.ММ.ГГ"});
     $("input[type='tel']").mask("+7 (000) 000-0000", {placeholder: "+7 (___) ___-____"});
+    $("[js-mask-number]").mask("999 999 999")
   }
 
 
