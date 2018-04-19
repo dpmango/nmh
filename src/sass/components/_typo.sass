@@ -30,7 +30,7 @@
       cursor: pointer
       &:last-child
         margin-right: 0
-      &:hover
+      &:hover, &.is-active
         &::after
           right: 0
 
@@ -64,9 +64,6 @@
     height: 3px
     background: currentColor
     transition: .25s $ease
-  &:hover, &.is-active
-    &::after
-      right: 0
 
   &.is-active
     &::after

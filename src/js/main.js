@@ -34,16 +34,13 @@ $(document).ready(function(){
     initMasks();
     initLazyLoad();
 
+    revealFooter();
+    _window.on('resize', throttle(revealFooter, 100));
+
     // development helper
     _window.on('resize', debounce(setBreakpoint, 200))
 
-    // AVAILABLE in _components folder
-    // copy paste in main.js and initialize here
 
-    // initTeleport();
-    // parseSvg();
-    // revealFooter();
-    // _window.on('resize', throttle(revealFooter, 100));
   }
 
   // this is a master function which should have all functionality
@@ -54,6 +51,43 @@ $(document).ready(function(){
   _window.on('load', function(){
     // your functions
   })
+
+
+  // detectors
+  function isRetinaDisplay() {
+    if (window.matchMedia) {
+        var mq = window.matchMedia("only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen  and (min-device-pixel-ratio: 1.3), only screen and (min-resolution: 1.3dppx)");
+        return (mq && mq.matches || (window.devicePixelRatio > 1));
+    }
+  }
+
+  function isMobile(){
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  function msieversion() {
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  if ( msieversion() ){
+    $('body').addClass('is-ie');
+  }
+
+  if ( isMobile() ){
+    $('body').addClass('is-mobile');
+  }
+
 
 
   //////////
@@ -111,6 +145,33 @@ $(document).ready(function(){
       }
     }, 10));
   }
+
+  // FOOTER REVEAL
+  function revealFooter() {
+    var footer = $('[js-reveal-footer]');
+    if (footer.length > 0) {
+      var footerHeight = footer.outerHeight();
+      var maxHeight = _window.height() - footerHeight > 100;
+      if (maxHeight && !msieversion() ) {
+        $('body').css({
+          'margin-bottom': footerHeight
+        });
+        footer.css({
+          'position': 'fixed',
+          'z-index': -10
+        });
+      } else {
+        $('body').css({
+          'margin-bottom': 0
+        });
+        footer.css({
+          'position': 'static',
+          'z-index': 10
+        });
+      }
+    }
+  }
+
 
 
   // HAMBURGER TOGGLER
@@ -214,6 +275,26 @@ $(document).ready(function(){
           _window.scrollTop(startWindowScroll);
         }
       }
+    });
+
+    $('[js-popupVideo]').magnificPopup({
+      type: 'iframe',
+      fixedContentPos: true,
+      fixedBgPos: true,
+      overflowY: 'auto',
+      closeBtnInside: true,
+      preloader: false,
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'popup-buble',
+      patterns: {
+        youtube: {
+          index: 'youtube.com/',
+          id: 'v=', // String that splits URL in a two parts, second part should be %id%
+          src: '//www.youtube.com/embed/%id%?autoplay=1&controls=0&showinfo=0' // URL that will be set as a source for iframe.
+        }
+      },
+      // closeMarkup: '<button class="mfp-close"><div class="video-box__close-button btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/setting/video_close.svg" alt=""/></div></button>'
     });
 
     $('[js-popup-gallery]').magnificPopup({

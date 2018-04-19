@@ -1,7 +1,86 @@
 // FOOTER :: START
-footer.footer
+footer.footer(js-reveal-footer)
   .container
-    .footer__wrapper
+    .footer__top
+      // credentials
+      .footer__credentials
+        i.icon.icon-logo-white
+        p © ООО “Проект Хаус”, 2016-2018 
+        p ИНН 7703421252
+        p  КПП 770301001
+      // col
+      .footer__nav
+        .footer__nav-title Информация
+        ul.footer__nav-list
+          li
+            a(href="#") Продать недвижимость
+          li
+            a(href="#") Ипотека c преференциями
+          li
+            a(href="#") Для агентов и партнеров
+          li
+            a(href="#") База проданных объектов
+      // col
+      .footer__nav
+        .footer__nav-title Недвижимость
+        ul.footer__nav-list
+          li
+            a(href='#') Дома
+          li
+            a(href='#') Таунхаусы 
+          li
+            a(href='#') Земельные Участки
+          li
+            a(href='#') Коттеджные поселки
+          li
+            a(href='#') Коммерческая недвижиомость
+      // col
+      .footer__nav
+        .footer__nav-title Свяжитесь с нами
+        ul.footer__nav-list
+          li
+            a(href='tel:8 (800) 700-84-72') 8 (800) 700-84-72
+          li
+            a(href='tel:8 (495) 005-84-72') 8 (495) 005-84-72 
+          li
+            a(href='#' target="_blank") Онлайн чат
+          li
+            a(href='#' target="_blank") Facebook чат
+          li
+            a(href='#' target="_blank") Написать директору
+      // col
+      .footer__cta
+        .footer__lang
+          select(js-selectric)
+            option Русский
+            option English
+            option Deutch
+            option Suomi
+        .footer__partners
+          i.icon.icon-sberbank
+    
+    // middle
+    .footer__middle
+      .footer__middle-wrap
+        .footer__info New Moscow House - молодое агентство загородной недвижимости Новой Москвы. Несмотря на наш небольшой возраст, мы собрали команду опытных риэлторов. Наша задача максимально комфортно и своевременно оказывать брокерские услуги по продаже и индивидуальному подбору домов, таунхаусов и замельных участков в Новой Москве.  
+        .footer__subscribe
+          form(action="#").footer__subscribe-form
+            input(type="email" placeholder="Введите ваш имейл")
+            button(type="submit") ПОДПИСАТЬСЯ
+          
+        
+    // bottom
+    .footer__bottom
+      .footer__links
+        a(href="#") Политика конфиденциальности 
+        a(href="#") Условия и положения
+      .footer__socials
+        a(href="#" target="_blank")
+          i.icon.icon-social-insta
+        a(href='#' target="_blank")
+          +icon("ico-social-youtube")
+        a(href="#" target="_blank")
+          +icon('ico-social-fb')
       
-      
+            
 // FOOTER :: END

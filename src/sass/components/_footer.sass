@@ -2,6 +2,157 @@
 .footer
   background: #404040
   padding: 40px 0
-  &__wrapper
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: -1
+  color: $grayColor
+  &__top
+    display: flex
+    align-items: stretch
+    margin-left: -15px
+    margin-right: -15px
+    padding-bottom: 20px
+  &__credentials
+    font-size: 10px
+    line-height: 2
+    flex: 0 0 200px
+    padding: 0 15px
+    .icon
+      margin-bottom: 5px
+    p
+      margin: 1em 0
+
+  &__nav
+    flex: 0 1 230px
+    padding: 0 15px
+    &-title
+      font-size: 14px
+      color: white
+      font-family: $noto
+      font-weight: 700
+      line-height: 1
+      margin-bottom: 17px
+      margin-top: -.1em
+      text-transform: uppercase
+    &-list
+      margin: 0
+      padding: 0
+      line-height: 2
+      li
+        display: block
+        font-size: 12px
+      a
+        display: inline-block
+        padding: 1px 0
+        transition: .25s $ease
+        &:hover
+          color: white
+  &__cta
+    flex: 0 0 180px
+    padding: 0 15px
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+
+  &__lang
+    width: 100%
+
+  &__partners
+    margin-top: auto
+
+
+  &__middle
+    border-top: 1px solid #696969
+    border-bottom: 1px solid #696969
+    padding: 20px 0 40px
+    &-wrap
+      display: flex
+      align-items: center
+      margin: 0 -15px
+
+
+  &__info
+    font-size: 12px
+    line-height: 2
+    padding: 0 15px
+
+
+  &__subscribe
+    flex: 0 0 400px
+    padding: 0 15px
+    &-form
+      position: relative
+      border: 2px solid #979797
+      border-radius: 3px
+      overflow: hidden
+
+      input
+        -webkit-apperance: none
+        width: 100%
+        display: block
+        border: 0
+        box-shadow: none
+        padding: 12px
+        color: white
+        background: transparent
+        font-size: 12px 130px 12px 10px
+
+        &::placeholder
+          color: $grayColor
+        &:focus
+
+      button
+        position: absolute
+        top: 0
+        bottom: 0
+        right: 0
+        color: white
+        background: #979797
+        font-size: 12px
+        font-family: $noto
+        font-weight: 700
+        text-align: center
+        text-transform: uppercase
+        padding: 15px
+
+  &__bottom
     display: flex
     align-items: center
+    padding: 30px 0 0
+
+  &__links
+    font-size: 12px
+    a
+      display: inline-block
+      transition: .25s $ease
+      margin-right: 30px
+      &:hover
+        color: white
+      &:last-child
+        margin-right: 0
+
+  &__socials
+    margin-left: auto
+    display: flex
+    align-items: center
+    margin-right: -10px
+    a
+      display: flex
+      align-items: center
+      padding: 5px 10px
+      margin-right: 10px
+      transition: .25s $ease
+      &:hover
+        color: white
+        .icon
+          filter: brightness(0) invert(1)
+      &:last-child
+        margin-right: 0
+    .icon
+      transition: .25s $ease
+    .ico
+      &-social-fb
+        font-size: 26px
+      &-social-youtube
+        font-size: 24px
