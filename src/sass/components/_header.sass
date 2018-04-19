@@ -16,7 +16,7 @@
 
   &__logo
     position: relative
-    flex: 0 0 73px
+    flex: 0 0 103px
     font-size: 0
     padding-right: 30px
     .icon
@@ -42,7 +42,7 @@
       font-weight: 700
       text-transform: uppercase
       letter-spacing: 0.1em
-      margin: 0 20px
+      margin: 0 2.5%
     a
       position: relative
       transition: color .25s $ease
@@ -99,20 +99,34 @@
         a::after
           background-color: rgba(white, .7)
 
++r($wide)
+  .header
+    &__menu
+      li
+        margin: 0 5px
+    &__phone
+      font-size: 16px
 
 
 +r($desktop)
   .header
-    &__cta
+    &__logo
+      flex-basis: 73px
+      padding-right: 0
+    &__menu
       display: none
+    &__hamburger
+      flex: 0 0 150px
+      margin-right: auto
+      display: block
+    &__phone
+      flex: 0 0 150px
 
 +r($tablet)
   .header
     &__menu
       display: none
-    &__hamburger
-      margin-left: auto
-      display: block
+
 
 +r($mobile)
   .header

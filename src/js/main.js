@@ -33,7 +33,9 @@ $(document).ready(function(){
     initScrollMonitor();
     initMasks();
     initLazyLoad();
-
+    initPerfectScrollbar();
+    initRangeSlider();
+    
     revealFooter();
     _window.on('resize', throttle(revealFooter, 100));
 
@@ -198,6 +200,24 @@ $(document).ready(function(){
   }
 
   //////////
+  // TABS
+  //////////
+  _document.on('click', '[js-tab]', function(e){
+    var targetName = $(this).data('target');
+    var targetEl = $("[data-tab="+ targetName + "]");
+
+    if ( targetName && targetEl ){
+      $(this).siblings().removeClass('is-active');
+      $(this).addClass('is-active');
+
+      targetEl.siblings().slideUp();
+      targetEl.slideDown();
+
+      triggerBody();
+    }
+  })
+
+  //////////
   // SLIDERS
   //////////
 
@@ -315,6 +335,43 @@ $(document).ready(function(){
 
   function closeMfp(){
     $.magnificPopup.close();
+  }
+
+  ////////////
+  // SCROLLBAR
+  ////////////
+  function initPerfectScrollbar(){
+    if ( $('[js-scrollbar]').length > 0 ){
+      $('[js-scrollbar]').each(function(i, scrollbar){
+        if ( $(scrollbar).not('.ps') ){ // if it initialized
+          var ps = new PerfectScrollbar(scrollbar, {
+            // wheelSpeed: 2,
+            // wheelPropagation: true,
+            minScrollbarLength: 20
+          });
+        }
+      })
+    }
+  }
+
+  ////////////
+  // RANGESLIDER
+  ////////////
+  function initRangeSlider(){
+    var sliders = $('[js-rangeslider]');
+
+    if ( sliders.length > 0 ){
+      sliders.each(function(i, slider){
+        noUiSlider.create(slider, {
+          start: [100],
+          connect: true,
+          range: {
+            'min': 0,
+            'max': 100
+          }
+        });
+      })
+    }
   }
 
   ////////////
