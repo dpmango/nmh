@@ -135,10 +135,8 @@ $(document).ready(function(){
 
       if ( vScroll > headerHeight ){
         header.addClass('is-fixed');
-        header.removeClass('is-white');
       } else {
         header.removeClass('is-fixed');
-        header.addClass('is-white');
       }
       if ( vScroll > firstSection ){
         header.addClass('is-fixed-visible');
@@ -180,11 +178,13 @@ $(document).ready(function(){
   // HAMBURGER TOGGLER
   _document.on('click', '[js-hamburger]', function(){
     $(this).toggleClass('is-active');
+    $('.header').toggleClass('is-menu-opened');
     $('.mobile-navi').toggleClass('is-active');
   });
 
   function closeMobileMenu(){
     $('[js-hamburger]').removeClass('is-active');
+    $('.header').removeClass('is-menu-opened');
     $('.mobile-navi').removeClass('is-active');
   }
 
