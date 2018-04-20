@@ -20,14 +20,9 @@
     flex: 0 0 103px
     font-size: 0
     padding-right: 30px
-    .icon
-      position: absolute
-      top: 50%
-      left: 0
-      opacity: 0
-      transform: translateY(-50%)
-    .icon-logo-black
-      opacity: 1
+    color: $fontColor
+    .ico
+      font-size: 29px
 
   &__menu
     flex: 1 1 auto
@@ -101,10 +96,7 @@
     background: transparent
     .header
       &__logo
-        .icon-logo-white
-          opacity: 1
-        .icon-logo-black
-          opacity: 0
+        color: white
       &__wrapper
         color: white
       &__menu
@@ -124,10 +116,7 @@
     background: white
     .header
       &__logo
-        .icon-logo-white
-          opacity: 0
-        .icon-logo-black
-          opacity: 1
+        color: $fontColor
       &__wrapper
         color: $fontColor
       &__menu
@@ -175,10 +164,7 @@
       background: white
       .header
         &__logo
-          .icon-logo-white
-            opacity: 0
-          .icon-logo-black
-            opacity: 1
+          color: $fontColor
         &__wrapper
           color: $fontColor
         &__menu

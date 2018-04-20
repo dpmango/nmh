@@ -4,7 +4,7 @@ footer.footer(js-reveal-footer)
     .footer__top
       // credentials
       .footer__credentials
-        i.icon.icon-logo-white
+        +icon('ico-logo')
         p © ООО “Проект Хаус”, 2016-2018 
         p ИНН 7703421252
         p  КПП 770301001
@@ -35,8 +35,9 @@ footer.footer(js-reveal-footer)
           li
             a(href='#') Коммерческая недвижиомость
       // col
-      .footer__nav
+      .footer__nav.footer__nav-collapse(js-footer-nav-collapse)
         .footer__nav-title Свяжитесь с нами
+          +icon('ico-drop-arrow')
         ul.footer__nav-list
           li
             a(href='tel:8 (800) 700-84-72') 8 (800) 700-84-72
@@ -51,7 +52,7 @@ footer.footer(js-reveal-footer)
       // col
       .footer__cta
         .footer__lang
-          select(js-selectric)
+          select(js-selectric data-icon="globe").lang-selector
             option Русский
             option English
             option Deutch
@@ -64,8 +65,9 @@ footer.footer(js-reveal-footer)
       .footer__middle-wrap
         .footer__info New Moscow House - молодое агентство загородной недвижимости Новой Москвы. Несмотря на наш небольшой возраст, мы собрали команду опытных риэлторов. Наша задача максимально комфортно и своевременно оказывать брокерские услуги по продаже и индивидуальному подбору домов, таунхаусов и замельных участков в Новой Москве.  
         .footer__subscribe
-          form(action="#").footer__subscribe-form
-            input(type="email" placeholder="Введите ваш имейл")
+          label Подпишитесь на рассылку лучших предложений
+          form(action="#" js-validate-subscribe).footer__subscribe-form
+            input(type="email" name="email" placeholder="Введите ваш имейл")
             button(type="submit") ПОДПИСАТЬСЯ
           
         
@@ -81,6 +83,9 @@ footer.footer(js-reveal-footer)
           +icon("ico-social-youtube")
         a(href="#" target="_blank")
           +icon('ico-social-fb')
-      
-            
+      .footer__credentials.footer__credentials--mobile
+        p © ООО “Проект Хаус”, 2016-2018 
+        p ИНН 7703421252
+        p  КПП 770301001
+        
 // FOOTER :: END

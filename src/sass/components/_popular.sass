@@ -1,0 +1,101 @@
+
+
+/* Popular
+.popular
+  margin-top: 70px
+  margin-bottom: 60px
+  &__heading
+    text-align: center
+
+  &__wrapper
+    display: flex
+    margin-left: -15px
+    margin-right: -15px
+    margin-top: 50px
+    padding-bottom: 10px
+  &__col
+    flex: 0 1 25%
+    max-width: 25%
+    min-width: 1px
+    min-height: 0
+    padding: 15px
+
++r($desktop)
+  .popular
+    &__wrapper
+      margin-top: 30px
+      margin-left: -40px
+      margin-right: -40px
+      overflow-x: auto
+    &__col
+      flex: 0 0 270px
+      max-width: 270px
+
++r($mobile)
+  .popular
+    margin-top: 50px
+    margin-bottom: 40px
+    &__wrapper
+      margin-left: -20px
+      margin-right: -20px
+
+
+.popular-card
+  display: block
+  position: relative
+  z-index: 1
+  overflow: hidden
+  background: #171717
+  box-shadow: 0 6px 15px 0 rgba(184,178,178,0.50)
+  border-radius: 4px
+  min-height: 200px
+  display: flex
+  flex-direction: column
+  transition: box-shadow .25s $ease, transform .25s ease
+  &:hover
+    transform: translate(0,-5px)
+    box-shadow: none
+  &__bg
+    position: absolute
+    z-index: 1
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    width: 100%
+    font-size: 0
+  &__content
+    position: relative
+    z-index: 2
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+    text-align: center
+    color: white
+    padding: 10px
+
+  &__name
+    position: relative
+    font-size: 14px
+    line-height: 1.42
+    font-weight: 700
+    letter-spacing: 0.028em
+    text-transform: uppercase
+    max-width: 175px
+    margin: auto
+    padding-bottom: 15px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      left: 50%
+      bottom: 0
+      transform: translateX(-50%)
+      size: 50px 1px
+      background: rgba(white, .7)
+  &__count
+    position: absolute
+    bottom: 10px
+    left: 0
+    right: 0
+    text-align: center
+    font-size: 14px

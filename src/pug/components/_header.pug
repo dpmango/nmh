@@ -9,8 +9,7 @@ header.header.is-white
               .hamburger-inner
                 
         a(href="homepage.html").header__logo
-          i.icon.icon-logo-white
-          i.icon.icon-logo-black
+          +icon('ico-logo')
         ul.header__menu
           li
             a(href='#') ДОМА
@@ -32,7 +31,7 @@ header.header.is-white
 // HEADER :: END
 
 .mobile-navi
-  .mobile-navi__wrapper(js-scrollbar)
+  .mobile-navi__wrapper(js-scrollbar data-x-disable="true")
     .mobile-navi__menu
       li
         a(href='#') ДОМА

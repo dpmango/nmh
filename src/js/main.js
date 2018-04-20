@@ -10,7 +10,7 @@ $(document).ready(function(){
   // BREAKPOINT SETTINGS
   var bp = {
     mobileS: 375,
-    mobile: 568,
+    mobile: 680,
     tablet: 768,
     desktop: 992,
     wide: 1336,
@@ -36,6 +36,7 @@ $(document).ready(function(){
     initPerfectScrollbar();
     initRangeSlider();
     initAutocompleate();
+    initValidations();
 
     revealFooter();
     _window.on('resize', throttle(revealFooter, 100));
@@ -152,8 +153,8 @@ $(document).ready(function(){
     var footer = $('[js-reveal-footer]');
     if (footer.length > 0) {
       var footerHeight = footer.outerHeight();
-      var maxHeight = _window.height() - footerHeight > 100;
-      if (maxHeight && !msieversion() ) {
+      var maxHeight = _window.height() - footerHeight > 200;
+      if (maxHeight && !msieversion() && !isMobile() ) {
         $('body').css({
           'margin-bottom': footerHeight
         });
@@ -173,7 +174,20 @@ $(document).ready(function(){
     }
   }
 
+  _document
+    .on('click', '[js-footer-nav-collapse]', function(e){
+      if ( _window.width() < bp.tablet ){
 
+        if ( $(e.target).closest('.footer__nav-list').length > 0 ){
+          e.stopPropagation();
+        } else {
+          $(this).closest('.footer__nav-collapse').toggleClass('is-opened');
+
+          revealFooter();
+
+        }
+      }
+    })
 
   // HAMBURGER TOGGLER
   _document.on('click', '[js-hamburger]', function(){
@@ -233,9 +247,9 @@ $(document).ready(function(){
       direction: 'horizontal',
       loop: false,
       watchOverflow: true,
-      setWrapperSize: true,
+      setWrapperSize: false,
       spaceBetween: 0,
-      slidesPerView: 4,
+      slidesPerView: 'auto',
       normalizeSlideIndex: true,
       grabCursor: true,
       freeMode: true,
@@ -345,9 +359,14 @@ $(document).ready(function(){
     if ( $('[js-scrollbar]').length > 0 ){
       $('[js-scrollbar]').each(function(i, scrollbar){
         if ( $(scrollbar).not('.ps') ){ // if it initialized
+
+          var xAvail = $(scrollbar).data('x-disable') || false; // false is default
+          var yAvail = $(scrollbar).data('y-disable') || false; // false is default
+          console.log(yAvail)
           var ps = new PerfectScrollbar(scrollbar, {
-            // wheelSpeed: 2,
-            // wheelPropagation: true,
+            suppressScrollX: xAvail,
+            suppressScrollY: yAvail,
+            wheelPropagation: true,
             minScrollbarLength: 20
           });
         }
@@ -384,7 +403,6 @@ $(document).ready(function(){
 
     if ( autocompleate.length > 0 ){
       autocompleate.each(function(i, input){
-        console.log(input)
         $(input).easyAutocomplete({
           url: $(input).data('url'),
           getValue: "name",
@@ -413,29 +431,36 @@ $(document).ready(function(){
   ////////////
 
   function initSelectric(){
-    $('[js-selectric]').selectric({
-      maxHeight: 300,
-      arrowButtonMarkup: '<b class="button"><svg class="ico ico-drop-arrow"><use xlink:href="img/sprite.svg#ico-drop-arrow"></use></svg></b>',
+    $('[js-selectric]').each(function(i, select){
+      var icon = $(select).data('icon') || 'drop-arrow';
+      console.log(icon)
+      var btn = '<b class="button"><svg class="ico ico-'+icon+'"><use xlink:href="img/sprite.svg#ico-'+icon+'"></use></svg></b>';
 
-      onInit: function(element, data){
-        var $elm = $(element),
-            $wrapper = $elm.closest('.' + data.classes.wrapper);
+      $(select).selectric({
+        maxHeight: 300,
+        arrowButtonMarkup: btn,
 
-        $wrapper.find('.label').html($elm.attr('placeholder'));
-      },
-      onBeforeOpen: function(element, data){
-        var $elm = $(element),
-            $wrapper = $elm.closest('.' + data.classes.wrapper);
+        onInit: function(element, data){
+          var $elm = $(element),
+              $wrapper = $elm.closest('.' + data.classes.wrapper);
 
-        $wrapper.find('.label').data('value', $wrapper.find('.label').html()).html($elm.attr('placeholder'));
-      },
-      onBeforeClose: function(element, data){
-        var $elm = $(element),
-            $wrapper = $elm.closest('.' + data.classes.wrapper);
+          $wrapper.find('.label').html($elm.attr('placeholder'));
+        },
+        onBeforeOpen: function(element, data){
+          var $elm = $(element),
+              $wrapper = $elm.closest('.' + data.classes.wrapper);
 
-        $wrapper.find('.label').html($wrapper.find('.label').data('value'));
-      }
-    });
+          $wrapper.find('.label').data('value', $wrapper.find('.label').html()).html($elm.attr('placeholder'));
+        },
+        onBeforeClose: function(element, data){
+          var $elm = $(element),
+              $wrapper = $elm.closest('.' + data.classes.wrapper);
+
+          $wrapper.find('.label').html($wrapper.find('.label').data('value'));
+        }
+      });
+    })
+
   }
 
   // textarea autoExpand
@@ -613,7 +638,6 @@ $(document).ready(function(){
     var wHost = window.location.host.toLowerCase()
     var displayCondition = wHost.indexOf("localhost") >= 0 || wHost.indexOf("surge") >= 0
     if (displayCondition){
-      console.log(displayCondition)
       var wWidth = _window.width();
 
       var content = "<div class='dev-bp-debug'>"+wWidth+"</div>";
@@ -628,4 +652,126 @@ $(document).ready(function(){
     }
   }
 
+  function initValidations(){
+    ////////////////
+    // FORM VALIDATIONS
+    ////////////////
+
+    // jQuery validate plugin
+    // https://jqueryvalidation.org
+
+
+    // GENERIC FUNCTIONS
+    ////////////////////
+
+    var validateErrorPlacement = function(error, element) {
+      error.addClass('ui-input__validation');
+      error.appendTo(element.parent());
+    }
+    var validateHighlight = function(element) {
+      $(element).addClass("has-error");
+    }
+    var validateUnhighlight = function(element) {
+      $(element).removeClass("has-error");
+    }
+    var validateSubmitHandler = function(form) {
+      $(form).addClass('loading');
+      $.ajax({
+        type: "POST",
+        url: $(form).attr('action'),
+        data: $(form).serialize(),
+        success: function(response) {
+          $(form).removeClass('loading');
+          var data = $.parseJSON(response);
+          if (data.status == 'success') {
+            // do something I can't test
+          } else {
+              $(form).find('[data-error]').html(data.message).show();
+          }
+        }
+      });
+    }
+
+    var validatePhone = {
+      required: true,
+      normalizer: function(value) {
+          var PHONE_MASK = '+X (XXX) XXX-XXXX';
+          if (!value || value === PHONE_MASK) {
+              return value;
+          } else {
+              return value.replace(/[^\d]/g, '');
+          }
+      },
+      minlength: 11,
+      digits: true
+    }
+
+    ////////
+    // FORMS
+
+
+    /////////////////////
+    // REGISTRATION FORM
+    ////////////////////
+    // $(".js-registration-form").validate({
+    //   errorPlacement: validateErrorPlacement,
+    //   highlight: validateHighlight,
+    //   unhighlight: validateUnhighlight,
+    //   submitHandler: validateSubmitHandler,
+    //   rules: {
+    //     last_name: "required",
+    //     first_name: "required",
+    //     email: {
+    //       required: true,
+    //       email: true
+    //     },
+    //     password: {
+    //       required: true,
+    //       minlength: 6,
+    //     }
+    //     // phone: validatePhone
+    //   },
+    //   messages: {
+    //     last_name: "Заполните это поле",
+    //     first_name: "Заполните это поле",
+    //     email: {
+    //         required: "Заполните это поле",
+    //         email: "Email содержит неправильный формат"
+    //     },
+    //     password: {
+    //         required: "Заполните это поле",
+    //         email: "Пароль мимимум 6 символов"
+    //     },
+    //     // phone: {
+    //     //     required: "Заполните это поле",
+    //     //     minlength: "Введите корректный телефон"
+    //     // }
+    //   }
+    // });
+
+    $("[js-validate-subscribe]").validate({
+      errorPlacement: function(error, element) {
+        element.closest('.footer__subscribe').find('.ui-input__validation').remove();
+        error.addClass('ui-input__validation');
+        error.appendTo(element.closest('.footer__subscribe'));
+      },
+      highlight: validateHighlight,
+      unhighlight: validateUnhighlight,
+      submitHandler: validateSubmitHandler,
+      rules: {
+        email: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        email: {
+          required: "Заполните это поле",
+          email: "Email содержит неправильный формат"
+        }
+      }
+    });
+
+
+  }
 });

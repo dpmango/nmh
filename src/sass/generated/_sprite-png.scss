@@ -53,20 +53,11 @@ $sprite: (
 		total-height: 220px,
 		image: '../img/sprite.png'
 	),
-	logo-black: (
-		offset-x: -145px,
-		offset-y: -191px,
-		width: 72px,
-		height: 29px,
-		total-width: 264px,
-		total-height: 220px,
-		image: '../img/sprite.png'
-	),
-	logo-white: (
-		offset-x: -62px,
-		offset-y: -191px,
-		width: 73px,
-		height: 29px,
+	footer-menu-arrow: (
+		offset-x: -241px,
+		offset-y: -77px,
+		width: 8px,
+		height: 16px,
 		total-width: 264px,
 		total-height: 220px,
 		image: '../img/sprite.png'
@@ -172,11 +163,8 @@ $sprite: (
 	.icon-benefits-6 {
 		@include sprite(benefits-6)
 	}
-	.icon-logo-black {
-		@include sprite(logo-black)
-	}
-	.icon-logo-white {
-		@include sprite(logo-white)
+	.icon-footer-menu-arrow {
+		@include sprite(footer-menu-arrow)
 	}
 	.icon-play {
 		@include sprite(play)

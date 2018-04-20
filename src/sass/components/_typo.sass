@@ -23,13 +23,15 @@
     display: flex
     align-items: center
     justify-content: center
-    padding: 6px 0 8px
-    text-transform: lowercase
+    padding: 6px 0 0px
+    margin-bottom: -7px
+    flex-wrap: wrap
     .subheading
-      margin-right: 40px
+      margin-right: 20px
+      margin-left: 20px
+      margin-bottom: 15px
       cursor: pointer
-      &:last-child
-        margin-right: 0
+      text-transform: lowercase
       &:hover, &.is-active
         &::after
           right: 0
@@ -73,7 +75,7 @@
 +r($mobile480)
   .b-heading
     padding-bottom: 15px
-    
+
   .heading
     font-size: 32px
     &--h2
