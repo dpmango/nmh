@@ -1,0 +1,167 @@
+
+.m-search
+  position: fixed
+  z-index: 11
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background: white
+  padding: 60px 0 0
+  display: flex
+  flex-direction: column
+  // opacity: 0
+  transform: translate3d(0,-100%,0)
+  pointer-events: none
+  transition: .25s $ease
+
+  &.is-active
+    // opacity: 1
+    transform: translate3d(0,0,0)
+    pointer-events: all
+  &__wrapper
+    position: relative
+    flex: 1 1 auto
+    overflow-y: auto
+    display: flex
+    flex-direction: column
+  &__head
+    position: absolute
+    top: 0px
+    left: 0
+    right: 0
+    height: 60px
+    display: flex
+    align-items: center
+    padding-left: 40px
+    padding-right: 40px
+    border-bottom: 1px solid $borderColor
+  &__clear
+    flex: 0 0 100px
+    font-size: 12px
+    text-transform: uppercase
+    color: rgba($fontColor, .5)
+    cursor: pointer
+    transition: .25s $ease
+    &:hover
+      color: $fontColor
+
+  &__head-title
+    text-align: center
+    margin-left: auto
+    margin-right: auto
+    font-family: $noto
+    font-size: 18px
+    font-weight: 700
+    text-transform: uppercase
+
+  &__close
+    flex: 0 0 100px
+    cursor: pointer
+    text-align: right
+    font-size: 18px
+    transition: .25s $ease
+    &:hover
+      color: $colorPrimary
+
+  &__form
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+    width: 100%
+    max-width: 440px
+    margin-left: auto
+    margin-right: auto
+    flex: 1 0 auto
+    margin-top: 40px
+    padding-left: 40px
+    padding-right: 40px
+    label
+      font-size: 16px
+      color: rgba($fontColor, .5)
+      display: block
+      margin-bottom: 15px
+      text-transform: lowercase
+
+  &__cta
+    margin-top: auto
+    padding-top: 40px
+    margin-bottom: 40px
+    .btn
+      display: block
+      width: 100%
+
+  &__categories
+    margin-bottom: 15px
+    &-wrap
+      display: flex
+      padding-bottom: 15px
+      overflow-x: auto
+
+  &__category
+    margin-right: 25px
+    input
+      display: none
+      width: 0.1px
+      height: 0.1px
+      opacity: 0
+      position: absolute
+      top: 0
+      left: 0
+      &:checked
+        + label
+          border-color: $colorPrimary
+    label
+      display: block
+      white-space: nowrap
+      width: 100%
+      position: relative
+      color: $fontColor
+      cursor: pointer
+      padding: 14px 25px
+      border-radius: 4px
+      border: 1px solid transparent
+      cursor: pointer
+      margin-bottom: 0
+      text-align: center
+      text-transform: uppercase
+      transition: .25s $ease
+      &:hover
+        border-color: $grayColor
+
+  &__price
+    position: relative
+    margin-bottom: 40px
+    &-wrap
+      margin-top: 25px
+      padding-left: 10px
+      padding-right: 10px
+    &-set
+      position: absolute
+      right: 10px
+      top: 0
+      text-align: right
+      font-size: 16px
+      color: rgba($fontColor, .5)
+
+  &__keywords
+    .ui-group input
+      border: 1px solid #CCCBCB
+      &:focus
+        border-color: $colorPrimary !important
+
+
+
++r($mobile)
+  .m-search
+    &__form
+      padding-left: 20px
+      padding-right: 20px
+    &__head
+      padding-left: 20px
+      padding-right: 20px
+
+
++rmin($tablet)
+  .m-search
+    display: none !important

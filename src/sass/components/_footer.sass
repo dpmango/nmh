@@ -200,7 +200,8 @@
     &__info
       display: none
     &__subscribe
-      flex-basis: 440px
+      flex: 0 1 440px
+      max-width: 100%
       margin-left: auto
       margin-right: auto
 
@@ -280,6 +281,8 @@
       border-top: 0
       margin-left: -40px
       margin-right: -40px
+      padding-left: 40px
+      padding-right: 40px
       &-wrap
         margin: 0
     &__subscribe
@@ -289,6 +292,11 @@
 +r($mobile)
   .footer
     padding-bottom: 60px
+    &__middle
+      margin-left: -15px
+      margin-right: -15px
+      padding-left: 15px
+      padding-right: 15px
     &__bottom
       flex-direction: column
       text-align: center

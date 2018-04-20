@@ -25,14 +25,15 @@ header.header.is-white
         .header__cta
           a(href="tel:+78007008472").header__phone +7 (800) 700-84-72
         
-        a(href='#').header__search
+        a(href='#').header__search(js-header-search)
           +icon('ico-search')
       
 // HEADER :: END
 
-.mobile-navi
-  .mobile-navi__wrapper(js-scrollbar data-x-disable="true")
-    .mobile-navi__menu
+// MOBILE NAVI
+.m-navi
+  .m-navi__wrapper(js-scrollbar data-x-disable="true")
+    .m-navi__menu
       li
         a(href='#') ДОМА
       li
@@ -43,6 +44,53 @@ header.header.is-white
         a(href='#') ЭЛИТНАЯ НЕДВИЖИМОСТЬ
       li
         a(href='blog.html') БЛОГ
-    .mobile-navi__cta
+    .m-navi__cta
       a(href="tel:+78007008472").btn.btn-primary +7 (800) 700-84-72
+
+// MOBILE SEARCH
+.m-search.is-active
+  .m-search__head
+    .m-search__clear(js-reset-mobile-search) Сбросить
+    .m-search__head-title Поиск
+    .m-search__close(js-close-mobile-search)
+      +icon('ico-close')
+  .m-search__wrapper(js-scrollbar data-x-disable="true")
+    form(action="#").m-search__form
+      // categories
+      .m-search__categories
+        label категория недвижимости
+        .m-search__categories-wrap(js-scrollbar data-y-disable="true")
+          .m-search__category
+            input(type="radio" name="category" id="category_1" checked)
+            label(for="category_1")
+              span Дом
+          .m-search__category
+            input(type="radio" name="category" id="category_2")
+            label(for="category_2")
+              span Таунхаус
+          .m-search__category
+            input(type="radio" name="category" id="category_3")
+            label(for="category_3")
+              span Участок
+      
+      // price
+      .m-search__price
+        label цена
+        .m-search__price-wrap
+          .m-search__price-set 
+            span(js-range-from) 0 
+            |  - 
+            span(js-range-to) 50 000 000
+          div(js-rangeslider)
+      
+      // keywords
+      .m-search__keywords
+        label ПОИСК ПО КЛЮЧЕВЫМ СЛОВАМ
+        .ui-group.ui-group--search
+          input(type="text" placeholder="Название" js-autocomplete data-url="json/cities.json")
+          +icon('ico-search')
+          
+      .m-search__cta
+        button(type="submit").btn.btn-primary найти
+
       

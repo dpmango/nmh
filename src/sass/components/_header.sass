@@ -132,7 +132,9 @@
     transform: translate3d(0,0,0)
 
   &.is-menu-opened
-
+    transform: translate3d(0,0%,0) !important
+    background: white
+    position: fixed
 
 
 +r($wide)
@@ -187,72 +189,3 @@
     &__wrapper
       padding-left: 5px
       padding-right: 5px
-
-
-
-.mobile-navi
-  position: fixed
-  z-index: 9
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  background: white
-  padding: 60px 0 0
-  display: flex
-  flex-direction: column
-  // opacity: 0
-  transform: translate3d(0,-100%,0)
-  pointer-events: none
-  transition: .25s $ease
-
-  &.is-active
-    // opacity: 1
-    transform: translate3d(0,0,0)
-    pointer-events: all
-  &__wrapper
-    flex: 1 1 auto
-    overflow-y: auto
-    display: flex
-    flex-direction: column
-
-  &__menu
-    flex: 1 0 auto
-    margin: 0
-    padding: 0
-    li
-      display: block
-      width: 100%
-      font-size: 14px
-      font-family: $noto
-      font-weight: 700
-      text-transform: uppercase
-      letter-spacing: 0.1em
-      border-bottom: 1px solid rgba(black, .1)
-    a
-      display: block
-      transition: color .25s $ease
-      padding: 20px 40px
-
-
-      &:hover
-        color: $colorPrimary
-
-  &__cta
-    padding: 0 40px
-    margin-top: 40px
-    margin-bottom: 40px
-    .btn
-      display: block
-
-+r($mobile)
-  .mobile-navi
-    &__menu
-      a
-        padding: 20px 20px
-    &__cta
-      padding: 0 20px
-
-+rmin($desktop)
-  .mobile-navi
-    display: none !important

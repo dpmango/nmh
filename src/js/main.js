@@ -190,17 +190,38 @@ $(document).ready(function(){
     })
 
   // HAMBURGER TOGGLER
-  _document.on('click', '[js-hamburger]', function(){
-    $(this).toggleClass('is-active');
-    $('.header').toggleClass('is-menu-opened');
-    $('.mobile-navi').toggleClass('is-active');
-  });
+  _document
+    .on('click', '[js-hamburger]', function(){
+      $(this).toggleClass('is-active');
+      $('.header').toggleClass('is-menu-opened');
+      $('.m-navi').toggleClass('is-active');
+    })
+    .on('click', '[js-header-search]', function(){
+      $('[js-hamburger]').removeClass('is-active');
+      $(this).toggleClass('is-active');
+      $('.header').toggleClass('is-menu-opened');
+      $('.m-search').toggleClass('is-active');
+    })
+    .on('click', '[js-close-mobile-search]', function(){
+      closeMobileMenu();
+    })
+    .on('click', '[js-reset-mobile-search]', function(){
+      var form = $(this).closest('.m-search');
+
+      form.find('input[type="text"]').val('');
+      form.find('input[type="radio"]').prop('checked', false);
+    })
 
   function closeMobileMenu(){
     $('[js-hamburger]').removeClass('is-active');
+    $('[js-header-search]').removeClass('is-active');
     $('.header').removeClass('is-menu-opened');
-    $('.mobile-navi').removeClass('is-active');
+    $('.m-navi').removeClass('is-active');
+    $('.m-search').removeClass('is-active');
   }
+
+
+
 
   // SET ACTIVE CLASS IN HEADER
   // * could be removed in production and server side rendering when header is inside barba-container
@@ -383,13 +404,23 @@ $(document).ready(function(){
     if ( sliders.length > 0 ){
       sliders.each(function(i, slider){
         noUiSlider.create(slider, {
-          start: [100],
+          start: [0, 35000000],
           connect: true,
           range: {
             'min': 0,
-            'max': 100
+            'max': 50000000
           }
         });
+
+        var priceValues = [
+        	$('[js-range-from]').get(0),
+        	$('[js-range-to]').get(0),
+        ];
+
+        slider.noUiSlider.on('update', function( values, handle ) {
+        	priceValues[handle].innerHTML = parseInt(values[handle]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");;
+        });
+
       })
     }
   }
