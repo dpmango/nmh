@@ -3,11 +3,18 @@
 
 .blog
   margin: 70px 0
+  &--inner
+    margin-top: 160px
   &__wrapper
     display: flex
     margin-left: -15px
     margin-right: -15px
     margin-top: 50px
+  &__grid
+      display: flex
+      margin-left: -15px
+      margin-right: -15px
+      flex-wrap: wrap
   &__col
     flex: 0 1 33.3%
     max-width: 33.3%
@@ -75,6 +82,10 @@
       margin-left: -40px
       margin-right: -40px
       overflow-x: auto
+    &__grid
+      .blog__col
+        flex: 0 0 50%
+        max-width: 50%
     &__col
       flex: 0 0 370px
       max-width: 370px
@@ -83,6 +94,16 @@
   .blog
     margin-top: 40px
     margin-bottom: 40px
+    &--inner
+      margin-top: 120px
+
+    &__grid
+      .blog__col
+        flex: 0 0 100%
+        max-width: 370px
+        margin-left: auto
+        margin-right: auto
+
     &__wrapper
       margin-left: -20px
       margin-right: -20px

@@ -4,10 +4,10 @@ PageList:
 - file: homepage.html
   ready: 90
 - file: search.html
-  ready: 0
+  ready: 10
 - file: property.html
-  ready: 0
+  ready: 10
 - file: blog.html
-  ready: 0
+  ready: 30
 - file: blog-post.html
-  ready: 0
+  ready: 10

@@ -185,6 +185,14 @@ $(document).ready(function(){
 
           revealFooter();
 
+          anime({
+            targets: "html, body",
+            scrollTop: _document.height() - _window.height(),
+            easing: easingSwing, // swing
+            duration: 150
+          });
+
+
         }
       }
     })
