@@ -10,7 +10,7 @@
         .search-form(action="#")
           .search-form__name.wow(data-animation-delay=".3s")
             .ui-group.ui-group--search
-              input(type="text" placeholder="Название")
+              input(type="text" placeholder="Название" js-autocomplete data-url="json/cities.json")
               +icon('ico-search')
           .search-form__category.wow(data-animation-delay=".4s")
             label категория

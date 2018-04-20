@@ -35,7 +35,8 @@ $(document).ready(function(){
     initLazyLoad();
     initPerfectScrollbar();
     initRangeSlider();
-    
+    initAutocompleate();
+
     revealFooter();
     _window.on('resize', throttle(revealFooter, 100));
 
@@ -131,20 +132,20 @@ $(document).ready(function(){
       var header = $('.header').not('.header--static');
       var headerHeight = header.height();
       var firstSection = _document.find('.page__content div:first-child()').height() - headerHeight;
-      var visibleWhen = Math.round(_document.height() / _window.height()) >  2.5
 
-      if (visibleWhen){
-        if ( vScroll > headerHeight ){
-          header.addClass('is-fixed');
-        } else {
-          header.removeClass('is-fixed');
-        }
-        if ( vScroll > firstSection ){
-          header.addClass('is-fixed-visible');
-        } else {
-          header.removeClass('is-fixed-visible');
-        }
+      if ( vScroll > headerHeight ){
+        header.addClass('is-fixed');
+        header.removeClass('is-white');
+      } else {
+        header.removeClass('is-fixed');
+        header.addClass('is-white');
       }
+      if ( vScroll > firstSection ){
+        header.addClass('is-fixed-visible');
+      } else {
+        header.removeClass('is-fixed-visible');
+      }
+
     }, 10));
   }
 
@@ -373,6 +374,39 @@ $(document).ready(function(){
       })
     }
   }
+
+
+  ////////////
+  // AUTOCOMPLEATE
+  ////////////
+  function initAutocompleate(){
+    var autocompleate = $('[js-autocomplete]');
+
+    if ( autocompleate.length > 0 ){
+      autocompleate.each(function(i, input){
+        console.log(input)
+        $(input).easyAutocomplete({
+          url: $(input).data('url'),
+          getValue: "name",
+          list: {
+            match: {
+              enabled: true
+            },
+            showAnimation: {
+        			type: "fade", //normal|slide|fade
+        			time: 200,
+        		},
+        		hideAnimation: {
+        			type: "slide", //normal|slide|fade
+        			time: 200,
+        		}
+          },
+        });
+
+      })
+    }
+  }
+
 
   ////////////
   // UI

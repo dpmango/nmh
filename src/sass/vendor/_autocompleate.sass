@@ -1,0 +1,61 @@
+/*
+ * easy-autocomplete
+ * jQuery plugin for autocompletion
+
+.easy-autocomplete
+  position: relative
+  width: auto !important
+  input
+    position: relative
+    z-index: 3
+    &:focus
+      border-color: transparent !important
+      border-bottom-left-radius: 0px
+      border-bottom-right-radius: 0px
+  a
+    display: block
+
+
+.easy-autocomplete-container
+  left: 0
+  position: absolute
+  width: 100%
+  z-index: 2
+  ul
+    background: none repeat scroll 0 0 #ffffff
+    display: none
+    margin-top: 0
+    padding-bottom: 0
+    padding-left: 0
+    position: relative
+    color: $fontColor
+    top: 0px
+    border-bottom-left-radius: 4px
+    border-bottom-right-radius: 4px
+    overflow: hidden
+    box-shadow: 0 6px 15px 0 rgba(184,178,178,0.50)
+    li, .eac-category
+      background: inherit
+      display: block
+      font-size: 16px
+      font-weight: normal
+      padding: 10px 20px
+    li
+      transition: .25s $ease
+      &:last-child
+        border-radius: 0 0 2px 2px
+        border-width: 0 1px 1px
+      &.selected
+        background: none repeat scroll 0 0 #FAFAFC
+        cursor: pointer
+        div
+          font-weight: normal
+      div
+        display: block
+        font-weight: normal
+        word-break: break-all
+      b
+        font-weight: bold
+    .eac-category
+      font-color: #aaa
+      font-style: italic

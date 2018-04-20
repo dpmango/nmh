@@ -4,7 +4,8 @@
   top: 0
   right: 0
   left: 0
-  background: transparent
+  z-index: 10
+  background: white
   &-container
     border-bottom: 1px solid $borderColor
 
@@ -80,12 +81,24 @@
     transition: .25s $ease
     &:hover
       color: $colorPrimary
+  &__search
+    display: none
+    flex: 0 0 40px
+    margin-left: auto
+    padding-top: 2px
+    text-align: right
+    transition: .25s $ease
+    .ico
+      font-size: 22px
 
+    &:hover
+      color: $colorPrimary
 
   &__hamburger
     display: none
 
   &.is-white
+    background: transparent
     .header
       &__logo
         .icon-logo-white
@@ -94,10 +107,22 @@
           opacity: 0
       &__wrapper
         color: white
-
       &__menu
         a::after
           background-color: rgba(white, .7)
+    .hamburger-inner
+      background: white
+      &::before, &::after
+        background: white
+
+  &.is-fixed
+    transform: translate3d(0,-100%,0)
+    background: white
+    transition: .25s $ease
+  &.is-fixed-visible
+    position: fixed
+    transform: translate3d(0,0,0)
+
 
 +r($wide)
   .header
@@ -124,11 +149,33 @@
 
 +r($tablet)
   .header
-    &__menu
+    &.is-white
+      background: white
+      .header
+        &__logo
+          .icon-logo-white
+            opacity: 0
+          .icon-logo-black
+            opacity: 1
+        &__wrapper
+          color: $fontColor
+        &__menu
+          a::after
+            background-color: rgba($fontColor, .7)
+      .hamburger-inner
+        background: $fontColor
+        &::before, &::after
+          background: $fontColor
+    &__hamburger
+      flex-basis: 40px
+    &__cta
       display: none
+    &__search
+      display: block
 
 
 +r($mobile)
   .header
-    &__logo
-      font-size: 30px
+    &__wrapper
+      padding-left: 5px
+      padding-right: 5px
