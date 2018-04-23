@@ -15,8 +15,8 @@
           .search-form__category.wow(data-animation-delay=".4s")
             label категория
             .ui-group
-              select(js-selectric placeholder="Категория")
-                option Дом
+              select(js-selectric)
+                option(selected) Дом
                 option Участок
                 option Таунхаус
                 
@@ -24,9 +24,9 @@
             label стоимость
             .search-form__price-row
               .ui-group
-                input(type="text" placeholder="от" js-mask-number)
+                input(type="text" placeholder="от" js-mask-price)
               .ui-group
-                input(type="text" placeholder="до" js-mask-number)
+                input(type="text" placeholder="до" js-mask-price)
           
           .search-form__cta.wow(data-animation-delay=".6s")
             button(type="submit").btn.btn-primary

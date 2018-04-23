@@ -3,10 +3,10 @@
   background: #404040 url('../img/footerBg.jpg') no-repeat center
   background-size: cover
   padding: 40px 0
-  bottom: 0
-  left: 0
-  right: 0
-  z-index: -1
+  // bottom: 0
+  // left: 0
+  // right: 0
+  // z-index: -1
   color: $grayColor
   &__top
     display: flex
@@ -108,7 +108,7 @@
       position: relative
       border: 2px solid #979797
       border-radius: 3px
-      overflow: hidden
+      // overflow: hidden
       input
         -webkit-apperance: none
         width: 100%
@@ -126,9 +126,10 @@
 
       button
         position: absolute
-        top: 0
-        bottom: 0
-        right: 0
+        top: -2px
+        bottom: -2px
+        right: -2px
+        z-index: 2
         color: white
         background: #979797
         font-size: 12px
@@ -137,6 +138,12 @@
         text-align: center
         text-transform: uppercase
         padding: 15px
+        border-top-right-radius: 3px
+        border-bottom-right-radius: 3px
+        transition: .25s $ease
+        &:hover
+          background: $colorPrimary
+          color: white
 
     .ui-input__validation
       position: absolute
@@ -207,6 +214,8 @@
 
 +r($tablet)
   .footer
+    background-size: auto
+    background-repeat: repeat
     &__top
       flex-wrap: wrap
       padding-bottom: 0

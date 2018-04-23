@@ -60,11 +60,12 @@
       margin-right: -20px
 
 /* hot card
-.hot-card
+.h-card
   position: relative
   flex: 1 1 auto
   display: flex
   flex-direction: column
+  letter-spacing: 0.01em
 
   /* slider in slider
   &__images
@@ -81,10 +82,17 @@
       z-index: 3
       color: white
       cursor: pointer
+      opacity: 0
+      transition: .25s $ease
     &-next
       right: 15px
     &-prev
       left: 15px
+    &:hover
+      .h-card__images
+        &-next, &-prev
+          opacity: 1
+
 
   &__image
     display: block
@@ -167,6 +175,7 @@
     position: absolute
     bottom: -3px
     right: 0
+    letter-spacing: 0em
 
   &__exclusive
     color: white

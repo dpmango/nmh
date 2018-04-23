@@ -21,8 +21,12 @@
     font-size: 0
     padding-right: 30px
     color: $fontColor
+    transition: opacity .25s $ease
     .ico
       font-size: 29px
+    &:hover
+      opacity: .8
+
 
   &__menu
     flex: 1 1 auto
@@ -68,14 +72,32 @@
     margin-left: auto
     padding-left: 30px
   &__phone
+    position: relative
     display: inline-block
     font-family: $noto
     font-weight: 700
     font-size: 18px
+    padding: 20px 0
     letter-spacing: 0.04em
     transition: .25s $ease
+    // &:hover
+    //   color: $colorPrimary
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      top: 0
+      left: 0
+      right: 100%
+      height: 3px
+      background-color: $colorPrimary
+      box-shadow: 0 0 1px 0 rgba(0,0,0,0.50)
+      transition: .25s $ease
     &:hover
-      color: $colorPrimary
+      &::after
+        right: 0
+
+
   &__search
     display: none
     flex: 0 0 40px
@@ -148,9 +170,13 @@
 
 +r($desktop)
   .header
+    &__wrapper
+      height: 48px
     &__logo
-      flex-basis: 73px
+      flex-basis: 60px
       padding-right: 0
+      .ico
+        font-size: 24px
     &__menu
       display: none
     &__hamburger
@@ -159,6 +185,7 @@
       display: block
     &__phone
       flex: 0 0 150px
+      padding: 15px 0
 
 +r($tablet)
   .header

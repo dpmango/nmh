@@ -38,8 +38,8 @@ $(document).ready(function(){
     initAutocompleate();
     initValidations();
 
-    revealFooter();
-    _window.on('resize', throttle(revealFooter, 100));
+    // revealFooter();
+    // _window.on('resize', throttle(revealFooter, 100));
 
     // development helper
     _window.on('resize', debounce(setBreakpoint, 200))
@@ -183,7 +183,7 @@ $(document).ready(function(){
         } else {
           $(this).closest('.footer__nav-collapse').toggleClass('is-opened');
 
-          revealFooter();
+          // revealFooter();
 
           anime({
             targets: "html, body",
@@ -218,6 +218,7 @@ $(document).ready(function(){
 
       form.find('input[type="text"]').val('');
       form.find('input[type="radio"]').prop('checked', false);
+      form.find('[js-rangeslider]').get(0).noUiSlider.reset();
     })
 
   function closeMobileMenu(){
@@ -290,7 +291,7 @@ $(document).ready(function(){
     $('[js-hotCard-slider]').each(function(i, slider){
       new Swiper($(slider), {
         wrapperClass: "swiper-wrapper",
-        slideClass: "hot-card__image",
+        slideClass: "h-card__image",
         direction: 'horizontal',
         nested: true,
         loop: true,
@@ -298,11 +299,11 @@ $(document).ready(function(){
         setWrapperSize: true,
         spaceBetween: 0,
         slidesPerView: 1,
-        effect: 'fade',
+        // effect: 'fade',
         normalizeSlideIndex: true,
         navigation: {
-          nextEl: '.hot-card__images-next',
-          prevEl: '.hot-card__images-prev',
+          nextEl: '.h-card__images-next',
+          prevEl: '.h-card__images-prev',
         },
       })
     })
@@ -361,6 +362,11 @@ $(document).ready(function(){
       // closeMarkup: '<button class="mfp-close"><div class="video-box__close-button btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/setting/video_close.svg" alt=""/></div></button>'
     });
 
+    _document.on('click', '[js-popupVideo]', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+    })
+
     $('[js-popup-gallery]').magnificPopup({
   		delegate: 'a',
   		type: 'image',
@@ -391,7 +397,6 @@ $(document).ready(function(){
 
           var xAvail = $(scrollbar).data('x-disable') || false; // false is default
           var yAvail = $(scrollbar).data('y-disable') || false; // false is default
-          console.log(yAvail)
           var ps = new PerfectScrollbar(scrollbar, {
             suppressScrollX: xAvail,
             suppressScrollY: yAvail,
@@ -414,6 +419,7 @@ $(document).ready(function(){
         noUiSlider.create(slider, {
           start: [0, 35000000],
           connect: true,
+          step: 100000,
           range: {
             'min': 0,
             'max': 50000000
@@ -426,7 +432,8 @@ $(document).ready(function(){
         ];
 
         slider.noUiSlider.on('update', function( values, handle ) {
-        	priceValues[handle].innerHTML = parseInt(values[handle]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");;
+          var isMaxed = parseInt(values[1]).toFixed(0) >= 50000000 ? " +" : ""
+        	priceValues[handle].innerHTML = parseInt(values[handle]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
         });
 
       })
@@ -472,7 +479,6 @@ $(document).ready(function(){
   function initSelectric(){
     $('[js-selectric]').each(function(i, select){
       var icon = $(select).data('icon') || 'drop-arrow';
-      console.log(icon)
       var btn = '<b class="button"><svg class="ico ico-'+icon+'"><use xlink:href="img/sprite.svg#ico-'+icon+'"></use></svg></b>';
 
       $(select).selectric({
@@ -521,7 +527,36 @@ $(document).ready(function(){
   function initMasks(){
     $("[js-dateMask]").mask("99.99.99",{placeholder:"ДД.ММ.ГГ"});
     $("input[type='tel']").mask("+7 (000) 000-0000", {placeholder: "+7 (___) ___-____"});
-    $("[js-mask-number]").mask("999 999 999")
+    $("[js-mask-number]").mask("999 999 999");
+
+    _document
+      .on('keydown', '[js-mask-price]', function(e){
+        // https://stackoverflow.com/questions/22342186/textbox-mask-allow-number-only
+        // Allow: backspace, delete, tab, escape, enter and .
+        // dissallow . (190) for now
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+           // Allow: Ctrl+A
+          (e.keyCode == 65 && e.ctrlKey === true) ||
+           // Allow: home, end, left, right
+          (e.keyCode >= 35 && e.keyCode <= 39)) {
+             return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+          e.preventDefault();
+        }
+        if ( $(this).val().length > 10 ){
+          e.preventDefault();
+        }
+      })
+      .on('keyup', '[js-mask-price]', function(e){
+        // if number is typed format with space
+        if ($(this).val().length > 0){
+          $(this).val( $(this).val().replace(/ /g,"") )
+          $(this).val( $(this).val().replace(/\B(?=(\d{3})+(?!\d))/g, " ") );
+        }
+      })
+
   }
 
 
