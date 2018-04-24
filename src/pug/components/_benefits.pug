@@ -10,48 +10,52 @@
     // tabs
     .benefits__tabs
       .benefits__tab(data-tab="benefits_1").is-active
-        .benefits__wrapper(js-scrollbar data-y-disable="true")
-          .benefits__col.wow(data-animation-delay=".3s")
-            .benefits-card
-              .benefits-card__icon
-                i.icon.icon-benefits-1
-              .benefits-card__name Партнерство  с другими агентствами
-              .benefits-card__desc Мы сотрудничаем с крупными агентствами недвижимости и частными риэлторами, поэтому наши клиенты никогда не ограничены при выборе.
-          //col
-          .benefits__col.wow(data-animation-delay=".4s")
-            .benefits-card
-              .benefits-card__icon
-                i.icon.icon-benefits-2
-              .benefits-card__name Цены от собственников  и застройщиков
-              .benefits-card__desc Мы предлагаем настоящие цены на недвижимость благодаря нашему прямому сотрудничеству с собственниками недвижимости.
-          //col
-          .benefits__col.wow(data-animation-delay=".5s")
-            .benefits-card
-              .benefits-card__icon
-                i.icon.icon-benefits-3
-              .benefits-card__name Сопровождение операций  с недвижимостью
-              .benefits-card__desc Мы сопровождаем вас на протяжении всего процесса, от просмотра объекта до получения ключей от вашего дома.
+        .benefits__wrapper(js-slider-benefits).swiper-container
+          .swiper-wrapper
+            //col
+            .benefits__col.wow(data-animation-delay=".3s")
+              .benefits-card
+                .benefits-card__icon
+                  i.icon.icon-benefits-1
+                .benefits-card__name Партнерство  с другими агентствами
+                .benefits-card__desc Мы сотрудничаем с крупными агентствами недвижимости и частными риэлторами, поэтому наши клиенты никогда не ограничены при выборе.
+            //col
+            .benefits__col.wow(data-animation-delay=".4s")
+              .benefits-card
+                .benefits-card__icon
+                  i.icon.icon-benefits-2
+                .benefits-card__name Цены от собственников  и застройщиков
+                .benefits-card__desc Мы предлагаем настоящие цены на недвижимость благодаря нашему прямому сотрудничеству с собственниками недвижимости.
+            //col
+            .benefits__col.wow(data-animation-delay=".5s")
+              .benefits-card
+                .benefits-card__icon
+                  i.icon.icon-benefits-3
+                .benefits-card__name Сопровождение операций  с недвижимостью
+                .benefits-card__desc Мы сопровождаем вас на протяжении всего процесса, от просмотра объекта до получения ключей от вашего дома.
       
       // next tab    
       .benefits__tab(data-tab="benefits_2")
-        .benefits__wrapper(js-scrollbar data-y-disable="true")
-          .benefits__col
-            .benefits-card
-              .benefits-card__icon
-                i.icon.icon-benefits-4
-              .benefits-card__name Прописка — Москва
-              .benefits-card__desc Мы сотрудничаем с крупными агентствами недвижимости и частными риэлторами, поэтому наши клиенты никогда не ограничены при выборе.
-          //col
-          .benefits__col
-            .benefits-card
-              .benefits-card__icon
-                i.icon.icon-benefits-5
-              .benefits-card__name Цены на недвижимость
-              .benefits-card__desc Мы предлагаем настоящие цены на недвижимость благодаря нашему прямому сотрудничеству с собственниками недвижимости.
-          //col
-          .benefits__col
-            .benefits-card
-              .benefits-card__icon
-                i.icon.icon-benefits-6
-              .benefits-card__name Развитая инфраструктура
-              .benefits-card__desc Мы сопровождаем вас на протяжении всего процесса, от просмотра объекта до получения ключей от вашего дома.
+        .benefits__wrapper(js-slider-benefits).swiper-container
+          .swiper-wrapper
+            //col
+            .benefits__col
+              .benefits-card
+                .benefits-card__icon
+                  i.icon.icon-benefits-4
+                .benefits-card__name Прописка — Москва
+                .benefits-card__desc Мы сотрудничаем с крупными агентствами недвижимости и частными риэлторами, поэтому наши клиенты никогда не ограничены при выборе.
+            //col
+            .benefits__col
+              .benefits-card
+                .benefits-card__icon
+                  i.icon.icon-benefits-5
+                .benefits-card__name Цены на недвижимость
+                .benefits-card__desc Мы предлагаем настоящие цены на недвижимость благодаря нашему прямому сотрудничеству с собственниками недвижимости.
+            //col
+            .benefits__col
+              .benefits-card
+                .benefits-card__icon
+                  i.icon.icon-benefits-6
+                .benefits-card__name Развитая инфраструктура
+                .benefits-card__desc Мы сопровождаем вас на протяжении всего процесса, от просмотра объекта до получения ключей от вашего дома.

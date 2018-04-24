@@ -10,7 +10,7 @@
     margin-top: 50px
     padding-bottom: 10px
   &__tab
-    display: none
+    // display: none
     &.is-active
       display: flex
   &__col
@@ -58,11 +58,15 @@
       margin-top: 30px
       margin-left: -40px
       margin-right: -40px
-      overflow-x: auto
+      // overflow-x: auto
       justify-content: flex-start
+      padding-left: 30px
+      padding-right: 30px
     &__col
       flex: 0 0 370px
       max-width: 370px
+      padding-left: 10px
+      padding-right: 10px
 
 +r($mobile)
   .benefits
@@ -71,3 +75,5 @@
     &__wrapper
       margin-left: -20px
       margin-right: -20px
+      padding-left: 15px
+      padding-right: 15px

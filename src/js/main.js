@@ -26,6 +26,7 @@ $(document).ready(function(){
     legacySupport();
     updateHeaderActiveClass();
     initHeaderScroll();
+    // benefitsTabFix();
 
     initSelectric();
     initPopups();
@@ -187,7 +188,7 @@ $(document).ready(function(){
 
           anime({
             targets: "html, body",
-            scrollTop: _document.height() - _window.height(),
+            scrollTop: $('[js-footer-nav-collapse]').offset().top - 48,
             easing: easingSwing, // swing
             duration: 150
           });
@@ -262,6 +263,14 @@ $(document).ready(function(){
     }
   })
 
+  function benefitsTabFix(){
+    $('.benefits__tab').each(function(i, tab){
+      if ( !$(tab).is('.is-active') ){
+        $(tab).hide();
+      }
+    })
+  }
+
   //////////
   // SLIDERS
   //////////
@@ -288,6 +297,56 @@ $(document).ready(function(){
         prevEl: '.hot-slider__prev',
       },
     })
+
+    new Swiper('[js-slider-popular]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "popular__col",
+      direction: 'horizontal',
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 0,
+      slidesPerView: 'auto',
+      normalizeSlideIndex: true,
+      grabCursor: true,
+      freeMode: true,
+    })
+
+    new Swiper('[js-slider-benefits]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "benefits__col",
+      direction: 'horizontal',
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 0,
+      slidesPerView: 'auto',
+      normalizeSlideIndex: true,
+      grabCursor: true,
+      freeMode: true,
+      on: {
+        init: function () {
+          console.log('init')
+          setTimeout(benefitsTabFix, 200);
+        },
+      },
+    })
+
+    new Swiper('[js-slider-blog]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "blog__col",
+      direction: 'horizontal',
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 0,
+      slidesPerView: 'auto',
+      normalizeSlideIndex: true,
+      grabCursor: true,
+      freeMode: true,
+    })
+
+
     $('[js-hotCard-slider]').each(function(i, slider){
       new Swiper($(slider), {
         wrapperClass: "swiper-wrapper",

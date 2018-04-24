@@ -57,10 +57,21 @@
         //slide 3
         .hot-slider__slide
           .h-card.wow(data-animation-delay=".5s")
-            .h-card__image
-              i(href='https://www.youtube.com/watch?v=0TV4V1VNNTY' js-popupVideo).icon.icon-play
-              img(src='img/productImage_4.jpg' srcset='img/prodcutImage_4@2x.jpg 2x')
+            .h-card__images.swiper-wrapper(js-hotCard-slider)
+              .swiper-wrapper
+                .h-card__image
+                  i(href='https://www.youtube.com/watch?v=0TV4V1VNNTY' js-popupVideo).icon.icon-play
+                  img(src='img/productImage_4.jpg' srcset='img/prodcutImage_4@2x.jpg 2x')
+                .h-card__image
+                  i(href='https://www.youtube.com/watch?v=0TV4V1VNNTY' js-popupVideo).icon.icon-play
+                  img(src='img/productImage_4.jpg' srcset='img/prodcutImage_4@2x.jpg 2x')
 
+              .h-card__images-next
+                +icon('ico-arrow-right')
+              .h-card__images-prev
+                +icon('ico-arrow-left')
+                
+            
             .h-card__content
               .h-card__info 
                 span 325 кв. м

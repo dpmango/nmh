@@ -21,11 +21,11 @@
     font-size: 0
     padding-right: 30px
     color: $fontColor
-    transition: opacity .25s $ease
+    transition: filter .25s $ease
     .ico
       font-size: 29px
     &:hover
-      opacity: .8
+      // filter: opacity(90)
 
 
   &__menu
@@ -205,6 +205,8 @@
           background: $fontColor
     &__hamburger
       flex-basis: 40px
+      max-width: 40px
+      height: 44px
     &__cta
       display: none
     &__search
