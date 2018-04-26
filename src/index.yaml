@@ -10,4 +10,4 @@ PageList:
 - file: blog.html
   ready: 75
 - file: blog-post.html
-  ready: 10
+  ready: 60

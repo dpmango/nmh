@@ -239,6 +239,7 @@ $(document).ready(function(){
   // * could be removed in production and server side rendering when header is inside barba-container
   function updateHeaderActiveClass(){
     $('.header__menu li').each(function(i,val){
+      console.log($(val).find('a').attr('href'), window.location.pathname.split('/').pop()  )
       if ( $(val).find('a').attr('href') == window.location.pathname.split('/').pop() ){
         $(val).addClass('is-active');
       } else {
@@ -278,8 +279,6 @@ $(document).ready(function(){
   //////////
 
   function initSliders(){
-    var slickNextArrow = '<div class="slick-prev"><svg class="ico ico-back-arrow"><use xlink:href="img/sprite.svg#ico-back-arrow"></use></svg></div>';
-    var slickPrevArrow = '<div class="slick-next"><svg class="ico ico-next-arrow"><use xlink:href="img/sprite.svg#ico-next-arrow"></use></svg></div>'
 
     // Why carousel
     new Swiper('[js-hot-slider]', {
@@ -348,6 +347,23 @@ $(document).ready(function(){
       freeMode: true,
     })
 
+    new Swiper('[js-slider-post]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'horizontal',
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 0,
+      slidesPerView: 1,
+      normalizeSlideIndex: true,
+      grabCursor: true,
+      freeMode: false,
+      navigation: {
+        nextEl: '.post__slider-next',
+        prevEl: '.post__slider-prev',
+      },
+    })
 
     $('[js-hotCard-slider]').each(function(i, slider){
       new Swiper($(slider), {
@@ -727,7 +743,7 @@ $(document).ready(function(){
 
       anime({
         targets: "html, body",
-        scrollTop: 0,
+        scrollTop: 1,
         easing: easingSwing, // swing
         duration: 150
       });
@@ -762,6 +778,7 @@ $(document).ready(function(){
 
   // some plugins get bindings onNewPage only that way
   function triggerBody(){
+    _window.scrollTop(0);
     $(window).scroll();
     $(window).resize();
   }
