@@ -214,31 +214,36 @@ $(document).ready(function(){
 
   // SCROLL TOP
   function positionScrollTop(){
-    var wWidth = _window.width();
-    var containerWidth = $('.blog .container').width();
-    var calcedPos = ( wWidth - containerWidth ) / 2
+    if ( $('[js-scrolltop]').length > 0 ){
+      var wWidth = _window.width();
+      var containerWidth = $('.blog .container').width();
+      var calcedPos = ( wWidth - containerWidth ) / 2
 
-    $('[js-scrolltop]').css({
-      'right': calcedPos + 'px'
-    })
+      $('[js-scrolltop]').css({
+        'right': calcedPos + 'px'
+      })
+    }
+
   }
 
   function showScrollTop(){
-    var wScroll = _window.scrollTop();
-    var scrollBottom = wScroll + _window.height();
-    var containerStop = $('.post__wrapper').offset().top + $('.post__wrapper').outerHeight();
-    if ( wScroll > 400 ){
-      $('[js-scrolltop]').addClass('is-visible');
-    } else {
-      $('[js-scrolltop]').removeClass('is-visible');
-    }
+    if ( $('[js-scrolltop]').length > 0 ){
+      var wScroll = _window.scrollTop();
+      var scrollBottom = wScroll + _window.height();
+      var containerStop = $('.post__wrapper').offset().top + $('.post__wrapper').outerHeight();
+      if ( wScroll > 400 ){
+        $('[js-scrolltop]').addClass('is-visible');
+      } else {
+        $('[js-scrolltop]').removeClass('is-visible');
+      }
 
-    console.log(scrollBottom, containerStop)
+      console.log(scrollBottom, containerStop)
 
-    if ( scrollBottom > containerStop ){
-      $('[js-scrolltop]').addClass('is-stop');
-    } else {
-      $('[js-scrolltop]').removeClass('is-stop');
+      if ( scrollBottom > containerStop ){
+        $('[js-scrolltop]').addClass('is-stop');
+      } else {
+        $('[js-scrolltop]').removeClass('is-stop');
+      }
     }
   }
 
