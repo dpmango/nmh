@@ -7,11 +7,10 @@ html(lang="en")
   body
     // place where pjax bindings happen's
     #barba-wrapper
-      block header
-        include ../components/_header-default
-    
       // what should be changed with every pjax
       .page
+        block header
+          include ../components/_header-default
         .page__content(class=pageClass)
           block content
 

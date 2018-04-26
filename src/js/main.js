@@ -39,8 +39,10 @@ $(document).ready(function(){
     initAutocompleate();
     initValidations();
 
-    // revealFooter();
-    // _window.on('resize', throttle(revealFooter, 100));
+    positionScrollTop();
+    _window.on('resize', debounce(positionScrollTop, 250));
+    _window.on('scroll', throttle(showScrollTop, 50));
+
 
     // development helper
     _window.on('resize', debounce(setBreakpoint, 200))
@@ -123,6 +125,12 @@ $(document).ready(function(){
           scrollTop: $(el).offset().top}, 1000);
       return false;
     })
+    .on('click', '[js-scrolltop]', function() { // section scroll
+      var el = $(this).attr('href');
+      $('body, html').animate({
+          scrollTop: 0}, 1000);
+      return false;
+    })
 
 
   // HEADER SCROLL
@@ -151,32 +159,6 @@ $(document).ready(function(){
     }, 10));
   }
 
-  // FOOTER REVEAL
-  function revealFooter() {
-    var footer = $('[js-reveal-footer]');
-    if (footer.length > 0) {
-      var footerHeight = footer.outerHeight();
-      var maxHeight = _window.height() - footerHeight > 200;
-      if (maxHeight && !msieversion() && !isMobile() ) {
-        $('body').css({
-          'margin-bottom': footerHeight
-        });
-        footer.css({
-          'position': 'fixed',
-          'z-index': -10
-        });
-      } else {
-        $('body').css({
-          'margin-bottom': 0
-        });
-        footer.css({
-          'position': 'static',
-          'z-index': 10
-        });
-      }
-    }
-  }
-
   _document
     .on('click', '[js-footer-nav-collapse]', function(e){
       if ( _window.width() < bp.tablet ){
@@ -186,15 +168,12 @@ $(document).ready(function(){
         } else {
           $(this).closest('.footer__nav-collapse').toggleClass('is-opened');
 
-          // revealFooter();
-
           anime({
             targets: "html, body",
             scrollTop: $('[js-footer-nav-collapse]').offset().top - 48,
             easing: easingSwing, // swing
-            duration: 150
+            duration: 200
           });
-
 
         }
       }
@@ -233,13 +212,42 @@ $(document).ready(function(){
   }
 
 
+  // SCROLL TOP
+  function positionScrollTop(){
+    var wWidth = _window.width();
+    var containerWidth = $('.blog .container').width();
+    var calcedPos = ( wWidth - containerWidth ) / 2
+
+    $('[js-scrolltop]').css({
+      'right': calcedPos + 'px'
+    })
+  }
+
+  function showScrollTop(){
+    var wScroll = _window.scrollTop();
+    var scrollBottom = wScroll + _window.height();
+    var containerStop = $('.post__wrapper').offset().top + $('.post__wrapper').outerHeight();
+    if ( wScroll > 400 ){
+      $('[js-scrolltop]').addClass('is-visible');
+    } else {
+      $('[js-scrolltop]').removeClass('is-visible');
+    }
+
+    console.log(scrollBottom, containerStop)
+
+    if ( scrollBottom > containerStop ){
+      $('[js-scrolltop]').addClass('is-stop');
+    } else {
+      $('[js-scrolltop]').removeClass('is-stop');
+    }
+  }
+
 
 
   // SET ACTIVE CLASS IN HEADER
   // * could be removed in production and server side rendering when header is inside barba-container
   function updateHeaderActiveClass(){
     $('.header__menu li').each(function(i,val){
-      console.log($(val).find('a').attr('href'), window.location.pathname.split('/').pop()  )
       if ( $(val).find('a').attr('href') == window.location.pathname.split('/').pop() ){
         $(val).addClass('is-active');
       } else {
@@ -384,8 +392,6 @@ $(document).ready(function(){
         },
       })
     })
-
-
 
 
   }

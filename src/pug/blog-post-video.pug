@@ -8,16 +8,17 @@ block content
   // blog
   .blog
     .container
-
+      
       // blog content POST
       .post
+      
         // scroll top
         .scroll-top(js-scrolltop)
           +icon('ico-arrow-right')
-        
+          
         .post__header
-          a(href="#").post__category.wow Советы
-          h1.post__title.wow(data-animation-delay=".1s") ЭЛИТНЫЕ КОТТЕДЖНЫЕ ПОСЕЛКИ<br> НОВОЙ МОСКВЫ
+          a(href="#").post__category.wow Видео обзор
+          h1.post__title.wow(data-animation-delay=".1s") ВИДЕО ОБЗОР КОТТЕДЖНОГО ПОСЕЛКА “ЦВЕТОЧНЫЙ”
           .post__author.wow(data-animation-delay=".2s")
             .post__avatar
               img(src='img/avatar.jpg' srcset='img/avatar@2x.jpg 2x')
@@ -34,39 +35,24 @@ block content
             h2 За последние годы рынок элитной загородной недвижимости Новой Москвы существенно изменился и вырос. 
             
             p Данное направление считается весьма востребованным среди покупателей, однако многие не могут определиться с выбором. Мы решили помочь им в этом деле и составили небольшой рейтинг из 6 наиболее известных <b>коттеджных поселков Новой Москвы</b>, относящихся к элитному сегменту. Прежде всего, стоит определить, какие признаки должен иметь такой поселок.
-
-            p Этот поселок находится в ближней части Новой Москвы и состоит из двух участков, один из которых («Антоновка-2») расположен в уютной лесистой местности, среди могучих дубов, сосен, елей и берез. Через него протекает река Сосенка, набережная которой была благоустроена и превращена в рекреационную зону с песчаным пляжем.
-
+  
             // slider
             .post__slider-wrap.wow
-              .post__slider(js-slider-post).swiper-container
-                .swiper-wrapper
-                  .swiper-slide
-                    figure
-                      img(src='img/sliderImage.jpg' srcset='img/sliderImage@2x.jpg 2x')
-                      figcaption в КП “Антоновка” более 40 домовлодений, 34 из них — проданы
-                  .swiper-slide
-                    figure
-                      img(src='img/sliderImage.jpg' srcset='img/sliderImage@2x.jpg 2x')
-                      figcaption в КП “Антоновка” более 40 домовлодений, 34 из них — проданы
-                
-              .post__slider-next
-                +icon('ico-arrow-right')
-              .post__slider-prev
-                +icon('ico-arrow-left')
-                      
-            h3 КП “АНТОНОВКА”
-            
+              figure
+                .resize-iframe
+                  .resize-iframe__16-9
+                    iframe(src='https://www.youtube.com/embed/oHLMh8r2z_Q?rel=0', frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='')
+                figcaption в КП “Антоновка” более 40 домовлодений, 34 из них — проданы
+
             p Этот поселок находится в ближней части Новой Москвы и состоит из двух участков, один из которых («Антоновка-2») расположен в уютной лесистой местности, среди могучих дубов, сосен, елей и берез. Через него протекает река Сосенка, набережная которой была благоустроена и превращена в рекреационную зону с песчаным пляжем.
-            
+          
             // link
             a(href="#").post__link.wow
               span посмотреть предложения в КП “Антоновка”
               +icon('ico-arrow-right')
-            
-            p Этот поселок находится в ближней части Новой Москвы и состоит из двух участков, один из которых («Антоновка-2») расположен в уютной лесистой местности.
-    
-    
+              
+            .post__socials
+              include components/_socials
     
       .b-heading
         h2.heading.heading--h2.wow ПОПУЛЯРНЫЕ СТАТЬИ        

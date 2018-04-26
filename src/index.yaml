@@ -2,12 +2,14 @@ ProjectTitle: NMH
 
 PageList:
 - file: homepage.html
-  ready: 90
+  ready: 100
 - file: search.html
   ready: 10
 - file: property.html
   ready: 10
 - file: blog.html
-  ready: 75
+  ready: 90
 - file: blog-post.html
-  ready: 60
+  ready: 90
+- file: blog-post-video.html
+  ready: 90
