@@ -133,8 +133,10 @@ $(document).ready(function(){
       var vScroll = _window.scrollTop();
       var header = $('.header').not('.header--static');
       var headerHeight = header.height();
-      var firstSection = _document.find('.page__content div:first-child()').height() - headerHeight;
-
+      var firstSection = 0
+      if ( !_document.find('.page__content').is('.gray-bg') ){
+        firstSection = _document.find('.page__content div:first-child()').height() - headerHeight;
+      }
       if ( vScroll > headerHeight ){
         header.addClass('is-fixed');
       } else {

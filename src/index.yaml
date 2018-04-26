@@ -8,6 +8,6 @@ PageList:
 - file: property.html
   ready: 10
 - file: blog.html
-  ready: 30
+  ready: 75
 - file: blog-post.html
   ready: 10

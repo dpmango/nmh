@@ -11,8 +11,16 @@ block content
       .b-heading
         h2.heading.heading--h2.wow Блог
       
-      .blog__categories
+      // categories
+      .blog-categories(js-scrollbar)
+        a(href="#").is-active Последние записи
+        a(href="#") Советы
+        a(href="#") Обзоры
+        a(href="#") Новости
+        a(href="#") Видео обзоры
+        a(href="#") Новости компании
         
+      // grid
       .blog__grid
         .blog__col.wow(data-animation-delay=".3s")
           .blog-card
@@ -103,3 +111,6 @@ block content
               .blog-card__name Мы ищем в команду амбизиозных агентов
               .blog-card__info Вячеслав Люкшин |   13 Июня 2018
               
+      // show more
+      .blog__more
+        a(href="#" js-more).btn.btn-primary Показать еще
