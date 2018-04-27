@@ -3,4 +3,247 @@ title: Search
 pageClass: gray-bg
 ---
 extends shared/_layout
+
+block header
+  include components/_header-search
+  
 block content
+  
+  // SEARCH
+  .search
+    .container
+      .search__wrapper
+        
+        // sidebar
+        .search__sidebar
+          .search__name Фильтры
+          .search__sidebar-actions
+            
+          //slider group
+          .slider-group
+            label Цена
+            .slider-group__wrap
+              .slider-group__set 
+                span(js-range-from) 0 
+                |  — 
+                span(js-range-to) 50 000 000
+              div(js-rangeslider 
+                  data-start-from="0"
+                  data-start-to="35000000"
+                  data-step="100000"
+                  data-range-min="0"
+                  data-range-max="50000000")
+              
+          //slider group
+          .slider-group
+            label Кв. м
+            .slider-group__wrap
+              .slider-group__set 
+                span(js-range-from) 0 
+                |  — 
+                span(js-range-to) 300
+              div(js-rangeslider 
+                  data-start-from="0"
+                  data-start-to="200"
+                  data-step="10"
+                  data-range-min="0"
+                  data-range-max="300")
+          
+          //slider group
+          .slider-group
+            label Участок (сот.)
+            .slider-group__wrap
+              .slider-group__set 
+                span(js-range-from) 0 
+                |  — 
+                span(js-range-to) 300
+              div(js-rangeslider 
+                  data-start-from="0"
+                  data-start-to="7"
+                  data-step="1"
+                  data-range-min="0"
+                  data-range-max="15")
+          
+          //slider group
+          .slider-group
+            label Спальни
+            .slider-group__wrap
+              .slider-group__set 
+                span(js-range-from) 0 
+                |  — 
+                span(js-range-to) 300
+              div(js-rangeslider 
+                  data-start-from="0"
+                  data-start-to="5"
+                  data-step="1"
+                  data-range-min="0"
+                  data-range-max="5")
+                                                
+          //slider group
+          .slider-group
+            label км от МКАД
+            .slider-group__wrap
+              .slider-group__set 
+                span(js-range-from) 0 
+                |  — 
+                span(js-range-to) 300
+              div(js-rangeslider 
+                  data-start-from="0"
+                  data-start-to="35"
+                  data-step="1"
+                  data-range-min="0"
+                  data-range-max="35")
+                      
+        // content
+        .search__content
+          .search__name Дома в Новой Москве
+          .search__filter
+            .search__filter-scope результаты поиска: 132
+            .search__filter-select
+              select(js-selectric)
+                option цена: возрастание
+                option цена: убывание
+                option другой пункт
+            
+          .search__grid
+            // col
+            .search__col
+              .h-card.wow(data-animation-delay=".3s")
+                .h-card__images.swiper-wrapper(js-hotCard-slider)
+                  .swiper-wrapper
+                    .h-card__image
+                      img(src='img/productImage_1.jpg' srcset='img/prodcutImage_1@2x.jpg 2x')
+                    .h-card__image
+                      img(src='img/productImage_2.jpg' srcset='img/prodcutImage_2@2x.jpg 2x')
+                  .h-card__images-next
+                    +icon('ico-arrow-right')
+                  .h-card__images-prev
+                    +icon('ico-arrow-left')
+                .h-card__content
+                  .h-card__info 
+                    span 325 кв. м
+                    span 8 сот.
+                    span 4 сп.
+                  .h-card__name Дом “под ключ” в КП “Лесные Поляны”
+                  .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                  .h-card__price 12,900,000<span>₽</span>
+                  
+            // col 2
+            .search__col
+              .h-card.wow(data-animation-delay=".4s")
+                .h-card__images.swiper-wrapper(js-hotCard-slider)
+                  .swiper-wrapper
+                    .h-card__image
+                      img(src='img/productImage_3.jpg' srcset='img/prodcutImage_3@2x.jpg 2x')
+                    .h-card__image
+                      img(src='img/productImage_2.jpg' srcset='img/prodcutImage_2@2x.jpg 2x')
+                  .h-card__images-next
+                    +icon('ico-arrow-right')
+                  .h-card__images-prev
+                    +icon('ico-arrow-left')  
+                .h-card__content
+                  .h-card__info 
+                    span 325 кв. м
+                    span 8 сот.
+                    span 4 сп.
+                  .h-card__name Дом у озера под отделку в д. Лужки
+                  .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                  .h-card__price 12,900,000<span>₽</span>
+
+            // col 3
+            .search__col
+              .h-card.wow(data-animation-delay=".5s")
+                .h-card__images.swiper-wrapper(js-hotCard-slider)
+                  .swiper-wrapper
+                    .h-card__image
+                      i(href='https://www.youtube.com/watch?v=0TV4V1VNNTY' js-popupVideo).icon.icon-play
+                      img(src='img/productImage_4.jpg' srcset='img/prodcutImage_4@2x.jpg 2x')
+                    .h-card__image
+                      i(href='https://www.youtube.com/watch?v=0TV4V1VNNTY' js-popupVideo).icon.icon-play
+                      img(src='img/productImage_4.jpg' srcset='img/prodcutImage_4@2x.jpg 2x')
+                  .h-card__images-next
+                    +icon('ico-arrow-right')
+                  .h-card__images-prev
+                    +icon('ico-arrow-left')
+
+                .h-card__content
+                  .h-card__info 
+                    span 325 кв. м
+                    span 8 сот.
+                    span 4 сп.
+                  .h-card__name Дом с мебелью и баней в КП «ВауТутинки»
+                  .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                  .h-card__price 12,900,000<span>₽</span>
+                  .h-card__tag
+                    .h-card__exclusive эксклюзив
+
+            // col
+            .search__col
+              .h-card.wow(data-animation-delay=".3s")
+                .h-card__images.swiper-wrapper(js-hotCard-slider)
+                  .swiper-wrapper
+                    .h-card__image
+                      img(src='img/productImage_1.jpg' srcset='img/prodcutImage_1@2x.jpg 2x')
+                    .h-card__image
+                      img(src='img/productImage_2.jpg' srcset='img/prodcutImage_2@2x.jpg 2x')
+                  .h-card__images-next
+                    +icon('ico-arrow-right')
+                  .h-card__images-prev
+                    +icon('ico-arrow-left')
+                .h-card__content
+                  .h-card__info 
+                    span 325 кв. м
+                    span 8 сот.
+                    span 4 сп.
+                  .h-card__name Дом “под ключ” в КП “Лесные Поляны”
+                  .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                  .h-card__price 12,900,000<span>₽</span>
+                  
+            // col 2
+            .search__col
+              .h-card.wow(data-animation-delay=".4s")
+                .h-card__images.swiper-wrapper(js-hotCard-slider)
+                  .swiper-wrapper
+                    .h-card__image
+                      img(src='img/productImage_3.jpg' srcset='img/prodcutImage_3@2x.jpg 2x')
+                    .h-card__image
+                      img(src='img/productImage_2.jpg' srcset='img/prodcutImage_2@2x.jpg 2x')
+                  .h-card__images-next
+                    +icon('ico-arrow-right')
+                  .h-card__images-prev
+                    +icon('ico-arrow-left')  
+                .h-card__content
+                  .h-card__info 
+                    span 325 кв. м
+                    span 8 сот.
+                    span 4 сп.
+                  .h-card__name Дом у озера под отделку в д. Лужки
+                  .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                  .h-card__price 12,900,000<span>₽</span>
+
+            // col 3
+            .search__col
+              .h-card.wow(data-animation-delay=".5s")
+                .h-card__images.swiper-wrapper(js-hotCard-slider)
+                  .swiper-wrapper
+                    .h-card__image
+                      i(href='https://www.youtube.com/watch?v=0TV4V1VNNTY' js-popupVideo).icon.icon-play
+                      img(src='img/productImage_4.jpg' srcset='img/prodcutImage_4@2x.jpg 2x')
+                    .h-card__image
+                      i(href='https://www.youtube.com/watch?v=0TV4V1VNNTY' js-popupVideo).icon.icon-play
+                      img(src='img/productImage_4.jpg' srcset='img/prodcutImage_4@2x.jpg 2x')
+                  .h-card__images-next
+                    +icon('ico-arrow-right')
+                  .h-card__images-prev
+                    +icon('ico-arrow-left')
+
+                .h-card__content
+                  .h-card__info 
+                    span 325 кв. м
+                    span 8 сот.
+                    span 4 сп.
+                  .h-card__name Дом с мебелью и баней в КП «ВауТутинки»
+                  .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                  .h-card__price 12,900,000<span>₽</span>
+                  .h-card__tag
+                    .h-card__exclusive эксклюзив

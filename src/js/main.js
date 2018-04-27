@@ -516,23 +516,30 @@ $(document).ready(function(){
     if ( sliders.length > 0 ){
       sliders.each(function(i, slider){
         if ( !$(slider).is('.noUi-target')  ){
+          var $slider = $(slider);
+          var startFrom = $slider.data('start-from');
+          var startTo = $slider.data('start-to');
+          var step = $slider.data('step');
+          var rangeMin = $slider.data('range-min');
+          var rangeMax = $slider.data('range-max');
+
           noUiSlider.create(slider, {
-            start: [0, 35000000],
+            start: [startFrom, startTo],
             connect: true,
-            step: 100000,
+            step: step,
             range: {
-              'min': 0,
-              'max': 50000000
+              'min': rangeMin,
+              'max': rangeMax
             }
           });
 
           var priceValues = [
-            $('[js-range-from]').get(0),
-            $('[js-range-to]').get(0),
+            $slider.parent().find('[js-range-from]').get(0),
+            $slider.parent().find('[js-range-to]').get(0),
           ];
 
           slider.noUiSlider.on('update', function( values, handle ) {
-            var isMaxed = parseInt(values[1]).toFixed(0) >= 50000000 ? " +" : ""
+            var isMaxed = parseInt(values[1]).toFixed(0) >= rangeMax ? " +" : ""
             priceValues[handle].innerHTML = parseInt(values[handle]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
           });
         }

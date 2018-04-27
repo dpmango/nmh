@@ -81,8 +81,14 @@ header.header.is-white
             span(js-range-from) 0 
             |  — 
             span(js-range-to) 50 000 000
-          div(js-rangeslider)
-      
+          div(js-rangeslider 
+              data-start-from="0"
+              data-start-to="35000000"
+              data-step="100000"
+              data-range-min="0"
+              data-range-max="50000000"
+              )
+              
       // keywords
       .m-search__keywords
         label ПОИСК ПО КЛЮЧЕВЫМ СЛОВАМ
