@@ -237,8 +237,6 @@ $(document).ready(function(){
         $('[js-scrolltop]').removeClass('is-visible');
       }
 
-      console.log(scrollBottom, containerStop)
-
       if ( scrollBottom > containerStop ){
         $('[js-scrolltop]').addClass('is-stop');
       } else {
@@ -275,7 +273,7 @@ $(document).ready(function(){
       targetEl.siblings().slideUp();
       targetEl.slideDown();
 
-      triggerBody();
+      triggerBody(false);
     }
   })
 
@@ -340,7 +338,6 @@ $(document).ready(function(){
       freeMode: true,
       on: {
         init: function () {
-          console.log('init')
           setTimeout(benefitsTabFix, 200);
         },
       },
@@ -398,6 +395,20 @@ $(document).ready(function(){
       })
     })
 
+
+    new Swiper('[js-slider-categories]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'horizontal',
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 0,
+      slidesPerView: 'auto',
+      normalizeSlideIndex: true,
+      grabCursor: true,
+      freeMode: true,
+    })
 
   }
 
@@ -504,26 +515,27 @@ $(document).ready(function(){
 
     if ( sliders.length > 0 ){
       sliders.each(function(i, slider){
-        noUiSlider.create(slider, {
-          start: [0, 35000000],
-          connect: true,
-          step: 100000,
-          range: {
-            'min': 0,
-            'max': 50000000
-          }
-        });
+        if ( !$(slider).is('.noUi-target')  ){
+          noUiSlider.create(slider, {
+            start: [0, 35000000],
+            connect: true,
+            step: 100000,
+            range: {
+              'min': 0,
+              'max': 50000000
+            }
+          });
 
-        var priceValues = [
-        	$('[js-range-from]').get(0),
-        	$('[js-range-to]').get(0),
-        ];
+          var priceValues = [
+            $('[js-range-from]').get(0),
+            $('[js-range-to]').get(0),
+          ];
 
-        slider.noUiSlider.on('update', function( values, handle ) {
-          var isMaxed = parseInt(values[1]).toFixed(0) >= 50000000 ? " +" : ""
-        	priceValues[handle].innerHTML = parseInt(values[handle]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
-        });
-
+          slider.noUiSlider.on('update', function( values, handle ) {
+            var isMaxed = parseInt(values[1]).toFixed(0) >= 50000000 ? " +" : ""
+            priceValues[handle].innerHTML = parseInt(values[handle]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
+          });
+        }
       })
     }
   }
@@ -788,8 +800,10 @@ $(document).ready(function(){
   });
 
   // some plugins get bindings onNewPage only that way
-  function triggerBody(){
-    _window.scrollTop(0);
+  function triggerBody(shouldScroll){
+    if ( shouldScroll ){
+      _window.scrollTop(0);
+    }
     $(window).scroll();
     $(window).resize();
   }

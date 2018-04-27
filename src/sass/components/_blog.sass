@@ -38,6 +38,7 @@
   align-items: center
   a
     flex: 0 0 auto
+    width: auto
     min-width: 1px
     display: inline-block
     font-family: $noto
@@ -98,6 +99,8 @@
       top: 20px
       right: 20px
       z-index: 2
+      overflow: visible
+      will-change: transform
       transition: .25s $ease
   &__content
     display: block

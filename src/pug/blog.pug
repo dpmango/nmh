@@ -9,16 +9,17 @@ block content
   .blog.blog--inner
     .container
       .b-heading
-        h2.heading.heading--h2.wow Блог
+        h1.heading.wow Блог
       
       // categories
-      .blog-categories(js-scrollbar).wow
-        a(href="#").is-active Последние записи
-        a(href="#") Советы
-        a(href="#") Обзоры
-        a(href="#") Новости
-        a(href="#") Видео обзоры
-        a(href="#") Новости компании
+      .blog-categories(js-slider-categories).wow.swiper-container
+        .swiper-wrapper
+          a(href="#").swiper-slide.is-active Последние записи
+          a(href="#").swiper-slide Советы
+          a(href="#").swiper-slide Обзоры
+          a(href="#").swiper-slide Новости
+          a(href="#").swiper-slide Видео обзоры
+          a(href="#").swiper-slide Новости компании
         
       // grid
       .blog__grid

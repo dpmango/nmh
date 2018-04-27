@@ -45,6 +45,9 @@
       color: rgba($fontColor, .5)
       letter-spacing: 0.08em
       font-size: 14px
+      line-height: 1.7
+      span
+        display: inline-block
 
   &__avatar
     position: relative
@@ -144,7 +147,7 @@
       display: flex
       align-items: center
       justify-content: center
-      top: 50%
+      top: calc(50% - 22px)
       transform: translateY(-50%)
       font-size: 18px
       z-index: 3
@@ -196,10 +199,13 @@
         margin-right: 0
         padding-left: 0
         padding-right: 0
+      &-next, &-prev
+        box-shadow: none
       &-next
         right: 20px
       &-prev
         left: 20px
+
 
 +r($tablet)
   .post
