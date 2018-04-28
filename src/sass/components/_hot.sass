@@ -153,6 +153,9 @@
     font-weight: 700
     letter-spacing: 0.03em
     line-height: 1.33
+    transition: .25s $ease
+    &:hover
+      color: $colorPrimary
 
   &__addres
     padding-top: 7px
@@ -194,13 +197,34 @@
   &.is-loading
     min-height: 300px
     .h-card
+      &__images
+        height: 180px
+        .h-card__images-next, .h-card__images-prev
+          opacity: 0
+      &__info
+        height: 20px
+        margin-bottom: 10px
+        max-width: 190px
+      &__name
+        height: 38px
+        max-width: 240px
+      &__addres
+        height: 32px
+        padding-top: 0
+        margin-top: 15px
+      &__price
+        height: 25px
+        max-width: 115px
+        margin-top: 15px
+
       &__images,
       &__info,
       &__name,
       &__addres,
       &__price,
-      &__tag
         position: relative
+        border-radius: 4px
+        overflow: hidden
         &::after
           display: inline-block
           content: ' '
@@ -212,11 +236,16 @@
           animation-iteration-count: infinite
           animation-name: placeHolderShimmer
           animation-timing-function: linear
-          background: #f6f7f8
+          background: #F6F6F6
           background: linear-gradient(to right, #F6F6F6 8%, #dddddd 18%, #F6F6F6 33%)
-          background-size: 800px 104px
-
-
+          background-size: 800px 100%
+      &__name
+        &::after
+          background: #E2E2E2
+          background: linear-gradient(to right, #E2E2E2 8%, darken(#dddddd, 10%) 18%, #E2E2E2 33%)
+          background-size: 800px 100%
+      &__tag
+        display: none
 
 @keyframes placeHolderShimmer
   0%

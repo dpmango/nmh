@@ -27,6 +27,7 @@ $(document).ready(function(){
     updateHeaderActiveClass();
     initHeaderScroll();
     // benefitsTabFix();
+    cardsLoaded();
 
     initSelectric();
     initPopups();
@@ -302,9 +303,18 @@ $(document).ready(function(){
       loadCards();
     })
 
-  function loadCards(){
-
+  function cardsLoaded(){
+    setTimeout(function(){
+      $('.h-card.is-loading').removeClass('is-loading')
+    }, 1000)
   }
+  function loadCards(){
+    $('.h-card').addClass('is-loading');
+
+    cardsLoaded();
+  }
+
+
 
 
   //////////
@@ -565,6 +575,13 @@ $(document).ready(function(){
             priceValues[0].innerHTML = parseInt(values[0]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
             priceValues[1].innerHTML = parseInt(values[1]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
             // priceValues[handle].innerHTML = parseInt(values[handle]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
+
+          });
+
+          slider.noUiSlider.on('change', function( values, handle ) {
+            if ( $slider.closest('form').length > 0 ){
+              $slider.closest('form').trigger('change')
+            }
           });
         }
       })
