@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "gallery": ["img/productImage_1.jpg", "img/productImage_2.jpg"],
+    "video": null,
+    "info": {
+      "meter": "325 кв. м",
+      "station": "8 сот.",
+      "rooms": "4"
+    },
+    "name": "Дом “под ключ” в КП “Лесные Поляны”",
+    "adress": "Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки",
+    "price": "12,900,000"
+  }
+]

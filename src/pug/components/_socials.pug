@@ -8,7 +8,8 @@ script.
   js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12';
   fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
-.fb-share-button(data-href='http://nmh.surge.sh/blog-post.html', data-layout='button_count', data-size='small', data-mobile-iframe='true')
+.share-facebook
+  .fb-share-button(data-href='http://nmh.surge.sh/blog-post.html', data-layout='button_count', data-size='small', data-mobile-iframe='true')
 
 // twitter
 script.
@@ -26,15 +27,15 @@ script.
   };
   return t;
   }(document, "script", "twitter-wjs"));
-  
-a.twitter-share-button(href='https://twitter.com/intent/tweet?text=Hello%20world')
-  | Tweet
 
-
+.share-twitter
+  a.twitter-share-button(href='https://twitter.com/intent/tweet?text=Hello%20world')
+    | Tweet
 
 // vk
-script(type='text/javascript', src='https://vk.com/js/api/share.js?95', charset='windows-1251')
-script(type='text/javascript').
-  <!--
-  document.write(VK.Share.button(false,{type: "round_nocount", text: "Поделиться"}));
-  -->
+.share-vk
+  script(type='text/javascript', src='https://vk.com/js/api/share.js?95', charset='windows-1251')
+  script(type='text/javascript').
+    <!--
+    document.write(VK.Share.button(false,{type: "round_nocount", text: "Поделиться"}));
+    -->

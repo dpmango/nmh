@@ -1,6 +1,6 @@
 ---
 title: Search
-pageClass: gray-bg
+pageClass: 
 ---
 extends shared/_layout
 
@@ -16,84 +16,102 @@ block content
         
         // sidebar
         .search__sidebar
-          .search__name Фильтры
-          .search__sidebar-actions
-            
-          //slider group
-          .slider-group
-            label Цена
-            .slider-group__wrap
-              .slider-group__set 
-                span(js-range-from) 0 
-                |  — 
-                span(js-range-to) 50 000 000
-              div(js-rangeslider 
-                  data-start-from="0"
-                  data-start-to="35000000"
-                  data-step="100000"
-                  data-range-min="0"
-                  data-range-max="50000000")
+          form(action="#" js-search-form).search__form
+            .search__name Фильтры
+            .search__sidebar-actions
+              a(href="#" js-search-reset).search__reset сбросить
+              a(href="#" js-search-apply).btn.btn-outline применить
               
-          //slider group
-          .slider-group
-            label Кв. м
-            .slider-group__wrap
-              .slider-group__set 
-                span(js-range-from) 0 
-                |  — 
-                span(js-range-to) 300
-              div(js-rangeslider 
-                  data-start-from="0"
-                  data-start-to="200"
-                  data-step="10"
-                  data-range-min="0"
-                  data-range-max="300")
-          
-          //slider group
-          .slider-group
-            label Участок (сот.)
-            .slider-group__wrap
-              .slider-group__set 
-                span(js-range-from) 0 
-                |  — 
-                span(js-range-to) 300
-              div(js-rangeslider 
-                  data-start-from="0"
-                  data-start-to="7"
-                  data-step="1"
-                  data-range-min="0"
-                  data-range-max="15")
-          
-          //slider group
-          .slider-group
-            label Спальни
-            .slider-group__wrap
-              .slider-group__set 
-                span(js-range-from) 0 
-                |  — 
-                span(js-range-to) 300
-              div(js-rangeslider 
-                  data-start-from="0"
-                  data-start-to="5"
-                  data-step="1"
-                  data-range-min="0"
-                  data-range-max="5")
-                                                
-          //slider group
-          .slider-group
-            label км от МКАД
-            .slider-group__wrap
-              .slider-group__set 
-                span(js-range-from) 0 
-                |  — 
-                span(js-range-to) 300
-              div(js-rangeslider 
-                  data-start-from="0"
-                  data-start-to="35"
-                  data-step="1"
-                  data-range-min="0"
-                  data-range-max="35")
-                      
+            //slider group
+            .slider-group
+              label Цена
+              .slider-group__wrap
+                .slider-group__set 
+                  span(js-range-from) 0 
+                  |  — 
+                  span(js-range-to) 50 000 000
+                div(js-rangeslider 
+                    data-start-from="0"
+                    data-start-to="35000000"
+                    data-step="100000"
+                    data-range-min="0"
+                    data-range-max="50000000")
+                
+            //slider group
+            .slider-group
+              label Кв. м
+              .slider-group__wrap
+                .slider-group__set 
+                  span(js-range-from) 0 
+                  |  — 
+                  span(js-range-to) 300
+                div(js-rangeslider 
+                    data-start-from="0"
+                    data-start-to="200"
+                    data-step="10"
+                    data-range-min="0"
+                    data-range-max="300")
+            
+            //slider group
+            .slider-group
+              label Участок (сот.)
+              .slider-group__wrap
+                .slider-group__set 
+                  span(js-range-from) 0 
+                  |  — 
+                  span(js-range-to) 300
+                div(js-rangeslider 
+                    data-start-from="0"
+                    data-start-to="7"
+                    data-step="1"
+                    data-range-min="0"
+                    data-range-max="15")
+            
+            //slider group
+            .slider-group
+              label Спальни
+              .slider-group__wrap
+                .slider-group__set 
+                  span(js-range-from) 0 
+                  |  — 
+                  span(js-range-to) 300
+                div(js-rangeslider 
+                    data-start-from="0"
+                    data-start-to="5"
+                    data-step="1"
+                    data-range-min="0"
+                    data-range-max="5")
+                                                  
+            //slider group
+            .slider-group
+              label км от МКАД
+              .slider-group__wrap
+                .slider-group__set 
+                  span(js-range-from) 0 
+                  |  — 
+                  span(js-range-to) 300
+                div(js-rangeslider 
+                    data-start-from="0"
+                    data-start-to="35"
+                    data-step="1"
+                    data-range-min="0"
+                    data-range-max="35")
+            
+            .ui-group
+              label Ремонт
+              .ui-checkbox.ui-checkbox--right
+                input(type="checkbox" name="filter" id="filter_1")
+                label(for="filter_1") 
+                  span “под ключ” (25)
+              .ui-checkbox.ui-checkbox--right
+                input(type="checkbox" name="filter" id="filter_2")
+                label(for="filter_2") 
+                  span “под финишную отд. (25)
+              .ui-checkbox.ui-checkbox--right
+                input(type="checkbox" name="filter" id="filter_3")
+                label(for="filter_3") 
+                  span “без отделки” (25)
+                  
         // content
         .search__content
           .search__name Дома в Новой Москве
@@ -108,7 +126,27 @@ block content
           .search__grid
             // col
             .search__col
-              .h-card.wow(data-animation-delay=".3s")
+              .h-card.is-loading
+                .h-card__images.swiper-wrapper(js-hotCard-slider)
+                  .swiper-wrapper
+
+                  .h-card__images-next
+                    +icon('ico-arrow-right')
+                  .h-card__images-prev
+                    +icon('ico-arrow-left')
+                .h-card__content
+                  .h-card__info 
+                    span 
+                    span 
+                    span 
+                  .h-card__name 
+                  .h-card__addres 
+                  .h-card__price 
+                  
+                  
+            // col
+            .search__col
+              .h-card
                 .h-card__images.swiper-wrapper(js-hotCard-slider)
                   .swiper-wrapper
                     .h-card__image
@@ -130,7 +168,7 @@ block content
                   
             // col 2
             .search__col
-              .h-card.wow(data-animation-delay=".4s")
+              .h-card
                 .h-card__images.swiper-wrapper(js-hotCard-slider)
                   .swiper-wrapper
                     .h-card__image
@@ -152,7 +190,7 @@ block content
 
             // col 3
             .search__col
-              .h-card.wow(data-animation-delay=".5s")
+              .h-card
                 .h-card__images.swiper-wrapper(js-hotCard-slider)
                   .swiper-wrapper
                     .h-card__image
@@ -179,7 +217,7 @@ block content
 
             // col
             .search__col
-              .h-card.wow(data-animation-delay=".3s")
+              .h-card
                 .h-card__images.swiper-wrapper(js-hotCard-slider)
                   .swiper-wrapper
                     .h-card__image
@@ -201,7 +239,7 @@ block content
                   
             // col 2
             .search__col
-              .h-card.wow(data-animation-delay=".4s")
+              .h-card
                 .h-card__images.swiper-wrapper(js-hotCard-slider)
                   .swiper-wrapper
                     .h-card__image
@@ -223,7 +261,7 @@ block content
 
             // col 3
             .search__col
-              .h-card.wow(data-animation-delay=".5s")
+              .h-card
                 .h-card__images.swiper-wrapper(js-hotCard-slider)
                   .swiper-wrapper
                     .h-card__image
@@ -247,3 +285,32 @@ block content
                   .h-card__price 12,900,000<span>₽</span>
                   .h-card__tag
                     .h-card__exclusive эксклюзив
+
+          // pagination
+          .pagination
+            .pagination__scope 11-20 из 132
+            .pagination__list
+              li.pagination__prev
+                a(href="#")
+                  +icon('ico-arrow-left')
+                  span предыдущая
+              li
+                a(href="#") 1
+              li.is-active
+                a(href="#") 2
+              li
+                a(href="#") 3
+              li.pagination__last
+                a(href="#") 
+                  span следующая
+                  +icon('ico-arrow-right')
+          
+          // text section
+          .page-information
+            h3 Почему покупать дом в Новой Москве?
+            p Спрос на недвижимость в Новой Москве (территориях, включенных в состав столицы в 2012 году) неуклонно продолжает расти. Многоэтажные и малоэтажные жилые комплексы, таунхаусы и коттеджные поселки активно возводятся на землях между Киевским, Калужским и Симферопольским шоссе. При этом стоимость такого жилья остается заметно более доступной, по сравнению с недвижимостью Старой Москвы. Всё больше и больше людей обращают внимание на недавно присоединенные районы и рассматривают различные варианты недвижимости. В данной статье мы обсудим основные факторы, которые следует изучить при покупке или строительстве частного дома в Новой Москве.
+            h3 Дома в Новой Москве
+            p Спрос на недвижимость в Новой Москве (территориях, включенных в состав столицы в 2012 году) неуклонно продолжает расти. Многоэтажные и малоэтажные жилые комплексы, таунхаусы и коттеджные поселки активно возводятся на землях между Киевским, Калужским и Симферопольским шоссе. При этом стоимость такого жилья остается заметно более доступной, по сравнению с недвижимостью Старой Москвы. Всё больше и больше людей обращают внимание на недавно присоединенные районы и рассматривают различные варианты недвижимости. В данной статье мы обсудим основные факторы, которые следует изучить при покупке или строительстве частного дома в Новой Москве.
+            h3 Особенности Новой Москвы
+            p Спрос на недвижимость в Новой Москве (территориях, включенных в состав столицы в 2012 году) неуклонно продолжает расти. Многоэтажные и малоэтажные жилые комплексы, таунхаусы и коттеджные поселки активно возводятся на землях между Киевским, Калужским и Симферопольским шоссе. При этом стоимость такого жилья остается заметно более доступной, по сравнению с недвижимостью Старой Москвы. Всё больше и больше людей обращают внимание на недавно присоединенные районы и рассматривают различные варианты недвижимости. В данной статье мы обсудим основные факторы, которые следует изучить при покупке или строительстве частного дома в Новой Москве.
+            

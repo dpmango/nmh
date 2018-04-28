@@ -22,11 +22,12 @@
     font-size: 0
     padding-right: 30px
     color: $fontColor
-    transition: filter .25s $ease
+    transition: .25s $ease
     .ico
       font-size: 29px
+      overflow: hidden
     &:hover
-      // filter: opacity(0.8)
+      opacity: .8
 
 
   &__menu
@@ -230,3 +231,11 @@
   border-bottom: 1px solid $borderColor
   &__wrapper
     height: 60px
+    padding-top: 10px
+    padding-bottom: 10px
+  &__input
+    max-width: 270px
+    flex: 0 0 270px
+    .ui-group input
+      padding-top: 9px
+      padding-bottom: 9px

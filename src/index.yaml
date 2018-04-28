@@ -4,7 +4,7 @@ PageList:
 - file: homepage.html
   ready: 100
 - file: search.html
-  ready: 30
+  ready: 50
 - file: property.html
   ready: 10
 - file: blog.html

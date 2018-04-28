@@ -1,11 +1,38 @@
 .search
-  margin-top: 150px
+  margin-top: 160px
   &__wrapper
     display: flex
 
   &__sidebar
     flex: 0 0 235px
     padding-right: 30px
+    &-actions
+      position: relative
+      margin-top: 17px
+      display: flex
+      align-items: center
+      padding-bottom: 7px
+      margin-bottom: 40px
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute
+        bottom: 0
+        left: 0
+        height: 1px
+        background: $borderColor
+        width: 50px
+
+  &__reset
+    font-size: 14px
+    color: rgba($fontColor, .3)
+    margin-right: auto
+    transition: .25s $ease
+    &:hover
+      color: $colorPrimary
+
+  &__form
+    margin-bottom: 30px
 
   &__name
     font-size: 24px
@@ -14,9 +41,9 @@
 
   &__content
     flex: 0 1 auto
-    max-width: 100%
+    max-width: 870px
     min-width: 1px
-
+    margin-left: auto
   &__filter
     display: flex
     align-items: center
@@ -46,6 +73,15 @@
     min-width: 1px
     min-height: 0
     padding: 15px
+    margin-bottom: 10px
+
++r(1080)
+  .search
+    &__content
+      max-width: 650px
+    &__col
+      flex-basis: 50%
+      max-width: 50%
 
 .slider-group
   position: relative
@@ -64,3 +100,80 @@
     text-align: right
     font-size: 14px
     color: rgba($fontColor, .5)
+
+.pagination
+  text-align: center
+  font-size: 14px
+  font-family: $noto
+  font-weight: 700
+  margin: 50px 0 30px 0
+  &__scope
+    text-align: center
+    letter-spacing: 0.08em
+    margin-bottom: 20px
+    color: rgba($fontColor, .5)
+  &__list
+    margin: 0
+    padding: 0
+    list-style: none
+    display: flex
+    align-items: center
+    justify-content: center
+    letter-spacing: 0.032em
+    li
+      display: inline-block
+      margin-right: 10px
+      &:last-child
+        margin-right: 0
+      &.is-active
+        a
+          border-color: $colorPrimary
+      &:hover
+        a
+          border-color: rgba($colorPrimary, .5)
+    a
+      display: inline-block
+      border: 1px solid transparent
+      border-radius: 8px
+      min-size: 40px
+      line-height: 30px
+      padding: 5px
+      text-align: center
+      color: rgba($fontColor, .5)
+      transition: .25s $ease
+
+  &__prev, &__last
+    position: relative
+    a
+      display: flex
+      align-items: center
+    .ico
+      font-size: 8px
+
+  &__prev
+    .ico
+      margin-right: 8px
+
+  &__last
+    .ico
+      margin-left: 8px
+
+
+/* aka seo block
+.page-information
+  border-top: 1px solid $borderColor
+  padding-top: 10px
+  margin-top: 90px
+  margin-bottom: 90px
+  h1, h2, h3, h4
+    font-family: $noto
+    font-weight: 700
+  h3
+    font-size: 14px
+    margin: 1em 0
+  p
+    font-size: 14px
+    margin: 1em 0
+    color: rgba($fontColor, .5)
+    line-height: 1.57
+    letter-spacing: 0.032em

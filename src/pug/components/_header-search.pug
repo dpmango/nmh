@@ -32,8 +32,11 @@ header.header
   .header-search
     .container
       .header-search__wrapper
-        
-  
+        .header-search__input
+          .ui-group.ui-group--search
+            input(type="text" placeholder="Название" js-autocomplete data-url="json/cities.json")
+            +icon('ico-search')
+    
 // HEADER :: END
 
 // MOBILE NAVI

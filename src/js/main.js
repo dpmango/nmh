@@ -43,11 +43,8 @@ $(document).ready(function(){
     _window.on('resize', debounce(positionScrollTop, 250));
     _window.on('scroll', throttle(showScrollTop, 50));
 
-
     // development helper
     _window.on('resize', debounce(setBreakpoint, 200))
-
-
   }
 
   // this is a master function which should have all functionality
@@ -63,8 +60,8 @@ $(document).ready(function(){
   // detectors
   function isRetinaDisplay() {
     if (window.matchMedia) {
-        var mq = window.matchMedia("only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen  and (min-device-pixel-ratio: 1.3), only screen and (min-resolution: 1.3dppx)");
-        return (mq && mq.matches || (window.devicePixelRatio > 1));
+      var mq = window.matchMedia("only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen  and (min-device-pixel-ratio: 1.3), only screen and (min-resolution: 1.3dppx)");
+      return (mq && mq.matches || (window.devicePixelRatio > 1));
     }
   }
 
@@ -284,6 +281,31 @@ $(document).ready(function(){
       }
     })
   }
+
+  //////////
+  // SEARCH PAGE
+  //////////
+  _document
+    .on('click', '[js-search-reset]', function(e){
+      var form = $(this).closest('form');
+
+      form.find('input[type="text"]').val('');
+      form.find('input[type="radio"]').prop('checked', false);
+      form.find('[js-rangeslider]').each(function(i, slider){
+        slider.noUiSlider.reset();
+      })
+    })
+    .on('click', '[js-search-apply]', function(){
+      loadCards();
+    })
+    .on('change', '[js-search-form]', function(){
+      loadCards();
+    })
+
+  function loadCards(){
+
+  }
+
 
   //////////
   // SLIDERS
@@ -540,7 +562,9 @@ $(document).ready(function(){
 
           slider.noUiSlider.on('update', function( values, handle ) {
             var isMaxed = parseInt(values[1]).toFixed(0) >= rangeMax ? " +" : ""
-            priceValues[handle].innerHTML = parseInt(values[handle]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
+            priceValues[0].innerHTML = parseInt(values[0]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+            priceValues[1].innerHTML = parseInt(values[1]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
+            // priceValues[handle].innerHTML = parseInt(values[handle]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
           });
         }
       })
