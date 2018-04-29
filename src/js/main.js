@@ -312,10 +312,11 @@ $(document).ready(function(){
       })
     })
     .on('click', '[js-search-apply]', function(){
+      $('[js-search-apply]').fadeOut();
       loadCards();
     })
     .on('change', '[js-search-form]', function(){
-      loadCards();
+      $('[js-search-apply]').fadeIn();
     })
     .on('click', '.page-information__paragraph-head', function(){
       $(this).toggleClass('is-active');
