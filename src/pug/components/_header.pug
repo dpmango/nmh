@@ -25,78 +25,10 @@ header.header.is-white
         .header__cta
           a(href="tel:+78007008472").header__phone +7 (800) 700-84-72
         
-        a(href='#' js-header-search).header__search
+        a(href='#' js-open-header-search).header__search
           +icon('ico-search')
       
 // HEADER :: END
 
-// MOBILE NAVI
-.m-navi
-  .m-navi__wrapper(js-scrollbar data-x-disable="true")
-    .m-navi__menu
-      li
-        a(href='#') ДОМА
-      li
-        a(href='#') УЧАСТКИ
-      li
-        a(href='#') ТАУНХАУСЫ
-      li
-        a(href='#') ЭЛИТНАЯ НЕДВИЖИМОСТЬ
-      li
-        a(href='blog.html') БЛОГ
-    .m-navi__cta
-      a(href="tel:+78007008472").btn.btn-primary +7 (800) 700-84-72
-
-// MOBILE SEARCH
-.m-search
-  .m-search__head
-    .m-search__clear(js-reset-mobile-search) Сбросить
-    .m-search__head-title Поиск
-    .m-search__close(js-close-mobile-search)
-      +icon('ico-close')
-  .m-search__wrapper(js-scrollbar data-x-disable="true")
-    form(action="#").m-search__form
-      // categories
-      .m-search__categories
-        label категория недвижимости
-        .m-search__categories-wrap(js-scrollbar data-y-disable="true")
-          .m-search__category
-            input(type="radio" name="category" id="category_1" checked)
-            label(for="category_1")
-              span Дом
-          .m-search__category
-            input(type="radio" name="category" id="category_2")
-            label(for="category_2")
-              span Таунхаус
-          .m-search__category
-            input(type="radio" name="category" id="category_3")
-            label(for="category_3")
-              span Участок
-      
-      // price
-      .m-search__price
-        label цена
-        .m-search__price-wrap
-          .m-search__price-set 
-            span(js-range-from) 0 
-            |  — 
-            span(js-range-to) 50 000 000
-          div(js-rangeslider 
-              data-start-from="0"
-              data-start-to="35000000"
-              data-step="100000"
-              data-range-min="0"
-              data-range-max="50000000"
-              )
-              
-      // keywords
-      .m-search__keywords
-        label ПОИСК ПО КЛЮЧЕВЫМ СЛОВАМ
-        .ui-group.ui-group--search
-          input(type="text" placeholder="Название" js-autocomplete data-url="json/cities.json")
-          +icon('ico-search')
-          
-      .m-search__cta
-        button(type="submit").btn.btn-primary найти
-
-      
+include _mobile-navi
+include _mobile-search

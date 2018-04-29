@@ -1,18 +1,19 @@
 .search
-  margin-top: 160px
+  margin-top: 170px
   &__wrapper
     display: flex
 
   &__sidebar
     flex: 0 0 235px
     padding-right: 30px
+
     &-actions
       position: relative
-      margin-top: 17px
+      margin-top: 13px
       display: flex
       align-items: center
-      padding-bottom: 7px
-      margin-bottom: 40px
+      padding-bottom: 6px
+      margin-bottom: 35px
       &::after
         display: inline-block
         content: ' '
@@ -20,9 +21,12 @@
         bottom: 0
         left: 0
         height: 1px
-        background: $borderColor
+        background: rgba(#2A2A2A, .1)
         width: 50px
-
+    .ui-group
+      label
+        font-size: 14px
+        color: rgba($fontColor, .7)
   &__reset
     font-size: 14px
     color: rgba($fontColor, .3)
@@ -30,6 +34,9 @@
     transition: .25s $ease
     &:hover
       color: $colorPrimary
+
+  &__mobile-toggles
+    display: none
 
   &__form
     margin-bottom: 30px
@@ -47,7 +54,8 @@
   &__filter
     display: flex
     align-items: center
-    padding-bottom: 3px
+    padding-bottom: 5px
+    padding-top: 2px
     border-bottom: 1px solid rgba(#2A2A2A, .1)
     &-scope
       padding-right: 30px
@@ -55,12 +63,15 @@
       color: rgba($fontColor, .3)
 
     &-select
-      flex: 0 0 auto
+      flex: 0 0 206px
       margin-left: auto
+      .selectric
+        width: 100%
 
   &__grid
     display: flex
     flex-wrap: wrap
+    margin-top: 15px
     margin-left: -15px
     margin-right: -15px
 
@@ -75,13 +86,6 @@
     padding: 15px
     margin-bottom: 10px
 
-+r(1080)
-  .search
-    &__content
-      max-width: 650px
-    &__col
-      flex-basis: 50%
-      max-width: 50%
 
 .slider-group
   position: relative
@@ -90,16 +94,85 @@
     font-size: 14px
     font-family: $noto
   &__wrap
-    margin-top: 25px
-    padding-left: 7px
-    padding-right: 7px
+    margin-top: 18px
+    // padding-left: 7px
+    // padding-right: 7px
   &__set
     position: absolute
-    right: 10px
+    right: 0px
     top: 2px
     text-align: right
     font-size: 14px
     color: rgba($fontColor, .5)
+  .noUi-horizontal
+    .noUi-handle
+      size: 18px
+      top: -9px
+      // left: -9px
+      right: -9px !important
+    .noUi-handle-lower
+      transform: translateX(7px)
+    .noUi-handle-upper
+      transform: translateX(-7px)
+
++r(1080)
+  .search
+    &__content
+      max-width: 650px
+    &__col
+      flex-basis: 50%
+      max-width: 50%
+
++r($tablet)
+  .search
+    &__wrapper
+      display: block
+    &__sidebar
+      display: none
+
+    &__mobile-toggles
+      display: flex
+      margin-top: 20px
+      .btn-primary
+        flex: 1 1 auto
+        // padding-top: 13px
+        // padding-bottom: 13px
+      .btn-outline
+        flex: 0 0 87px
+        margin-left: 10px
+        display: flex
+        align-items: center
+        justify-content: center
+        .ico
+          font-size: 15px
+          &:first-child
+            transform: rotate(90deg)
+            margin-right: 8px
+          &:last-child
+            transform: rotate(-90deg)
+
+
+    &__content
+      margin-left: 0
+      max-width: 100%
+
+    &__filter
+      display: block
+      border-bottom: 0
+      &-select
+        display: none
+
++r($mobile)
+  .search
+    &__content
+      padding-left: 5px
+      padding-right: 5px
+
++r(568)
+  .search
+    &__col
+      flex-basis: 100%
+      max-width: 100%
 
 .pagination
   text-align: center
@@ -162,18 +235,18 @@
 /* aka seo block
 .page-information
   border-top: 1px solid $borderColor
+  margin-top: 100px
   padding-top: 10px
-  margin-top: 90px
-  margin-bottom: 90px
+  margin-bottom: 105px
   h1, h2, h3, h4
     font-family: $noto
     font-weight: 700
   h3
     font-size: 14px
-    margin: 1em 0
+    margin: 1.5em 0 1.3em
   p
     font-size: 14px
     margin: 1em 0
     color: rgba($fontColor, .5)
-    line-height: 1.57
+    line-height: 1.6
     letter-spacing: 0.032em

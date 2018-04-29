@@ -158,7 +158,7 @@
     transition: .25s $ease
     &.selected
       background: #FAFAFC
-      
+
     &.highlighted
       background: #FAFAFC
     &:hover
@@ -205,3 +205,17 @@
       color: #A1A1A1
       font-size: 20px
       right: 10px
+
+.selectric-bordered
+  .selectric
+    border: 1px solid #F6F6F6
+    // border-radius: 4px
+    .label
+      font-size: 14px
+      padding: 12px 20px
+    .button
+      font-size: 8px
+      color: rgba(#2A2A2A, .4)
+  &.selectric-hover .selectric
+    .button
+      color: rgba(#2A2A2A, .6)

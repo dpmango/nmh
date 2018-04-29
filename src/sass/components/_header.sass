@@ -7,7 +7,7 @@
   z-index: 10
   background: white
   &-container
-    border-bottom: 1px solid $borderColor
+    border-bottom: 1px solid #E6E6E6
 
   &__wrapper
     display: flex
@@ -226,16 +226,69 @@
 
 
 /* Header search
+.is-menu-opened
+  .header-search
+    display: none
+
 .header-search
   background: #F6F6F6
-  border-bottom: 1px solid $borderColor
+  border-bottom: 1px solid #E6E6E6
+  transition: .25s $ease
   &__wrapper
     height: 60px
     padding-top: 10px
     padding-bottom: 10px
+    display: flex
+    align-items: center
   &__input
     max-width: 270px
     flex: 0 0 270px
     .ui-group input
       padding-top: 9px
       padding-bottom: 9px
+  &__slider
+    display: flex
+    align-items: center
+    max-width: 270px
+    margin-left: auto
+    margin-right: auto
+    padding-left: 15px
+    padding-right: 15px
+    color: rgba($fontColor, .5)
+    .swiper-wrapper
+      // flex: 1 1 auto
+  &__slide
+    flex: 0 0 auto
+    max-width: 100%
+    min-width: 1px
+    font-size: 14px
+
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    text-align: center
+
+  &__prev, &__next
+    position: absolute
+    top: 50%
+    z-index: 2
+    flex: 0 0 auto
+    font-size: 10px
+    cursor: pointer
+    transform: translateY(-50%)
+    color: rgba($fontColor, .5)
+
+  &__prev
+    left: 0
+  &__next
+    right: 0
+
++r($tablet)
+  .header-search
+    &__wrapper
+      height: 50px
+      padding-top: 5px
+      padding-bottom: 5px
+    &__input
+      display: none

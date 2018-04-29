@@ -143,6 +143,7 @@ $(document).ready(function(){
       if ( !_document.find('.page__content').is('.gray-bg') ){
         firstSection = _document.find('.page__content div:first-child()').height() - headerHeight;
       }
+      console.log(header)
       if ( vScroll > headerHeight ){
         header.addClass('is-fixed');
       } else {
@@ -184,11 +185,11 @@ $(document).ready(function(){
       $('.header').toggleClass('is-menu-opened');
       $('.m-navi').toggleClass('is-active');
     })
-    .on('click', '[js-header-search]', function(){
+    .on('click', '[js-open-header-search]', function(){
       $('[js-hamburger]').removeClass('is-active');
       $(this).toggleClass('is-active');
       $('.header').toggleClass('is-menu-opened');
-      $('.m-search').toggleClass('is-active');
+      $('[js-header-search]').toggleClass('is-active');
     })
     .on('click', '[js-close-mobile-search]', function(){
       closeMobileMenu();
@@ -203,10 +204,11 @@ $(document).ready(function(){
 
   function closeMobileMenu(){
     $('[js-hamburger]').removeClass('is-active');
-    $('[js-header-search]').removeClass('is-active');
+    $('[js-open-header-search]').removeClass('is-active');
     $('.header').removeClass('is-menu-opened');
     $('.m-navi').removeClass('is-active');
-    $('.m-search').removeClass('is-active');
+    $('[js-header-search]').removeClass('is-active');
+    $('[js-mobile-filter]').removeClass('is-active');
   }
 
 
@@ -314,6 +316,24 @@ $(document).ready(function(){
     cardsLoaded();
   }
 
+  // mobile search
+  _document
+    .on('click', '[js-open-mobile-filter]', function(){
+      $('[js-hamburger]').removeClass('is-active');
+      $(this).toggleClass('is-active');
+      $('.header').toggleClass('is-menu-opened');
+      $('[js-mobile-filter]').toggleClass('is-active');
+    })
+    .on('click', '[js-close-mobile-filter]', function(){
+      closeMobileMenu();
+    })
+    .on('click', '[js-reset-mobile-filter]', function(){
+      var form = $(this).closest('.m-search');
+
+      form.find('input[type="text"]').val('');
+      form.find('input[type="radio"]').prop('checked', false);
+      form.find('[js-rangeslider]').get(0).noUiSlider.reset();
+    })
 
 
 
@@ -441,6 +461,28 @@ $(document).ready(function(){
       grabCursor: true,
       freeMode: true,
     })
+
+    new Swiper('[js-header-slider]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "header-search__slide",
+      direction: 'horizontal',
+      loop: true,
+      autoplay: {
+        delay: 3000,
+      },
+      watchOverflow: false,
+      setWrapperSize: false,
+      spaceBetween: 0,
+      slidesPerView: 1,
+      normalizeSlideIndex: true,
+      // grabCursor: true,
+      freeMode: false,
+      navigation: {
+        nextEl: '.header-search__next',
+        prevEl: '.header-search__prev',
+      },
+    })
+
 
   }
 
