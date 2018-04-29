@@ -76,12 +76,23 @@
     margin-top: 40px
     padding-left: 20px
     padding-right: 20px
+    &--no-pad
+      margin-top: 0
     label
       font-size: 14px
       color: rgba($fontColor, .5)
       display: block
       margin-bottom: 15px
       text-transform: lowercase
+
+    .ui-checkbox
+      border-bottom: 1px solid $borderColor
+      margin-top: 0
+      label
+        margin: 0
+        padding-top: 25px
+        padding-bottom: 25px
+        color: rgba($fontColor, .7)
 
   &__cta
     margin-top: auto
@@ -152,6 +163,41 @@
       &:focus
         border-color: $colorPrimary !important
 
+  &__next
+    position: relative
+    cursor: pointer
+    display: flex
+    align-items: center
+    font-size: 14px
+    letter-spacing: 0.06em
+    padding: 27px 20px
+    margin-bottom: 40px
+    margin-top: 5px
+    transition: .25s $ease
+    margin-left: -20px
+    margin-right: -20px
+    .ico
+      margin-left: auto
+      font-size: 10px
+    &::before, &::after
+      position: absolute
+      left: 20px
+      right: 20px
+      display: inline-block
+      content: ' '
+      height: 1px
+      background: $borderColor
+      transition: .25s $ease
+    &::before
+      top: 1px
+
+    &::after
+      bottom: 1px
+
+    &:hover
+      background: $borderColor
+      &::before, &::after
+        opacity: 0
 
 
 +r($mobile)

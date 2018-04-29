@@ -185,16 +185,30 @@ $(document).ready(function(){
       $('.header').toggleClass('is-menu-opened');
       $('.m-navi').toggleClass('is-active');
     })
-    .on('click', '[js-open-header-search]', function(){
-      $('[js-hamburger]').removeClass('is-active');
-      $(this).toggleClass('is-active');
-      $('.header').toggleClass('is-menu-opened');
-      $('[js-header-search]').toggleClass('is-active');
+    .on('click', '[js-open-mobile]', function(){
+      var targetPop = $(this).data('target');
+
+      if ( targetPop ){
+        closeMobileMenu();
+
+        $('[js-hamburger]').removeClass('is-active');
+        $(this).toggleClass('is-active');
+        $('.header').toggleClass('is-menu-opened');
+
+        $('.m-search[data-name="'+targetPop+'"]').toggleClass('is-active');
+      }
     })
-    .on('click', '[js-close-mobile-search]', function(){
+    .on('click', '[js-close-mobile]', function(){
       closeMobileMenu();
     })
     .on('click', '[js-reset-mobile-search]', function(){
+      var form = $(this).closest('.m-search');
+
+      form.find('input[type="text"]').val('');
+      form.find('input[type="radio"]').prop('checked', false);
+      form.find('[js-rangeslider]').get(0).noUiSlider.reset();
+    })
+    .on('click', '[js-reset-mobile-filter]', function(){
       var form = $(this).closest('.m-search');
 
       form.find('input[type="text"]').val('');
@@ -207,8 +221,7 @@ $(document).ready(function(){
     $('[js-open-header-search]').removeClass('is-active');
     $('.header').removeClass('is-menu-opened');
     $('.m-navi').removeClass('is-active');
-    $('[js-header-search]').removeClass('is-active');
-    $('[js-mobile-filter]').removeClass('is-active');
+    $('.m-search').removeClass('is-active');
   }
 
 
@@ -304,6 +317,10 @@ $(document).ready(function(){
     .on('change', '[js-search-form]', function(){
       loadCards();
     })
+    .on('click', '.page-information__paragraph-head', function(){
+      $(this).toggleClass('is-active');
+      $(this).parent().find('.page-information__paragraph-drop').slideToggle();
+    })
 
   function cardsLoaded(){
     setTimeout(function(){
@@ -315,25 +332,6 @@ $(document).ready(function(){
 
     cardsLoaded();
   }
-
-  // mobile search
-  _document
-    .on('click', '[js-open-mobile-filter]', function(){
-      $('[js-hamburger]').removeClass('is-active');
-      $(this).toggleClass('is-active');
-      $('.header').toggleClass('is-menu-opened');
-      $('[js-mobile-filter]').toggleClass('is-active');
-    })
-    .on('click', '[js-close-mobile-filter]', function(){
-      closeMobileMenu();
-    })
-    .on('click', '[js-reset-mobile-filter]', function(){
-      var form = $(this).closest('.m-search');
-
-      form.find('input[type="text"]').val('');
-      form.find('input[type="radio"]').prop('checked', false);
-      form.find('[js-rangeslider]').get(0).noUiSlider.reset();
-    })
 
 
 

@@ -125,6 +125,7 @@
 
 +r($tablet)
   .search
+    margin-top: 125px
     &__wrapper
       display: block
     &__sidebar
@@ -132,7 +133,7 @@
 
     &__mobile-toggles
       display: flex
-      margin-top: 20px
+      margin-top: 25px
       .btn-primary
         flex: 1 1 auto
         // padding-top: 13px
@@ -161,6 +162,8 @@
       border-bottom: 0
       &-select
         display: none
+      &-scope
+        margin-top: 10px
 
 +r($mobile)
   .search
@@ -231,6 +234,15 @@
     .ico
       margin-left: 8px
 
++r($tablet)
+  .pagination
+    margin: 40px 0 25px 0
+
++r(480)
+  .pagination
+    &__prev, &__last
+      span
+        display: none
 
 /* aka seo block
 .page-information
@@ -250,3 +262,50 @@
     color: rgba($fontColor, .5)
     line-height: 1.6
     letter-spacing: 0.032em
+  &__paragraph
+    &-head
+      .ico
+        display: none
+    &-drop
+      padding-bottom: 1px
+      +rmin(769)
+        display: block !important
+
++r($tablet)
+  .page-information
+    padding-top: 0
+    margin-top: 60px
+    h3
+      margin: 1.9em 0
+    &__paragraph
+      border-bottom: 1px solid $borderColor
+      &-head
+        position: relative
+        display: flex
+        align-items: center
+        cursor: pointer
+        &::after
+          display: inline-block
+          content: ' '
+          position: absolute 0
+          left: -40px
+          right: -40px
+          background: $borderColor
+          opacity: 0
+          transition: .25s $ease
+        h3
+          padding-right: 15px
+        .ico
+          display: inline-block
+          margin-left: auto
+          transform: rotate(90deg)
+          font-size: 10px
+          transition: .25s $ease
+        &.is-active
+          .ico
+            transform: rotate(-90deg)
+        &:hover
+          &::after
+            opacity: 1
+      &-drop
+        display: none
