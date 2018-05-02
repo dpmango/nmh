@@ -1,0 +1,238 @@
+.property
+  margin-top: 75px
+  &__wrapper
+    display: flex
+    margin-left: -15px
+    margin-right: -15px
+
+  &__head
+    margin-bottom: 20px
+
+  &__content
+    flex: 0 1 800px
+    max-width: 800px
+    min-width: 1px
+    min-height: 0
+    padding: 0 15px
+
+  &__sidebar
+    flex: 0 0 400px
+    max-width: 400px
+    min-width: 1px
+    min-height: 0
+    padding: 0 15px
+    &-wrap
+      padding-bottom: 30px
+      // sticky
+  &__main-scope
+    margin-bottom: 10px
+  &__scope-title
+    color: rgba($fontColor, .5)
+    font-size: 14px
+    line-height: 1.5
+    margin-bottom: 5px
+    letter-spacing: 0.003em
+  &__price
+    font-size: 30px
+    font-weight: 700
+    font-family: $noto
+
+  &__scope
+    display: flex
+    flex-wrap: wrap
+    margin-left: -10px
+    margin-right: -10px
+    &-col
+      flex: 0 1 33.3%
+      max-width: 33.3%
+      padding: 10px
+    &-val
+      font-size: 14px
+      letter-spacing: 0.003em
+      font-weight: 700
+      font-family: $noto
+
+  &__cta
+    margin-top: 10px
+    &-wrap
+      display: flex
+      margin-top: 10px
+      .btn-primary
+        flex: 1 1 auto
+        margin-right: 30px
+      .btn-putline
+        flex: 0 0 70px
+
+
+
+  &__back
+
+  &__name
+    position: relative
+    z-index: 2
+    display: flex
+    align-items: baseline
+
+    h1
+      font-size: 30px
+      font-family: $noto
+      font-weight: 700
+      margin: 0
+      text-transform: uppercase
+
+  &__share
+    display: inline-block
+    position: relative
+    margin-left: 10px
+    &-toggle
+      cursor: pointer
+      transition: .25s $ease
+      &:hover
+        opacity: .75
+    &-drop
+      position: absolute
+      top: 30px
+      left: 0
+      background: white
+      padding: 20px 30px
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      background: #FFFFFF
+      box-shadow: 0 5px 10px 1px #BDBDBD
+      border-radius: 5px
+      opacity: 0
+      transform: translate(0,20px)
+      pointer-events: none
+      transition: .25s $ease
+      &.is-active
+        opacity: 1
+        transform: translate(0,0)
+        pointer-events: all
+
+
+  &__addres
+    margin-top: 10px
+    color: rgba($fontColor, .5)
+    font-size: 18px
+    letter-spacing: 0.0032em
+    line-height: 1.33
+
+
+  &__gallery
+
+  &__section
+    border-bottom: 1px solid $borderColor
+    padding: 30px 0 40px
+
+  &__heading
+    margin: 0
+    position: relative
+    color: $fontColor
+    padding-bottom: 12px
+    font-size: 24px
+    font-family: $noto
+    font-weight: 700
+
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      left: 0%
+      bottom: 0
+      size: 50px 1px
+      background: rgba($fontColor, .15)
+
+  &__tab-nav
+    display: flex
+    align-items: center
+    margin: 30px 0
+    padding: 0
+    list-style: none
+    li
+      position: relative
+      display: inline-block
+      margin-right: 30px
+      font-size: 16px
+      font-family: $noto
+      color: rgba($fontColor, .5)
+      font-weight: 700
+      cursor: pointer
+      transition: .25s $ease
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute
+        bottom: -12px
+        left: 0
+        right: 100%
+        height: 3px
+        background: rgba($fontColor, .5)
+        transition: .25s $ease
+      &.is-active
+        color: $fontColor
+        &:after
+          background-color: $colorPrimary
+      &:hover
+        color: $fontColor
+
+      &:hover, &.is-active
+        &::after
+          right: 0
+
+  &__tabs
+    margin-top: 10px
+
+  &__tab
+    display: none
+    &.is-active
+      display: block
+
+  &__map
+    height: 340px
+    margin: 30px 0
+    > div
+      width: 100%
+      height: 100%
+
+
+/* Gallery
+.gallery
+  &__main
+    &-next, &-prev
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      font-size: 38px
+      z-index: 3
+      cursor: pointer
+      color: white
+    &-next
+      right: 20px
+    &-prev
+      left: 20px
+
+    &-slide
+      flex: 0 0 auto
+      max-width: 100%
+      img
+        width: 100%
+
+  &__thumbs
+    &-next, &-prev
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      font-size: 38px
+      z-index: 3
+      cursor: pointer
+      color: white
+    &-next
+      right: 20px
+    &-prev
+      left: 20px
+
+    &-slide
+      flex: 0 0 125px
+      img
+        width: 100%

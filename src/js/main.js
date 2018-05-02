@@ -38,7 +38,9 @@ $(document).ready(function(){
     initPerfectScrollbar();
     initRangeSlider();
     initAutocompleate();
+    initSticky();
     initValidations();
+    initMaps();
 
     positionScrollTop();
     _window.on('resize', debounce(positionScrollTop, 250));
@@ -143,7 +145,6 @@ $(document).ready(function(){
       if ( !_document.find('.page__content').is('.gray-bg') ){
         firstSection = _document.find('.page__content div:first-child()').height() - headerHeight;
       }
-      console.log(header)
       if ( vScroll > headerHeight ){
         header.addClass('is-fixed');
       } else {
@@ -335,6 +336,19 @@ $(document).ready(function(){
   }
 
 
+  //////////
+  // PROPERTY PAGE
+  //////////
+  _document
+    .on('click', '[js-open-share]', function(e){
+      $('.property__share-drop').toggleClass('is-active')
+    })
+    .on('click', '[js-print]', function(e){
+      window.print();
+    })
+
+
+
 
   //////////
   // SLIDERS
@@ -479,6 +493,58 @@ $(document).ready(function(){
       navigation: {
         nextEl: '.header-search__next',
         prevEl: '.header-search__prev',
+      },
+    })
+
+
+
+    var gallerySwiper = new Swiper('[js-gallery-main]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "gallery__main-slide",
+      direction: 'horizontal',
+      nested: false,
+      loop: true,
+      watchOverflow: false,
+      setWrapperSize: true,
+      spaceBetween: 0,
+      slidesPerView: 1,
+      // effect: 'fade',
+      normalizeSlideIndex: true,
+      navigation: {
+        nextEl: '.gallery__main-next',
+        prevEl: '.gallery__main-prev',
+      },
+      on: {
+        slideChange: function () {
+          // var index = gallerySwiper.activeIndex
+          // thumbsSwiper.slideTo(index)
+        },
+      },
+    })
+
+    var thumbsSwiper = new Swiper('[js-gallery-thumbs]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "gallery__thumbs-slide",
+      direction: 'horizontal',
+      nested: false,
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 5,
+      slidesPerView: 'auto',
+      // effect: 'fade',
+      normalizeSlideIndex: true,
+      touchRatio: 0.2,
+      slideToClickedSlide: true,
+      navigation: {
+        nextEl: '.gallery__thumbs-next',
+        prevEl: '.gallery__thumbs-prev',
+      },
+      on: {
+        slideChange: function () {
+          // var index = thumbsSwiper.realIndex
+          // gallerySwiper.slideTo(index)
+        },
       },
     })
 
@@ -664,6 +730,22 @@ $(document).ready(function(){
   ////////////
   // UI
   ////////////
+
+  // sticky kit
+  function initSticky(){
+    var sticky = $('[js-sticky]');
+
+    if ( sticky.length > 0 ){
+      sticky.each(function(i, el){
+        $(el).stick_in_parent({
+          offset_top: 75
+        })
+
+      })
+    }
+  }
+
+  // selectric
 
   function initSelectric(){
     $('[js-selectric]').each(function(i, select){
@@ -915,6 +997,26 @@ $(document).ready(function(){
       setTimeout(function(){
         $('.dev-bp-debug').remove();
       },1500)
+    }
+  }
+
+  function initMaps(){
+    ymaps.ready(init);
+    var myMap,
+        myPlacemark;
+
+    function init(){
+        myMap = new ymaps.Map("property-map", {
+            center: [55.76, 37.64],
+            zoom: 12
+        });
+
+        myPlacemark = new ymaps.Placemark([55.76, 37.64], {
+            hintContent: 'Москва!',
+            balloonContent: 'Столица России'
+        });
+
+        myMap.geoObjects.add(myPlacemark);
     }
   }
 

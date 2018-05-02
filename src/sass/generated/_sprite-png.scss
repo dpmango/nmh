@@ -9,8 +9,8 @@ $sprite: (
 		image: '../img/sprite.png'
 	),
 	benefits-2: (
-		offset-x: 0px,
-		offset-y: -74px,
+		offset-x: -110px,
+		offset-y: 0px,
 		width: 82px,
 		height: 69px,
 		total-width: 264px,
@@ -36,8 +36,8 @@ $sprite: (
 		image: '../img/sprite.png'
 	),
 	benefits-5: (
-		offset-x: -110px,
-		offset-y: 0px,
+		offset-x: 0px,
+		offset-y: -74px,
 		width: 82px,
 		height: 69px,
 		total-width: 264px,
@@ -54,8 +54,8 @@ $sprite: (
 		image: '../img/sprite.png'
 	),
 	footer-menu-arrow: (
-		offset-x: -241px,
-		offset-y: -77px,
+		offset-x: -236px,
+		offset-y: -118px,
 		width: 8px,
 		height: 16px,
 		total-width: 264px,
@@ -71,11 +71,29 @@ $sprite: (
 		total-height: 220px,
 		image: '../img/sprite.png'
 	),
+	print: (
+		offset-x: -62px,
+		offset-y: -191px,
+		width: 29px,
+		height: 29px,
+		total-width: 264px,
+		total-height: 220px,
+		image: '../img/sprite.png'
+	),
 	sberbank: (
 		offset-x: -62px,
 		offset-y: -153px,
 		width: 115px,
 		height: 28px,
+		total-width: 264px,
+		total-height: 220px,
+		image: '../img/sprite.png'
+	),
+	share: (
+		offset-x: -241px,
+		offset-y: -77px,
+		width: 21px,
+		height: 23px,
 		total-width: 264px,
 		total-height: 220px,
 		image: '../img/sprite.png'
@@ -169,8 +187,14 @@ $sprite: (
 	.icon-play {
 		@include sprite(play)
 	}
+	.icon-print {
+		@include sprite(print)
+	}
 	.icon-sberbank {
 		@include sprite(sberbank)
+	}
+	.icon-share {
+		@include sprite(share)
 	}
 	.icon-social-insta {
 		@include sprite(social-insta)

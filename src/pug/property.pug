@@ -4,3 +4,301 @@ pageClass: gray-bg
 ---
 extends shared/_layout
 block content
+  
+  // PROPERTY
+  .property
+    .container
+      .property__head
+        .property__back 
+          +icon('ico-arrow-left')
+          span назад к поиску
+        .property__name
+          h1 Дом в стиле шале в д. Каракашево
+          span.property__share
+            .property__share-toggle(js-open-share)
+              i.icon.icon-share
+            .property__share-drop
+              include components/_socials
+            
+        .property__addres Москва, 20 км от МКАД, Калужское шоссе, пос. Десеновское, п. Ватутинки
+        
+      .property__wrapper
+        .property__content
+          
+          // gallery
+          .property__gallery.gallery
+            .gallery__main.swiper-container(js-gallery-main)
+              .swiper-wrapper
+                .gallery__main-slide
+                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                .gallery__main-slide
+                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                .gallery__main-slide
+                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                .gallery__main-slide
+                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                .gallery__main-slide
+                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                .gallery__main-slide
+                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                .gallery__main-slide
+                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                .gallery__main-slide
+                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                      
+              // controls
+              .gallery__main-next
+                +icon('ico-arrow-right')
+              .gallery__main-prev
+                +icon('ico-arrow-left')
+            
+            // thumbs
+            .gallery__thumbs.swiper-container(js-gallery-thumbs)
+              .swiper-wrapper
+                .gallery__thumbs-slide
+                  img(src='img/galleryThumb_1.jpg' srcset='img/galleryThumb_1@2x.jpg 2x')
+                .gallery__thumbs-slide
+                  img(src='img/galleryThumb_2.jpg' srcset='img/galleryThumb_2@2x.jpg 2x')
+                .gallery__thumbs-slide
+                  img(src='img/galleryThumb_3.jpg' srcset='img/galleryThumb_3@2x.jpg 2x')
+                .gallery__thumbs-slide
+                  img(src='img/galleryThumb_4.jpg' srcset='img/galleryThumb_4@2x.jpg 2x')
+                .gallery__thumbs-slide
+                  img(src='img/galleryThumb_5.jpg' srcset='img/galleryThumb_5@2x.jpg 2x')
+                .gallery__thumbs-slide
+                  img(src='img/galleryThumb_3.jpg' srcset='img/galleryThumb_3@2x.jpg 2x')
+                .gallery__thumbs-slide
+                  img(src='img/galleryThumb_4.jpg' srcset='img/galleryThumb_4@2x.jpg 2x')
+                .gallery__thumbs-slide
+                  img(src='img/galleryThumb_5.jpg' srcset='img/galleryThumb_5@2x.jpg 2x')
+
+          
+          // section
+          .property__section
+            h3.property__heading Об объекте
+            .property__tab-nav
+              li(js-tab data-target="plan_1").is-active Краткое описание
+              li(js-tab data-target="plan_2") Поэтажное описание 
+              li(js-tab data-target="plan_3") Коммуникации
+              li(js-tab data-target="plan_4") Участок
+            
+            .property__tabs
+              .property__tab(data-tab="plan_1").is-active
+          
+          // section
+          .property__section
+            h3.property__heading Планировки
+            .property__tab-nav
+              li(js-tab data-target="floor_1").is-active Первый этаж
+              li(js-tab data-target="floor_2") Второй этаж
+              li(js-tab data-target="floor_3") Третьий этаж
+            
+            .property__tabs
+              .property__tab(data-tab="floor_1").is-active
+                img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+              .property__tab(data-tab="floor_2")
+                img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+              .property__tab(data-tab="floor_3")
+                img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+                              
+          // section
+          .property__section
+            h3.property__heading Расположение  
+            .property__map
+              #property-map
+                        
+        // sidebar
+        .property__sidebar
+          .property__sidebar-wrap(js-sticky)
+            .property__main-scope
+              .property__scope-title № 3486
+              .property__price 25 000 000 ₽
+            .property__scope
+              .property__scope-col
+                .property__scope-title площадь
+                .property__scope-val 360 м²
+              .property__scope-col
+                .property__scope-title участок
+                .property__scope-val 8 сот.
+              .property__scope-col
+                .property__scope-title этажи/уровни
+                .property__scope-val 2/3
+              .property__scope-col
+                .property__scope-title спальни
+                .property__scope-val 5
+              .property__scope-col
+                .property__scope-title с/у
+                .property__scope-val 3
+            
+            .property__cta
+              .property__scope-title связаться
+              .property__cta-wrap
+                a(href="#").btn.btn-primary Связаться
+                
+                a(href="#" js-print).btn.btn-outline
+                  i.icon.icon-print
+                          
+
+  // hot
+  .hot
+    .container
+      h3.property__heading Похожие предложения  
+      
+      .hot-slider.swiper-container(js-hot-slider)
+        .swiper-wrapper
+          //slide
+          .hot-slider__slide
+            .h-card.wow(data-animation-delay=".3s")
+              .h-card__images.swiper-wrapper(js-hotCard-slider)
+                .swiper-wrapper
+                  .h-card__image
+                    img(src='img/productImage_1.jpg' srcset='img/prodcutImage_1@2x.jpg 2x')
+                  .h-card__image
+                    img(src='img/productImage_2.jpg' srcset='img/prodcutImage_2@2x.jpg 2x')
+                  
+                .h-card__images-next
+                  +icon('ico-arrow-right')
+                .h-card__images-prev
+                  +icon('ico-arrow-left')
+                        
+              .h-card__content
+                .h-card__info 
+                  span 325 кв. м
+                  span 8 сот.
+                  span 4 сп.
+                .h-card__name Дом “под ключ” в КП “Лесные Поляны”
+                .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                .h-card__price 12,900,000<span>₽</span>
+                
+          //slide 2
+          .hot-slider__slide
+            .h-card.wow(data-animation-delay=".4s")
+              .h-card__images.swiper-wrapper(js-hotCard-slider)
+                .swiper-wrapper
+                  .h-card__image
+                    img(src='img/productImage_3.jpg' srcset='img/prodcutImage_3@2x.jpg 2x')
+                  .h-card__image
+                    img(src='img/productImage_2.jpg' srcset='img/prodcutImage_2@2x.jpg 2x')
+                  
+                .h-card__images-next
+                  +icon('ico-arrow-right')
+                .h-card__images-prev
+                  +icon('ico-arrow-left')
+                        
+              .h-card__content
+                .h-card__info 
+                  span 325 кв. м
+                  span 8 сот.
+                  span 4 сп.
+                .h-card__name Дом у озера под отделку в д. Лужки
+                .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                .h-card__price 12,900,000<span>₽</span>
+          
+          //slide 3
+          .hot-slider__slide
+            .h-card.wow(data-animation-delay=".5s")
+              .h-card__images.swiper-wrapper(js-hotCard-slider)
+                .swiper-wrapper
+                  .h-card__image
+                    i(href='https://www.youtube.com/watch?v=0TV4V1VNNTY' js-popupVideo).icon.icon-play
+                    img(src='img/productImage_4.jpg' srcset='img/prodcutImage_4@2x.jpg 2x')
+                  .h-card__image
+                    i(href='https://www.youtube.com/watch?v=0TV4V1VNNTY' js-popupVideo).icon.icon-play
+                    img(src='img/productImage_4.jpg' srcset='img/prodcutImage_4@2x.jpg 2x')
+
+                .h-card__images-next
+                  +icon('ico-arrow-right')
+                .h-card__images-prev
+                  +icon('ico-arrow-left')
+                  
+              
+              .h-card__content
+                .h-card__info 
+                  span 325 кв. м
+                  span 8 сот.
+                  span 4 сп.
+                .h-card__name Дом с мебелью и баней в КП «ВауТутинки»
+                .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                .h-card__price 12,900,000<span>₽</span>
+                .h-card__tag
+                  .h-card__exclusive эксклюзив
+          
+          //slide 4
+          .hot-slider__slide
+            .h-card.wow(data-animation-delay=".6s")
+              .h-card__images.swiper-wrapper(js-hotCard-slider)
+                .swiper-wrapper
+                  .h-card__image
+                    img(src='img/productImage_3.jpg' srcset='img/prodcutImage_3@2x.jpg 2x')
+                  .h-card__image
+                    img(src='img/productImage_2.jpg' srcset='img/prodcutImage_2@2x.jpg 2x')
+                  
+                .h-card__images-next
+                  +icon('ico-arrow-right')
+                .h-card__images-prev
+                  +icon('ico-arrow-left')
+                        
+              .h-card__content
+                .h-card__info 
+                  span 325 кв. м
+                  span 8 сот.
+                  span 4 сп.
+                .h-card__name Дом “под ключ” в КП “Лесные Поляны”
+                .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                .h-card__price 12,900,000<span>₽</span>
+
+          //slide 5
+          .hot-slider__slide
+            .h-card
+              .h-card__images.swiper-wrapper(js-hotCard-slider)
+                .swiper-wrapper
+                  .h-card__image
+                    img(src='img/productImage_1.jpg' srcset='img/prodcutImage_1@2x.jpg 2x')
+                  .h-card__image
+                    img(src='img/productImage_2.jpg' srcset='img/prodcutImage_2@2x.jpg 2x')
+                  
+                .h-card__images-next
+                  +icon('ico-arrow-right')
+                .h-card__images-prev
+                  +icon('ico-arrow-left')
+                        
+              .h-card__content
+                .h-card__info 
+                  span 325 кв. м
+                  span 8 сот.
+                  span 4 сп.
+                .h-card__name Дом “под ключ” в КП “Лесные Поляны”
+                .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                .h-card__price 12,900,000<span>₽</span>
+          
+          //slide 6
+          .hot-slider__slide
+            .h-card
+              .h-card__images.swiper-wrapper(js-hotCard-slider)
+                .swiper-wrapper
+                  .h-card__image
+                    img(src='img/productImage_1.jpg' srcset='img/prodcutImage_1@2x.jpg 2x')
+                  .h-card__image
+                    img(src='img/productImage_2.jpg' srcset='img/prodcutImage_2@2x.jpg 2x')
+                  
+                .h-card__images-next
+                  +icon('ico-arrow-right')
+                .h-card__images-prev
+                  +icon('ico-arrow-left')
+                        
+              .h-card__content
+                .h-card__info 
+                  span 325 кв. м
+                  span 8 сот.
+                  span 4 сп.
+                .h-card__name Дом “под ключ” в КП “Лесные Поляны”
+                .h-card__addres Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки
+                .h-card__price 12,900,000<span>₽</span>
+        
+        // controls
+        .hot-slider__next
+          +icon('ico-arrow-right')
+        .hot-slider__prev
+          +icon('ico-arrow-left')
+          
+          
