@@ -27,9 +27,10 @@
       .btn-outline
         display: none
     .ui-group
-      label
+      > label
         font-size: 14px
-        color: rgba($fontColor, .7)
+        // color: rgba($fontColor, .7)
+        color: $fontColor
   &__reset
     font-size: 14px
     color: rgba($fontColor, .3)
@@ -98,8 +99,8 @@
     font-family: $noto
   &__wrap
     margin-top: 18px
-    // padding-left: 7px
-    // padding-right: 7px
+    padding-left: 7px
+    padding-right: 7px
   &__set
     position: absolute
     right: 0px
@@ -107,16 +108,16 @@
     text-align: right
     font-size: 14px
     color: rgba($fontColor, .5)
-  .noUi-horizontal
-    .noUi-handle
-      size: 18px
-      top: -9px
-      // left: -9px
-      right: -9px !important
-    .noUi-handle-lower
-      transform: translateX(7px)
-    .noUi-handle-upper
-      transform: translateX(-7px)
+  // .noUi-horizontal
+  //   .noUi-handle
+  //     size: 18px
+  //     top: -9px
+  //     // left: -9px
+  //     right: -9px !important
+  //   .noUi-handle-lower
+  //     transform: translateX(7px)
+  //   .noUi-handle-upper
+  //     transform: translateX(-7px)
 
 +r(1080)
   .search
@@ -180,72 +181,6 @@
       flex-basis: 100%
       max-width: 100%
 
-.pagination
-  text-align: center
-  font-size: 14px
-  font-family: $noto
-  font-weight: 700
-  margin: 50px 0 30px 0
-  &__scope
-    text-align: center
-    letter-spacing: 0.08em
-    margin-bottom: 20px
-    color: rgba($fontColor, .5)
-  &__list
-    margin: 0
-    padding: 0
-    list-style: none
-    display: flex
-    align-items: center
-    justify-content: center
-    letter-spacing: 0.032em
-    li
-      display: inline-block
-      margin-right: 10px
-      &:last-child
-        margin-right: 0
-      &.is-active
-        a
-          border-color: $colorPrimary
-      &:hover
-        a
-          border-color: rgba($colorPrimary, .5)
-    a
-      display: inline-block
-      border: 1px solid transparent
-      border-radius: 8px
-      min-size: 40px
-      line-height: 30px
-      padding: 5px
-      text-align: center
-      color: rgba($fontColor, .5)
-      transition: .25s $ease
-
-  &__prev, &__last
-    position: relative
-    a
-      display: flex
-      align-items: center
-    .ico
-      font-size: 8px
-
-  &__prev
-    .ico
-      margin-right: 8px
-
-  &__last
-    .ico
-      margin-left: 8px
-
-+r($tablet)
-  .pagination
-    margin: 40px 0 25px 0
-
-+r(480)
-  .pagination
-    &__prev, &__last
-      span
-        display: none
 
 /* aka seo block
 .page-information

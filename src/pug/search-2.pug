@@ -82,7 +82,7 @@ block content
                 +icon('ico-arrow-right')
             
             .search__filter-select
-              select(js-selectric).bordered
+              select(js-selectric js-search-filter).bordered
                 option цена: возрастание
                 option цена: убывание
                 option другой пункт
@@ -292,4 +292,106 @@ block content
               
 
   // MOBILE POPUPS LIKE
-  include components/_search-mobile
+  // MOBILE SEARCH
+  .m-search.m-search--left.m-search--filter(data-name="mobile-filter")
+    .m-search__head
+      .m-search__clear(js-reset-mobile-filter) Сбросить
+      .m-search__head-title Фильтры
+      .m-search__close(js-close-mobile)
+        +icon('ico-close')
+    .m-search__wrapper(js-scrollbar data-x-disable="true")
+      form(action="#").m-search__form
+        //slider group
+        .slider-group
+          label Цена
+          .slider-group__wrap
+            .slider-group__set 
+              span(js-range-from) 0 
+              |  — 
+              span(js-range-to) 50 000 000
+            div(js-rangeslider 
+                data-start-from="0"
+                data-start-to="35000000"
+                data-step="100000"
+                data-range-min="0"
+                data-range-max="50000000")
+
+        //slider group
+        .slider-group
+          label Участок (сот.)
+          .slider-group__wrap
+            .slider-group__set 
+              span(js-range-from) 0 
+              |  — 
+              span(js-range-to) 300
+            div(js-rangeslider 
+                data-start-from="0"
+                data-start-to="7"
+                data-step="1"
+                data-range-min="0"
+                data-range-max="15")
+                                  
+        //slider group
+        .slider-group
+          label км от МКАД
+          .slider-group__wrap
+            .slider-group__set 
+              span(js-range-from) 0 
+              |  — 
+              span(js-range-to) 300
+            div(js-rangeslider 
+                data-start-from="0"
+                data-start-to="35"
+                data-step="1"
+                data-range-min="0"
+                data-range-max="35")
+        
+        // keywords
+        .m-search__keywords
+          label ПОИСК ПО КЛЮЧЕВЫМ СЛОВАМ
+          .ui-group.ui-group--search
+            input(type="text" placeholder="Название" js-autocomplete data-url="json/cities.json")
+            +icon('ico-search')
+            
+        .m-search__cta
+          button(type="submit").btn.btn-primary показать все предложения (20)
+
+
+  // MOBILE SORTING
+  .m-search(data-name="mobile-sorting")
+    .m-search__head
+      .m-search__clear(js-reset-mobile-filter) Сбросить
+      .m-search__head-title Сортировка
+      .m-search__close(js-close-mobile)
+        +icon('ico-close')
+    .m-search__wrapper(js-scrollbar data-x-disable="true")
+      form(action="#").m-search__form
+
+        // categories
+        .m-search__categories
+          label по цене
+          .m-search__categories-wrap(js-scrollbar data-y-disable="true")
+            .m-search__category
+              input(type="radio" name="sorting" id="sorting_1" checked)
+              label(for="sorting_1")
+                span Возрастание
+            .m-search__category
+              input(type="radio" name="sorting" id="sorting_2")
+              label(for="sorting_2")
+                span Убывание
+
+        // categories
+        .m-search__categories
+          label по дате добавления
+          .m-search__categories-wrap(js-scrollbar data-y-disable="true")
+            .m-search__category
+              input(type="radio" name="sorting" id="sorting_3")
+              label(for="sorting_3")
+                span Сначала новые
+            .m-search__category
+              input(type="radio" name="sorting" id="sorting_4")
+              label(for="sorting_4")
+                span Сначала старые
+                
+        .m-search__cta
+          button(type="submit").btn.btn-primary Применить

@@ -1,5 +1,5 @@
 // MOBILE SEARCH
-.m-search.m-search--filter(data-name="mobile-filter")
+.m-search.m-search--left.m-search--filter(data-name="mobile-filter")
   .m-search__head
     .m-search__clear(js-reset-mobile-filter) Сбросить
     .m-search__head-title Фильтры
@@ -100,7 +100,7 @@
 
 
 // TYPE FILTER
-.m-search(data-name="mobile-type")
+.m-search.m-search--right(data-name="mobile-type")
   .m-search__head
     .m-search__clear(js-open-mobile data-target="mobile-filter")
       +icon('ico-back')

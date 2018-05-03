@@ -249,11 +249,10 @@
   &__slider
     display: flex
     align-items: center
-    max-width: 270px
+    max-width: 320px
     margin-left: auto
     margin-right: auto
-    padding-left: 15px
-    padding-right: 15px
+
     color: rgba($fontColor, .5)
     .swiper-wrapper
       // flex: 1 1 auto
@@ -268,6 +267,12 @@
     align-items: center
     justify-content: center
     text-align: center
+    overflow: hidden
+    span
+      display: inline-block
+      padding-left: 15px
+      padding-right: 15px
+      transform: translateY(-2px)
 
   &__prev, &__next
     position: absolute

@@ -101,6 +101,59 @@ $(document).ready(function(){
   // COMMON
   //////////
 
+  var preventKeys = {
+    37: 1, 38: 1, 39: 1, 40: 1
+  };
+
+  function preventDefault(e) {
+    e = e || window.event;
+    if (e.preventDefault)
+      e.preventDefault();
+    e.returnValue = false;
+  }
+
+  function preventDefaultForScrollKeys(e) {
+    if (preventKeys[e.keyCode]) {
+      preventDefault(e);
+      return false;
+    }
+  }
+
+  function disableScroll() {
+    var target = $('.page').get(0)
+    if (window.addEventListener) // older FF
+      target.addEventListener('DOMMouseScroll', preventDefault, false);
+    target.onwheel = preventDefault; // modern standard
+    target.onmousewheel = target.onmousewheel = preventDefault; // older browsers, IE
+    target.ontouchmove = preventDefault; // mobile
+    target.onkeydown = preventDefaultForScrollKeys;
+  }
+
+  function enableScroll() {
+    var target = $('.page').get(0)
+    if (window.removeEventListener)
+      target.removeEventListener('DOMMouseScroll', preventDefault, false);
+    target.onmousewheel = target.onmousewheel = null;
+    target.onwheel = null;
+    target.ontouchmove = null;
+    target.onkeydown = null;
+  }
+
+  function blockScroll(unlock) {
+    if ($('[js-hamburger]').is('.is-active') || $('.m-search.is-active').length > 0 ) {
+      console.log('disabling')
+      disableScroll();
+    } else {
+      console.log('enabling')
+      enableScroll();
+    }
+
+    if (unlock) {
+      enableScroll();
+    }
+  };
+
+
   function legacySupport(){
     // svg support for laggy browsers
     svg4everybody();
@@ -185,6 +238,8 @@ $(document).ready(function(){
       $(this).toggleClass('is-active');
       $('.header').toggleClass('is-menu-opened');
       $('.m-navi').toggleClass('is-active');
+
+      blockScroll();
     })
     .on('click', '[js-open-mobile]', function(){
       var targetPop = $(this).data('target');
@@ -197,6 +252,8 @@ $(document).ready(function(){
         $('.header').toggleClass('is-menu-opened');
 
         $('.m-search[data-name="'+targetPop+'"]').toggleClass('is-active');
+
+        blockScroll();
       }
     })
     .on('click', '[js-close-mobile]', function(){
@@ -218,6 +275,7 @@ $(document).ready(function(){
     })
 
   function closeMobileMenu(){
+    blockScroll(true);
     $('[js-hamburger]').removeClass('is-active');
     $('[js-open-header-search]').removeClass('is-active');
     $('.header').removeClass('is-menu-opened');
@@ -311,9 +369,13 @@ $(document).ready(function(){
       form.find('[js-rangeslider]').each(function(i, slider){
         slider.noUiSlider.reset();
       })
+      $('[js-search-apply]').fadeOut();
     })
     .on('click', '[js-search-apply]', function(){
       $('[js-search-apply]').fadeOut();
+      loadCards();
+    })
+    .on('change', '[js-search-filter]', function(){
       loadCards();
     })
     .on('change', '[js-search-form]', function(){
