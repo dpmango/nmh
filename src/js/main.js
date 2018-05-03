@@ -1143,41 +1143,28 @@ $(document).ready(function(){
     /////////////////////
     // REGISTRATION FORM
     ////////////////////
-    // $(".js-registration-form").validate({
-    //   errorPlacement: validateErrorPlacement,
-    //   highlight: validateHighlight,
-    //   unhighlight: validateUnhighlight,
-    //   submitHandler: validateSubmitHandler,
-    //   rules: {
-    //     last_name: "required",
-    //     first_name: "required",
-    //     email: {
-    //       required: true,
-    //       email: true
-    //     },
-    //     password: {
-    //       required: true,
-    //       minlength: 6,
-    //     }
-    //     // phone: validatePhone
-    //   },
-    //   messages: {
-    //     last_name: "Заполните это поле",
-    //     first_name: "Заполните это поле",
-    //     email: {
-    //         required: "Заполните это поле",
-    //         email: "Email содержит неправильный формат"
-    //     },
-    //     password: {
-    //         required: "Заполните это поле",
-    //         email: "Пароль мимимум 6 символов"
-    //     },
-    //     // phone: {
-    //     //     required: "Заполните это поле",
-    //     //     minlength: "Введите корректный телефон"
-    //     // }
-    //   }
-    // });
+    $("[js-validate-cb]").validate({
+      errorPlacement: validateErrorPlacement,
+      highlight: validateHighlight,
+      unhighlight: validateUnhighlight,
+      submitHandler: validateSubmitHandler,
+      rules: {
+        name: "required",
+        email: {
+          required: true,
+          email: true
+        },
+        message: "required"
+      },
+      messages: {
+        name: "Заполните это поле",
+        email: {
+            required: "Заполните это поле",
+            email: "Email содержит неправильный формат"
+        },
+        message: "Заполните это поле",
+      }
+    });
 
     $("[js-validate-subscribe]").validate({
       errorPlacement: function(error, element) {

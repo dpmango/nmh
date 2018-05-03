@@ -133,11 +133,39 @@ block content
             .property__cta
               .property__scope-title связаться
               .property__cta-wrap
-                a(href="#").btn.btn-primary Связаться
+                a(href="#callback" js-popup).btn.btn-primary Связаться
                 
                 a(href="#" js-print).btn.btn-outline
                   i.icon.icon-print
+              
+              // callbackform
+              .popup.mfp-hide#callback
+                .container
+                  // callback
+                  .cb
+                    .cb__col
+                      .property__heading Контакты  
+                      .cb__content
+                        a.cb__phone(href="tel:8 (800) 700-84-72") 8 (800) 700-84-72
+                        .cb__btn-row
+                          a(href="#" target="_blank").btn.btn-outline facebook чат
+                          a(href="#" target="_blank").btn.btn-outline онлайн чат
                           
+                    .cb__col.cb__col--muted
+                      .property__heading Задайте вопрос
+                      .cb__content
+                        form(action="#" js-validate-cb).cb__form
+                          .cb__form-line
+                            .ui-group
+                              input(type="text" name="name" placeholder="имя")
+                            .ui-group
+                              input(type="email" name="email" placeholder="email")
+                          
+                          .ui-group
+                            textarea(type="text" name="message" placeholder="Ваш вопрос.." rows="4" data-min-rows="4")
+                          
+                          .cb__form-cta
+                            button(type="submit").btn.btn-primary Отправить
 
   // hot
   .hot
