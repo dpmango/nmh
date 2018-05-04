@@ -47,3 +47,15 @@ button
       background: $fontColor
       color: white
       box-shadow: none
+
+  &-iconed
+    min-width: 70px
+    .ico, .icon
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%,-50%)
+      transition: .25s $ease
+    &:hover
+      .icon
+        filter: brightness(0%) invert(1)

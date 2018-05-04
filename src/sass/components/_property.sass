@@ -66,8 +66,31 @@
 
 
   &__back
+    display: flex
+    width: auto
+    max-width: 160px
+    align-items: center
+    font-size: 14px
+    font-weight: 700
+    font-family: $noto
+    color: rgba($fontColor, .5)
+    .ico
+      font-size: 8px
+      margin-top: 2px
+      transition: .25s $ease
+    span
+      margin-left: 5px
+      transition: .25s $ease
+    &:hover
+      span
+        color: $fontColor
+      .ico
+        transform: translateX(-5px)
+
+
 
   &__name
+    margin-top: 15px
     position: relative
     z-index: 2
     display: flex
@@ -181,12 +204,39 @@
           right: 0
 
   &__tabs
-    margin-top: 10px
+    margin-top: 50px
 
   &__tab
     display: none
     &.is-active
       display: block
+
+  &__info
+    p
+      font-size: 16px
+      letter-spacing: 0.0027em
+      color: rgba($fontColor, .7)
+      line-height: 1.75
+      margin-bottom: 0
+    &-row
+      display: flex
+      flex-wrap: wrap
+    &-col
+      flex: 1 1 auto
+    &-el
+      flex: 0 0 auto
+      margin: 10px 50px 10px 0
+      &:last-child
+        margin-right: 0
+      span
+        display: inline-block
+        font-size: 16px
+        letter-spacing: 0.002em
+        &:first-child
+          font-weight: 700
+        &:last-child
+          color: rgba($fontColor, .7)
+          margin-left: 15px
 
   &__map
     height: 340px
@@ -236,3 +286,26 @@
       flex: 0 0 125px
       img
         width: 100%
+
+
++r($desktop)
+  .property
+    &__wrapper
+      display: block
+    &__content
+      max-width: 100%
+
+    &__sidebar
+      display: none
+
+    // &__sidebar
+    //   flex-basis: 275px
+    //   max-width: 275px
+    // &__scope
+    //   &-col
+    //     flex-basis: 100%
+    //     max-width: 100%
+    // &__cta
+    //   &-wrap
+    //     .btn-primary
+    //       margin-right: 15px

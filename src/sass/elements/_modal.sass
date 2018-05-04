@@ -17,6 +17,25 @@ html.mfp-helper
 .popup
   margin: 40px auto
   position: relative
+  max-width: 1250px
+  width: 100%
+  padding-left: 40px
+  padding-right: 40px
+  +r($mobile)
+    padding-left: 15px
+    padding-right: 15px
+  .mfp-close
+    right: 45px
+    line-height: 1
+    top: 10px
+    size: auto
+    padding: 10px
+    color: $fontColor
+    font-size: 20px
+    transition: .25s $ease
+    &:hover
+      color: $colorPrimary
+      transform: scale(1.2)
 
 
 .cb
@@ -59,8 +78,6 @@ html.mfp-helper
       &:last-child
         margin-right: 0
 
-
-
   &__form
     .ui-group
       margin-bottom: 20px
@@ -79,6 +96,13 @@ html.mfp-helper
 
     &-cta
       text-align: right
+
+  &__form-thanks
+    display: none
+    font-size: 16px
+    color: rgba($fontColor, .7)
+    letter-spacing: 0.009em
+    line-height: 1.75
 
 // Fade-zoom animation for first dialog
 

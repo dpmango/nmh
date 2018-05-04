@@ -39,6 +39,7 @@ $(document).ready(function(){
     initRangeSlider();
     initAutocompleate();
     initSticky();
+    initTeleport();
     initValidations();
     initMaps();
 
@@ -630,6 +631,7 @@ $(document).ready(function(){
       midClick: true,
       removalDelay: 300,
       mainClass: 'popup-buble',
+      closeMarkup: '<button title="%title%" type="button" class="mfp-close"><svg class="ico ico-close"><use xlink:href="img/sprite.svg#ico-close"></use></svg></button>',
       callbacks: {
         beforeOpen: function() {
           startWindowScroll = _window.scrollTop();
@@ -683,10 +685,52 @@ $(document).ready(function(){
   	});
   }
 
+  _document.on('click', '.mfp-close', closeMfp);
+
   function closeMfp(){
     $.magnificPopup.close();
   }
 
+
+  ////////////
+  // TELEPORT PLUGIN
+  ////////////
+  function initTeleport(){
+    $('[js-teleport]').each(function (i, val) {
+      var self = $(val)
+      var objHtml = $(val).html();
+      var target = $('[data-teleport-target=' + $(val).data('teleport-to') + ']');
+      var conditionMedia = $(val).data('teleport-condition').substring(1);
+      var conditionPosition = $(val).data('teleport-condition').substring(0, 1);
+
+      if (target && objHtml && conditionPosition) {
+
+        function teleport() {
+          var condition;
+
+          if (conditionPosition === "<") {
+            condition = _window.width() < conditionMedia;
+          } else if (conditionPosition === ">") {
+            condition = _window.width() > conditionMedia;
+          }
+
+          if (condition) {
+            target.html(objHtml)
+            self.html('')
+          } else {
+            self.html(objHtml)
+            target.html("")
+          }
+        }
+
+        teleport();
+        _window.on('resize', debounce(teleport, 100));
+
+
+      }
+    })
+  }
+  
   ////////////
   // SCROLLBAR
   ////////////
@@ -1104,23 +1148,6 @@ $(document).ready(function(){
     var validateUnhighlight = function(element) {
       $(element).removeClass("has-error");
     }
-    var validateSubmitHandler = function(form) {
-      $(form).addClass('loading');
-      $.ajax({
-        type: "POST",
-        url: $(form).attr('action'),
-        data: $(form).serialize(),
-        success: function(response) {
-          $(form).removeClass('loading');
-          var data = $.parseJSON(response);
-          if (data.status == 'success') {
-            // do something I can't test
-          } else {
-              $(form).find('[data-error]').html(data.message).show();
-          }
-        }
-      });
-    }
 
     var validatePhone = {
       required: true,
@@ -1147,7 +1174,27 @@ $(document).ready(function(){
       errorPlacement: validateErrorPlacement,
       highlight: validateHighlight,
       unhighlight: validateUnhighlight,
-      submitHandler: validateSubmitHandler,
+      submitHandler: function(form) {
+        $(form).addClass('loading');
+        $.ajax({
+          type: "POST",
+          url: $(form).attr('action'),
+          data: $(form).serialize(),
+          success: function(response) {
+            $(form).removeClass('loading');
+            var data = $.parseJSON(response);
+            if (data.status == 'success') {
+              // do something I can't test
+            } else {
+                $(form).find('[data-error]').html(data.message).show();
+            }
+          }
+        });
+
+        $(form).hide();
+        $(form).parent().find('.cb__form-thanks').fadeIn();
+
+      },
       rules: {
         name: "required",
         email: {

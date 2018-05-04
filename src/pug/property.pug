@@ -9,7 +9,7 @@ block content
   .property
     .container
       .property__head
-        .property__back 
+        a(href="search.html").property__back 
           +icon('ico-arrow-left')
           span назад к поиску
         .property__name
@@ -72,6 +72,7 @@ block content
                 .gallery__thumbs-slide
                   img(src='img/galleryThumb_5.jpg' srcset='img/galleryThumb_5@2x.jpg 2x')
 
+          div(data-teleport-target="property-sidebar")
           
           // section
           .property__section
@@ -84,7 +85,55 @@ block content
             
             .property__tabs
               .property__tab(data-tab="plan_1").is-active
-          
+                .property__info
+                  .property__info-row
+                    .property__info-el
+                      span Ремонт:
+                      span под ключ	
+                    .property__info-el
+                      span Тип дома:
+                      span кирпичный
+                  p Дом в стиле шале с ремонтом «под ключ» 360 кв. м на ухоженном участке 8 соток. Поселок расположен в 15 км от МКАД по Калужскому шоссе, в непосредственной близости от городской инфраструктуры Южного Бутово. В гостиной и холле большие панорамные окна. Особенного внимания заслуживает грамотная планировка. В доме 5 комнат, 3 с/у, крытый гараж на 2 автомобиля. Функциональный цокольный этаж.
+              // tab
+              .property__tab(data-tab="plan_2")
+                .property__info
+    
+                  .property__info-el
+                    span Этаж:
+                    span да
+                  .property__info-el
+                    span Этаж:
+                    span центральное
+                  .property__info-el
+                    span Этаж 2:
+                    span центральная
+                  .property__info-el
+                    span Этаж 2:
+                    span да
+              // tab
+              .property__tab(data-tab="plan_3")
+                .property__info
+    
+                  .property__info-el
+                    span Электричество:
+                    span да
+                  .property__info-el
+                    span Водоснабжение:
+                    span центральное
+                  .property__info-el
+                    span Канализация:
+                    span центральная
+                  .property__info-el
+                    span Газ:
+                    span да
+              // tab
+              .property__tab(data-tab="plan_4")
+                .property__info
+                  .property__info-el
+                    span Статус:
+                    span ИЖС
+                  p К дому по проекту пристроен гараж на 2 автомобиля, пристройка для персонала или банный комплекс с бассейном 25 м на участке. Сам участок огражден по периметру, установлены автоматические ворота, засеян травой. К дому по проекту пристроен гараж на 2 автомобиля, пристройка для персонала или банный комплекс с бассейном 25 м на участке. К дому по проекту пристроен гараж на 2 автомобиля.
+  
           // section
           .property__section
             h3.property__heading Планировки
@@ -106,10 +155,33 @@ block content
             h3.property__heading Расположение  
             .property__map
               #property-map
-                        
+            
+            .property__info-row
+              .property__info-col
+                .property__info-el
+                  span Регион:
+                  span Москва
+                .property__info-el
+                  span Округ:
+                  span Троицкий АО
+              .property__info-col  
+                .property__info-el
+                  span Поселение:
+                  span Десеновское
+                .property__info-el
+                  span Населенный пункт:
+                  span Ватутники
+              .property__info-col
+                .property__info-el
+                  span Шоссе:
+                  span Калужское
+                .property__info-el
+                  span КМ от МКАД:
+                  span 20
+                  
         // sidebar
         .property__sidebar
-          .property__sidebar-wrap(js-sticky)
+          .property__sidebar-wrap(js-sticky js-teleport data-teleport-to="property-sidebar" data-teleport-condition="<992")
             .property__main-scope
               .property__scope-title № 3486
               .property__price 25 000 000 ₽
@@ -135,39 +207,40 @@ block content
               .property__cta-wrap
                 a(href="#callback" js-popup).btn.btn-primary Связаться
                 
-                a(href="#" js-print).btn.btn-outline
+                a(href="#" js-print).btn.btn-outline.btn-iconed
                   i.icon.icon-print
               
               // callbackform
               .popup.mfp-hide#callback
-                .container
-                  // callback
-                  .cb
-                    .cb__col
-                      .property__heading Контакты  
-                      .cb__content
-                        a.cb__phone(href="tel:8 (800) 700-84-72") 8 (800) 700-84-72
-                        .cb__btn-row
-                          a(href="#" target="_blank").btn.btn-outline facebook чат
-                          a(href="#" target="_blank").btn.btn-outline онлайн чат
-                          
-                    .cb__col.cb__col--muted
-                      .property__heading Задайте вопрос
-                      .cb__content
-                        form(action="#" js-validate-cb).cb__form
-                          .cb__form-line
-                            .ui-group
-                              input(type="text" name="name" placeholder="имя")
-                            .ui-group
-                              input(type="email" name="email" placeholder="email")
-                          
+                // callback
+                .cb
+                  .cb__col
+                    .property__heading Контакты  
+                    .cb__content
+                      a.cb__phone(href="tel:8 (800) 700-84-72") 8 (800) 700-84-72
+                      .cb__btn-row
+                        a(href="#" target="_blank").btn.btn-outline facebook чат
+                        a(href="#" target="_blank").btn.btn-outline онлайн чат
+                        
+                  .cb__col.cb__col--muted
+                    .property__heading Задайте вопрос
+                    .cb__content
+                      form(action="#" js-validate-cb).cb__form
+                        .cb__form-line
                           .ui-group
-                            textarea(type="text" name="message" placeholder="Ваш вопрос.." rows="4" data-min-rows="4")
-                          
-                          .cb__form-cta
-                            button(type="submit").btn.btn-primary Отправить
+                            input(type="text" name="name" placeholder="имя")
+                          .ui-group
+                            input(type="email" name="email" placeholder="email")
+                        
+                        .ui-group
+                          textarea(type="text" name="message" placeholder="Ваш вопрос.." rows="4" data-min-rows="4")
+                        
+                        .cb__form-cta
+                          button(type="submit").btn.btn-primary Отправить
 
-  // hot
+                      .cb__form-thanks
+                        p(data-sucess) Спасибо! Мы ответим в течение нескольких часов.
+  // hot              
   .hot
     .container
       h3.property__heading Похожие предложения  
