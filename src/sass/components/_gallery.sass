@@ -1,0 +1,81 @@
+
+/* Gallery
+.gallery
+  &__main
+    margin-bottom: 5px
+    &-next, &-prev
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      font-size: 45px
+      z-index: 3
+      cursor: pointer
+      color: white
+      svg
+        filter: drop-shadow( 0 5px 5px rgba(177,177,177,0.50))
+        transition: filter .25s $ease
+      &:hover
+        svg
+          filter: drop-shadow( 0 4px 8px rgba(177,177,177,0.90))
+    &-next
+      right: 35px
+    &-prev
+      left: 35px
+
+    &-slide
+      position: relative
+      flex: 0 0 auto
+      max-width: 100%
+      font-size: 0
+      img
+        width: 100%
+
+    &-video
+      position: absolute
+      z-index: 2
+      bottom: 35px
+      right: 35px
+
+  &__thumbs
+    &-next, &-prev
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      font-size: 38px
+      z-index: 3
+      cursor: pointer
+      color: white
+    &-next
+      right: 20px
+    &-prev
+      left: 20px
+
+    &-slide
+      position: relative
+      overflow: hidden
+      flex: 0 0 125px
+      font-size: 0
+      img
+        width: 100%
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute
+        z-index: 1
+        bottom: 0
+        left: 0
+        right: 0
+        height: 5px
+        background: $colorPrimary
+        opacity: 0
+        transform: translate(0,3px)
+        transition: .25s $ease
+      &.swiper-slide-active
+        &::after
+          opacity: 1
+          transform: translate(0,0)
+
+
++r($mobile)
+  .gallery__thumbs
+    display: none

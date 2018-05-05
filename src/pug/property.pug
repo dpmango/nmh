@@ -1,6 +1,5 @@
 ---
 title: Property
-pageClass: gray-bg
 ---
 extends shared/_layout
 block content
@@ -18,49 +17,9 @@ block content
             .property__share-toggle(js-open-share)
               i.icon.icon-share
             .property__share-drop
-              // facebook
-              #fb-root
-              script.
-                (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12';
-                fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-              .share-facebook
-                .fb-share-button(data-href='http://nmh.surge.sh/blog-post.html', data-layout='button_count', data-size='small', data-mobile-iframe='true')
-
-              // vk
-              .share-vk
-                script(type='text/javascript', src='https://vk.com/js/api/share.js?95', charset='windows-1251')
-                script(type='text/javascript').
-                  <!--
-                  document.write(VK.Share.button(false,{type: "round_nocount", text: "Поделиться"}));
-                  -->
-                  
-              // twitter
-              script.
-                window.twttr = (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0],
-                t = window.twttr || {};
-                if (d.getElementById(id)) return t;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "https://platform.twitter.com/widgets.js";
-                fjs.parentNode.insertBefore(js, fjs);
-                t._e = [];
-                t.ready = function(f) {
-                t._e.push(f);
-                };
-                return t;
-                }(document, "script", "twitter-wjs"));
-
-              .share-twitter
-                a.twitter-share-button(href='https://twitter.com/intent/tweet?text=Hello%20world')
-                  | Tweet
-
-              
+              include components/_socials-prop
+        
+        
         .property__addres Москва, 20 км от МКАД, Калужское шоссе, пос. Десеновское, п. Ватутинки
         
       .property__wrapper
@@ -115,8 +74,19 @@ block content
                 .gallery__thumbs-slide
                   img(src='img/galleryThumb_5.jpg' srcset='img/galleryThumb_5@2x.jpg 2x')
 
-          div(data-teleport-target="property-sidebar")
           
+          // cloned and positioned abs
+          // facebook iframe bug
+          .property__sidebar-mobile
+            span.property__share.property__share--mobile
+              .property__share-toggle(js-open-share)
+                i.icon.icon-share
+              .property__share-drop
+                include components/_socials-prop
+              
+            // sidebar contents to be copied here  
+            div(data-teleport-target="property-sidebar")
+
           // section
           .property__section
             h3.property__heading Об объекте
@@ -128,6 +98,11 @@ block content
             
             .property__tabs
               .property__tab(data-tab="plan_1").is-active
+                .property__tab-mobile
+                  span Краткое описание
+                  +icon('ico-arrow-right')
+                
+                // as a dropdown on mobile
                 .property__info
                   .property__info-row
                     .property__info-el
@@ -139,8 +114,11 @@ block content
                   p Дом в стиле шале с ремонтом «под ключ» 360 кв. м на ухоженном участке 8 соток. Поселок расположен в 15 км от МКАД по Калужскому шоссе, в непосредственной близости от городской инфраструктуры Южного Бутово. В гостиной и холле большие панорамные окна. Особенного внимания заслуживает грамотная планировка. В доме 5 комнат, 3 с/у, крытый гараж на 2 автомобиля. Функциональный цокольный этаж.
               // tab
               .property__tab(data-tab="plan_2")
+                .property__tab-mobile
+                  span Поэтажное описание
+                  +icon('ico-arrow-right')
+                  
                 .property__info
-    
                   .property__info-el
                     span Этаж:
                     span да
@@ -155,8 +133,11 @@ block content
                     span да
               // tab
               .property__tab(data-tab="plan_3")
+                .property__tab-mobile
+                  span Коммуникации
+                  +icon('ico-arrow-right')
+                
                 .property__info
-    
                   .property__info-el
                     span Электричество:
                     span да
@@ -171,6 +152,10 @@ block content
                     span да
               // tab
               .property__tab(data-tab="plan_4")
+                .property__tab-mobile
+                  span Участок
+                  +icon('ico-arrow-right')
+                  
                 .property__info
                   .property__info-el
                     span Статус:
@@ -186,48 +171,72 @@ block content
               li(js-tab data-target="floor_3") Третьий этаж
             
             .property__tabs
-              .property__tab(data-tab="floor_1").is-active
-                img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+              .property__tab(data-tab="floor_1" js-remove-active-mobile).is-active
+                .property__tab-mobile
+                  span Первый этаж
+                  +icon('ico-arrow-right')
+                .property__info
+                  img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
               .property__tab(data-tab="floor_2")
-                img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+                .property__tab-mobile
+                  span Второй этаж
+                  +icon('ico-arrow-right')
+                .property__info
+                  img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
               .property__tab(data-tab="floor_3")
-                img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+                .property__tab-mobile
+                  span Третьий этаж
+                  +icon('ico-arrow-right')
+                .property__info
+                  img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
                               
           // section
           .property__section
-            h3.property__heading Расположение  
-            .property__map
-              #property-map
-            
-            .property__info-row
-              .property__info-col
-                .property__info-el
-                  span Регион:
-                  span Москва
-                .property__info-el
-                  span Округ:
-                  span Троицкий АО
-              .property__info-col  
-                .property__info-el
-                  span Поселение:
-                  span Десеновское
-                .property__info-el
-                  span Населенный пункт:
-                  span Ватутники
-              .property__info-col
-                .property__info-el
-                  span Шоссе:
-                  span Калужское
-                .property__info-el
-                  span КМ от МКАД:
-                  span 20
+            h3.property__heading Расположение 
+            .property__tab(data-tab="property_map").is-active
+              .property__tab-mobile
+                span Расположение
+                +icon('ico-arrow-right')
+                
+              .property__info
+                .property__map
+                  #property-map
+                
+                .property__info-row
+                  .property__info-col
+                    .property__info-el
+                      span Регион:
+                      span Москва
+                    .property__info-el
+                      span Округ:
+                      span Троицкий АО
+                  .property__info-col  
+                    .property__info-el
+                      span Поселение:
+                      span Десеновское
+                    .property__info-el
+                      span Населенный пункт:
+                      span Ватутники
+                  .property__info-col
+                    .property__info-el
+                      span Шоссе:
+                      span Калужское
+                    .property__info-el
+                      span КМ от МКАД:
+                      span 20
                   
         // sidebar
         .property__sidebar
-          .property__sidebar-wrap(js-sticky js-teleport data-teleport-to="property-sidebar" data-teleport-condition="<992")
+          .property__sidebar-wrap(js-2sticky js-teleport data-teleport-to="property-sidebar" data-teleport-condition="<992")
             .property__main-scope
               .property__scope-title № 3486
               .property__price 25 000 000 ₽
+      
+              .property__name
+                h1 Дом в стиле шале в д. Каракашево
+
+              .property__addres Москва, 20 км от МКАД, Калужское шоссе, пос. Десеновское, п. Ватутинки
+              
             .property__scope
               .property__scope-col
                 .property__scope-title площадь
@@ -283,6 +292,10 @@ block content
 
                       .cb__form-thanks
                         p(data-sucess) Спасибо! Мы ответим в течение нескольких часов.
+    
+    .property__mobile-cta
+      a(href="tel:78007008472").btn.btn-primary Позвонить
+  
   // hot              
   .hot
     .container

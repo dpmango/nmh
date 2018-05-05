@@ -47,6 +47,9 @@ $(document).ready(function(){
     _window.on('resize', debounce(positionScrollTop, 250));
     _window.on('scroll', throttle(showScrollTop, 50));
 
+    controlTabsMobileClass();
+    _window.on('resize', debounce(controlTabsMobileClass, 250));
+
     // development helper
     _window.on('resize', debounce(setBreakpoint, 200))
   }
@@ -349,6 +352,9 @@ $(document).ready(function(){
       triggerBody(false);
     }
   })
+  .on('click', '.property__tab-mobile', function(e){
+    $(this).parent().toggleClass('is-active');
+  })
 
   function benefitsTabFix(){
     $('.benefits__tab').each(function(i, tab){
@@ -357,6 +363,26 @@ $(document).ready(function(){
       }
     })
   }
+
+  function controlTabsMobileClass(){
+    $('[js-remove-active-mobile]').each(function(i, el){
+      var $el = $(el);
+
+      if ( _window.width() < bp.mobile ){
+        $el.removeClass('is-active');
+      } else{
+        var dataTab = $el.data('tab');
+        var targetToggler = $('[data-target="'+dataTab+'"]');
+
+        if ( targetToggler.is('.is-active') ){
+          $el.siblings().removeClass('is-active');
+          $el.addClass('is-active');
+          // targetToggler.click();
+        }
+      }
+    })
+  }
+
 
   //////////
   // SEARCH PAGE
@@ -589,10 +615,6 @@ $(document).ready(function(){
         prevEl: '.gallery__main-prev',
       },
     })
-    // gallerySwiper.on('slideChange', function () {
-    //   var index = gallerySwiper.realIndex
-    //   thumbsSwiper.slideTo(index)
-    // });
 
     var thumbsSwiper = new Swiper('[js-gallery-thumbs]', {
       wrapperClass: "swiper-wrapper",
@@ -614,10 +636,6 @@ $(document).ready(function(){
         prevEl: '.gallery__thumbs-prev',
       },
     })
-    // thumbsSwiper.on('slideChange', function () {
-    //   // var index = thumbsSwiper.realIndex
-    //   // gallerySwiper.slideTo(index)
-    // });
 
     gallerySwiper.controller.control = thumbsSwiper;
     thumbsSwiper.controller.control = gallerySwiper;
