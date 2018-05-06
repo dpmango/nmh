@@ -770,6 +770,26 @@ $(document).ready(function(){
             wheelPropagation: true,
             minScrollbarLength: 20
           });
+
+          setTimeout(function(){
+            $(scrollbar).find('[js-rangeslider]').each(function(i, range){
+              range.noUiSlider.on('start', function( values, handle, unencoded, tap, positions ) {
+                ps.destroy();
+              })
+              range.noUiSlider.on('change', function( values, handle, unencoded, tap, positions ) {
+                ps = new PerfectScrollbar(scrollbar, {
+                  suppressScrollX: xAvail,
+                  suppressScrollY: yAvail,
+                  wheelPropagation: true,
+                  minScrollbarLength: 20
+                });
+              })
+            })
+          }, 200)
+
+
+
+
         }
       })
     }
@@ -1161,7 +1181,9 @@ $(document).ready(function(){
   }
 
   function initMaps(){
-    ymaps.ready(init);
+    if ( $("#property-map").length > 0 ){
+      ymaps.ready(init);
+    }
     var myMap,
         myPlacemark;
 
