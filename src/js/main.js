@@ -637,8 +637,11 @@ $(document).ready(function(){
       },
     })
 
-    gallerySwiper.controller.control = thumbsSwiper;
-    thumbsSwiper.controller.control = gallerySwiper;
+    if ( $('[js-gallery-main]').length > 0 ){
+      gallerySwiper.controller.control = thumbsSwiper;
+      thumbsSwiper.controller.control = gallerySwiper;
+
+    }
 
   }
 

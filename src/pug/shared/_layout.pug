@@ -11,11 +11,13 @@ html(lang="en")
       .page
         block header
           include ../components/_header-default
+        include ../components/_print-header
         .page__content(class=pageClass)
           block content
 
         block footer
           include ../components/_footer
-          
+        include ../components/_print-footer
+        
       block scripts
         include _scripts
