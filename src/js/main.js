@@ -43,6 +43,8 @@ $(document).ready(function(){
     initValidations();
     initMaps();
 
+    hookPrint();
+
     positionScrollTop();
     _window.on('resize', debounce(positionScrollTop, 250));
     _window.on('scroll', throttle(showScrollTop, 50));
@@ -145,10 +147,8 @@ $(document).ready(function(){
 
   function blockScroll(unlock) {
     if ($('[js-hamburger]').is('.is-active') || $('.m-search.is-active').length > 0 ) {
-      console.log('disabling')
       disableScroll();
     } else {
-      console.log('enabling')
       enableScroll();
     }
 
@@ -199,7 +199,7 @@ $(document).ready(function(){
       var header = $('.header').not('.header--static');
       var headerHeight = header.height();
       var firstSection = 0
-      if ( !_document.find('.page__content').is('.gray-bg') ){
+      if ( _document.find('.hero').length > 0 ){
         firstSection = _document.find('.page__content div:first-child()').height() - headerHeight;
       }
       if ( vScroll > headerHeight ){
@@ -594,7 +594,6 @@ $(document).ready(function(){
 
 
     var numberOfSlides = $('.gallery__main .gallery__main-slide').length;
-    console.log(numberOfSlides);
 
     var gallerySwiper = new Swiper('[js-gallery-main]', {
       wrapperClass: "swiper-wrapper",
@@ -652,28 +651,35 @@ $(document).ready(function(){
   function initPopups(){
     // Magnific Popup
     var startWindowScroll = 0;
-    $('[js-popup]').magnificPopup({
-      type: 'inline',
-      fixedContentPos: true,
-      fixedBgPos: true,
-      overflowY: 'auto',
-      closeBtnInside: true,
-      preloader: false,
-      midClick: true,
-      removalDelay: 300,
-      mainClass: 'popup-buble',
-      closeMarkup: '<button title="%title%" type="button" class="mfp-close"><svg class="ico ico-close"><use xlink:href="img/sprite.svg#ico-close"></use></svg></button>',
-      callbacks: {
-        beforeOpen: function() {
-          startWindowScroll = _window.scrollTop();
-          // $('html').addClass('mfp-helper');
+    _document.on('click', '[js-popup]', function(e){
+      var target = $(e.target).attr('href')
+      $.magnificPopup.open({
+        items: {
+          src: target
         },
-        close: function() {
-          // $('html').removeClass('mfp-helper');
-          _window.scrollTop(startWindowScroll);
+        type: 'inline',
+        fixedContentPos: true,
+        fixedBgPos: true,
+        overflowY: 'auto',
+        closeBtnInside: true,
+        preloader: false,
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'popup-buble',
+        closeMarkup: '<button title="%title%" type="button" class="mfp-close"><svg class="ico ico-close"><use xlink:href="img/sprite.svg#ico-close"></use></svg></button>',
+        callbacks: {
+          beforeOpen: function() {
+            startWindowScroll = _window.scrollTop();
+            // $('html').addClass('mfp-helper');
+          },
+          close: function() {
+            // $('html').removeClass('mfp-helper');
+            _window.scrollTop(startWindowScroll);
+          }
         }
-      }
-    });
+      });
+    })
+
 
     $('[js-popupVideo]').magnificPopup({
       type: 'iframe',
@@ -700,20 +706,6 @@ $(document).ready(function(){
       e.stopPropagation();
     })
 
-    $('[js-popup-gallery]').magnificPopup({
-  		delegate: 'a',
-  		type: 'image',
-  		tLoading: 'Загрузка #%curr%...',
-  		mainClass: 'popup-buble',
-  		gallery: {
-  			enabled: true,
-  			navigateByImgClick: true,
-  			preload: [0,1]
-  		},
-  		image: {
-  			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-  		}
-  	});
   }
 
   _document.on('click', '.mfp-close', closeMfp);
@@ -966,6 +958,36 @@ $(document).ready(function(){
         }
       })
 
+  }
+
+  function hookPrint(){
+    var beforePrint = function() {
+
+      initScrollMonitor();
+      initSticky();
+      initTeleport();
+
+      positionScrollTop();
+      controlTabsMobileClass();
+     };
+
+     var afterPrint = function() {
+
+     };
+
+     if (window.matchMedia) {
+       var mediaQueryList = window.matchMedia('print');
+       mediaQueryList.addListener(function(mql) {
+         if (mql.matches) {
+          beforePrint();
+         } else {
+          afterPrint();
+         }
+       });
+     }
+
+     window.onbeforeprint = beforePrint;
+     window.onafterprint = afterPrint;
   }
 
 

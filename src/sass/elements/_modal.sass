@@ -104,6 +104,24 @@ html.mfp-helper
     letter-spacing: 0.009em
     line-height: 1.75
 
++r($desktop)
+  .cb
+    display: block
+    &__col
+      max-width: 100%
+      padding: 30px 40px 50px
+      &--muted
+        border-left: 0
+
++r($mobile)
+  .cb
+    &__form
+
+      &-line
+        display: block
+        .ui-group
+          max-width: 100%
+
 // Fade-zoom animation for first dialog
 
 .popup-buble
