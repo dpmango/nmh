@@ -184,27 +184,30 @@ block content
                   span Планировки
                   +icon('ico-arrow-right')
                 .property__info
-                  .property__plan-slider.swiper-container(js-slider-plan)
-                    .swiper-wrapper
-                      .swiper-slide
-                        .property__plan-wrap
-                          img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
-                          span первый этаж
-                        .property__plan-wrap
-                          img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
-                          span второй этаж
-                      .swiper-slide
-                        .property__plan-wrap
-                          img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
-                          span третьий этаж
-                        .property__plan-wrap
-                          img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
-                          span четвертый этаж
-                                
+                  .property__plan-container
                     .property__plan-next
                       +icon('ico-arrow-right')
                     .property__plan-prev
                       +icon('ico-arrow-left')
+                    .property__plan-slider.swiper-container(js-slider-plan)
+                      .swiper-wrapper
+                        .swiper-slide
+                          .property__plan-wrap
+                            img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+                            span первый этаж
+                        .swiper-slide
+                          .property__plan-wrap
+                            img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+                            span второй этаж
+                        .swiper-slide
+                          .property__plan-wrap
+                            img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+                            span третьий этаж
+                        .swiper-slide
+                          .property__plan-wrap
+                            img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+                            span четвертый этаж
+                                
                     
           // section
           .property__section

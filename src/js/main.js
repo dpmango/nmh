@@ -124,25 +124,35 @@ $(document).ready(function(){
       return false;
     }
   }
+  var lastScroll = 0;
 
   function disableScroll() {
-    var target = $('.page').get(0)
-    if (window.addEventListener) // older FF
-      target.addEventListener('DOMMouseScroll', preventDefault, false);
-    target.onwheel = preventDefault; // modern standard
-    target.onmousewheel = target.onmousewheel = preventDefault; // older browsers, IE
-    target.ontouchmove = preventDefault; // mobile
-    target.onkeydown = preventDefaultForScrollKeys;
+    lastScroll = _window.scrollTop()
+    $('.page__content').css({
+      'margin-top': '-' + lastScroll + 'px'
+    });
+    $('body').addClass('body-lock');
+    // var target = $('.page').get(0)
+    // if (window.addEventListener) // older FF
+    //   target.addEventListener('DOMMouseScroll', preventDefault, false);
+    // target.onwheel = preventDefault; // modern standard
+    // target.onmousewheel = target.onmousewheel = preventDefault; // older browsers, IE
+    // target.ontouchmove = preventDefault; // mobile
+    // target.onkeydown = preventDefaultForScrollKeys;
   }
 
   function enableScroll() {
-    var target = $('.page').get(0)
-    if (window.removeEventListener)
-      target.removeEventListener('DOMMouseScroll', preventDefault, false);
-    target.onmousewheel = target.onmousewheel = null;
-    target.onwheel = null;
-    target.ontouchmove = null;
-    target.onkeydown = null;
+    $('.page__content').attr('style', '');
+    $('body').removeClass('body-lock');
+    _window.scrollTop(lastScroll)
+    lastScroll = 0;
+    // var target = $('.page').get(0)
+    // if (window.removeEventListener)
+    //   target.removeEventListener('DOMMouseScroll', preventDefault, false);
+    // target.onmousewheel = target.onmousewheel = null;
+    // target.onwheel = null;
+    // target.ontouchmove = null;
+    // target.onkeydown = null;
   }
 
   function blockScroll(unlock) {
@@ -651,7 +661,7 @@ $(document).ready(function(){
       watchOverflow: true,
       setWrapperSize: false,
       spaceBetween: 0,
-      slidesPerView: 1,
+      slidesPerView: 2,
       normalizeSlideIndex: true,
       grabCursor: true,
       freeMode: false,
@@ -659,6 +669,12 @@ $(document).ready(function(){
         nextEl: '.property__plan-next',
         prevEl: '.property__plan-prev',
       },
+      breakpoints: {
+        // when window width is <= 320px
+        680: {
+         slidesPerView: 1
+        }
+      }
     })
 
   }
@@ -805,24 +821,21 @@ $(document).ready(function(){
             minScrollbarLength: 20
           });
 
-          setTimeout(function(){
-            $(scrollbar).find('[js-rangeslider]').each(function(i, range){
-              range.noUiSlider.on('start', function( values, handle, unencoded, tap, positions ) {
-                ps.destroy();
-              })
-              range.noUiSlider.on('change', function( values, handle, unencoded, tap, positions ) {
-                ps = new PerfectScrollbar(scrollbar, {
-                  suppressScrollX: xAvail,
-                  suppressScrollY: yAvail,
-                  wheelPropagation: true,
-                  minScrollbarLength: 20
-                });
-              })
-            })
-          }, 200)
-
-
-
+          // setTimeout(function(){
+          //   $(scrollbar).find('[js-rangeslider]').each(function(i, range){
+          //     range.noUiSlider.on('start', function( values, handle, unencoded, tap, positions ) {
+          //       ps.destroy();
+          //     })
+          //     range.noUiSlider.on('change', function( values, handle, unencoded, tap, positions ) {
+          //       ps = new PerfectScrollbar(scrollbar, {
+          //         suppressScrollX: xAvail,
+          //         suppressScrollY: yAvail,
+          //         wheelPropagation: true,
+          //         minScrollbarLength: 20
+          //       });
+          //     })
+          //   })
+          // }, 200)
 
         }
       })

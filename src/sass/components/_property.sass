@@ -301,15 +301,18 @@
           margin-left: 5px
 
   &__plan
-    &-slider
+    &-container
+      position: relative
       max-width: 690px
+      padding-left: 55px
+      padding-right: 55px
+    &-slider
+      // max-width: 690px
       margin-left: 0
       // margin-top: -15px
       margin-bottom: 30px
       .swiper-slide
         display: flex
-        padding-left: 55px
-        padding-right: 55px
     &-next, &-prev
       position: absolute
       top: 50%
@@ -319,6 +322,9 @@
       cursor: pointer
       color: $fontColor
       transition: .25s $ease
+      &.swiper-button-disabled
+        color: rgba($fontColor, .3)
+        pointer-events: none
       &:hover
         color: $colorPrimary
     &-next
@@ -332,6 +338,7 @@
       padding-right: 30px
       img
         max-width: 100%
+        width: 100%
         display: block
 
       span
@@ -476,14 +483,16 @@
       background: #F6F6F6
 
     &__plan
-
+      &-container
+        padding-left: 25px
+        padding-right: 25px
       &-slider
         margin-bottom: 0
         .swiper-slide
           flex-direction: column
           align-items: center
-          padding-left: 25px
-          padding-right: 25px
+          // padding-left: 25px
+          // padding-right: 25px
       &-wrap
         flex: 0 0 auto
         display: block
