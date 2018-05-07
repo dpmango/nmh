@@ -642,6 +642,25 @@ $(document).ready(function(){
 
     }
 
+
+    new Swiper('[js-slider-plan]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'horizontal',
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 0,
+      slidesPerView: 1,
+      normalizeSlideIndex: true,
+      grabCursor: true,
+      freeMode: false,
+      navigation: {
+        nextEl: '.property__plan-next',
+        prevEl: '.property__plan-prev',
+      },
+    })
+
   }
 
   //////////
@@ -705,6 +724,21 @@ $(document).ready(function(){
       e.preventDefault();
       e.stopPropagation();
     })
+
+    $('[js-popup-gallery]').magnificPopup({
+  		delegate: '.gallery__main-slide:not(.swiper-slide-duplicate) a',
+  		type: 'image',
+  		tLoading: 'Загрузка #%curr%...',
+  		mainClass: 'popup-buble',
+  		gallery: {
+  			enabled: true,
+  			navigateByImgClick: true,
+  			preload: [0,1]
+  		},
+  		image: {
+  			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+  		}
+  	});
 
   }
 

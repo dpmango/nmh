@@ -28,23 +28,31 @@ block content
           // gallery
           .property__gallery.gallery
             .gallery__main.swiper-container(js-gallery-main)
-              .swiper-wrapper
+              .swiper-wrapper(js-popup-gallery)
                 .gallery__main-slide
-                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                  a(href="img/galleryMain@2x.jpg").no-barba
+                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
                 .gallery__main-slide
-                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                  a(href="img/galleryMain@2x.jpg").no-barba
+                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
                 .gallery__main-slide
-                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                  a(href="img/galleryMain@2x.jpg").no-barba
+                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
                 .gallery__main-slide
-                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                  a(href="img/galleryMain@2x.jpg").no-barba
+                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
                 .gallery__main-slide
-                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                  a(href="img/galleryMain@2x.jpg").no-barba
+                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
                 .gallery__main-slide
-                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                  a(href="img/galleryMain@2x.jpg").no-barba
+                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
                 .gallery__main-slide
-                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                  a(href="img/galleryMain@2x.jpg").no-barba
+                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
                 .gallery__main-slide
-                  img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                  a(href="img/galleryMain@2x.jpg").no-barba
+                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
               
               .gallery__main-video
                 a(href='https://www.youtube.com/watch?v=0TV4V1VNNTY' js-popupVideo).btn.btn-white Смотреть видео
@@ -165,31 +173,39 @@ block content
           // section
           .property__section
             h3.property__heading Планировки
-            .property__tab-nav
-              li(js-tab data-target="floor_1").is-active Первый этаж
-              li(js-tab data-target="floor_2") Второй этаж
-              li(js-tab data-target="floor_3") Третьий этаж
+            //- .property__tab-nav
+            //-   li(js-tab data-target="floor_1").is-active Первый этаж
+            //-   li(js-tab data-target="floor_2") Второй этаж
+            //-   li(js-tab data-target="floor_3") Третьий этаж
             
             .property__tabs
-              .property__tab(data-tab="floor_1" js-remove-active-mobile).is-active
+              .property__tab(data-tab="floor_1").is-active
                 .property__tab-mobile
-                  span Первый этаж
+                  span Планировки
                   +icon('ico-arrow-right')
                 .property__info
-                  img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
-              .property__tab(data-tab="floor_2")
-                .property__tab-mobile
-                  span Второй этаж
-                  +icon('ico-arrow-right')
-                .property__info
-                  img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
-              .property__tab(data-tab="floor_3")
-                .property__tab-mobile
-                  span Третьий этаж
-                  +icon('ico-arrow-right')
-                .property__info
-                  img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
-                              
+                  .property__plan-slider.swiper-container(js-slider-plan)
+                    .swiper-wrapper
+                      .swiper-slide
+                        .property__plan-wrap
+                          img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+                          span первый этаж
+                        .property__plan-wrap
+                          img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+                          span второй этаж
+                      .swiper-slide
+                        .property__plan-wrap
+                          img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+                          span третьий этаж
+                        .property__plan-wrap
+                          img(src='img/propertyFloor_1.png' srcset='img/propertyFloor_1@2x.png 2x')
+                          span четвертый этаж
+                                
+                    .property__plan-next
+                      +icon('ico-arrow-right')
+                    .property__plan-prev
+                      +icon('ico-arrow-left')
+                    
           // section
           .property__section
             h3.property__heading Расположение 

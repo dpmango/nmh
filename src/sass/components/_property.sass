@@ -46,7 +46,7 @@
     margin-bottom: 3px
     letter-spacing: 0.03em
   &__price
-    font-size: 30px
+    font-size: 24px
     font-weight: 700
     font-family: $noto
 
@@ -114,7 +114,7 @@
     align-items: baseline
 
     h1
-      font-size: 30px
+      font-size: 24px
       font-family: $noto
       font-weight: 700
       margin: 0
@@ -130,7 +130,7 @@
       display: none
       position: absolute
       right: 0px
-      top: 28px
+      top: 17px
       // margin-right: 40px
     &-toggle
       cursor: pointer
@@ -165,8 +165,8 @@
   &__addres
     margin-top: 10px
     color: rgba($fontColor, .5)
-    font-size: 18px
-    letter-spacing: 0.032em
+    font-size: 16px
+    letter-spacing: 0.001em
     line-height: 1.33
 
 
@@ -274,7 +274,7 @@
 
   &__info
     p
-      font-size: 16px
+      font-size: 14px
       letter-spacing: 0.027em
       color: rgba($fontColor, .7)
       line-height: 1.75
@@ -292,17 +292,61 @@
         margin-right: 0
       span
         display: inline-block
-        font-size: 16px
+        font-size: 14px
         letter-spacing: 0.02em
         &:first-child
           font-weight: 700
         &:last-child
           color: rgba($fontColor, .7)
-          margin-left: 15px
+          margin-left: 5px
+
+  &__plan
+    &-slider
+      max-width: 690px
+      margin-left: 0
+      // margin-top: -15px
+      margin-bottom: 30px
+      .swiper-slide
+        display: flex
+        padding-left: 55px
+        padding-right: 55px
+    &-next, &-prev
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      font-size: 18px
+      z-index: 3
+      cursor: pointer
+      color: $fontColor
+      transition: .25s $ease
+      &:hover
+        color: $colorPrimary
+    &-next
+      right: 0px
+    &-prev
+      left: 0px
+    &-wrap
+      flex: 0 1 auto
+      max-width: 100%
+      text-align: center
+      padding-right: 30px
+      img
+        max-width: 100%
+        display: block
+
+      span
+        margin-top: 8px
+        padding-left: 15px
+
+        color: rgba($fontColor, .5)
+        font-size: 12px
+        text-align: center
+        display: inline-block
+
 
   &__map
     height: 340px
-    margin: 30px 0
+    margin: 20px 0
     > div
       width: 100%
       height: 100%
@@ -350,7 +394,7 @@
 
     &__price
       display: flex
-      padding: 25px 0px
+      padding: 15px 0px
       align-items: center
       border-bottom: 1px solid $borderColor
 
@@ -405,6 +449,9 @@
         left: 50%
         transform: translateX(-50%)
 
+    &__scope
+      border-bottom: 1px solid $borderColor
+
     &__tab-nav
       display: none
 
@@ -427,6 +474,25 @@
       display: none
       padding: 20px
       background: #F6F6F6
+
+    &__plan
+
+      &-slider
+        margin-bottom: 0
+        .swiper-slide
+          flex-direction: column
+          align-items: center
+          padding-left: 25px
+          padding-right: 25px
+      &-wrap
+        flex: 0 0 auto
+        display: block
+        margin-bottom: 30px
+        padding-right: 0
+        &:last-child
+          margin-bottom: 0
+        span
+          padding-left: 0
 
     &__map
       margin-top: 0
