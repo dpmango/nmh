@@ -82,6 +82,20 @@ $(document).ready(function(){
     }
   }
 
+  function isIphoneX(){
+    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    var ratio = window.devicePixelRatio || 1;
+    var screen = {
+      width : window.screen.width * ratio,
+      height : window.screen.height * ratio
+    };
+
+    // iPhone X Detection
+    if (iOS && screen.width == 1125 && screen.height === 2436) {
+      $('body').addClass('is-iphone-x')
+    }
+  }
+
   function msieversion() {
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
@@ -381,14 +395,17 @@ $(document).ready(function(){
       if ( _window.width() < bp.mobile ){
         $el.removeClass('is-active');
       } else{
-        var dataTab = $el.data('tab');
-        var targetToggler = $('[data-target="'+dataTab+'"]');
+        $el.addClass('is-active');
 
-        if ( targetToggler.is('.is-active') ){
-          $el.siblings().removeClass('is-active');
-          $el.addClass('is-active');
-          // targetToggler.click();
-        }
+        // we have removed all the tabs there
+        // var dataTab = $el.data('tab');
+        // var targetToggler = $('[data-target="'+dataTab+'"]');
+        //
+        // if ( targetToggler.is('.is-active') ){
+        //   $el.siblings().removeClass('is-active');
+        //   $el.addClass('is-active');
+        //   // targetToggler.click();
+        // }
       }
     })
   }
