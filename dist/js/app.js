@@ -698,10 +698,12 @@ $(document).ready(function(){
       }
     })
 
-    if ( printable === true ){
-      slidePlan.destroy();
-    } else {
-      slidePlan.update();
+    if ( $('[js-slider-plan]').length > 0 ){
+      if ( printable === true ){
+        slidePlan.destroy();
+      } else {
+        slidePlan.update();
+      }
     }
 
 
@@ -1295,7 +1297,6 @@ $(document).ready(function(){
 
         myMap.geoObjects.add(myPlacemark);
 
-        console.log(myMap.getCenter())
         // ymaps.layout.storage.add('voina#icon', ymaps.templateLayoutFactory.createClass(
         //   '<div style="position: absolute; width: 28px; height: 36px; overflow: hidden;z-index: 0; ">' +
         //   '<div style="position:absolute;width:20px;height:20px;overflow:hidden;top:4px;left:4px">' +
