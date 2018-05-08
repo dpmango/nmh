@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- MADE WITH LOVE BY <> KHMELEVSKOY & ASSOCIATES </> www.khmelevskoy.co-->
+    <meta charset="utf-8">
+    <title>Property</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#fff">
+    <meta name="format-detection" content="telephone=no">
+    <!-- og-->
+    <meta property="og:title" content="Заголовок OG">
+    <meta property="og:description" content="Описание description для OG">
+    <meta property="og:url" content="http://nmh.surge.sh">
+    <meta property="og:image" content="http://nmh.surge.sh/img/blogImage_2@2x.jpg">
+    <meta property="og:video" content="http://nmh.surge.sh/img/blogImage_2@2x.jpg">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2018-04-26T17:41:45+00:00">
+    <meta property="article:author" content="Автор Статьи">
+    <!-- remove for production-->
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" media="all" href="css/app.css"><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  </head>
+  <body>
+    <!-- place where pjax bindings happen's-->
+    <div id="barba-wrapper">
+      <!-- what should be changed with every pjax-->
+      <div class="page">
+        <!-- HEADER :: START-->
+        <header class="header">
+          <div class="header-container">
+            <div class="container">
+              <div class="header__wrapper">
+                <div class="header__hamburger">
+                  <div class="hamburger hamburger--squeeze" js-hamburger>
+                    <div class="hamburger-box">
+                      <div class="hamburger-inner"></div>
+                    </div>
+                  </div>
+                </div><a class="header__logo" href="homepage.html">
+                  <svg class="ico ico-logo">
+                    <use xlink:href="img/sprite.svg#ico-logo"></use>
+                  </svg></a>
+                <ul class="header__menu">
+                  <li><a href="search.html">ДОМА</a></li>
+                  <li><a href="search-2.html">УЧАСТКИ</a></li>
+                  <li><a href="#">ТАУНХАУСЫ</a></li>
+                  <li><a href="#">ЭЛИТНАЯ НЕДВИЖИМОСТЬ</a></li>
+                  <li><a href="blog.html">БЛОГ</a></li>
+                </ul>
+                <div class="header__cta"><a class="header__phone" href="tel:+78007008472">+7 (800) 700-84-72</a></div><a class="header__search" href="#" js-open-mobile data-target="mobile-search">
+                  <svg class="ico ico-search">
+                    <use xlink:href="img/sprite.svg#ico-search"></use>
+                  </svg></a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <!-- HEADER :: END-->
+        <!-- MOBILE NAVI-->
+        <div class="m-navi">
+          <div class="m-navi__wrapper">
+            <div class="m-navi__menu">
+              <li><a href="#">ДОМА</a></li>
+              <li><a href="#">УЧАСТКИ</a></li>
+              <li><a href="#">ТАУНХАУСЫ</a></li>
+              <li><a href="#">ЭЛИТНАЯ НЕДВИЖИМОСТЬ</a></li>
+              <li><a href="blog.html">БЛОГ</a></li>
+            </div>
+            <div class="m-navi__cta"><a class="btn btn-primary" href="tel:+78007008472">+7 (800) 700-84-72</a></div>
+          </div>
+        </div>
+        <!-- MOBILE SEARCH-->
+        <div class="m-search" data-name="mobile-search">
+          <div class="m-search__head">
+            <div class="m-search__clear" js-reset-mobile-search>Сбросить</div>
+            <div class="m-search__head-title">Поиск</div>
+            <div class="m-search__close" js-close-mobile>
+              <svg class="ico ico-close">
+                <use xlink:href="img/sprite.svg#ico-close"></use>
+              </svg>
+            </div>
+          </div>
+          <div class="m-search__wrapper">
+            <form class="m-search__form" action="#">
+              <!-- categories-->
+              <div class="m-search__categories">
+                <label>категория недвижимости</label>
+                <div class="m-search__categories-wrap" js-scrollbar data-y-disable="true">
+                  <div class="m-search__category">
+                    <input type="radio" name="category" id="category_1" checked>
+                    <label for="category_1"><span>Дом</span></label>
+                  </div>
+                  <div class="m-search__category">
+                    <input type="radio" name="category" id="category_2">
+                    <label for="category_2"><span>Таунхаус</span></label>
+                  </div>
+                  <div class="m-search__category">
+                    <input type="radio" name="category" id="category_3">
+                    <label for="category_3"><span>Участок</span></label>
+                  </div>
+                </div>
+              </div>
+              <!-- price-->
+              <div class="m-search__price">
+                <label>цена</label>
+                <div class="m-search__price-wrap">
+                  <div class="m-search__price-set"> <span js-range-from>0 </span> - <span js-range-to>50 000 000</span></div>
+                  <div js-rangeslider data-start-from="0" data-start-to="35000000" data-step="100000" data-range-min="0" data-range-max="50000000"></div>
+                </div>
+              </div>
+              <!-- keywords-->
+              <div class="m-search__keywords">
+                <label>ПОИСК ПО КЛЮЧЕВЫМ СЛОВАМ</label>
+                <div class="ui-group ui-group--search">
+                  <input type="text" placeholder="Название" js-autocomplete data-url="json/cities.json">
+                  <svg class="ico ico-search">
+                    <use xlink:href="img/sprite.svg#ico-search"></use>
+                  </svg>
+                </div>
+              </div>
+              <div class="m-search__cta">
+                <button class="btn btn-primary" type="submit">найти</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- HEADER :: START-->
+        <header class="print-header">
+          <div class="header__logo">
+            <svg class="ico ico-logo">
+              <use xlink:href="img/sprite.svg#ico-logo"></use>
+            </svg>
+          </div>
+          <div class="print-header__contacts">
+            <div class="print-header__phone">+7 (800) 700-84-72</div>
+            <div class="print-header__email">info@newmoscowhouse.ru</div>
+          </div>
+        </header>
+        <div class="page__content">
+          <!-- PROPERTY-->
+          <div class="property">
+            <div class="container">
+              <div class="property__head"><a class="property__back" href="search.html"> 
+                  <svg class="ico ico-arrow-left">
+                    <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
+                  </svg><span>назад к поиску</span></a>
+                <div class="property__name">
+                  <h1>Дом в стиле шале в д. Каракашево</h1><span class="property__share">
+                    <div class="property__share-toggle" js-open-share><i class="icon icon-share"></i></div>
+                    <div class="property__share-drop">
+                      <!-- facebook-->
+                      <div id="fb-root"></div>
+                      <script>
+                        (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12';
+                        fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
+                      </script>
+                      <div class="share-facebook">
+                        <div class="fb-share-button" data-href="http://nmh.surge.sh/blog-post.html" data-layout="button_count" data-size="small" data-mobile-iframe="true"></div>
+                      </div>
+                      <!-- vk-->
+                      <div class="share-vk">
+                        <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
+                        <script type="text/javascript">
+                          <!--
+                          document.write(VK.Share.button(false,{type: "round_nocount", text: "Поделиться"}));
+                          -->
+                          
+                        </script>
+                      </div>
+                      <!-- twitter-->
+                      <script>
+                        window.twttr = (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0],
+                        t = window.twttr || {};
+                        if (d.getElementById(id)) return t;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "https://platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                        t._e = [];
+                        t.ready = function(f) {
+                        t._e.push(f);
+                        };
+                        return t;
+                        }(document, "script", "twitter-wjs"));
+                        
+                      </script>
+                      <div class="share-twitter"><a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world">Tweet</a></div>
+                    </div></span>
+                </div>
+                <div class="property__addres">Москва, 20 км от МКАД, Калужское шоссе, пос. Десеновское, п. Ватутинки</div>
+              </div>
+              <div class="property__wrapper">
+                <div class="property__content">
+                  <!-- gallery-->
+                  <div class="property__gallery gallery">
+                    <div class="gallery__main swiper-container" js-gallery-main>
+                      <div class="swiper-wrapper" js-popup-gallery>
+                        <div class="gallery__main-slide"><a class="no-barba" href="img/galleryMain@2x.jpg"><img src="img/galleryMain.jpg" srcset="img/galleryMain@2x.jpg 2x"></a></div>
+                        <div class="gallery__main-slide"><a class="no-barba" href="img/galleryMain@2x.jpg"><img src="img/galleryMain.jpg" srcset="img/galleryMain@2x.jpg 2x"></a></div>
+                        <div class="gallery__main-slide"><a class="no-barba" href="img/galleryMain@2x.jpg"><img src="img/galleryMain.jpg" srcset="img/galleryMain@2x.jpg 2x"></a></div>
+                        <div class="gallery__main-slide"><a class="no-barba" href="img/galleryMain@2x.jpg"><img src="img/galleryMain.jpg" srcset="img/galleryMain@2x.jpg 2x"></a></div>
+                        <div class="gallery__main-slide"><a class="no-barba" href="img/galleryMain@2x.jpg"><img src="img/galleryMain.jpg" srcset="img/galleryMain@2x.jpg 2x"></a></div>
+                        <div class="gallery__main-slide"><a class="no-barba" href="img/galleryMain@2x.jpg"><img src="img/galleryMain.jpg" srcset="img/galleryMain@2x.jpg 2x"></a></div>
+                        <div class="gallery__main-slide"><a class="no-barba" href="img/galleryMain@2x.jpg"><img src="img/galleryMain.jpg" srcset="img/galleryMain@2x.jpg 2x"></a></div>
+                        <div class="gallery__main-slide"><a class="no-barba" href="img/galleryMain@2x.jpg"><img src="img/galleryMain.jpg" srcset="img/galleryMain@2x.jpg 2x"></a></div>
+                      </div>
+                      <div class="gallery__main-video"><a class="btn btn-white" href="https://www.youtube.com/watch?v=0TV4V1VNNTY" js-popupVideo>Смотреть видео</a></div>
+                      <!-- controls-->
+                      <div class="gallery__main-next">
+                        <svg class="ico ico-arrow-right">
+                          <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                        </svg>
+                      </div>
+                      <div class="gallery__main-prev">
+                        <svg class="ico ico-arrow-left">
+                          <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <!-- thumbs-->
+                    <div class="gallery__thumbs swiper-container" js-gallery-thumbs>
+                      <div class="swiper-wrapper">
+                        <div class="gallery__thumbs-slide"><img src="img/galleryThumb_1.jpg" srcset="img/galleryThumb_1@2x.jpg 2x"></div>
+                        <div class="gallery__thumbs-slide"><img src="img/galleryThumb_2.jpg" srcset="img/galleryThumb_2@2x.jpg 2x"></div>
+                        <div class="gallery__thumbs-slide"><img src="img/galleryThumb_3.jpg" srcset="img/galleryThumb_3@2x.jpg 2x"></div>
+                        <div class="gallery__thumbs-slide"><img src="img/galleryThumb_4.jpg" srcset="img/galleryThumb_4@2x.jpg 2x"></div>
+                        <div class="gallery__thumbs-slide"><img src="img/galleryThumb_5.jpg" srcset="img/galleryThumb_5@2x.jpg 2x"></div>
+                        <div class="gallery__thumbs-slide"><img src="img/galleryThumb_3.jpg" srcset="img/galleryThumb_3@2x.jpg 2x"></div>
+                        <div class="gallery__thumbs-slide"><img src="img/galleryThumb_4.jpg" srcset="img/galleryThumb_4@2x.jpg 2x"></div>
+                        <div class="gallery__thumbs-slide"><img src="img/galleryThumb_5.jpg" srcset="img/galleryThumb_5@2x.jpg 2x"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- cloned and positioned abs-->
+                  <!-- facebook iframe bug-->
+                  <div class="property__sidebar-mobile"><span class="property__share property__share--mobile">
+                      <div class="property__share-toggle" js-open-share><i class="icon icon-share"></i></div>
+                      <div class="property__share-drop">
+                        <!-- facebook-->
+                        <div id="fb-root"></div>
+                        <script>
+                          (function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12';
+                          fjs.parentNode.insertBefore(js, fjs);
+                          }(document, 'script', 'facebook-jssdk'));
+                        </script>
+                        <div class="share-facebook">
+                          <div class="fb-share-button" data-href="http://nmh.surge.sh/blog-post.html" data-layout="button_count" data-size="small" data-mobile-iframe="true"></div>
+                        </div>
+                        <!-- vk-->
+                        <div class="share-vk">
+                          <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
+                          <script type="text/javascript">
+                            <!--
+                            document.write(VK.Share.button(false,{type: "round_nocount", text: "Поделиться"}));
+                            -->
+                            
+                          </script>
+                        </div>
+                        <!-- twitter-->
+                        <script>
+                          window.twttr = (function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0],
+                          t = window.twttr || {};
+                          if (d.getElementById(id)) return t;
+                          js = d.createElement(s);
+                          js.id = id;
+                          js.src = "https://platform.twitter.com/widgets.js";
+                          fjs.parentNode.insertBefore(js, fjs);
+                          t._e = [];
+                          t.ready = function(f) {
+                          t._e.push(f);
+                          };
+                          return t;
+                          }(document, "script", "twitter-wjs"));
+                          
+                        </script>
+                        <div class="share-twitter"><a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world">Tweet</a></div>
+                      </div></span>
+                    <!-- sidebar contents to be copied here  -->
+                    <div data-teleport-target="property-sidebar"></div>
+                  </div>
+                  <!-- section-->
+                  <div class="property__section">
+                    <h3 class="property__heading">Об объекте</h3>
+                    <div class="property__tab-nav">
+                      <li class="is-active" js-tab data-target="plan_1">Краткое описание</li>
+                      <li js-tab data-target="plan_2">Поэтажное описание </li>
+                      <li js-tab data-target="plan_3">Коммуникации</li>
+                      <li js-tab data-target="plan_4">Участок</li>
+                    </div>
+                    <div class="property__tabs">
+                      <div class="property__tab is-active" data-tab="plan_1">
+                        <div class="property__tab-mobile"><span>Краткое описание</span>
+                          <svg class="ico ico-arrow-right">
+                            <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                          </svg>
+                        </div>
+                        <!-- as a dropdown on mobile-->
+                        <div class="property__info">
+                          <div class="property__info-row">
+                            <div class="property__info-el"><span>Ремонт:</span><span>под ключ	</span></div>
+                            <div class="property__info-el"><span>Тип дома:</span><span>кирпичный</span></div>
+                          </div>
+                          <p>Дом в стиле шале с ремонтом «под ключ» 360 кв. м на ухоженном участке 8 соток. Поселок расположен в 15 км от МКАД по Калужскому шоссе, в непосредственной близости от городской инфраструктуры Южного Бутово. В гостиной и холле большие панорамные окна. Особенного внимания заслуживает грамотная планировка. В доме 5 комнат, 3 с/у, крытый гараж на 2 автомобиля. Функциональный цокольный этаж.</p>
+                        </div>
+                      </div>
+                      <!-- tab-->
+                      <div class="property__tab" data-tab="plan_2">
+                        <div class="property__tab-mobile"><span>Поэтажное описание</span>
+                          <svg class="ico ico-arrow-right">
+                            <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                          </svg>
+                        </div>
+                        <div class="property__info">
+                          <div class="property__info-el"><span>Этаж:</span><span>да</span></div>
+                          <div class="property__info-el"><span>Этаж:</span><span>центральное</span></div>
+                          <div class="property__info-el"><span>Этаж 2:</span><span>центральная</span></div>
+                          <div class="property__info-el"><span>Этаж 2:</span><span>да</span></div>
+                        </div>
+                      </div>
+                      <!-- tab-->
+                      <div class="property__tab" data-tab="plan_3">
+                        <div class="property__tab-mobile"><span>Коммуникации</span>
+                          <svg class="ico ico-arrow-right">
+                            <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                          </svg>
+                        </div>
+                        <div class="property__info">
+                          <div class="property__info-el"><span>Электричество:</span><span>да</span></div>
+                          <div class="property__info-el"><span>Водоснабжение:</span><span>центральное</span></div>
+                          <div class="property__info-el"><span>Канализация:</span><span>центральная</span></div>
+                          <div class="property__info-el"><span>Газ:</span><span>да</span></div>
+                        </div>
+                      </div>
+                      <!-- tab-->
+                      <div class="property__tab" data-tab="plan_4">
+                        <div class="property__tab-mobile"><span>Участок</span>
+                          <svg class="ico ico-arrow-right">
+                            <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                          </svg>
+                        </div>
+                        <div class="property__info">
+                          <div class="property__info-el"><span>Статус:</span><span>ИЖС</span></div>
+                          <p>К дому по проекту пристроен гараж на 2 автомобиля, пристройка для персонала или банный комплекс с бассейном 25 м на участке. Сам участок огражден по периметру, установлены автоматические ворота, засеян травой. К дому по проекту пристроен гараж на 2 автомобиля, пристройка для персонала или банный комплекс с бассейном 25 м на участке. К дому по проекту пристроен гараж на 2 автомобиля.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- section-->
+                  <div class="property__section">
+                    <h3 class="property__heading">Планировки</h3>
+                    <div class="property__tabs">
+                      <div class="property__tab is-active" data-tab="floor_1" js-remove-active-mobile>
+                        <div class="property__tab-mobile"><span>Планировки</span>
+                          <svg class="ico ico-arrow-right">
+                            <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                          </svg>
+                        </div>
+                        <div class="property__info">
+                          <div class="property__plan-container">
+                            <div class="property__plan-next">
+                              <svg class="ico ico-arrow-right">
+                                <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                              </svg>
+                            </div>
+                            <div class="property__plan-prev">
+                              <svg class="ico ico-arrow-left">
+                                <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
+                              </svg>
+                            </div>
+                            <div class="property__plan-slider swiper-container" js-slider-plan>
+                              <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <div class="property__plan-wrap"><img src="img/propertyFloor_1.png" srcset="img/propertyFloor_1@2x.png 2x"><span>первый этаж</span></div>
+                                </div>
+                                <div class="swiper-slide">
+                                  <div class="property__plan-wrap"><img src="img/propertyFloor_1.png" srcset="img/propertyFloor_1@2x.png 2x"><span>второй этаж</span></div>
+                                </div>
+                                <div class="swiper-slide">
+                                  <div class="property__plan-wrap"><img src="img/propertyFloor_1.png" srcset="img/propertyFloor_1@2x.png 2x"><span>третьий этаж</span></div>
+                                </div>
+                                <div class="swiper-slide">
+                                  <div class="property__plan-wrap"><img src="img/propertyFloor_1.png" srcset="img/propertyFloor_1@2x.png 2x"><span>четвертый этаж</span></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- section-->
+                  <div class="property__section">
+                    <h3 class="property__heading">Расположение </h3>
+                    <div class="property__tab is-active" data-tab="property_map">
+                      <div class="property__tab-mobile"><span>Расположение</span>
+                        <svg class="ico ico-arrow-right">
+                          <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                        </svg>
+                      </div>
+                      <div class="property__info">
+                        <div class="property__map">
+                          <div id="property-map"></div>
+                        </div>
+                        <div class="property__info-row">
+                          <div class="property__info-col">
+                            <div class="property__info-el"><span>Регион:</span><span>Москва</span></div>
+                            <div class="property__info-el"><span>Округ:</span><span>Троицкий АО</span></div>
+                          </div>
+                          <div class="property__info-col"> 
+                            <div class="property__info-el"><span>Поселение:</span><span>Десеновское</span></div>
+                            <div class="property__info-el"><span>Населенный пункт:</span><span>Ватутники</span></div>
+                          </div>
+                          <div class="property__info-col">
+                            <div class="property__info-el"><span>Шоссе:</span><span>Калужское</span></div>
+                            <div class="property__info-el"><span>КМ от МКАД:</span><span>20</span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- sidebar-->
+                <div class="property__sidebar">
+                  <div class="property__sidebar-wrap" js-sticky js-teleport data-teleport-to="property-sidebar" data-teleport-condition="&lt;992">
+                    <div class="property__main-scope">
+                      <div class="property__scope-title">№ 3486</div>
+                      <div class="property__price">25 000 000 ₽</div>
+                      <div class="property__name">
+                        <h1>Дом в стиле шале в д. Каракашево</h1>
+                      </div>
+                      <div class="property__addres">Москва, 20 км от МКАД, Калужское шоссе, пос. Десеновское, п. Ватутинки</div>
+                    </div>
+                    <div class="property__scope">
+                      <div class="property__scope-col">
+                        <div class="property__scope-title">площадь</div>
+                        <div class="property__scope-val">360 м²</div>
+                      </div>
+                      <div class="property__scope-col">
+                        <div class="property__scope-title">участок</div>
+                        <div class="property__scope-val">8 сот.</div>
+                      </div>
+                      <div class="property__scope-col">
+                        <div class="property__scope-title">этажи/уровни</div>
+                        <div class="property__scope-val">2/3</div>
+                      </div>
+                      <div class="property__scope-col">
+                        <div class="property__scope-title">спальни</div>
+                        <div class="property__scope-val">5</div>
+                      </div>
+                      <div class="property__scope-col">
+                        <div class="property__scope-title">с/у</div>
+                        <div class="property__scope-val">3</div>
+                      </div>
+                    </div>
+                    <div class="property__cta">
+                      <div class="property__scope-title">связаться</div>
+                      <div class="property__cta-wrap"><a class="btn btn-primary" href="#callback" js-popup>Связаться</a><a class="btn btn-outline btn-iconed" href="#" js-print><i class="icon icon-print"></i></a></div>
+                      <!-- callbackform-->
+                      <div class="popup mfp-hide" id="callback">
+                        <!-- callback-->
+                        <div class="cb">
+                          <div class="cb__col">
+                            <div class="property__heading">Контакты  </div>
+                            <div class="cb__content"><a class="cb__phone" href="tel:8 (800) 700-84-72">8 (800) 700-84-72</a>
+                              <div class="cb__btn-row"><a class="btn btn-outline" href="#" target="_blank">facebook чат</a><a class="btn btn-outline" href="#" target="_blank">онлайн чат</a></div>
+                            </div>
+                          </div>
+                          <div class="cb__col cb__col--muted">
+                            <div class="property__heading">Задайте вопрос</div>
+                            <div class="cb__content">
+                              <form class="cb__form" action="#" js-validate-cb>
+                                <div class="cb__form-line">
+                                  <div class="ui-group">
+                                    <input type="text" name="name" placeholder="имя">
+                                  </div>
+                                  <div class="ui-group">
+                                    <input type="email" name="email" placeholder="email">
+                                  </div>
+                                </div>
+                                <div class="ui-group">
+                                  <textarea type="text" name="message" placeholder="Ваш вопрос.." rows="4" data-min-rows="4"></textarea>
+                                </div>
+                                <div class="cb__form-cta">
+                                  <button class="btn btn-primary" type="submit">Отправить</button>
+                                </div>
+                              </form>
+                              <div class="cb__form-thanks">
+                                <p data-sucess>Спасибо! Мы ответим в течение нескольких часов.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="property__mobile-cta"><a class="btn btn-primary" href="tel:78007008472">Позвонить</a></div>
+          </div>
+          <!-- hot              -->
+          <div class="hot">
+            <div class="container">
+              <h3 class="property__heading">Похожие предложения  </h3>
+              <div class="hot-slider swiper-container" js-hot-slider>
+                <div class="swiper-wrapper">
+                  <!--slide-->
+                  <div class="hot-slider__slide">
+                    <div class="h-card wow" data-animation-delay=".3s">
+                      <div class="h-card__images swiper-wrapper" js-hotCard-slider>
+                        <div class="swiper-wrapper">
+                          <div class="h-card__image"><img src="img/productImage_1.jpg" srcset="img/prodcutImage_1@2x.jpg 2x"></div>
+                          <div class="h-card__image"><img src="img/productImage_2.jpg" srcset="img/prodcutImage_2@2x.jpg 2x"></div>
+                        </div>
+                        <div class="h-card__images-next">
+                          <svg class="ico ico-arrow-right">
+                            <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                          </svg>
+                        </div>
+                        <div class="h-card__images-prev">
+                          <svg class="ico ico-arrow-left">
+                            <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="h-card__content">
+                        <div class="h-card__info"> <span>325 кв. м</span><span>8 сот.</span><span>4 сп.</span></div>
+                        <div class="h-card__name">Дом “под ключ” в КП “Лесные Поляны”</div>
+                        <div class="h-card__addres">Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки</div>
+                        <div class="h-card__price">12,900,000<span>₽</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--slide 2-->
+                  <div class="hot-slider__slide">
+                    <div class="h-card wow" data-animation-delay=".4s">
+                      <div class="h-card__images swiper-wrapper" js-hotCard-slider>
+                        <div class="swiper-wrapper">
+                          <div class="h-card__image"><img src="img/productImage_3.jpg" srcset="img/prodcutImage_3@2x.jpg 2x"></div>
+                          <div class="h-card__image"><img src="img/productImage_2.jpg" srcset="img/prodcutImage_2@2x.jpg 2x"></div>
+                        </div>
+                        <div class="h-card__images-next">
+                          <svg class="ico ico-arrow-right">
+                            <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                          </svg>
+                        </div>
+                        <div class="h-card__images-prev">
+                          <svg class="ico ico-arrow-left">
+                            <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="h-card__content">
+                        <div class="h-card__info"> <span>325 кв. м</span><span>8 сот.</span><span>4 сп.</span></div>
+                        <div class="h-card__name">Дом у озера под отделку в д. Лужки</div>
+                        <div class="h-card__addres">Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки</div>
+                        <div class="h-card__price">12,900,000<span>₽</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--slide 3-->
+                  <div class="hot-slider__slide">
+                    <div class="h-card wow" data-animation-delay=".5s">
+                      <div class="h-card__images swiper-wrapper" js-hotCard-slider>
+                        <div class="swiper-wrapper">
+                          <div class="h-card__image"><i class="icon icon-play" href="https://www.youtube.com/watch?v=0TV4V1VNNTY" js-popupVideo></i><img src="img/productImage_4.jpg" srcset="img/prodcutImage_4@2x.jpg 2x"></div>
+                          <div class="h-card__image"><i class="icon icon-play" href="https://www.youtube.com/watch?v=0TV4V1VNNTY" js-popupVideo></i><img src="img/productImage_4.jpg" srcset="img/prodcutImage_4@2x.jpg 2x"></div>
+                        </div>
+                        <div class="h-card__images-next">
+                          <svg class="ico ico-arrow-right">
+                            <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                          </svg>
+                        </div>
+                        <div class="h-card__images-prev">
+                          <svg class="ico ico-arrow-left">
+                            <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="h-card__content">
+                        <div class="h-card__info"> <span>325 кв. м</span><span>8 сот.</span><span>4 сп.</span></div>
+                        <div class="h-card__name">Дом с мебелью и баней в КП «ВауТутинки»</div>
+                        <div class="h-card__addres">Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки</div>
+                        <div class="h-card__price">12,900,000<span>₽</span></div>
+                        <div class="h-card__tag">
+                          <div class="h-card__exclusive">эксклюзив</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--slide 4-->
+                  <div class="hot-slider__slide">
+                    <div class="h-card wow" data-animation-delay=".6s">
+                      <div class="h-card__images swiper-wrapper" js-hotCard-slider>
+                        <div class="swiper-wrapper">
+                          <div class="h-card__image"><img src="img/productImage_3.jpg" srcset="img/prodcutImage_3@2x.jpg 2x"></div>
+                          <div class="h-card__image"><img src="img/productImage_2.jpg" srcset="img/prodcutImage_2@2x.jpg 2x"></div>
+                        </div>
+                        <div class="h-card__images-next">
+                          <svg class="ico ico-arrow-right">
+                            <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                          </svg>
+                        </div>
+                        <div class="h-card__images-prev">
+                          <svg class="ico ico-arrow-left">
+                            <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="h-card__content">
+                        <div class="h-card__info"> <span>325 кв. м</span><span>8 сот.</span><span>4 сп.</span></div>
+                        <div class="h-card__name">Дом “под ключ” в КП “Лесные Поляны”</div>
+                        <div class="h-card__addres">Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки</div>
+                        <div class="h-card__price">12,900,000<span>₽</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--slide 5-->
+                  <div class="hot-slider__slide">
+                    <div class="h-card">
+                      <div class="h-card__images swiper-wrapper" js-hotCard-slider>
+                        <div class="swiper-wrapper">
+                          <div class="h-card__image"><img src="img/productImage_1.jpg" srcset="img/prodcutImage_1@2x.jpg 2x"></div>
+                          <div class="h-card__image"><img src="img/productImage_2.jpg" srcset="img/prodcutImage_2@2x.jpg 2x"></div>
+                        </div>
+                        <div class="h-card__images-next">
+                          <svg class="ico ico-arrow-right">
+                            <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                          </svg>
+                        </div>
+                        <div class="h-card__images-prev">
+                          <svg class="ico ico-arrow-left">
+                            <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="h-card__content">
+                        <div class="h-card__info"> <span>325 кв. м</span><span>8 сот.</span><span>4 сп.</span></div>
+                        <div class="h-card__name">Дом “под ключ” в КП “Лесные Поляны”</div>
+                        <div class="h-card__addres">Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки</div>
+                        <div class="h-card__price">12,900,000<span>₽</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--slide 6-->
+                  <div class="hot-slider__slide">
+                    <div class="h-card">
+                      <div class="h-card__images swiper-wrapper" js-hotCard-slider>
+                        <div class="swiper-wrapper">
+                          <div class="h-card__image"><img src="img/productImage_1.jpg" srcset="img/prodcutImage_1@2x.jpg 2x"></div>
+                          <div class="h-card__image"><img src="img/productImage_2.jpg" srcset="img/prodcutImage_2@2x.jpg 2x"></div>
+                        </div>
+                        <div class="h-card__images-next">
+                          <svg class="ico ico-arrow-right">
+                            <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                          </svg>
+                        </div>
+                        <div class="h-card__images-prev">
+                          <svg class="ico ico-arrow-left">
+                            <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="h-card__content">
+                        <div class="h-card__info"> <span>325 кв. м</span><span>8 сот.</span><span>4 сп.</span></div>
+                        <div class="h-card__name">Дом “под ключ” в КП “Лесные Поляны”</div>
+                        <div class="h-card__addres">Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки</div>
+                        <div class="h-card__price">12,900,000<span>₽</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- controls-->
+                <div class="hot-slider__next">
+                  <svg class="ico ico-arrow-right">
+                    <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                  </svg>
+                </div>
+                <div class="hot-slider__prev">
+                  <svg class="ico ico-arrow-left">
+                    <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FOOTER :: START-->
+        <footer class="footer" js-reveal-footer>
+          <div class="container">
+            <div class="footer__top">
+              <!-- credentials-->
+              <div class="footer__credentials">
+                <svg class="ico ico-logo">
+                  <use xlink:href="img/sprite.svg#ico-logo"></use>
+                </svg>
+                <p>© ООО “Проект Хаус”, 2016-2018 </p>
+                <p>ИНН 7703421252</p>
+                <p> КПП 770301001</p>
+              </div>
+              <!-- col-->
+              <div class="footer__nav">
+                <div class="footer__nav-title">Информация</div>
+                <ul class="footer__nav-list">
+                  <li><a href="#">Продать недвижимость</a></li>
+                  <li><a href="#">Ипотека c преференциями</a></li>
+                  <li><a href="#">Для агентов и партнеров</a></li>
+                  <li><a href="#">База проданных объектов</a></li>
+                </ul>
+              </div>
+              <!-- col-->
+              <div class="footer__nav">
+                <div class="footer__nav-title">Недвижимость</div>
+                <ul class="footer__nav-list">
+                  <li><a href="#">Дома</a></li>
+                  <li><a href="#">Таунхаусы </a></li>
+                  <li><a href="#">Земельные Участки</a></li>
+                  <li><a href="#">Коттеджные поселки</a></li>
+                  <li><a href="#">Коммерческая недвижиомость</a></li>
+                </ul>
+              </div>
+              <!-- col-->
+              <div class="footer__nav footer__nav-collapse" js-footer-nav-collapse>
+                <div class="footer__nav-title">Свяжитесь с нами
+                  <svg class="ico ico-drop-arrow">
+                    <use xlink:href="img/sprite.svg#ico-drop-arrow"></use>
+                  </svg>
+                </div>
+                <ul class="footer__nav-list">
+                  <li><a href="tel:8 (800) 700-84-72">8 (800) 700-84-72</a></li>
+                  <li><a href="tel:8 (495) 005-84-72">8 (495) 005-84-72 </a></li>
+                  <li><a href="#" target="_blank">Онлайн чат</a></li>
+                  <li><a href="#" target="_blank">Facebook чат</a></li>
+                  <li><a href="#" target="_blank">Написать директору</a></li>
+                </ul>
+              </div>
+              <!-- col-->
+              <div class="footer__cta">
+                <div class="footer__lang">
+                  <select class="lang-selector" js-selectric data-icon="globe">
+                    <option>Русский</option>
+                    <option>English</option>
+                    <option>Deutch</option>
+                    <option>Suomi</option>
+                  </select>
+                </div>
+                <div class="footer__partners"><i class="icon icon-sberbank"></i></div>
+              </div>
+            </div>
+            <!-- middle-->
+            <div class="footer__middle">
+              <div class="footer__middle-wrap">
+                <div class="footer__info">New Moscow House - молодое агентство загородной недвижимости Новой Москвы. Несмотря на наш небольшой возраст, мы собрали команду опытных риэлторов. Наша задача максимально комфортно и своевременно оказывать брокерские услуги по продаже и индивидуальному подбору домов, таунхаусов и замельных участков в Новой Москве.  </div>
+                <div class="footer__subscribe">
+                  <label>Подпишитесь на рассылку лучших предложений</label>
+                  <form class="footer__subscribe-form" action="#" js-validate-subscribe>
+                    <input type="email" name="email" placeholder="Введите ваш имейл">
+                    <button type="submit">ПОДПИСАТЬСЯ</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- bottom-->
+            <div class="footer__bottom">
+              <div class="footer__links"><a href="#">Политика конфиденциальности </a><a href="#">Условия и положения</a></div>
+              <div class="footer__socials"><a href="#" target="_blank"><i class="icon icon-social-insta"></i></a><a href="#" target="_blank">
+                  <svg class="ico ico-social-youtube">
+                    <use xlink:href="img/sprite.svg#ico-social-youtube"></use>
+                  </svg></a><a href="#" target="_blank">
+                  <svg class="ico ico-social-fb">
+                    <use xlink:href="img/sprite.svg#ico-social-fb"></use>
+                  </svg></a></div>
+              <div class="footer__credentials footer__credentials--mobile">
+                <p>© ООО “Проект Хаус”, 2016-2018 </p>
+                <p>ИНН 7703421252</p>
+                <p> КПП 770301001</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- FOOTER :: END-->
+        <!-- FOOTER :: START-->
+        <footer class="print-footer">
+          <!-- bottom-->
+          <div class="footer__bottom">
+            <div class="footer__credentials footer__credentials--mobile">
+              <p>© ООО “Проект Хаус”, 2016-2018 </p>
+              <p>ИНН 7703421252</p>
+              <p> КПП 770301001</p>
+            </div>
+          </div>
+        </footer>
+        <!-- FOOTER :: END-->
+      </div>
+      <script src="js/vendor.js"></script>
+      <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+      <script src="js/app.js"></script>
+    </div>
+  </body>
+</html>

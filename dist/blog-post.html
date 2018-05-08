@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- MADE WITH LOVE BY <> KHMELEVSKOY & ASSOCIATES </> www.khmelevskoy.co-->
+    <meta charset="utf-8">
+    <title>Blog inner</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#fff">
+    <meta name="format-detection" content="telephone=no">
+    <!-- og-->
+    <meta property="og:title" content="Заголовок OG">
+    <meta property="og:description" content="Описание description для OG">
+    <meta property="og:url" content="http://nmh.surge.sh">
+    <meta property="og:image" content="http://nmh.surge.sh/img/blogImage_2@2x.jpg">
+    <meta property="og:video" content="http://nmh.surge.sh/img/blogImage_2@2x.jpg">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2018-04-26T17:41:45+00:00">
+    <meta property="article:author" content="Автор Статьи">
+    <!-- remove for production-->
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" media="all" href="css/app.css"><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  </head>
+  <body>
+    <!-- place where pjax bindings happen's-->
+    <div id="barba-wrapper">
+      <!-- what should be changed with every pjax-->
+      <div class="page">
+        <!-- HEADER :: START-->
+        <header class="header">
+          <div class="header-container">
+            <div class="container">
+              <div class="header__wrapper">
+                <div class="header__hamburger">
+                  <div class="hamburger hamburger--squeeze" js-hamburger>
+                    <div class="hamburger-box">
+                      <div class="hamburger-inner"></div>
+                    </div>
+                  </div>
+                </div><a class="header__logo" href="homepage.html">
+                  <svg class="ico ico-logo">
+                    <use xlink:href="img/sprite.svg#ico-logo"></use>
+                  </svg></a>
+                <ul class="header__menu">
+                  <li><a href="search.html">ДОМА</a></li>
+                  <li><a href="search-2.html">УЧАСТКИ</a></li>
+                  <li><a href="#">ТАУНХАУСЫ</a></li>
+                  <li><a href="#">ЭЛИТНАЯ НЕДВИЖИМОСТЬ</a></li>
+                  <li><a href="blog.html">БЛОГ</a></li>
+                </ul>
+                <div class="header__cta"><a class="header__phone" href="tel:+78007008472">+7 (800) 700-84-72</a></div><a class="header__search" href="#" js-open-mobile data-target="mobile-search">
+                  <svg class="ico ico-search">
+                    <use xlink:href="img/sprite.svg#ico-search"></use>
+                  </svg></a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <!-- HEADER :: END-->
+        <!-- MOBILE NAVI-->
+        <div class="m-navi">
+          <div class="m-navi__wrapper">
+            <div class="m-navi__menu">
+              <li><a href="#">ДОМА</a></li>
+              <li><a href="#">УЧАСТКИ</a></li>
+              <li><a href="#">ТАУНХАУСЫ</a></li>
+              <li><a href="#">ЭЛИТНАЯ НЕДВИЖИМОСТЬ</a></li>
+              <li><a href="blog.html">БЛОГ</a></li>
+            </div>
+            <div class="m-navi__cta"><a class="btn btn-primary" href="tel:+78007008472">+7 (800) 700-84-72</a></div>
+          </div>
+        </div>
+        <!-- MOBILE SEARCH-->
+        <div class="m-search" data-name="mobile-search">
+          <div class="m-search__head">
+            <div class="m-search__clear" js-reset-mobile-search>Сбросить</div>
+            <div class="m-search__head-title">Поиск</div>
+            <div class="m-search__close" js-close-mobile>
+              <svg class="ico ico-close">
+                <use xlink:href="img/sprite.svg#ico-close"></use>
+              </svg>
+            </div>
+          </div>
+          <div class="m-search__wrapper">
+            <form class="m-search__form" action="#">
+              <!-- categories-->
+              <div class="m-search__categories">
+                <label>категория недвижимости</label>
+                <div class="m-search__categories-wrap" js-scrollbar data-y-disable="true">
+                  <div class="m-search__category">
+                    <input type="radio" name="category" id="category_1" checked>
+                    <label for="category_1"><span>Дом</span></label>
+                  </div>
+                  <div class="m-search__category">
+                    <input type="radio" name="category" id="category_2">
+                    <label for="category_2"><span>Таунхаус</span></label>
+                  </div>
+                  <div class="m-search__category">
+                    <input type="radio" name="category" id="category_3">
+                    <label for="category_3"><span>Участок</span></label>
+                  </div>
+                </div>
+              </div>
+              <!-- price-->
+              <div class="m-search__price">
+                <label>цена</label>
+                <div class="m-search__price-wrap">
+                  <div class="m-search__price-set"> <span js-range-from>0 </span> - <span js-range-to>50 000 000</span></div>
+                  <div js-rangeslider data-start-from="0" data-start-to="35000000" data-step="100000" data-range-min="0" data-range-max="50000000"></div>
+                </div>
+              </div>
+              <!-- keywords-->
+              <div class="m-search__keywords">
+                <label>ПОИСК ПО КЛЮЧЕВЫМ СЛОВАМ</label>
+                <div class="ui-group ui-group--search">
+                  <input type="text" placeholder="Название" js-autocomplete data-url="json/cities.json">
+                  <svg class="ico ico-search">
+                    <use xlink:href="img/sprite.svg#ico-search"></use>
+                  </svg>
+                </div>
+              </div>
+              <div class="m-search__cta">
+                <button class="btn btn-primary" type="submit">найти</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- HEADER :: START-->
+        <header class="print-header">
+          <div class="header__logo">
+            <svg class="ico ico-logo">
+              <use xlink:href="img/sprite.svg#ico-logo"></use>
+            </svg>
+          </div>
+          <div class="print-header__contacts">
+            <div class="print-header__phone">+7 (800) 700-84-72</div>
+            <div class="print-header__email">info@newmoscowhouse.ru</div>
+          </div>
+        </header>
+        <div class="page__content gray-bg">
+          <!-- blog-->
+          <div class="blog">
+            <div class="container">
+              <!-- blog content POST-->
+              <div class="post">
+                <!-- scroll top-->
+                <div class="scroll-top" js-scrolltop>
+                  <svg class="ico ico-arrow-right">
+                    <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                  </svg>
+                </div>
+                <div class="post__header"><a class="post__category wow" href="#">Советы</a>
+                  <h1 class="post__title wow" data-animation-delay=".1s">ЭЛИТНЫЕ КОТТЕДЖНЫЕ ПОСЕЛКИ<br> НОВОЙ МОСКВЫ</h1>
+                  <div class="post__author wow" data-animation-delay=".2s">
+                    <div class="post__avatar"><img src="img/avatar.jpg" srcset="img/avatar@2x.jpg 2x"></div><span> <span>12 августа 2017  |  </span><span>Дмитрий Силеверстов</span></span>
+                  </div>
+                </div>
+                <div class="post__wrapper">
+                  <div class="post__content wow">
+                    <div class="post__crumbs">/ <a href="blog.html">блог</a> / <a href="blog.html">обзоры</a> / элитные коттеджные поселки новой москвы</div>
+                    <div class="post__socials">
+                      <!-- facebook-->
+                      <div id="fb-root"></div>
+                      <script>
+                        (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12';
+                        fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
+                      </script>
+                      <div class="share-facebook">
+                        <div class="fb-share-button" data-href="http://nmh.surge.sh/blog-post.html" data-layout="button_count" data-size="small" data-mobile-iframe="true"></div>
+                      </div>
+                      <!-- twitter-->
+                      <script>
+                        window.twttr = (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0],
+                        t = window.twttr || {};
+                        if (d.getElementById(id)) return t;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "https://platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                        t._e = [];
+                        t.ready = function(f) {
+                        t._e.push(f);
+                        };
+                        return t;
+                        }(document, "script", "twitter-wjs"));
+                        
+                      </script>
+                      <div class="share-twitter"><a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world">Tweet</a></div>
+                      <!-- vk-->
+                      <div class="share-vk">
+                        <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
+                        <script type="text/javascript">
+                          <!--
+                          document.write(VK.Share.button(false,{type: "round_nocount", text: "Поделиться"}));
+                          -->
+                        </script>
+                      </div>
+                    </div>
+                    <h2>За последние годы рынок элитной загородной недвижимости Новой Москвы существенно изменился и вырос. </h2>
+                    <p>Данное направление считается весьма востребованным среди покупателей, однако многие не могут определиться с выбором. Мы решили помочь им в этом деле и составили небольшой рейтинг из 6 наиболее известных <b>коттеджных поселков Новой Москвы</b>, относящихся к элитному сегменту. Прежде всего, стоит определить, какие признаки должен иметь такой поселок.</p>
+                    <p>Этот поселок находится в ближней части Новой Москвы и состоит из двух участков, один из которых («Антоновка-2») расположен в уютной лесистой местности, среди могучих дубов, сосен, елей и берез. Через него протекает река Сосенка, набережная которой была благоустроена и превращена в рекреационную зону с песчаным пляжем.</p>
+                    <!-- slider-->
+                    <div class="post__slider-wrap wow">
+                      <div class="post__slider swiper-container" js-slider-post>
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <figure><img src="img/sliderImage.jpg" srcset="img/sliderImage@2x.jpg 2x">
+                              <figcaption>в КП “Антоновка” более 40 домовлодений, 34 из них — проданы</figcaption>
+                            </figure>
+                          </div>
+                          <div class="swiper-slide">
+                            <figure><img src="img/sliderImage.jpg" srcset="img/sliderImage@2x.jpg 2x">
+                              <figcaption>в КП “Антоновка” более 40 домовлодений, 34 из них — проданы</figcaption>
+                            </figure>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="post__slider-next">
+                        <svg class="ico ico-arrow-right">
+                          <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                        </svg>
+                      </div>
+                      <div class="post__slider-prev">
+                        <svg class="ico ico-arrow-left">
+                          <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <h3>КП “АНТОНОВКА”</h3>
+                    <p>Этот поселок находится в ближней части Новой Москвы и состоит из двух участков, один из которых («Антоновка-2») расположен в уютной лесистой местности, среди могучих дубов, сосен, елей и берез. Через него протекает река Сосенка, набережная которой была благоустроена и превращена в рекреационную зону с песчаным пляжем.</p>
+                    <!-- link--><a class="post__link wow" href="#"><span>посмотреть предложения в КП “Антоновка”</span>
+                      <svg class="ico ico-arrow-right">
+                        <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
+                      </svg></a>
+                    <p>Этот поселок находится в ближней части Новой Москвы и состоит из двух участков, один из которых («Антоновка-2») расположен в уютной лесистой местности.</p>
+                    <div class="post__socials">
+                      <!-- facebook-->
+                      <div id="fb-root"></div>
+                      <script>
+                        (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12';
+                        fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
+                      </script>
+                      <div class="share-facebook">
+                        <div class="fb-share-button" data-href="http://nmh.surge.sh/blog-post.html" data-layout="button_count" data-size="small" data-mobile-iframe="true"></div>
+                      </div>
+                      <!-- twitter-->
+                      <script>
+                        window.twttr = (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0],
+                        t = window.twttr || {};
+                        if (d.getElementById(id)) return t;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "https://platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                        t._e = [];
+                        t.ready = function(f) {
+                        t._e.push(f);
+                        };
+                        return t;
+                        }(document, "script", "twitter-wjs"));
+                        
+                      </script>
+                      <div class="share-twitter"><a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world">Tweet</a></div>
+                      <!-- vk-->
+                      <div class="share-vk">
+                        <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
+                        <script type="text/javascript">
+                          <!--
+                          document.write(VK.Share.button(false,{type: "round_nocount", text: "Поделиться"}));
+                          -->
+                        </script>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="b-heading">
+                <h2 class="heading heading--h2 wow">ПОПУЛЯРНЫЕ СТАТЬИ        </h2>
+              </div>
+              <div class="blog__wrapper swiper-container" js-slider-blog>
+                <div class="swiper-wrapper">
+                  <!--col-->
+                  <div class="blog__col wow" data-animation-delay=".3s">
+                    <div class="blog-card"><a class="blog-card__image" href="#"><img src="img/blogImage_1.jpg" srcset="img/blogImage_1@2x.jpg 2x"></a><a class="blog-card__content" href="#">
+                        <div class="blog-card__category">СОВЕТЫ</div>
+                        <div class="blog-card__name">Как выбрать земельный участок для дома?</div>
+                        <div class="blog-card__info">Вячеслав Люкшин |   13 Июня 2018</div></a></div>
+                  </div>
+                  <!--col-->
+                  <div class="blog__col wow" data-animation-delay=".4s">
+                    <div class="blog-card"><a class="blog-card__image" href="#"><img src="img/blogImage_2.jpg" srcset="img/blogImage_2@2x.jpg 2x"></a><a class="blog-card__content" href="#">
+                        <div class="blog-card__category">НОВОСТИ</div>
+                        <div class="blog-card__name">В Новой Москве откроют новую станцию метро</div>
+                        <div class="blog-card__info">Вячеслав Люкшин |   13 Июня 2018</div></a></div>
+                  </div>
+                  <!--col-->
+                  <div class="blog__col wow" data-animation-delay=".5s">
+                    <div class="blog-card"><a class="blog-card__image" href="#"><i class="icon icon-play" href="https://www.youtube.com/watch?v=0TV4V1VNNTY" js-popupVideo></i><img src="img/blogImage_3.jpg" srcset="img/blogImage_3@2x.jpg 2x"></a><a class="blog-card__content" href="#">
+                        <div class="blog-card__category">ВИДЕО ОБЗОР</div>
+                        <div class="blog-card__name">Мы ищем в команду амбизиозных агентов</div>
+                        <div class="blog-card__info">Вячеслав Люкшин |   13 Июня 2018</div></a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FOOTER :: START-->
+        <footer class="footer" js-reveal-footer>
+          <div class="container">
+            <div class="footer__top">
+              <!-- credentials-->
+              <div class="footer__credentials">
+                <svg class="ico ico-logo">
+                  <use xlink:href="img/sprite.svg#ico-logo"></use>
+                </svg>
+                <p>© ООО “Проект Хаус”, 2016-2018 </p>
+                <p>ИНН 7703421252</p>
+                <p> КПП 770301001</p>
+              </div>
+              <!-- col-->
+              <div class="footer__nav">
+                <div class="footer__nav-title">Информация</div>
+                <ul class="footer__nav-list">
+                  <li><a href="#">Продать недвижимость</a></li>
+                  <li><a href="#">Ипотека c преференциями</a></li>
+                  <li><a href="#">Для агентов и партнеров</a></li>
+                  <li><a href="#">База проданных объектов</a></li>
+                </ul>
+              </div>
+              <!-- col-->
+              <div class="footer__nav">
+                <div class="footer__nav-title">Недвижимость</div>
+                <ul class="footer__nav-list">
+                  <li><a href="#">Дома</a></li>
+                  <li><a href="#">Таунхаусы </a></li>
+                  <li><a href="#">Земельные Участки</a></li>
+                  <li><a href="#">Коттеджные поселки</a></li>
+                  <li><a href="#">Коммерческая недвижиомость</a></li>
+                </ul>
+              </div>
+              <!-- col-->
+              <div class="footer__nav footer__nav-collapse" js-footer-nav-collapse>
+                <div class="footer__nav-title">Свяжитесь с нами
+                  <svg class="ico ico-drop-arrow">
+                    <use xlink:href="img/sprite.svg#ico-drop-arrow"></use>
+                  </svg>
+                </div>
+                <ul class="footer__nav-list">
+                  <li><a href="tel:8 (800) 700-84-72">8 (800) 700-84-72</a></li>
+                  <li><a href="tel:8 (495) 005-84-72">8 (495) 005-84-72 </a></li>
+                  <li><a href="#" target="_blank">Онлайн чат</a></li>
+                  <li><a href="#" target="_blank">Facebook чат</a></li>
+                  <li><a href="#" target="_blank">Написать директору</a></li>
+                </ul>
+              </div>
+              <!-- col-->
+              <div class="footer__cta">
+                <div class="footer__lang">
+                  <select class="lang-selector" js-selectric data-icon="globe">
+                    <option>Русский</option>
+                    <option>English</option>
+                    <option>Deutch</option>
+                    <option>Suomi</option>
+                  </select>
+                </div>
+                <div class="footer__partners"><i class="icon icon-sberbank"></i></div>
+              </div>
+            </div>
+            <!-- middle-->
+            <div class="footer__middle">
+              <div class="footer__middle-wrap">
+                <div class="footer__info">New Moscow House - молодое агентство загородной недвижимости Новой Москвы. Несмотря на наш небольшой возраст, мы собрали команду опытных риэлторов. Наша задача максимально комфортно и своевременно оказывать брокерские услуги по продаже и индивидуальному подбору домов, таунхаусов и замельных участков в Новой Москве.  </div>
+                <div class="footer__subscribe">
+                  <label>Подпишитесь на рассылку лучших предложений</label>
+                  <form class="footer__subscribe-form" action="#" js-validate-subscribe>
+                    <input type="email" name="email" placeholder="Введите ваш имейл">
+                    <button type="submit">ПОДПИСАТЬСЯ</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- bottom-->
+            <div class="footer__bottom">
+              <div class="footer__links"><a href="#">Политика конфиденциальности </a><a href="#">Условия и положения</a></div>
+              <div class="footer__socials"><a href="#" target="_blank"><i class="icon icon-social-insta"></i></a><a href="#" target="_blank">
+                  <svg class="ico ico-social-youtube">
+                    <use xlink:href="img/sprite.svg#ico-social-youtube"></use>
+                  </svg></a><a href="#" target="_blank">
+                  <svg class="ico ico-social-fb">
+                    <use xlink:href="img/sprite.svg#ico-social-fb"></use>
+                  </svg></a></div>
+              <div class="footer__credentials footer__credentials--mobile">
+                <p>© ООО “Проект Хаус”, 2016-2018 </p>
+                <p>ИНН 7703421252</p>
+                <p> КПП 770301001</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- FOOTER :: END-->
+        <!-- FOOTER :: START-->
+        <footer class="print-footer">
+          <!-- bottom-->
+          <div class="footer__bottom">
+            <div class="footer__credentials footer__credentials--mobile">
+              <p>© ООО “Проект Хаус”, 2016-2018 </p>
+              <p>ИНН 7703421252</p>
+              <p> КПП 770301001</p>
+            </div>
+          </div>
+        </footer>
+        <!-- FOOTER :: END-->
+      </div>
+      <script src="js/vendor.js"></script>
+      <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+      <script src="js/app.js"></script>
+    </div>
+  </body>
+</html>
