@@ -186,6 +186,10 @@ $(document).ready(function(){
     // svg support for laggy browsers
     svg4everybody();
 
+    $(function() {
+    	FastClick.attach(document.body);
+    });
+
     // Viewport units buggyfill
     window.viewportUnitsBuggyfill.init({
       force: true,
@@ -477,7 +481,7 @@ $(document).ready(function(){
   // SLIDERS
   //////////
 
-  function initSliders(){
+  function initSliders(printable){
 
     // Why carousel
     new Swiper('[js-hot-slider]', {
@@ -670,7 +674,7 @@ $(document).ready(function(){
     }
 
 
-    new Swiper('[js-slider-plan]', {
+    var slidePlan = new Swiper('[js-slider-plan]', {
       wrapperClass: "swiper-wrapper",
       slideClass: "swiper-slide",
       direction: 'horizontal',
@@ -693,6 +697,13 @@ $(document).ready(function(){
         }
       }
     })
+
+    if ( printable === true ){
+      slidePlan.destroy();
+    } else {
+      slidePlan.update();
+    }
+
 
   }
 
@@ -785,7 +796,7 @@ $(document).ready(function(){
   ////////////
   // TELEPORT PLUGIN
   ////////////
-  function initTeleport(){
+  function initTeleport(printable){
     $('[js-teleport]').each(function (i, val) {
       var self = $(val)
       var objHtml = $(val).html();
@@ -795,7 +806,7 @@ $(document).ready(function(){
 
       if (target && objHtml && conditionPosition) {
 
-        function teleport() {
+        function teleport(shouldPrint) {
           var condition;
 
           if (conditionPosition === "<") {
@@ -804,18 +815,29 @@ $(document).ready(function(){
             condition = _window.width() > conditionMedia;
           }
 
-          if (condition) {
+          if ( shouldPrint === true){
             target.html(objHtml)
             self.html('')
           } else {
-            self.html(objHtml)
-            target.html("")
+            if (condition) {
+              target.html(objHtml)
+              self.html('')
+            } else {
+              self.html(objHtml)
+              target.html("")
+            }
           }
+
         }
 
-        teleport();
-        _window.on('resize', debounce(teleport, 100));
-
+        if ( printable == true ){
+          teleport(printable);
+        } else {
+          teleport();
+          _window.on('resize', debounce(function(){
+            teleport(printable)
+          }, 100));
+        }
 
       }
     })
@@ -879,6 +901,7 @@ $(document).ready(function(){
             start: [startFrom, startTo],
             connect: true,
             step: step,
+            behaviour: "tap",
             range: {
               'min': rangeMin,
               'max': rangeMax
@@ -902,6 +925,13 @@ $(document).ready(function(){
             if ( $slider.closest('form').length > 0 ){
               $slider.closest('form').trigger('change')
             }
+          });
+
+          slider.noUiSlider.on('end', function( values, handle ) {
+            $slider.parent().parent().click();
+            $slider.parent().parent().trigger('tap');
+            $slider.focusout();
+            triggerBody(false);
           });
 
         }
@@ -1046,17 +1076,18 @@ $(document).ready(function(){
 
   function hookPrint(){
     var beforePrint = function() {
-
+      initSliders(true);
       initScrollMonitor();
       initSticky();
-      initTeleport();
-
+      initTeleport(true);
       positionScrollTop();
       controlTabsMobileClass();
      };
 
      var afterPrint = function() {
-
+       initTeleport();
+       initSliders();
+       triggerBody();
      };
 
      if (window.matchMedia) {
@@ -1263,7 +1294,72 @@ $(document).ready(function(){
         });
 
         myMap.geoObjects.add(myPlacemark);
+
+        console.log(myMap.getCenter())
+        // ymaps.layout.storage.add('voina#icon', ymaps.templateLayoutFactory.createClass(
+        //   '<div style="position: absolute; width: 28px; height: 36px; overflow: hidden;z-index: 0; ">' +
+        //   '<div style="position:absolute;width:20px;height:20px;overflow:hidden;top:4px;left:4px">' +
+        //   '<img src="/img/new_buttons_21.png" style="position:absolute;left:$[properties.iconOffset]px;"></div>' +
+        //   '<img src="/img/buttons7.gif" style="position: absolute; left: -264px; top: -70px; "></div>'
+        // ));
+        //
+        // ymaps.layout.storage.add('voina#cluster', ymaps.templateLayoutFactory.createClass(
+        //   '<div style="position: absolute; margin: -26px 0 0 -26px; width: 58px; height: 58px; overflow: hidden;z-index: 0; ">' +
+        //   '<div style="z-index:800;position: absolute; width: 58px; height: 58px; text-align: center; font-size: 13px; line-height: 58px;">$[properties.geoObjects.length]</div>' +
+        //   '<img src="/img/cluster_big.png" style="position: absolute;"></div>'));
+        //
+        // console.log(myMap.panes.get('layers'))
+        // var $container = myMap.panes.get('layers').getElement(),
+        //
+        //   stMapTypes = {
+        //     'yandex#map': 'map',
+        //     'yandex#satellite': 'sat',
+        //     'yandex#hybrid': 'sat,ski',
+        //     'yandex#publicMap': 'pmap'
+        //   },
+        //   center = myMap.getCenter(),
+        //
+        //   size = [650, 450],
+        //
+        //   mapUrl = 'http://static-maps.yandex.ru/1.x/?ll=' + center[1] + ',' + center[0] +
+        //   '&z=' + myMap.getZoom() + '&l=' + stMapTypes[myMap.getType()] +
+        //   '&size=' + size[0] + ',' + size[1];
+        //
+        // $('<div></div>').css({
+        //   position: 'absolute',
+        //   left: -Math.round(size[0] / 2) + 'px',
+        //   top: -Math.round(size[1] / 2) + 'px',
+        //   zIndex: 800
+        // }).
+        //
+        // wrapInner($('<img>').attr({
+        //   'src': mapUrl,
+        //   width: size[0],
+        //   height: size[1],
+        //   border: '0'
+        // })).
+        //
+        // prependTo($container);
+        //
+        // myMap.events.removeAll();
+        //
+        // var len = window.data.length;
+        // if (len) {
+        //   for (var i = 0, markers = [], properties, latLng; i < len; i++) {
+        //     latLng = [parseFloat(window.data[i][1]), parseFloat(window.data[i][2])];
+        //     markers.push(new ymaps.Placemark(latLng, {
+        //       iconOffset: -window.data[i][5] * 20 - 1
+        //     }, {
+        //       iconLayout: 'voina#icon',
+        //       iconOffset: [1, 2],
+        //       openBalloonOnClick: false
+        //     }));
+        //   }
+        //
+        // }
+
     }
+
   }
 
   function initValidations(){

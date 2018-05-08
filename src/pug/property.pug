@@ -171,7 +171,7 @@ block content
                   p К дому по проекту пристроен гараж на 2 автомобиля, пристройка для персонала или банный комплекс с бассейном 25 м на участке. Сам участок огражден по периметру, установлены автоматические ворота, засеян травой. К дому по проекту пристроен гараж на 2 автомобиля, пристройка для персонала или банный комплекс с бассейном 25 м на участке. К дому по проекту пристроен гараж на 2 автомобиля.
   
           // section
-          .property__section
+          .property__section.page-break-before
             h3.property__heading Планировки
             //- .property__tab-nav
             //-   li(js-tab data-target="floor_1").is-active Первый этаж
@@ -220,6 +220,9 @@ block content
               .property__info
                 .property__map
                   #property-map
+                  // set params for print map
+                  .property__map-static
+                    img(src="https://static-maps.yandex.ru/1.x/?ll=37.63999999999997,55.75999999999371&size=640,250&z=12&l=map&pt=37.63999999999997,55.75999999999371,pmwtm1")
                 
                 .property__info-row
                   .property__info-col
