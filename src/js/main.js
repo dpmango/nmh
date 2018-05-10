@@ -637,6 +637,7 @@ $(document).ready(function(){
       setWrapperSize: true,
       spaceBetween: 0,
       slidesPerView: 1,
+      // autoHeight: true,
       touchEventsTarget: 'wrapper',
       // effect: 'fade',
       normalizeSlideIndex: true,

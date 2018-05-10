@@ -33,27 +33,28 @@ block content
                   a(href="img/galleryMain@2x.jpg").no-barba
                     img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
                 .gallery__main-slide
-                  a(href="img/galleryMain@2x.jpg").no-barba
-                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                  a(href="img/galleryMain_2@2x.jpg").no-barba
+                    img(src='img/galleryMain_2.jpg' srcset='img/galleryMain_2@2x.jpg 2x')
+                .gallery__main-slide
+                  a(href="img/galleryMain_3@2x.jpg").no-barba
+                    img(src='img/galleryMain_3.jpg' srcset='img/galleryMain_3@2x.jpg 2x')
+                .gallery__main-slide
+                  a(href="img/galleryMain_4@2x.jpg").no-barba
+                    img(src='img/galleryMain_4.jpg' srcset='img/galleryMain_4@2x.jpg 2x')
+                // copy
                 .gallery__main-slide
                   a(href="img/galleryMain@2x.jpg").no-barba
                     img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
                 .gallery__main-slide
-                  a(href="img/galleryMain@2x.jpg").no-barba
-                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                  a(href="img/galleryMain_2@2x.jpg").no-barba
+                    img(src='img/galleryMain_2.jpg' srcset='img/galleryMain_2@2x.jpg 2x')
                 .gallery__main-slide
-                  a(href="img/galleryMain@2x.jpg").no-barba
-                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+                  a(href="img/galleryMain_3@2x.jpg").no-barba
+                    img(src='img/galleryMain_3.jpg' srcset='img/galleryMain_3@2x.jpg 2x')
                 .gallery__main-slide
-                  a(href="img/galleryMain@2x.jpg").no-barba
-                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
-                .gallery__main-slide
-                  a(href="img/galleryMain@2x.jpg").no-barba
-                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
-                .gallery__main-slide
-                  a(href="img/galleryMain@2x.jpg").no-barba
-                    img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
-              
+                  a(href="img/galleryMain_4@2x.jpg").no-barba
+                    img(src='img/galleryMain_4.jpg' srcset='img/galleryMain_4@2x.jpg 2x')
+                      
               .gallery__main-video
                 a(href='https://www.youtube.com/watch?v=0TV4V1VNNTY' js-popupVideo).btn.btn-white Смотреть видео
               // controls
@@ -73,16 +74,17 @@ block content
                   img(src='img/galleryThumb_3.jpg' srcset='img/galleryThumb_3@2x.jpg 2x')
                 .gallery__thumbs-slide
                   img(src='img/galleryThumb_4.jpg' srcset='img/galleryThumb_4@2x.jpg 2x')
+                // copy
                 .gallery__thumbs-slide
-                  img(src='img/galleryThumb_5.jpg' srcset='img/galleryThumb_5@2x.jpg 2x')
+                  img(src='img/galleryThumb_1.jpg' srcset='img/galleryThumb_1@2x.jpg 2x')
+                .gallery__thumbs-slide
+                  img(src='img/galleryThumb_2.jpg' srcset='img/galleryThumb_2@2x.jpg 2x')
                 .gallery__thumbs-slide
                   img(src='img/galleryThumb_3.jpg' srcset='img/galleryThumb_3@2x.jpg 2x')
                 .gallery__thumbs-slide
                   img(src='img/galleryThumb_4.jpg' srcset='img/galleryThumb_4@2x.jpg 2x')
-                .gallery__thumbs-slide
-                  img(src='img/galleryThumb_5.jpg' srcset='img/galleryThumb_5@2x.jpg 2x')
 
-          
+              
           // cloned and positioned abs
           // facebook iframe bug
           .property__sidebar-mobile
@@ -96,7 +98,36 @@ block content
             div(data-teleport-target="property-sidebar")
 
           // section
-          .property__section
+          .property__section.property__section--print-only.page-break-before
+            h3.property__heading Фотографии
+            .property-print__gallery
+              .property-print__image
+                img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+              .property-print__image
+                img(src='img/galleryMain_1.jpg' srcset='img/galleryMain_1@2x.jpg 2x')
+              .property-print__image
+                img(src='img/galleryMain_2.jpg' srcset='img/galleryMain_2@2x.jpg 2x')
+              .property-print__image
+                img(src='img/galleryMain_3.jpg' srcset='img/galleryMain_3@2x.jpg 2x')
+              .property-print__image
+                img(src='img/galleryMain_4.jpg' srcset='img/galleryMain_4@2x.jpg 2x')
+              .property-print__image
+                img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+              .property-print__image
+                img(src='img/galleryMain_1.jpg' srcset='img/galleryMain_1@2x.jpg 2x')
+              .property-print__image
+                img(src='img/galleryMain_2.jpg' srcset='img/galleryMain_2@2x.jpg 2x')
+              .property-print__image
+                img(src='img/galleryMain_3.jpg' srcset='img/galleryMain_3@2x.jpg 2x')
+              .property-print__image
+                img(src='img/galleryMain.jpg' srcset='img/galleryMain@2x.jpg 2x')
+              .property-print__image
+                img(src='img/galleryMain_4.jpg' srcset='img/galleryMain_4@2x.jpg 2x')
+              .property-print__image
+                img(src='img/galleryMain_1.jpg' srcset='img/galleryMain_1@2x.jpg 2x')
+
+          // section
+          .property__section.page-break-before
             h3.property__heading Об объекте
             .property__tab-nav
               li(js-tab data-target="plan_1").is-active Краткое описание

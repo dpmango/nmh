@@ -177,6 +177,8 @@
     padding: 45px 0 40px
     &:last-child
       border-bottom: 0
+    &--print-only
+      display: none
 
   &__heading
     margin: 0
@@ -380,6 +382,19 @@
   .property
     &__mobile-cta
       bottom: 10px
+
+.property-print
+  &__gallery
+    display: flex
+    flex-wrap: wrap
+    margin-top: 25px
+    margin-left: -7px
+    margin-right: -7px
+  &__image
+    flex: 0 1 33.3%
+    padding: 7px
+    img
+      width: 100%
 
 +r($wide)
   .property

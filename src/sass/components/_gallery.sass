@@ -27,10 +27,17 @@
       flex: 0 0 auto
       max-width: 100%
       font-size: 0
+      display: flex
+      flex-direction: column
       a
-        display: inline-block
+        flex: 0 1 auto
+        display: block
+        width: 100%
+        height: 100%
+        text-align: center
       img
         width: 100%
+        height: 100%
 
     &-video
       position: absolute
@@ -79,5 +86,10 @@
 
 
 +r($mobile)
+  .gallery
+    &__main
+      &-slide
+        img
+          height: auto
   .gallery__thumbs
     display: none
