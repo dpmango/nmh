@@ -3715,6 +3715,10 @@ button:focus {
   left: 0;
 }
 
+.ui-checkbox input:checked + label {
+  color: rgba(42, 42, 42, 0.7);
+}
+
 .ui-checkbox input:checked + label:before {
   border-color: #F6BA20;
 }
@@ -4834,7 +4838,7 @@ html.mfp-helper body {
   }
 }
 
-@media print, (min-width: 992px) {
+@media print, (min-width: 993px) {
   .m-navi {
     display: none !important;
   }
@@ -5174,7 +5178,7 @@ html.mfp-helper body {
   }
 }
 
-@media print, (min-width: 768px) {
+@media print, (min-width: 769px) {
   .m-search {
     display: none !important;
   }
