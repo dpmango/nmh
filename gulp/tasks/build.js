@@ -19,6 +19,7 @@ function build(callback) {
   runSequence(
     'clean:dist',
     'sass',
+    'sass:min',
     'pug',
     'javascript',
     'images',

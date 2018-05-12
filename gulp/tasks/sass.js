@@ -14,6 +14,7 @@ var respType     = require('postcss-responsive-type');
 var focus        = require('postcss-focus');
 var easings      = require('postcss-easings');
 var cssnano      = require('cssnano');
+var rename       = require('gulp-rename');
 var plumber      = require('gulp-plumber');
 var config       = require('../config');
 
@@ -59,7 +60,7 @@ var cssNanoParams = {
 gulp.task('sass', function() {
   return gulp
     .src(config.src.sass + '/*.{sass,scss}')
-    .pipe(config.production ? util.noop() : sourcemaps.init())
+    .pipe(sourcemaps.init())
     .pipe(plumber({
       errorHandler: config.errorHandler
     }))
@@ -70,11 +71,31 @@ gulp.task('sass', function() {
     }))
     .on('error', config.errorHandler)
     .pipe(postcss(processors))
-    .pipe(config.production ? util.noop() : sourcemaps.write('.'))
-    .pipe(config.production ? postcss([cssnano(cssNanoParams)]) : util.noop())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.dest.css))
 });
 
+gulp.task('sass:min', function() {
+  return gulp
+    .src(config.src.sass + '/*.{sass,scss}')
+    // .pipe(sourcemaps.init())
+    .pipe(plumber({
+      errorHandler: config.errorHandler
+    }))
+    .pipe(sass({
+        outputStyle: 'compact', // nested, expanded, compact, compressed
+        precision: 5,
+        includePaths : [config.src.sass]
+    }))
+    .on('error', config.errorHandler)
+    .pipe(postcss(processors))
+    // .pipe(sourcemaps.write('.'))
+    .pipe(postcss([cssnano(cssNanoParams)]))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(config.dest.css))
+});
+
+
 gulp.task('sass:watch', function() {
-  gulp.watch(config.src.sass + '/**/*.{sass,scss}', ['sass']);
+  gulp.watch(config.src.sass + '/**/*.{sass,scss}', ['sass', 'sass:min']);
 });
