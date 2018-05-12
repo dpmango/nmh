@@ -141,7 +141,7 @@ $(document).ready(function(){
   var lastScroll = 0;
 
   function disableScroll() {
-    lastScroll = _window.scrollTop()
+    lastScroll = _window.scrollTop();
     $('.page__content').css({
       'margin-top': '-' + lastScroll + 'px'
     });
@@ -185,10 +185,6 @@ $(document).ready(function(){
   function legacySupport(){
     // svg support for laggy browsers
     svg4everybody();
-
-    $(function() {
-    	FastClick.attach(document.body);
-    });
 
     // Viewport units buggyfill
     window.viewportUnitsBuggyfill.init({
@@ -277,9 +273,14 @@ $(document).ready(function(){
       var targetPop = $(this).data('target');
 
       if ( targetPop ){
-        closeMobileMenu();
-
+        // clear all first
         $('[js-hamburger]').removeClass('is-active');
+        $('[js-open-header-search]').removeClass('is-active');
+        $('.header').removeClass('is-menu-opened');
+        $('.m-navi').removeClass('is-active');
+        $('.m-search').removeClass('is-active');
+
+        // toggle target elements
         $(this).toggleClass('is-active');
         $('.header').toggleClass('is-menu-opened');
 
@@ -307,12 +308,13 @@ $(document).ready(function(){
     })
 
   function closeMobileMenu(){
-    blockScroll(true);
     $('[js-hamburger]').removeClass('is-active');
     $('[js-open-header-search]').removeClass('is-active');
     $('.header').removeClass('is-menu-opened');
     $('.m-navi').removeClass('is-active');
     $('.m-search').removeClass('is-active');
+
+    blockScroll();
   }
 
 
