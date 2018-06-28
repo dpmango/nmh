@@ -59,6 +59,45 @@
         "http://via.placeholder.com/90x60",
         "http://via.placeholder.com/180x120"
       ]
+    },
+    {
+      "url": "https://nmh.ru/houses/prilesnoi/",
+      "id": 324,
+      "name": "Прилесной участок в деревне Романцево",
+      "price": {
+        "value": "18 000 000",
+        "postfix": " ₽"
+      },
+      "images": [
+        "http://via.placeholder.com/90x60",
+        "http://via.placeholder.com/180x120"
+      ]
+    },
+    {
+      "url": "https://nmh.ru/houses/prilichnii/",
+      "id": 925,
+      "name": "Приличный дом в КП «Антоновка»",
+      "price": {
+        "value": "12 000 000",
+        "prefix": "$"
+      },
+      "images": [
+        "http://via.placeholder.com/90x60",
+        "http://via.placeholder.com/180x120"
+      ]
+    },
+    {
+      "url": "https://nmh.ru/houses/prilichnii/",
+      "id": 925,
+      "name": "Приличный дом в КП «Антоновка»",
+      "price": {
+        "value": "12 000 000",
+        "prefix": "$"
+      },
+      "images": [
+        "http://via.placeholder.com/90x60",
+        "http://via.placeholder.com/180x120"
+      ]
     }
   ]
 }

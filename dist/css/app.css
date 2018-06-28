@@ -5159,6 +5159,8 @@ html.mfp-helper body {
   padding: 10px 0;
   min-width: 570px;
   min-height: 450px;
+  max-height: -webkit-calc(100vh - 125px - 30px);
+  max-height: calc(100vh - 125px - 30px);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
