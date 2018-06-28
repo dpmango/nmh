@@ -4644,28 +4644,134 @@ html.mfp-helper body {
 }
 
 .header-search__input {
+  position: relative;
   max-width: 100%;
   width: 100%;
+  min-width: 1px;
   -webkit-box-flex: 0;
   -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* active [search-contaienr] */
 }
 
-.header-search__input .ui-group .ico {
-  left: 0;
+.header-search__input .ico-search {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  z-index: 5;
+  font-size: 22px;
+  fill: rgba(42, 42, 42, 0.3);
 }
 
-.header-search__input .ui-group input {
+.header-search__input input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
   padding-top: 9px;
   padding-bottom: 9px;
-  padding-left: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
   background: transparent;
+  border: 0;
   font-size: 14px;
+  color: #2A2A2A;
+  -webkit-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
-.header-search__input .ui-group input:focus {
+.header-search__input input::-webkit-input-placeholder {
+  color: rgba(42, 42, 42, 0.5);
+}
+
+.header-search__input input::-moz-placeholder {
+  color: rgba(42, 42, 42, 0.5);
+}
+
+.header-search__input input:-ms-input-placeholder {
+  color: rgba(42, 42, 42, 0.5);
+}
+
+.header-search__input input::-ms-input-placeholder {
+  color: rgba(42, 42, 42, 0.5);
+}
+
+.header-search__input input::placeholder {
+  color: rgba(42, 42, 42, 0.5);
+}
+
+.header-search__input input:focus {
   border-color: transparent;
+}
+
+.header-search__input.is-active .header-search__reset {
+  display: block;
+}
+
+.header-search__suggestions {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header-search__suggestions .s-hint-suggestion {
+  margin-right: 12px;
+  background: #404042;
+}
+
+.header-search__suggestions .s-hint-suggestion:first-child {
+  margin-left: 20px;
+}
+
+.header-search__suggestions .s-hint-suggestion:last-child {
+  margin-right: 0;
+}
+
+.header-search__suggestions .s-hint-suggestion:hover, .header-search__suggestions .s-hint-suggestion:focus {
+  background: rgba(64, 64, 66, 0.7);
+}
+
+.header-search__reset {
+  display: none;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  font-size: 10px;
+  letter-spacing: 0.023em;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: -10px;
+  -webkit-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.header-search__reset:hover, .header-search__reset:focus {
+  color: #f45b63;
 }
 
 @media print, (max-width: 768px) {
@@ -5449,6 +5555,14 @@ html.mfp-helper body {
 
 /* a.k.a tag */
 .s-hint-suggestion {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: rgba(64, 64, 66, 0.5);
   -webkit-border-radius: 4px;
           border-radius: 4px;
@@ -5466,6 +5580,22 @@ html.mfp-helper body {
 
 .s-hint-suggestion:hover, .s-hint-suggestion:focus {
   background: #F6BA20;
+}
+
+.s-hint-suggestion .ico {
+  font-size: 9px;
+  cursor: pointer;
+  margin-left: 15px;
+  margin-right: -5px;
+  -webkit-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.s-hint-suggestion .ico:hover, .s-hint-suggestion .ico:focus {
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .footer {

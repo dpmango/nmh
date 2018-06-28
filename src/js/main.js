@@ -1056,18 +1056,24 @@ $(document).ready(function(){
       })
   }
 
-
+  ///////////////
   // SEARCH HINTS
+  ///////////////
   _document
     .on("keyup", '[js-search-hints]', debounce(function(e){
       e.preventDefault();
       e.stopPropagation();
 
       var postValue = $(this).val();
-      var $hintContainer = $(this).parent().find('.s-hints');
+      var $sContainer = $(this).closest('[js-search-container]');
+      var requestEndpoint = $sContainer.data("url"); // TODO
+      var $hintContainer = $sContainer.find('.s-hints');
 
       // 3 symbols are minimum
-      if ( postValue.length <= 2 ) return
+      if ( postValue.length <= 2 ) {
+        $hintContainer.removeClass("is-active").removeClass('is-loaded');
+        return
+      }
 
       // show box straightaway and clear past results if any
       resetContainer();
@@ -1076,9 +1082,14 @@ $(document).ready(function(){
       // add .is-loaded when API responce is done and results (or no res) are rendered
       // add .is-active when showing container with preloader
 
+      // !!! TODO !!!
+      // can't get dynamic ?q=value with static json
+      // please manage this yourself with real data
+      // should be single query
+      // buildHintsNoResults or buildHints respectively
       if ( postValue.match("^нет") ){
         // render no results
-        $.get('/json/api-hints-blank.json')
+        $.get('/json/api-hints-blank.json?q='+postValue+'')
           .done(function(res) {
             buildHintsNoResults(res);
           })
@@ -1086,12 +1097,11 @@ $(document).ready(function(){
             $hintContainer.removeClass("is-active").removeClass('is-loaded');
             console.log(err);
           })
-
         return
       }
 
       // when results are found
-      $.get('/json/api-hints.json')
+      $.get('/json/api-hints.json?q='+postValue+'')
         .done(function(res) {
           buildHints(res);
         })
@@ -1099,6 +1109,8 @@ $(document).ready(function(){
           $hintContainer.removeClass("is-active").removeClass('is-loaded');
           console.log(err);
         })
+
+      // END TODO
 
       // BUILDER FUNCTIONS
       function buildHints(res){
@@ -1111,7 +1123,7 @@ $(document).ready(function(){
           $.each(tags, function(i, tag){
             var itemsListHtml = ""; // collect list html
             $.each(tag.items, function(index, item){
-              itemsListHtml += '<li data-query-value="'+ item.value +'"><a href="#">'+ item.label +'</a></li>';
+              itemsListHtml += '<li js-add-hint-tag data-query-value="'+ item.value +'"><a href="#">'+ item.label +'</a></li>';
             })
 
             // build result string
@@ -1184,7 +1196,7 @@ $(document).ready(function(){
 
           $.each(suggestions, function(i, suggestion){
 
-            suggestionsListHtml += '<div class="s-hint-suggestion" data-query-name="'+ suggestion.name +'" data-query-value="'+ suggestion.value +'">'+ 
+            suggestionsListHtml += '<div class="s-hint-suggestion" data-query-name="'+ suggestion.name +'" data-query-value="'+ suggestion.value +'">'+
               suggestion.label +
             '</div>';
 
@@ -1242,6 +1254,69 @@ $(document).ready(function(){
       }
     })
 
+    // SEARCH TAGS
+    .on('click', '[js-add-hint-tag]', function(){
+      var $tag = $(this);
+      var qValue = $tag.data("query-value");
+      var qName = $tag.closest("[data-query-name]").data("query-name");
+      var tagLabel = $tag.find("a").html();
+      console.log(qValue, qName)
+
+      var createdElement = '<div class="s-hint-suggestion"> <span>'+ tagLabel +'</span>' +
+        '<svg class="ico ico-close">' +
+          '<use xlink:href="img/sprite.svg#ico-close"></use>' +
+        '</svg>' +
+      '</div>';
+
+      $('[js-search-tags]').append(createdElement);
+      addURLQuery(qValue, qName);
+      showResetBtn($tag);
+    })
+    // remove hint on click (in sContainer)
+    .on('click', '.s-hint-suggestion .ico-close', function(){
+      $(this).parent().fadeOut(250, function(){
+        $(this).remove();
+      })
+    })
+
+
+    // RESET SEARCH
+    .on('click', '[js-search-reset]', function(){
+      var $sContainer = $(this).closest('[js-search-container]');
+      var $tags = $sContainer.find('[js-search-tags]');
+      var $input = $sContainer.find('[js-search-hints]');
+
+      $sContainer.removeClass('is-active');
+      $tags.html(""); // remove tags
+      $input.trigger("keyup");
+      $input.val(""); // remove input val
+
+      removeURLQuery();
+    })
+
+  function showResetBtn(el){
+    // TODO
+    el.closest('[js-search-container]').addClass('is-active');
+  }
+
+
+  // QUERY BUILDER
+  function addURLQuery(name, value){
+    // name is a (category)
+    // value is a (param)
+
+    var wHost = window.location.href.toLowerCase();
+
+    // check if name is present in wHost
+    // add or create with value ?
+  }
+
+  function removeURLQuery(name, value, clear){
+
+  }
+
+
+  // PRINT HOOK
   function hookPrint(){
     var beforePrint = function() {
       initSliders(true);
