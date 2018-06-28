@@ -5159,6 +5159,15 @@ html.mfp-helper body {
   padding: 10px 0;
   min-width: 570px;
   min-height: 450px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .s-hints__close {
@@ -5287,6 +5296,46 @@ html.mfp-helper body {
   letter-spacing: 0.065em;
 }
 
+.s-hints__no-results {
+  text-align: center;
+  padding: 20px 20px 50px;
+  max-width: 350px;
+  margin: auto;
+}
+
+.s-hints__no-results-text {
+  font-size: 14px;
+  letter-spacing: 0.065em;
+  line-height: 1.85;
+}
+
+.s-hints__no-results-suggestions {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.s-hints__no-results-suggestions .s-hint-suggestion {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
 .s-hints.is-loaded .s-hints__loader {
   opacity: 0;
   -webkit-transform: translate(-50%, -50%) scale(1.4);
@@ -5394,6 +5443,27 @@ html.mfp-helper body {
 
 .s-hints-property:hover, .s-hints-property:focus {
   background: #F6F6F6;
+}
+
+/* a.k.a tag */
+.s-hint-suggestion {
+  background: rgba(64, 64, 66, 0.5);
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 0.032em;
+  text-align: center;
+  padding: 10px 15px;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-transition: background 0.25s ease-in-out;
+  -o-transition: background 0.25s ease-in-out;
+  transition: background 0.25s ease-in-out;
+}
+
+.s-hint-suggestion:hover, .s-hint-suggestion:focus {
+  background: #F6BA20;
 }
 
 .footer {

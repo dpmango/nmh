@@ -21,6 +21,8 @@
     padding: 10px 0
     min-width: 570px
     min-height: 450px
+    display: flex
+    flex-direction: column
 
   &__close
     position: absolute
@@ -96,6 +98,28 @@
       font-size: 14px
       letter-spacing: 0.065em
 
+  &__no-results
+    text-align: center
+    padding: 20px 20px 50px
+    max-width: 350px
+    margin: auto
+    &-text
+      font-size: 14px
+      letter-spacing: 0.065em
+      line-height: 1.85
+    &-suggestions
+      margin-top: 20px
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-wrap: wrap
+      margin-left: -10px
+      margin-right: -10px
+      .s-hint-suggestion
+        margin-left: 10px
+        margin-right: 10px
+        margin-bottom: 20px
+
   &.is-loaded
     .s-hints__loader
       opacity: 0
@@ -155,3 +179,19 @@
 
   &:hover
     background: #F6F6F6
+
+
+/* a.k.a tag
+.s-hint-suggestion
+  background: rgba(#404042, .5)
+  border-radius: 4px
+  color: white
+  font-size: 14px
+  letter-spacing: 0.032em
+  text-align: center
+  padding: 10px 15px
+  cursor: pointer
+  white-space: nowrap
+  transition: background .25s $ease
+  &:hover
+    background: $colorPrimary

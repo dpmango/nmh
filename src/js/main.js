@@ -1070,99 +1070,164 @@ $(document).ready(function(){
       if ( postValue.length <= 2 ) return
 
       // show box straightaway and clear past results if any
-      $hintContainer.find('.s-hints__section').remove();
+      resetContainer();
       $hintContainer.addClass('is-active').removeClass('is-loaded');
 
       // add .is-loaded when API responce is done and results (or no res) are rendered
       // add .is-active when showing container with preloader
 
       if ( postValue.match("^нет") ){
-        // TODO
         // render no results
+        $.get('/json/api-hints-blank.json')
+          .done(function(res) {
+            buildHintsNoResults(res);
+          })
+          .fail(function(err) {
+            $hintContainer.removeClass("is-active").removeClass('is-loaded');
+            console.log(err);
+          })
 
         return
       }
 
+      // when results are found
       $.get('/json/api-hints.json')
         .done(function(res) {
-          var tags = res.tags;
-          var properties = res.items;
-          var resultsHtml = "";
-
-          // iterate through tags
-          if ( tags.length > 0 ){
-            $.each(tags, function(i, tag){
-              var itemsListHtml = ""; // collect list html
-              $.each(tag.items, function(index, item){
-                itemsListHtml += '<li data-query-value="'+ item.value +'"><a href="#">'+ item.label +'</a></li>';
-              })
-
-              // build result string
-              resultsHtml += '<!-- section  -->' +
-              '<div class="s-hints__section" data-query-name="'+ tag.name +'">' +
-                '<div class="s-hints__section-name">'+ tag.title +'</div>' +
-                '<ul class="s-hints__list">' +
-                  itemsListHtml
-                '</ul>' +
-              '</div>'
-            })
-          }
-
-          // iterate through properties
-          if ( properties.length > 0 ){
-            var propertiesListHtml = ""; // collect porperties list html
-
-            $.each(properties, function(i, property){
-              var pricePostfix = property.price.postfix !== undefined ? property.price.postfix : "";
-              var pricePrefix = property.price.prefix !== undefined ? property.price.prefix : "";
-
-              propertiesListHtml += '<li><a class="s-hints-property" href="'+ property.url +'" target="_blank">' +
-                '<div class="s-hints-property__image">' +
-                  '<img src="'+ property.images[0] +'" srcset="'+ property.images[1] +' 2x">' +
-                '</div>' +
-                '<div class="s-hints-property__content">' +
-                  '<div class="s-hints-property__id">ID '+ property.id +'</div>' +
-                  '<div class="s-hints-property__name">'+ property.name +'</div>' +
-                  '<div class="s-hints-property__price">'+
-                    '<span>' + pricePrefix + '</span> ' +
-                    property.price.value +
-                    ' <span>' + pricePostfix + '</span>' +
-                  '</div>' +
-                '</div></a>' +
-              '</li>';
-
-              if ( i === properties.length - 1 ){
-                onListEnd();
-              }
-
-            });
-
-            function onListEnd(){
-              // build results string
-              resultsHtml += '<div class="s-hints__section">' +
-                '<div class="s-hints__section-name">Объекты недвижимости</div>' +
-                '<ul class="s-hints__list">' +
-                  propertiesListHtml
-                '</ul>' +
-              '</div>'
-            }
-
-          }
-
-          // append results
-          setTimeout(function(){
-            // emulate api delay
-            $hintContainer.find('.s-hints__wrapper').append(resultsHtml);
-            $hintContainer.addClass('is-loaded');
-          }, 1000)
+          buildHints(res);
         })
         .fail(function(err) {
           $hintContainer.removeClass("is-active").removeClass('is-loaded');
           console.log(err);
         })
 
+      // BUILDER FUNCTIONS
+      function buildHints(res){
+        var tags = res.tags;
+        var properties = res.items;
+        var resultsHtml = "";
 
-    }, 200))
+        // iterate through tags
+        if ( tags.length > 0 ){
+          $.each(tags, function(i, tag){
+            var itemsListHtml = ""; // collect list html
+            $.each(tag.items, function(index, item){
+              itemsListHtml += '<li data-query-value="'+ item.value +'"><a href="#">'+ item.label +'</a></li>';
+            })
+
+            // build result string
+            resultsHtml += '<!-- section  -->' +
+            '<div class="s-hints__section" data-query-name="'+ tag.name +'">' +
+              '<div class="s-hints__section-name">'+ tag.title +'</div>' +
+              '<ul class="s-hints__list">' +
+                itemsListHtml
+              '</ul>' +
+            '</div>'
+          })
+        }
+
+        // iterate through properties
+        if ( properties.length > 0 ){
+          var propertiesListHtml = ""; // collect porperties list html
+
+          $.each(properties, function(i, property){
+            var pricePostfix = property.price.postfix !== undefined ? property.price.postfix : "";
+            var pricePrefix = property.price.prefix !== undefined ? property.price.prefix : "";
+
+            propertiesListHtml += '<li><a class="s-hints-property" href="'+ property.url +'" target="_blank">' +
+              '<div class="s-hints-property__image">' +
+                '<img src="'+ property.images[0] +'" srcset="'+ property.images[1] +' 2x">' +
+              '</div>' +
+              '<div class="s-hints-property__content">' +
+                '<div class="s-hints-property__id">ID '+ property.id +'</div>' +
+                '<div class="s-hints-property__name">'+ property.name +'</div>' +
+                '<div class="s-hints-property__price">'+
+                  '<span>' + pricePrefix + '</span> ' +
+                  property.price.value +
+                  ' <span>' + pricePostfix + '</span>' +
+                '</div>' +
+              '</div></a>' +
+            '</li>';
+
+            if ( i === properties.length - 1 ){
+              onListEnd();
+            }
+
+          });
+
+          function onListEnd(){
+            // build results string
+            resultsHtml += '<div class="s-hints__section">' +
+              '<div class="s-hints__section-name">Объекты недвижимости</div>' +
+              '<ul class="s-hints__list">' +
+                propertiesListHtml
+              '</ul>' +
+            '</div>'
+          }
+        }
+
+        // append results
+        setTimeout(function(){
+          // emulate api delay
+          resetContainer(); // just in case if debounce timings is not matched
+          appendResults(resultsHtml);
+        }, 1000)
+
+      } // end buildHints
+
+      function buildHintsNoResults(res){
+        var suggestions = res.suggestions;
+        var resultsHtml = "";
+
+        // iterate through suggestions
+        if ( suggestions.length > 0 ){
+          var suggestionsListHtml = ""; // collect list html
+
+          $.each(suggestions, function(i, suggestion){
+
+            suggestionsListHtml += '<div class="s-hint-suggestion" data-query-name="'+ suggestion.name +'" data-query-value="'+ suggestion.value +'">'+ 
+              suggestion.label +
+            '</div>';
+
+            if ( i === suggestions.length - 1 ){
+              onListEnd();
+            }
+
+          });
+
+          function onListEnd(){
+            // build results string
+            resultsHtml += '<div class="s-hints__no-results">' +
+              '<div class="s-hints__no-results-text">К сожалению поиск не дал результатов. Попробуйте, например, добавить:</div>' +
+              '<div class="s-hints__no-results-suggestions">' +
+                suggestionsListHtml
+              '</div>' +
+            '</div>'
+          }
+        }
+
+        // append results
+        setTimeout(function(){
+          // emulate api delay
+          resetContainer(); // just in case if debounce timings is not matched
+          appendResults(resultsHtml);
+        }, 1000)
+
+      } // end buildHintsNoResults
+
+
+      // helper functions reset/append
+      function resetContainer(){
+        $hintContainer.find('.s-hints__section').remove();
+        $hintContainer.find('.s-hints__no-results').remove();
+      }
+
+      function appendResults(str){
+        $hintContainer.find('.s-hints__wrapper').append(str);
+        $hintContainer.addClass('is-loaded');
+      }
+
+
+    }, 200)) // end keyup
     .on('click', '[js-close-hints]', function(){
       // close hints
       $(this).closest('.s-hints')
