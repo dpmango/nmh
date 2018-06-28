@@ -3474,6 +3474,12 @@ body, html {
   fill: #979797;
 }
 
+.ico-hints-loader {
+  width: 1em;
+  height: 1em;
+  fill: #2A2A2A;
+}
+
 .ico-logo {
   width: 2.52em;
   height: 1em;
@@ -4646,14 +4652,19 @@ html.mfp-helper body {
           flex: 0 1 auto;
 }
 
+.header-search__input .ui-group .ico {
+  left: 0;
+}
+
 .header-search__input .ui-group input {
   padding-top: 9px;
   padding-bottom: 9px;
+  padding-left: 40px;
   background: transparent;
+  font-size: 14px;
 }
 
 .header-search__input .ui-group input:focus {
-  outline: 1px solid rgba(255, 99, 71, 0.5);
   border-color: transparent;
 }
 
@@ -5146,6 +5157,8 @@ html.mfp-helper body {
   -webkit-border-radius: 4px;
           border-radius: 4px;
   padding: 10px 0;
+  min-width: 570px;
+  min-height: 450px;
 }
 
 .s-hints__close {
@@ -5220,6 +5233,87 @@ html.mfp-helper body {
 
 .s-hints__list a:not(.s-hints-property):hover, .s-hints__list a:not(.s-hints-property):focus {
   background: #F6F6F6;
+}
+
+.s-hints__loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  pointer-events: none;
+  color: rgba(42, 42, 42, 0.5);
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transition: 0.1s ease-in-out;
+  -o-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+
+.s-hints__loader .ico {
+  position: static;
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 32px;
+  -webkit-animation: hintsLoading 2s linear;
+          animation: hintsLoading 2s linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.s-hints__loader span {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 0.065em;
+}
+
+.s-hints.is-loaded .s-hints__loader {
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%) scale(1.4);
+      -ms-transform: translate(-50%, -50%) scale(1.4);
+          transform: translate(-50%, -50%) scale(1.4);
+}
+
+@-webkit-keyframes hintsLoading {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes hintsLoading {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 /* Property card for the hint */

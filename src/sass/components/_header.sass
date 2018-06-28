@@ -244,13 +244,18 @@
     max-width: 100%
     width: 100%
     flex: 0 1 auto
-    .ui-group input
-      padding-top: 9px
-      padding-bottom: 9px
-      background: transparent
-      &:focus
-        outline: 1px solid rgba(tomato, .5)
-        border-color: transparent
+    .ui-group
+      .ico
+        left: 0
+      input
+        padding-top: 9px
+        padding-bottom: 9px
+        padding-left: 40px
+        background: transparent
+        font-size: 14px
+        &:focus
+          // outline: 1px solid rgba(tomato, .5)
+          border-color: transparent
 
 +r($tablet)
   .header-search

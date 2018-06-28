@@ -63,7 +63,7 @@
               <div class="header-search__wrapper">
                 <div class="header-search__input">
                   <div class="ui-group ui-group--search">
-                    <input type="text" placeholder="Название" js-search-hints>
+                    <input type="text" placeholder="Ищите по расположению или особенности объекта. Например, “гараж” или “Десеновское поселение”." js-search-hints>
                     <svg class="ico ico-search">
                       <use xlink:href="img/sprite.svg#ico-search"></use>
                     </svg>
@@ -75,41 +75,10 @@
                             <use xlink:href="img/sprite.svg#ico-close"></use>
                           </svg>
                         </div>
-                        <!-- section-->
-                        <div class="s-hints__section">
-                          <div class="s-hints__section-name">Расположение</div>
-                          <ul class="s-hints__list">
-                            <li><a href="#">Прилевальное поселение</a></li>
-                            <li><a href="#">КП “Прилесной дом”</a></li>
-                          </ul>
-                        </div>
-                        <!-- section  -->
-                        <div class="s-hints__section">
-                          <div class="s-hints__section-name">Особенности недвижимости</div>
-                          <ul class="s-hints__list">
-                            <li><a href="#">Прилевальное поселение</a></li>
-                            <li><a href="#">КП “Прилесной дом”</a></li>
-                          </ul>
-                        </div>
-                        <!-- section  -->
-                        <div class="s-hints__section">
-                          <div class="s-hints__section-name">Объекты недвижимости</div>
-                          <ul class="s-hints__list">
-                            <li><a class="s-hints-property" href="#">
-                                <div class="s-hints-property__image"><img src="http://via.placeholder.com/90x60" srcset="http://via.placeholder.com/180x120 2x"></div>
-                                <div class="s-hints-property__content">
-                                  <div class="s-hints-property__id">ID 324</div>
-                                  <div class="s-hints-property__name">Прилесной участок в деревне Романцево</div>
-                                  <div class="s-hints-property__price">18 000 000 <span>₽</span></div>
-                                </div></a></li>
-                            <li><a class="s-hints-property" href="#">
-                                <div class="s-hints-property__image"><img src="http://via.placeholder.com/90x60" srcset="http://via.placeholder.com/180x120 2x"></div>
-                                <div class="s-hints-property__content">
-                                  <div class="s-hints-property__id">ID 324</div>
-                                  <div class="s-hints-property__name">Прилесной участок в деревне Романцево</div>
-                                  <div class="s-hints-property__price">18 000 000 <span>₽</span></div>
-                                </div></a></li>
-                          </ul>
+                        <div class="s-hints__loader">
+                          <svg class="ico ico-hints-loader">
+                            <use xlink:href="img/sprite.svg#ico-hints-loader"></use>
+                          </svg><span>загрузка…</span>
                         </div>
                       </div>
                     </div>

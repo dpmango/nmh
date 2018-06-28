@@ -1060,8 +1060,28 @@ $(document).ready(function(){
   // SEARCH HINTS
   _document
     .on("keyup", '[js-search-hints]', debounce(function(e){
+      e.preventDefault();
+      e.stopPropagation();
+
       var postValue = $(this).val();
       var $hintContainer = $(this).parent().find('.s-hints');
+
+      // 3 symbols are minimum
+      if ( postValue.length <= 2 ) return
+
+      // show box straightaway and clear past results if any
+      $hintContainer.find('.s-hints__section').remove();
+      $hintContainer.addClass('is-active').removeClass('is-loaded');
+
+      // add .is-loaded when API responce is done and results (or no res) are rendered
+      // add .is-active when showing container with preloader
+
+      if ( postValue.match("^нет") ){
+        // TODO
+        // render no results
+
+        return
+      }
 
       $.get('/json/api-hints.json')
         .done(function(res) {
@@ -1129,23 +1149,31 @@ $(document).ready(function(){
 
           }
 
-          // clear container and append results
-          $hintContainer.find('.s-hints__section').remove();
-          $hintContainer.find('.s-hints__wrapper').append(resultsHtml);
+          // append results
+          setTimeout(function(){
+            // emulate api delay
+            $hintContainer.find('.s-hints__wrapper').append(resultsHtml);
+            $hintContainer.addClass('is-loaded');
+          }, 1000)
         })
         .fail(function(err) {
+          $hintContainer.removeClass("is-active").removeClass('is-loaded');
           console.log(err);
         })
 
-      $hintContainer.addClass('is-active');
+
     }, 200))
     .on('click', '[js-close-hints]', function(){
       // close hints
-      $(this).closest('.s-hints').removeClass('is-active');
+      $(this).closest('.s-hints')
+        .removeClass('is-active')
+        .removeClass('is-loaded');
     })
     .on('click', function(e){
       if ( !$(e.target).closest('.header-search').length > 0 ){
-        $('.s-hints').removeClass('is-active');
+        $('.s-hints')
+          .removeClass('is-active')
+          .removeClass('is-loaded');
       }
     })
 
