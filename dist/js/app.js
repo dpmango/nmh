@@ -1277,7 +1277,7 @@ $(document).ready(function(){
       '</div>';
 
       $('[js-search-tags]').append(createdElement);
-      addURLQuery(qValue, qName);
+      addURLQuery(qName, qValue);
       showResetBtn($tag);
     })
     // remove hint on click (in sContainer)
@@ -1313,10 +1313,77 @@ $(document).ready(function(){
     // name is a (category)
     // value is a (param)
 
-    var wHost = window.location.href.toLowerCase();
+    // var wHost = window.location.href.toLowerCase();
 
     // check if name is present in wHost
     // add or create with value ?
+    // if ( $.getUrlVar(name) != null ){
+    //   UpdateQueryString(name, value)
+    // }
+
+    // https://github.com/Mikhus/domurl
+    var url = new Url;
+    url.query[name] = value;
+
+    console.log(url.query);
+
+    // url.protocol + "//" + url.host + 
+    var newUrl = url.path + url.query;
+    window.history.pushState({path:newUrl},'',newUrl);
+
+
+    // history.pushState
+
+    // console.log( UpdateQueryString(name, value) );
+
+  }
+
+  // maybe ?
+  // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+
+
+  // https://stackoverflow.com/questions/5999118/how-can-i-add-or-update-a-query-string-parameter
+  // function updateQueryStringParameter(uri, key, value) {
+  //   var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+  //   var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+  //   if (uri.match(re)) {
+  //     return uri.replace(re, '$1' + key + "=" + value + '$2');
+  //   }
+  //   else {
+  //     return uri + separator + key + "=" + value;
+  //   }
+  // }
+
+  // Not supplying a value will remove the parameter
+  // supplying one will add/update the parameter.
+  // If no URL is supplied, it will be grabbed from window.location
+
+  function UpdateQueryString(key, value, url) {
+    if (!url) url = window.location.href;
+    var re = new RegExp("([?&])" + key + "=.*?(&|#|$)(.*)", "gi"),
+      hash;
+
+    if (re.test(url)) {
+      if (typeof value !== 'undefined' && value !== null)
+        return url.replace(re, '$1' + key + "=" + value + '$2$3');
+      else {
+        hash = url.split('#');
+        url = hash[0].replace(re, '$1$3').replace(/(&|\?)$/, '');
+        if (typeof hash[1] !== 'undefined' && hash[1] !== null)
+          url += '#' + hash[1];
+        return url;
+      }
+    } else {
+      if (typeof value !== 'undefined' && value !== null) {
+        var separator = url.indexOf('?') !== -1 ? '&' : '?';
+        hash = url.split('#');
+        url = hash[0] + separator + key + '=' + value;
+        if (typeof hash[1] !== 'undefined' && hash[1] !== null)
+          url += '#' + hash[1];
+        return url;
+      } else
+        return url;
+    }
   }
 
   function removeURLQuery(name, value, clear){
@@ -1740,5 +1807,24 @@ $(document).ready(function(){
     });
 
 
+  }
+});
+
+// SERVICE FUNCTIONS
+// PROTOTYES and EXTENDS
+$.extend({
+  getUrlVars: function(){
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+      hash = hashes[i].split('=');
+      vars.push(hash[0]);
+      vars[hash[0]] = hash[1];
+    }
+    return vars;
+  },
+  getUrlVar: function(name){
+    return $.getUrlVars()[name];
   }
 });
