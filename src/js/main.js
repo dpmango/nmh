@@ -604,28 +604,6 @@ $(document).ready(function(){
       freeMode: true,
     })
 
-    new Swiper('[js-header-slider]', {
-      wrapperClass: "swiper-wrapper",
-      slideClass: "header-search__slide",
-      direction: 'horizontal',
-      loop: true,
-      autoplay: {
-        delay: 3000,
-      },
-      watchOverflow: false,
-      setWrapperSize: false,
-      spaceBetween: 0,
-      slidesPerView: 1,
-      normalizeSlideIndex: true,
-      // grabCursor: true,
-      freeMode: false,
-      navigation: {
-        nextEl: '.header-search__next',
-        prevEl: '.header-search__prev',
-      },
-    })
-
-
     var numberOfSlides = $('.gallery__main .gallery__main-slide').length;
 
     var gallerySwiper = new Swiper('[js-gallery-main]', {
@@ -1076,8 +1054,100 @@ $(document).ready(function(){
           $(this).val( $(this).val().replace(/\B(?=(\d{3})+(?!\d))/g, " ") );
         }
       })
-
   }
+
+
+  // SEARCH HINTS
+  _document
+    .on("keyup", '[js-search-hints]', debounce(function(e){
+      var postValue = $(this).val();
+      var $hintContainer = $(this).parent().find('.s-hints');
+
+      $.get('/json/api-hints.json')
+        .done(function(res) {
+          var tags = res.tags;
+          var properties = res.items;
+          var resultsHtml = "";
+
+          // iterate through tags
+          if ( tags.length > 0 ){
+            $.each(tags, function(i, tag){
+              var itemsListHtml = ""; // collect list html
+              $.each(tag.items, function(index, item){
+                itemsListHtml += '<li data-query-value="'+ item.value +'"><a href="#">'+ item.label +'</a></li>';
+              })
+
+              // build result string
+              resultsHtml += '<!-- section  -->' +
+              '<div class="s-hints__section" data-query-name="'+ tag.name +'">' +
+                '<div class="s-hints__section-name">'+ tag.title +'</div>' +
+                '<ul class="s-hints__list">' +
+                  itemsListHtml
+                '</ul>' +
+              '</div>'
+            })
+          }
+
+          // iterate through properties
+          if ( properties.length > 0 ){
+            var propertiesListHtml = ""; // collect porperties list html
+
+            $.each(properties, function(i, property){
+              var pricePostfix = property.price.postfix !== undefined ? property.price.postfix : "";
+              var pricePrefix = property.price.prefix !== undefined ? property.price.prefix : "";
+
+              propertiesListHtml += '<li><a class="s-hints-property" href="'+ property.url +'" target="_blank">' +
+                '<div class="s-hints-property__image">' +
+                  '<img src="'+ property.images[0] +'" srcset="'+ property.images[1] +' 2x">' +
+                '</div>' +
+                '<div class="s-hints-property__content">' +
+                  '<div class="s-hints-property__id">ID '+ property.id +'</div>' +
+                  '<div class="s-hints-property__name">'+ property.name +'</div>' +
+                  '<div class="s-hints-property__price">'+
+                    '<span>' + pricePrefix + '</span> ' +
+                    property.price.value +
+                    ' <span>' + pricePostfix + '</span>' +
+                  '</div>' +
+                '</div></a>' +
+              '</li>';
+
+              if ( i === properties.length - 1 ){
+                onListEnd();
+              }
+
+            });
+
+            function onListEnd(){
+              // build results string
+              resultsHtml += '<div class="s-hints__section">' +
+                '<div class="s-hints__section-name">Объекты недвижимости</div>' +
+                '<ul class="s-hints__list">' +
+                  propertiesListHtml
+                '</ul>' +
+              '</div>'
+            }
+
+          }
+
+          // clear container and append results
+          $hintContainer.find('.s-hints__section').remove();
+          $hintContainer.find('.s-hints__wrapper').append(resultsHtml);
+        })
+        .fail(function(err) {
+          console.log(err);
+        })
+
+      $hintContainer.addClass('is-active');
+    }, 200))
+    .on('click', '[js-close-hints]', function(){
+      // close hints
+      $(this).closest('.s-hints').removeClass('is-active');
+    })
+    .on('click', function(e){
+      if ( !$(e.target).closest('.header-search').length > 0 ){
+        $('.s-hints').removeClass('is-active');
+      }
+    })
 
   function hookPrint(){
     var beforePrint = function() {

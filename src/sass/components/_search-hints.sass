@@ -1,0 +1,116 @@
+.s-hints
+  position: absolute
+  top: 53px
+  left: 0
+  z-index: 5
+  opacity: 0
+  pointer-events: none
+  transform: translate(-10px,0px)
+  transition: .25s $ease
+  &.is-active
+    pointer-events: all
+    opacity: 1
+    transform: translate(0,0)
+
+  &__wrapper
+    position: relative
+    background: #FFFFFF
+    border: 1px solid #F6F6F6
+    box-shadow: 0 5px 10px 0 rgba(226,226,226,0.50)
+    border-radius: 4px
+    padding: 10px 0
+
+  &__close
+    position: absolute
+    right: 10px
+    top: 10px
+    padding: 10px
+    color: rgba($fontColor, .3)
+    font-size: 0
+    // size: 34px
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    cursor: pointer
+    transition: color .25s $ease
+    .ico
+      position: static
+      transform: none
+      font-size: 12px
+    &:hover
+      color: $colorRed
+
+
+  &__section
+    color: $fontColor
+    letter-spacing: 0.065em
+    margin: 10px 0
+    &-name
+      font-size: 14px
+      font-weight: 700
+      margin-left: 30px
+      margin-bottom: 10px
+
+  &__list
+    margin: 0
+    padding: 0
+    list-style: none
+    li
+      display: block
+      font-size: 14px
+    a:not(.s-hints-property)
+      display: block
+      padding: 9px 50px
+      transition: background .25s $ease
+      &:hover
+        background: #F6F6F6
+
+/* Property card for the hint
+.s-hints-property
+  display: flex
+  align-items: center
+  padding: 9px 50px
+  transition: background .25s $ease
+  &__image
+    flex: 0 0 80px
+    max-width: 80px
+    position: relative
+    overflow: hidden
+    z-index: 1
+    border-radius: 4px
+    background: #D8D8D8
+    border-radius: 4px
+    font-size: 0
+    img
+      width: 100%
+  &__content
+    flex: 1 1 auto
+    max-width: 100%
+    min-width: 1px
+    margin-left: 10px
+
+  &__id
+    font-size: 12px
+    color: rgba($fontColor, .2)
+    line-height: 1.67
+    letter-spacing: 0em
+
+  &__name
+    font-size: 14px
+    line-height: 1.42
+    +text-overflow
+
+  &__price
+    letter-spacing: 0em
+    font-size: 12px
+    font-weight: 700
+    line-height: 1.67
+    margin-top: 2px
+    span
+      display: inline-block
+      font-weight: normal
+      letter-spacing: 0.057em
+
+  &:hover
+    background: #F6F6F6

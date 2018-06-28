@@ -63,29 +63,56 @@
               <div class="header-search__wrapper">
                 <div class="header-search__input">
                   <div class="ui-group ui-group--search">
-                    <input type="text" placeholder="Название" js-autocomplete data-url="json/cities.json">
+                    <input type="text" placeholder="Название" js-search-hints>
                     <svg class="ico ico-search">
                       <use xlink:href="img/sprite.svg#ico-search"></use>
                     </svg>
-                  </div>
-                </div>
-                <div class="header-search__slider swiper-container" js-header-slider>
-                  <div class="header-search__prev">
-                    <svg class="ico ico-arrow-left">
-                      <use xlink:href="img/sprite.svg#ico-arrow-left"></use>
-                    </svg>
-                  </div>
-                  <div class="swiper-wrapper">
-                    <div class="header-search__slide"><span>Цены от собственников и застройщиков</span></div>
-                    <div class="header-search__slide"><span>Полное сопровождение сделок</span></div>
-                    <div class="header-search__slide"><span>Партнерство с другими агентствами</span></div>
-                    <div class="header-search__slide"><span>Быстрый показ всех объектов</span></div>
-                  </div>
-                  <!-- controls-->
-                  <div class="header-search__next">
-                    <svg class="ico ico-arrow-right">
-                      <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
-                    </svg>
+                    <!-- search hints-->
+                    <div class="s-hints">
+                      <div class="s-hints__wrapper">
+                        <div class="s-hints__close" js-close-hints>
+                          <svg class="ico ico-close">
+                            <use xlink:href="img/sprite.svg#ico-close"></use>
+                          </svg>
+                        </div>
+                        <!-- section-->
+                        <div class="s-hints__section">
+                          <div class="s-hints__section-name">Расположение</div>
+                          <ul class="s-hints__list">
+                            <li><a href="#">Прилевальное поселение</a></li>
+                            <li><a href="#">КП “Прилесной дом”</a></li>
+                          </ul>
+                        </div>
+                        <!-- section  -->
+                        <div class="s-hints__section">
+                          <div class="s-hints__section-name">Особенности недвижимости</div>
+                          <ul class="s-hints__list">
+                            <li><a href="#">Прилевальное поселение</a></li>
+                            <li><a href="#">КП “Прилесной дом”</a></li>
+                          </ul>
+                        </div>
+                        <!-- section  -->
+                        <div class="s-hints__section">
+                          <div class="s-hints__section-name">Объекты недвижимости</div>
+                          <ul class="s-hints__list">
+                            <li><a class="s-hints-property" href="#">
+                                <div class="s-hints-property__image"><img src="http://via.placeholder.com/90x60" srcset="http://via.placeholder.com/180x120 2x"></div>
+                                <div class="s-hints-property__content">
+                                  <div class="s-hints-property__id">ID 324</div>
+                                  <div class="s-hints-property__name">Прилесной участок в деревне Романцево</div>
+                                  <div class="s-hints-property__price">18 000 000 <span>₽</span></div>
+                                </div></a></li>
+                            <li><a class="s-hints-property" href="#">
+                                <div class="s-hints-property__image"><img src="http://via.placeholder.com/90x60" srcset="http://via.placeholder.com/180x120 2x"></div>
+                                <div class="s-hints-property__content">
+                                  <div class="s-hints-property__id">ID 324</div>
+                                  <div class="s-hints-property__name">Прилесной участок в деревне Романцево</div>
+                                  <div class="s-hints-property__price">18 000 000 <span>₽</span></div>
+                                </div></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

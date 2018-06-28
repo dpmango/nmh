@@ -34,27 +34,54 @@ header.header.header--static
       .header-search__wrapper
         .header-search__input
           .ui-group.ui-group--search
-            input(type="text" placeholder="Название" js-autocomplete data-url="json/cities.json")
+            input(type="text" placeholder="Название" js-search-hints)
             +icon('ico-search')
-        .header-search__slider.swiper-container(js-header-slider)
-          .header-search__prev
-            +icon('ico-arrow-left')
-          .swiper-wrapper
-            .header-search__slide
-              span Цены от собственников и застройщиков
-            .header-search__slide
-              span Полное сопровождение сделок
-            .header-search__slide
-              span Партнерство с другими агентствами
-            .header-search__slide
-              span Быстрый показ всех объектов
+            // search hints
+            .s-hints
+              .s-hints__wrapper
+                .s-hints__close(js-close-hints)
+                  +icon('ico-close')
+                  
+                // section
+                .s-hints__section
+                  .s-hints__section-name Расположение
+                  ul.s-hints__list
+                    li
+                      a(href="#") Прилевальное поселение
+                    li
+                      a(href="#") КП “Прилесной дом”
+                // section  
+                .s-hints__section
+                  .s-hints__section-name Особенности недвижимости
+                  ul.s-hints__list
+                    li
+                      a(href="#") Прилевальное поселение
+                    li
+                      a(href="#") КП “Прилесной дом”
+                // section  
+                .s-hints__section
+                  .s-hints__section-name Объекты недвижимости
+                  ul.s-hints__list
+                    li
+                      a(href="#").s-hints-property
+                        .s-hints-property__image
+                          img(src="http://via.placeholder.com/90x60" srcset="http://via.placeholder.com/180x120 2x")
+                        .s-hints-property__content
+                          .s-hints-property__id ID 324
+                          .s-hints-property__name Прилесной участок в деревне Романцево
+                          .s-hints-property__price 18 000 000 <span>₽</span>
+                            
+                    li
+                      a(href="#").s-hints-property
+                        .s-hints-property__image
+                          img(src="http://via.placeholder.com/90x60" srcset="http://via.placeholder.com/180x120 2x")
+                        .s-hints-property__content
+                          .s-hints-property__id ID 324
+                          .s-hints-property__name Прилесной участок в деревне Романцево
+                          .s-hints-property__price 18 000 000 <span>₽</span>
+                            
 
-              
-          // controls
-          .header-search__next
-            +icon('ico-arrow-right')
-          
-    
+
 // HEADER :: END
 
 include _mobile-navi

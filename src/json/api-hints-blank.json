@@ -1,0 +1,14 @@
+{
+  "suggestions": [
+    {
+      "name": "tag-location",
+      "value": "prilevalnoe",
+      "label": "Прилевальное поселение"
+    },
+    {
+      "name": "tag-special",
+      "value": "prilesnoi",
+      "label": "Прилесной участок"
+    }
+  ]
+}
