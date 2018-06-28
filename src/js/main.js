@@ -1255,14 +1255,22 @@ $(document).ready(function(){
     })
 
     // SEARCH TAGS
-    .on('click', '[js-add-hint-tag]', function(){
+    .on('click', '[js-add-hint-tag]', function(e){
       var $tag = $(this);
+      var $sContainer = $(this).closest('[js-search-container]');
       var qValue = $tag.data("query-value");
       var qName = $tag.closest("[data-query-name]").data("query-name");
       var tagLabel = $tag.find("a").html();
-      console.log(qValue, qName)
 
-      var createdElement = '<div class="s-hint-suggestion"> <span>'+ tagLabel +'</span>' +
+      // search for dublicates
+      var $currentTags = $sContainer.find('[js-search-tags]')
+      if ( $currentTags.find('[data-query-value="'+qValue+'"]').length > 0
+            && $currentTags.find('[data-query-name="'+qName+'"]').length > 0
+      ){
+        return
+      }
+
+      var createdElement = '<div data-query-name="'+qName+'" data-query-value="'+qValue+'" class="s-hint-suggestion"> <span>'+ tagLabel +'</span>' +
         '<svg class="ico ico-close">' +
           '<use xlink:href="img/sprite.svg#ico-close"></use>' +
         '</svg>' +
