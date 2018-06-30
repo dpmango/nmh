@@ -340,6 +340,19 @@ block content
         +icon('ico-close')
     .m-search__wrapper()
       form(action="#").m-search__form
+        // keywords
+        .m-search__keywords
+          label Ищите по расположению или особенности объекта.
+          //- .ui-group.ui-group--search
+          //-   input(type="text" placeholder="Название" js-autocomplete data-url="json/cities.json")
+          //-   +icon('ico-search')
+          // parent container for search hints and tags logic
+          .hints.hints--mobile.hints--with-bg(js-search-container data-url="/test")
+            +icon('ico-search')
+            input(type="text" placeholder="Можете добавить условие. Например, “гараж” или “д. Ватутинки”." js-search-hints)
+            .hints__suggestions(js-search-tags)
+            include components/_search-hints-mobile
+              
         //slider group
         .slider-group
           label Цена
@@ -417,14 +430,8 @@ block content
         
         .m-search__next(js-open-mobile data-target="mobile-type")
           span Тип ремонта
-          +icon('ico-arrow-right')
-                  
-        // keywords
-        .m-search__keywords
-          label ПОИСК ПО КЛЮЧЕВЫМ СЛОВАМ
-          .ui-group.ui-group--search
-            input(type="text" placeholder="Название" js-autocomplete data-url="json/cities.json")
-            +icon('ico-search')
+          +icon('ico-arrow-right')      
+        
             
         .m-search__cta
           button(type="submit").btn.btn-primary показать все предложения (20)

@@ -46,7 +46,6 @@
     &:hover
       color: $colorRed
 
-
   &__section
     color: $fontColor
     letter-spacing: 0.065em
@@ -125,6 +124,14 @@
     .s-hints__loader
       opacity: 0
       transform: translate(-50%,-50%) scale(1.4)
+
+  &--mobile
+
+    .s-hints
+      &__wrapper
+        min-height: calc(100vh - 100px)
+        max-height: 100% !important
+
 
 @keyframes hintsLoading
   from

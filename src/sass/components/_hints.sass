@@ -49,6 +49,17 @@
         box-shadow: none
         border: 0
         min-height: 200px
+  &--mobile
+    border: 1px solid #CCCBCB
+    margin-bottom: 40px
+    .s-hints
+      top: 53px
+      left: -41px
+      right: -41px
+      // bottom: 0
+      +r($mobile)
+        left: -21px
+        right: -21px
 
   /* active [search-contaienr]
   &.is-active

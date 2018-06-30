@@ -5324,6 +5324,12 @@ html.mfp-helper body {
           transform: translate(-50%, -50%) scale(1.4);
 }
 
+.s-hints--mobile .s-hints__wrapper {
+  min-height: -webkit-calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
+  max-height: 100% !important;
+}
+
 @-webkit-keyframes hintsLoading {
   from {
     -webkit-transform: rotate(0);
@@ -5579,6 +5585,24 @@ html.mfp-helper body {
           box-shadow: none;
   border: 0;
   min-height: 200px;
+}
+
+.hints--mobile {
+  border: 1px solid #CCCBCB;
+  margin-bottom: 40px;
+}
+
+.hints--mobile .s-hints {
+  top: 53px;
+  left: -41px;
+  right: -41px;
+}
+
+@media print, (max-width: 680px) {
+  .hints--mobile .s-hints {
+    left: -21px;
+    right: -21px;
+  }
 }
 
 .hints.is-active .hints__reset {
