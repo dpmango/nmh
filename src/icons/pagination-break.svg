@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="2px" viewBox="0 0 8 2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>pagination-break@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="2" height="2" rx="1"></rect>
+        <rect id="path-3" x="0" y="0" width="2" height="2" rx="1"></rect>
+        <rect id="path-5" x="0" y="0" width="2" height="2" rx="1"></rect>
+    </defs>
+    <g id="Property-Search-With-Tags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="desktop_property_search_default_1920p" transform="translate(-1133.000000, -1502.000000)">
+            <g id="pagination" transform="translate(1032.000000, 1486.000000)">
+                <g id="pagination-break" transform="translate(101.000000, 16.000000)">
+                    <g id="5th-Position">
+                        <g id="Active-Base">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Base"></g>
+                            <g id="↳-🎨Color" mask="url(#mask-2)" fill="#404042">
+                                <rect id="Base" x="0" y="0" width="2" height="2"></rect>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="5th-Position" transform="translate(3.000000, 0.000000)">
+                        <g id="Active-Base">
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <g id="Base"></g>
+                            <g id="↳-🎨Color" mask="url(#mask-4)" fill="#404042">
+                                <rect id="Base" x="0" y="0" width="2" height="2"></rect>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="5th-Position" transform="translate(6.000000, 0.000000)">
+                        <g id="Active-Base">
+                            <mask id="mask-6" fill="white">
+                                <use xlink:href="#path-5"></use>
+                            </mask>
+                            <g id="Base"></g>
+                            <g id="↳-🎨Color" mask="url(#mask-6)" fill="#404042">
+                                <rect id="Base" x="0" y="0" width="2" height="2"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

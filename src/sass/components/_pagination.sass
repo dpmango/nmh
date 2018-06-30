@@ -2,58 +2,67 @@
   text-align: center
   font-size: 14px
   font-family: $noto
-  font-weight: 700
+  // font-weight: 700
   margin: 50px 0 30px 0
   &__scope
     text-align: center
     letter-spacing: 0.08em
     margin-bottom: 20px
-    color: rgba($fontColor, .5)
+    color: rgba($fontColor, .3)
   &__list
     margin: 0
     padding: 0
     list-style: none
     display: flex
-    align-items: center
+    align-items: baseline
     justify-content: center
     letter-spacing: 0.032em
     li
       display: inline-block
-      margin-right: 10px
+      margin-right: 8px
       &:last-child
         margin-right: 0
       &.is-active
         a
-          border-color: $colorPrimary
-      &:hover
+          color: white
+          background-color: $fontColor
+      &:hover:not(.is-active)
         a
-          border-color: $fontColor
+          color: white
+          background-color: rgba($fontColor, .85)
     a
       display: inline-block
-      border: 1px solid transparent
-      border-radius: 8px
-      min-size: 40px
-      line-height: 30px
-      padding: 5px
+      // border: 1px solid transparent
+      border-radius: 50%
+      min-size: 28px
+      line-height: 28px
+      // padding: 5px
+      font-family: $noto
+      font-weight: 700
+      font-size: 16px
       text-align: center
-      color: rgba($fontColor, .5)
+      color: $fontColor
       transition: .25s $ease
 
-  &__prev, &__last
-    position: relative
-    a
-      display: flex
-      align-items: center
-    .ico
-      font-size: 8px
+  &__break
+    font-size: 2px
 
-  &__prev
-    .ico
-      margin-right: 8px
 
-  &__last
-    .ico
-      margin-left: 8px
+  // &__prev, &__last
+  //   position: relative
+  //   a
+  //     display: flex
+  //     align-items: center
+  //   .ico
+  //     font-size: 8px
+  //
+  // &__prev
+  //   .ico
+  //     margin-right: 8px
+  //
+  // &__last
+  //   .ico
+  //     margin-left: 8px
 
 +r($tablet)
   .pagination
@@ -61,6 +70,6 @@
 
 +r(480)
   .pagination
-    &__prev, &__last
-      span
-        display: none
+    // &__prev, &__last
+    //   span
+    //     display: none

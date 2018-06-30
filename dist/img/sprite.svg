@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg"><symbol id="ico-arrow-left" viewBox="0 0 12 21">
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs>
+        <rect id="a" width="2" height="2" rx="1"/>
+        <rect id="c" width="2" height="2" rx="1"/>
+        <rect id="e" width="2" height="2" rx="1"/>
+    </defs><symbol id="ico-arrow-left" viewBox="0 0 12 21">
     <title>
         arrow-left
     </title>
@@ -47,6 +51,37 @@
     <path class="st0" d="M7.3 6.6L1.8 0H0v29h3V6.3l1.2 1.4V29h3.1V11.4L21.8 29h3.9l-3.9-4.8z"/>
     <path class="st0" d="M69.5.1v11.6h-1.2V.1h-3v11.6H50.8V.1H49l-5.4 6.6-4.6 5.5-2 2.4-.8.9-.8-.9.8-.9 2-2.4 5.3-6.4L47.4.2V.1h-4l-7.2 8.8-.1.1-1-1.2L29 .1V0h-4l4 4.8v.1l4.3 5.2 1 1.2-.8.9-.3-.3L29 6.7l-.1-.1L23.5 0h-1.7v17.6L7.3 0h-4l4 4.8 14.5 17.6 5.5 6.6H29V11.5l2.5 3.1 2 2.4.8.9 2 2.4 2-2.4.8-.9 2-2.4 2.5-3.1v3.3h29V.1h-3.1zM26 22.7l-1.2-1.4V6.4l1.1 1.3.1.1v14.9zm20.5-11v-4l1.2-1.4v5.4h-1.2z"/>
     <path class="st0" d="M72.5 15.9v13.2h-3V18.9h-1.2v10.2h-3V18.9H50.8v10.2h-3.1V18.9h-1.2v10.2h-3V15.9z"/>
+</symbol><symbol id="ico-pagination-break" viewBox="0 0 8 2">
+    <title>
+        pagination-break@2x
+    </title>
+    
+    <g fill-rule="evenodd">
+        <g>
+            <mask id="b">
+                <use xlink:href="#a"/>
+            </mask>
+            <g mask="url(#b)">
+                <path d="M0 0h2v2H0z"/>
+            </g>
+        </g>
+        <g transform="translate(3)">
+            <mask id="d">
+                <use xlink:href="#c"/>
+            </mask>
+            <g mask="url(#d)">
+                <path d="M0 0h2v2H0z"/>
+            </g>
+        </g>
+        <g transform="translate(6)">
+            <mask id="f">
+                <use xlink:href="#e"/>
+            </mask>
+            <g mask="url(#f)">
+                <path d="M0 0h2v2H0z"/>
+            </g>
+        </g>
+    </g>
 </symbol><symbol id="ico-search" viewBox="0 0 23 23">
     <title>
         search
