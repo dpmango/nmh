@@ -1,0 +1,49 @@
+// SEARCH HINTS
+.s-hints
+  .s-hints__wrapper(js-scrollbar data-propagation)
+    .s-hints__close(js-close-hints)
+      +icon('ico-close')
+    
+    // loader
+    .s-hints__loader
+      +icon('ico-hints-loader')
+      span загрузка…
+    
+    // list of sections to be appended with jQuery
+    // search for '[js-search-hints]' in main.js
+    
+    // section
+    .s-hints__section
+      .s-hints__section-name Расположение
+      ul.s-hints__list
+        li
+          a(href="#") label
+
+    // section  
+    .s-hints__section
+      .s-hints__section-name Особенности недвижимости
+      ul.s-hints__list
+        li
+          a(href="#") label
+          
+    // section  
+    .s-hints__section
+      .s-hints__section-name Объекты недвижимости
+      ul.s-hints__list
+        li
+          a(href="#").s-hints-property
+            .s-hints-property__image
+              img(src="http://via.placeholder.com/90x60" srcset="http://via.placeholder.com/180x120 2x")
+            .s-hints-property__content
+              .s-hints-property__id ID 324
+              .s-hints-property__name Прилесной участок в деревне Романцево
+              .s-hints-property__price 18 000 000 <span>₽</span>
+                
+                
+    // no results
+    // also rendered with JS
+    .s-hints__no-results
+      .s-hints__no-results-text К сожалению поиск не дал результатов. Попробуйте, например, добавить:
+      .s-hints__no-results-suggestions
+        .s-hint-suggestion Гараж
+        .s-hint-suggestion Прилесной участок

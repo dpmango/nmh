@@ -240,70 +240,6 @@
     padding-bottom: 10px
     display: flex
     align-items: center
-  &__input
-    position: relative
-    max-width: 100%
-    width: 100%
-    min-width: 1px
-    flex: 0 1 auto
-    display: flex
-    align-items: center
-    .ico-search
-      flex: 0 0 auto
-      z-index: 5
-      font-size: 22px
-      fill: rgba($fontColor, .3)
-    input
-      flex: 1 1 auto
-      display: block
-      width: 100%
-      -webkit-appearance: none
-      padding-top: 9px
-      padding-bottom: 9px
-      padding-left: 20px
-      padding-right: 20px
-      background: transparent
-      border: 0
-      font-size: 14px
-      color: $fontColor
-      transition: .25s $ease
-      &::placeholder
-        color: rgba($fontColor, .5)
-      &:focus
-        // outline: 1px solid rgba(tomato, .5)
-        border-color: transparent
-    /* active [search-contaienr]
-    &.is-active
-      .header-search__reset
-        display: block
-        
-  &__suggestions
-    display: flex
-    flex: 0 0 auto
-    align-items: center
-    .s-hint-suggestion
-      margin-right: 12px
-      background: #404042
-      &:first-child
-        margin-left: 20px
-      &:last-child
-        margin-right: 0
-      &:hover
-        background: rgba(#404042, .7)
-
-  &__reset
-    display: none
-    flex: 0 0 auto
-    font-size: 10px
-    letter-spacing: 0.023em
-    cursor: pointer
-    padding: 10px
-    margin-right: -10px
-    transition: .25s $ease
-    &:hover
-      color: $colorRed
-
-
 
 +r($tablet)
   .header-search
@@ -311,5 +247,5 @@
       height: 50px
       padding-top: 5px
       padding-bottom: 5px
-    &__input
-      display: none
+    // &__input
+    //   display: none

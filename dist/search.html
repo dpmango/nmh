@@ -62,18 +62,18 @@
             <div class="container">
               <div class="header-search__wrapper">
                 <!-- parent container for search hints and tags logic-->
-                <div class="header-search__input" js-search-container data-url="/test">
+                <div class="hints" js-search-container data-url="/test">
                   <svg class="ico ico-search">
                     <use xlink:href="img/sprite.svg#ico-search"></use>
                   </svg>
-                  <div class="header-search__suggestions" js-search-tags>
+                  <div class="hints__suggestions" js-search-tags>
                     <!-- will be populated if any tags are selected-->
                   </div>
                   <input type="text" placeholder="Ищите по расположению или особенности объекта. Например, “гараж” или “Десеновское поселение”." js-search-hints>
-                  <div class="header-search__reset" js-search-reset>Сбросить</div>
+                  <div class="hints__reset" js-search-reset>Сбросить</div>
                   <!-- SEARCH HINTS-->
                   <div class="s-hints">
-                    <div class="s-hints__wrapper" js-scrollbar>
+                    <div class="s-hints__wrapper" js-scrollbar data-propagation>
                       <div class="s-hints__close" js-close-hints>
                         <svg class="ico ico-close">
                           <use xlink:href="img/sprite.svg#ico-close"></use>

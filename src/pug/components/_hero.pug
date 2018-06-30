@@ -9,9 +9,18 @@
       .hero__search
         .search-form(action="#")
           .search-form__name.wow(data-animation-delay=".3s")
-            .ui-group.ui-group--search
-              input(type="text" placeholder="Название" js-autocomplete data-url="json/cities.json")
+            // parent container for search hints and tags logic
+            .hints.hints--with-bg(js-search-container data-url="/test")
               +icon('ico-search')
+              .hints__suggestions(js-search-tags)
+                // will be populated if any tags are selected
+                //- .s-hint-suggestion 
+                //-   span Гараж
+                //-   +icon('ico-close')
+                  
+              input(type="text" placeholder="Можете добавить условие. Например, “гараж” или “д. Ватутинки”." js-search-hints)
+              include _search-hints
+                
           .search-form__category.wow(data-animation-delay=".4s")
             label категория
             .ui-group

@@ -836,10 +836,12 @@ $(document).ready(function(){
 
           var xAvail = $(scrollbar).data('x-disable') || false; // false is default
           var yAvail = $(scrollbar).data('y-disable') || false; // false is default
+          console.log($(scrollbar).data('propagation'))
+          var wheelPropagation = $(scrollbar).data('propagation') !== undefined ? false : true; // true is default
           var ps = new PerfectScrollbar(scrollbar, {
             suppressScrollX: xAvail,
             suppressScrollY: yAvail,
-            wheelPropagation: true,
+            wheelPropagation: wheelPropagation,
             minScrollbarLength: 20
           });
 
@@ -1078,6 +1080,7 @@ $(document).ready(function(){
       // show box straightaway and clear past results if any
       resetContainer();
       $hintContainer.addClass('is-active').removeClass('is-loaded');
+      setMaxHeight($hintContainer);
 
       // add .is-loaded when API responce is done and results (or no res) are rendered
       // add .is-active when showing container with preloader
@@ -1238,6 +1241,17 @@ $(document).ready(function(){
         $hintContainer.addClass('is-loaded');
       }
 
+      // set max height to prevent forcing user to scroll down
+      function setMaxHeight(el){
+        var targetWrapper = el.find('.s-hints__wrapper');
+        var targetOffset = targetWrapper[0].getBoundingClientRect().top
+        var wHeight = _window.height();
+
+        targetWrapper.css({
+          'max-height': (wHeight - targetOffset - 10)+ 'px'
+        })
+      }
+
 
     }, 200)) // end keyup
     .on('click', '[js-close-hints]', function(){
@@ -1247,7 +1261,10 @@ $(document).ready(function(){
         .removeClass('is-loaded');
     })
     .on('click', function(e){
-      if ( !$(e.target).closest('.header-search').length > 0 ){
+      if (
+        !$(e.target).closest('.header-search').length > 0 ||
+        !$(e.target).closest('.search-form').length > 0
+      ){
         $('.s-hints')
           .removeClass('is-active')
           .removeClass('is-loaded');
@@ -1327,7 +1344,7 @@ $(document).ready(function(){
 
     console.log(url.query);
 
-    // url.protocol + "//" + url.host + 
+    // url.protocol + "//" + url.host +
     var newUrl = url.path + url.query;
     window.history.pushState({path:newUrl},'',newUrl);
 
