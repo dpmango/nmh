@@ -8,7 +8,7 @@ html(lang="en")
     // place where pjax bindings happen's
     #barba-wrapper
       // what should be changed with every pjax
-      .page
+      .page(data-properties-query-url=dataURL)
         block header
           include ../components/_header-default
         include ../components/_print-header

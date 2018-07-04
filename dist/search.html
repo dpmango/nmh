@@ -27,7 +27,7 @@
     <!-- place where pjax bindings happen's-->
     <div id="barba-wrapper">
       <!-- what should be changed with every pjax-->
-      <div class="page">
+      <div class="page" data-properties-query-url="/json/api-properties.json">
         <!-- HEADER :: START-->
         <header class="header header--static">
           <div class="header-container">
@@ -222,7 +222,7 @@
                     <div class="search__name">Фильтры</div>
                     <div class="search__sidebar-actions"><a class="search__reset" href="#" js-search-reset>сбросить</a><a class="btn btn-outline" href="#" js-search-apply>применить</a></div>
                     <!--slider group-->
-                    <div class="slider-group">
+                    <div class="slider-group" js-query-builder data-query-name="filter-by-price" data-query-min-max="true">
                       <label>Цена</label>
                       <div class="slider-group__wrap">
                         <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>50 000 000</span></div>
@@ -230,7 +230,7 @@
                       </div>
                     </div>
                     <!--slider group-->
-                    <div class="slider-group">
+                    <div class="slider-group" js-query-builder data-query-name="filter-by-meters" data-query-min-max="true">
                       <label>Кв. м</label>
                       <div class="slider-group__wrap">
                         <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
@@ -238,7 +238,7 @@
                       </div>
                     </div>
                     <!--slider group-->
-                    <div class="slider-group">
+                    <div class="slider-group" js-query-builder data-query-name="filter-by-area" data-query-min-max="true">
                       <label>Участок (сот.)</label>
                       <div class="slider-group__wrap">
                         <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
@@ -246,7 +246,7 @@
                       </div>
                     </div>
                     <!--slider group-->
-                    <div class="slider-group">
+                    <div class="slider-group" js-query-builder data-query-name="filter-by-badroom" data-query-min-max="true">
                       <label>Спальни</label>
                       <div class="slider-group__wrap">
                         <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
@@ -254,25 +254,25 @@
                       </div>
                     </div>
                     <!--slider group-->
-                    <div class="slider-group">
+                    <div class="slider-group" js-query-builder data-query-name="filter-by-distance" data-query-min-max="true">
                       <label>км от МКАД</label>
                       <div class="slider-group__wrap">
                         <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
                         <div js-rangeslider data-start-from="0" data-start-to="35" data-step="1" data-range-min="0" data-range-max="35"></div>
                       </div>
                     </div>
-                    <div class="ui-group">
+                    <div class="ui-group" js-query-builder data-query-name="tag-house-type">
                       <label>Ремонт</label>
                       <div class="ui-checkbox ui-checkbox--right">
-                        <input type="checkbox" name="filter" id="filter_1">
+                        <input type="checkbox" name="filter" id="filter_1" value="turnkey">
                         <label for="filter_1"> <span>“под ключ” (25)</span></label>
                       </div>
                       <div class="ui-checkbox ui-checkbox--right">
-                        <input type="checkbox" name="filter" id="filter_2">
+                        <input type="checkbox" name="filter" id="filter_2" value="prefinal">
                         <label for="filter_2"> <span>“под финишную отд. (25)</span></label>
                       </div>
                       <div class="ui-checkbox ui-checkbox--right">
-                        <input type="checkbox" name="filter" id="filter_3">
+                        <input type="checkbox" name="filter" id="filter_3" value="without-finishing">
                         <label for="filter_3"> <span>“без отделки” (25)</span></label>
                       </div>
                     </div>
@@ -290,11 +290,12 @@
                         <svg class="ico ico-arrow-right">
                           <use xlink:href="img/sprite.svg#ico-arrow-right"></use>
                         </svg></a></div>
-                    <div class="search__filter-select">
+                    <div class="search__filter-select" js-query-builder data-query-name="order-by">
                       <select class="bordered" js-selectric js-search-filter>
-                        <option>цена: возрастание</option>
-                        <option>цена: убывание</option>
-                        <option>другой пункт</option>
+                        <option value="price-asc">цена: возрастание</option>
+                        <option value="price-desc">цена: убывание</option>
+                        <option value="date-asc">сначала новые</option>
+                        <option value="date-desc">сначала старые</option>
                       </select>
                     </div>
                   </div>
@@ -465,7 +466,8 @@
                     </div>
                   </div>
                   <!-- pagination-->
-                  <div class="pagination">
+                  <div class="pagination" js-pagination>
+                    <!-- contents-->
                     <div class="pagination__scope">11-20 из 132</div>
                     <div class="pagination__list">
                       <li><a href="#">1</a></li>
@@ -600,7 +602,7 @@
                   </div>
                 </div>
                 <!--slider group-->
-                <div class="slider-group">
+                <div class="slider-group" js-query-builder data-query-name="filter-by-price" data-query-min-max="true">
                   <label>Цена</label>
                   <div class="slider-group__wrap">
                     <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>50 000 000</span></div>
@@ -608,7 +610,7 @@
                   </div>
                 </div>
                 <!--slider group-->
-                <div class="slider-group">
+                <div class="slider-group" js-query-builder data-query-name="filter-by-meters" data-query-min-max="true">
                   <label>Кв. м</label>
                   <div class="slider-group__wrap">
                     <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
@@ -616,7 +618,7 @@
                   </div>
                 </div>
                 <!--slider group-->
-                <div class="slider-group">
+                <div class="slider-group" js-query-builder data-query-name="filter-by-area" data-query-min-max="true">
                   <label>Участок (сот.)</label>
                   <div class="slider-group__wrap">
                     <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
@@ -624,7 +626,7 @@
                   </div>
                 </div>
                 <!--slider group-->
-                <div class="slider-group">
+                <div class="slider-group" js-query-builder data-query-name="filter-by-badroom" data-query-min-max="true">
                   <label>Спальни</label>
                   <div class="slider-group__wrap">
                     <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
@@ -632,7 +634,7 @@
                   </div>
                 </div>
                 <!--slider group-->
-                <div class="slider-group">
+                <div class="slider-group" js-query-builder data-query-name="filter-by-distance" data-query-min-max="true">
                   <label>км от МКАД</label>
                   <div class="slider-group__wrap">
                     <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
@@ -661,18 +663,18 @@
               <div class="m-search__head-title">Тип ремонта</div>
               <div class="m-search__close" js-close-mobile></div>
             </div>
-            <div class="m-search__wrapper">
+            <div class="m-search__wrapper" js-query-builder data-query-name="tag-house-type">
               <form class="m-search__form m-search__form--no-pad" action="#">
                 <div class="ui-checkbox ui-checkbox--right">
-                  <input type="checkbox" name="filter" id="filter_11">
+                  <input type="checkbox" name="filter" id="filter_11" value="turnkey">
                   <label for="filter_11"> <span>“под ключ” (25)</span></label>
                 </div>
                 <div class="ui-checkbox ui-checkbox--right">
-                  <input type="checkbox" name="filter" id="filter_21">
+                  <input type="checkbox" name="filter" id="filter_21" value="prefinal">
                   <label for="filter_21"> <span>“под финишную отд. (25)</span></label>
                 </div>
                 <div class="ui-checkbox ui-checkbox--right">
-                  <input type="checkbox" name="filter" id="filter_31">
+                  <input type="checkbox" name="filter" id="filter_31" value="without-finishing">
                   <label for="filter_31"> <span>“без отделки” (25)</span></label>
                 </div>
                 <div class="m-search__cta">
@@ -692,18 +694,18 @@
                 </svg>
               </div>
             </div>
-            <div class="m-search__wrapper">
+            <div class="m-search__wrapper" js-query-builder data-query-name="order-by">
               <form class="m-search__form" action="#">
                 <!-- categories-->
                 <div class="m-search__categories">
                   <label>по цене</label>
                   <div class="m-search__categories-wrap" js-scrollbar data-y-disable="true">
                     <div class="m-search__category">
-                      <input type="radio" name="sorting" id="sorting_1" checked>
+                      <input type="radio" name="sorting" id="sorting_1" value="price-asc" checked>
                       <label for="sorting_1"><span>Возрастание</span></label>
                     </div>
                     <div class="m-search__category">
-                      <input type="radio" name="sorting" id="sorting_2">
+                      <input type="radio" name="sorting" id="sorting_2" value="price-desc">
                       <label for="sorting_2"><span>Убывание</span></label>
                     </div>
                   </div>
@@ -713,11 +715,11 @@
                   <label>по дате добавления</label>
                   <div class="m-search__categories-wrap" js-scrollbar data-y-disable="true">
                     <div class="m-search__category">
-                      <input type="radio" name="sorting" id="sorting_3">
+                      <input type="radio" name="sorting" id="sorting_3" value="date-asc">
                       <label for="sorting_3"><span>Сначала новые</span></label>
                     </div>
                     <div class="m-search__category">
-                      <input type="radio" name="sorting" id="sorting_4">
+                      <input type="radio" name="sorting" id="sorting_4" value="date-desc">
                       <label for="sorting_4"><span>Сначала старые</span></label>
                     </div>
                   </div>

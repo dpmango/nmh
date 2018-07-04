@@ -1,6 +1,7 @@
 ---
 title: Search
 pageClass: 
+dataURL: /json/api-properties.json
 ---
 extends shared/_layout
 
@@ -24,7 +25,7 @@ block content
               a(href="#" js-search-apply).btn.btn-outline применить
               
             //slider group
-            .slider-group
+            .slider-group(js-query-builder data-query-name="filter-by-price" data-query-min-max="true")
               label Цена
               .slider-group__wrap
                 .slider-group__set 
@@ -39,7 +40,7 @@ block content
                     data-range-max="50000000")
                 
             //slider group
-            .slider-group
+            .slider-group(js-query-builder data-query-name="filter-by-meters" data-query-min-max="true")
               label Кв. м
               .slider-group__wrap
                 .slider-group__set 
@@ -54,7 +55,7 @@ block content
                     data-range-max="300")
             
             //slider group
-            .slider-group
+            .slider-group(js-query-builder data-query-name="filter-by-area" data-query-min-max="true")
               label Участок (сот.)
               .slider-group__wrap
                 .slider-group__set 
@@ -69,7 +70,7 @@ block content
                     data-range-max="15")
             
             //slider group
-            .slider-group
+            .slider-group(js-query-builder data-query-name="filter-by-badroom" data-query-min-max="true")
               label Спальни
               .slider-group__wrap
                 .slider-group__set 
@@ -84,7 +85,7 @@ block content
                     data-range-max="5")
                                                   
             //slider group
-            .slider-group
+            .slider-group(js-query-builder data-query-name="filter-by-distance" data-query-min-max="true")
               label км от МКАД
               .slider-group__wrap
                 .slider-group__set 
@@ -98,18 +99,18 @@ block content
                     data-range-min="0"
                     data-range-max="35")
             
-            .ui-group
+            .ui-group(js-query-builder data-query-name="tag-house-type")
               label Ремонт
               .ui-checkbox.ui-checkbox--right
-                input(type="checkbox" name="filter" id="filter_1")
+                input(type="checkbox" name="filter" id="filter_1" value="turnkey")
                 label(for="filter_1") 
                   span “под ключ” (25)
               .ui-checkbox.ui-checkbox--right
-                input(type="checkbox" name="filter" id="filter_2")
+                input(type="checkbox" name="filter" id="filter_2" value="prefinal")
                 label(for="filter_2") 
                   span “под финишную отд. (25)
               .ui-checkbox.ui-checkbox--right
-                input(type="checkbox" name="filter" id="filter_3")
+                input(type="checkbox" name="filter" id="filter_3" value="without-finishing")
                 label(for="filter_3") 
                   span “без отделки” (25)
           
@@ -124,11 +125,12 @@ block content
                 +icon('ico-arrow-right')
                 +icon('ico-arrow-right')
             
-            .search__filter-select
+            .search__filter-select(js-query-builder data-query-name="order-by")
               select(js-selectric js-search-filter).bordered
-                option цена: возрастание
-                option цена: убывание
-                option другой пункт
+                option(value="price-asc") цена: возрастание
+                option(value="price-desc") цена: убывание
+                option(value="date-asc") сначала новые
+                option(value="date-desc") сначала старые
             
           .search__grid
             // col
@@ -294,7 +296,8 @@ block content
                     .h-card__exclusive эксклюзив
 
           // pagination
-          .pagination
+          .pagination(js-pagination)
+            // contents
             .pagination__scope 11-20 из 132
             .pagination__list
               li
@@ -352,9 +355,9 @@ block content
             input(type="text" placeholder="Можете добавить условие. Например, “гараж” или “д. Ватутинки”." js-search-hints)
             .hints__suggestions(js-search-tags)
             include components/_search-hints-mobile
-              
+        
         //slider group
-        .slider-group
+        .slider-group(js-query-builder data-query-name="filter-by-price" data-query-min-max="true")
           label Цена
           .slider-group__wrap
             .slider-group__set 
@@ -369,7 +372,7 @@ block content
                 data-range-max="50000000")
             
         //slider group
-        .slider-group
+        .slider-group(js-query-builder data-query-name="filter-by-meters" data-query-min-max="true")
           label Кв. м
           .slider-group__wrap
             .slider-group__set 
@@ -384,7 +387,7 @@ block content
                 data-range-max="300")
         
         //slider group
-        .slider-group
+        .slider-group(js-query-builder data-query-name="filter-by-area" data-query-min-max="true")
           label Участок (сот.)
           .slider-group__wrap
             .slider-group__set 
@@ -399,7 +402,7 @@ block content
                 data-range-max="15")
         
         //slider group
-        .slider-group
+        .slider-group(js-query-builder data-query-name="filter-by-badroom" data-query-min-max="true")
           label Спальни
           .slider-group__wrap
             .slider-group__set 
@@ -414,7 +417,7 @@ block content
                 data-range-max="5")
                                               
         //slider group
-        .slider-group
+        .slider-group(js-query-builder data-query-name="filter-by-distance" data-query-min-max="true")
           label км от МКАД
           .slider-group__wrap
             .slider-group__set 
@@ -427,7 +430,7 @@ block content
                 data-step="1"
                 data-range-min="0"
                 data-range-max="35")
-        
+    
         .m-search__next(js-open-mobile data-target="mobile-type")
           span Тип ремонта
           +icon('ico-arrow-right')      
@@ -447,19 +450,19 @@ block content
       .m-search__head-title Тип ремонта
       .m-search__close(js-close-mobile)
         //- +icon('ico-close')
-    .m-search__wrapper()
+    .m-search__wrapper(js-query-builder data-query-name="tag-house-type")
       form(action="#").m-search__form.m-search__form--no-pad
 
         .ui-checkbox.ui-checkbox--right
-          input(type="checkbox" name="filter" id="filter_11")
+          input(type="checkbox" name="filter" id="filter_11" value="turnkey")
           label(for="filter_11") 
             span “под ключ” (25)
         .ui-checkbox.ui-checkbox--right
-          input(type="checkbox" name="filter" id="filter_21")
+          input(type="checkbox" name="filter" id="filter_21" value="prefinal")
           label(for="filter_21") 
             span “под финишную отд. (25)
         .ui-checkbox.ui-checkbox--right
-          input(type="checkbox" name="filter" id="filter_31")
+          input(type="checkbox" name="filter" id="filter_31" value="without-finishing")
           label(for="filter_31") 
             span “без отделки” (25)
                 
@@ -476,7 +479,7 @@ block content
       .m-search__head-title Сортировка
       .m-search__close(js-close-mobile)
         +icon('ico-close')
-    .m-search__wrapper()
+    .m-search__wrapper(js-query-builder data-query-name="order-by")
       form(action="#").m-search__form
 
         // categories
@@ -484,11 +487,11 @@ block content
           label по цене
           .m-search__categories-wrap(js-scrollbar data-y-disable="true")
             .m-search__category
-              input(type="radio" name="sorting" id="sorting_1" checked)
+              input(type="radio" name="sorting" id="sorting_1" value="price-asc" checked)
               label(for="sorting_1")
                 span Возрастание
             .m-search__category
-              input(type="radio" name="sorting" id="sorting_2")
+              input(type="radio" name="sorting" id="sorting_2" value="price-desc")
               label(for="sorting_2")
                 span Убывание
 
@@ -497,11 +500,11 @@ block content
           label по дате добавления
           .m-search__categories-wrap(js-scrollbar data-y-disable="true")
             .m-search__category
-              input(type="radio" name="sorting" id="sorting_3")
+              input(type="radio" name="sorting" id="sorting_3" value="date-asc")
               label(for="sorting_3")
                 span Сначала новые
             .m-search__category
-              input(type="radio" name="sorting" id="sorting_4")
+              input(type="radio" name="sorting" id="sorting_4" value="date-desc")
               label(for="sorting_4")
                 span Сначала старые
                 

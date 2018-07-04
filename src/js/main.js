@@ -55,15 +55,8 @@ $(document).ready(function(){
     // development helper
     _window.on('resize', debounce(setBreakpoint, 200))
   }
-
   // this is a master function which should have all functionality
   pageReady();
-
-
-  // some plugins work best with onload triggers
-  _window.on('load', function(){
-    // your functions
-  })
 
 
   // detectors
@@ -114,7 +107,6 @@ $(document).ready(function(){
   if ( isMobile() ){
     $('body').addClass('is-mobile');
   }
-
 
 
   //////////
@@ -421,6 +413,18 @@ $(document).ready(function(){
   // SEARCH PAGE
   //////////
   _document
+    // apply filters btn click
+    .on('click', '[js-search-apply]', function(){
+      $('[js-search-apply]').fadeOut();
+      loadCards();
+    })
+    // filter change
+    .on('change', '[js-search-filter]', function(){
+      var queryName = $(this).closest('[js-query-builder]').data("query-name");
+      addURLQuery(queryName, $(this).val())
+
+      loadCards();
+    })
     .on('click', '[js-search-reset]', function(e){
       var form = $(this).closest('form');
 
@@ -430,39 +434,55 @@ $(document).ready(function(){
         slider.noUiSlider.reset();
       })
       $('[js-search-apply]').fadeOut();
+      removeURLQuery(null, null, true);
     })
-    .on('click', '[js-search-apply]', function(){
-      $('[js-search-apply]').fadeOut();
-      loadCards();
+    // add query for the checkbox gruo
+    .on('change', '[js-query-builder] input[type="checkbox"]', function(){
+      var $this = $(this);
+      var $groupContainer = $(this).closest('[js-query-builder]')
+      var queryValues = [];
+      $groupContainer.find('input[type="checkbox"]').each(function(i, checkbox){
+        if ( $(checkbox).is(':checked') ){
+          queryValues.push($(checkbox).val());
+        }
+      });
+
+      var queryName = $groupContainer.data("query-name");
+      addURLQuery(queryName, queryValues.join(";"))
     })
-    .on('change', '[js-search-filter]', function(){
-      loadCards();
-    })
+
+    // show button when something changed
     .on('change', '[js-search-form]', function(){
       $('[js-search-apply]').fadeIn();
     })
+
+  _document
+    // mobile toggler
     .on('click', '.page-information__paragraph-head', function(){
       $(this).toggleClass('is-active');
       $(this).parent().find('.page-information__paragraph-drop').slideToggle();
     })
 
-
-  function loadCards(page){
+  // loads properties from API
+  function loadCards(){
     $('.h-card').addClass('is-loading');
 
     $gridContainer = $('.search__grid');
+    var dataEndpoint = $gridContainer.closest('[data-properties-query-url]').data("properties-query-url");
 
-    var apiEndpoint = "/json/api-properties.json?" + (page ? page : "");
+    if ( dataEndpoint ){
+      var apiEndpoint = dataEndpoint + window.location.search // collect all params
 
-    $.get(apiEndpoint)
-      .done(function(res) {
-        buildProperties(res);
-        buildPagination(res);
-      })
-      .fail(function(err) {
-        cardsLoaded();
-        // show error?
-      })
+      $.get(apiEndpoint)
+        .done(function(res) {
+          buildProperties(res);
+          buildPagination(res);
+        })
+        .fail(function(err) {
+          cardsLoaded();
+          // show error?
+        })
+    }
 
     function buildProperties(res){
       var properties = res.items;
@@ -536,7 +556,6 @@ $(document).ready(function(){
   }
 
   function cardsLoaded(){
-
     setTimeout(function(){
       initSliders();
       initPopups();
@@ -548,7 +567,7 @@ $(document).ready(function(){
     var pages = res.pages;
     var count = res.count;
     var resultsHtml = "";
-    var $paginationContainer = $('.pagination');
+    var $paginationContainer = $('[js-pagination]');
 
     if ( pages && count ){
       var linksHtml = "";
@@ -637,8 +656,8 @@ $(document).ready(function(){
   // PAGINATION
   _document.on('click', '[js-pagination] li', function(){
     var targetPage = $(this).data("page");
-
-    loadCards(targetPage)
+    addURLQuery("page", targetPage);
+    loadCards()
   })
 
   //////////
@@ -1019,7 +1038,6 @@ $(document).ready(function(){
 
           var xAvail = $(scrollbar).data('x-disable') || false; // false is default
           var yAvail = $(scrollbar).data('y-disable') || false; // false is default
-          console.log($(scrollbar).data('propagation'))
           var wheelPropagation = $(scrollbar).data('propagation') !== undefined ? false : true; // true is default
           var ps = new PerfectScrollbar(scrollbar, {
             suppressScrollX: xAvail,
@@ -1100,6 +1118,19 @@ $(document).ready(function(){
             $slider.parent().parent().trigger('tap');
             $slider.focusout();
             triggerBody(false);
+
+            // query builder
+            var $queryContainer = $slider.closest('[js-query-builder]');
+            if ( $queryContainer.length > 0 ){
+              var queryName = $queryContainer.data("query-name");
+              var isRangeQuery = $queryContainer.data("query-min-max");
+
+              if ( queryName && isRangeQuery == true){
+                addURLQuery(queryName + "-min", Math.floor(values[0])); // min
+                addURLQuery(queryName + "-max", Math.floor(values[1])); // max
+              }
+            }
+
           });
 
         }
@@ -1499,7 +1530,7 @@ $(document).ready(function(){
       $input.trigger("keyup");
       $input.val(""); // remove input val
 
-      removeURLQuery();
+      removeURLQuery(null, null, true);
     })
 
   function showResetBtn(el){
@@ -1512,52 +1543,22 @@ $(document).ready(function(){
   function addURLQuery(name, value){
     // name is a (category)
     // value is a (param)
-
-    // var wHost = window.location.href.toLowerCase();
-
-    // check if name is present in wHost
-    // add or create with value ?
-    // if ( $.getUrlVar(name) != null ){
-    //   UpdateQueryString(name, value)
-    // }
-
-    // https://github.com/Mikhus/domurl
-    var url = new Url;
-    url.query[name] = value;
-
-    console.log(url.query);
-
-    // url.protocol + "//" + url.host +
-    var newUrl = url.path + url.query;
-    window.history.pushState({path:newUrl},'',newUrl);
-
-
-    // history.pushState
-
-    // console.log( UpdateQueryString(name, value) );
-
+    window.history.replaceState({}, null, UpdateQueryString(name, value));
+    console.log(window.location.search) // debug
   }
 
-  // maybe ?
-  // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+  function removeURLQuery(name, value, clear){
+    if ( clear ){
+      window.history.replaceState({}, null, window.location.pathname);
+    } else {
+      window.history.replaceState({}, null, UpdateQueryString(name, null));
+    }
+  }
 
-
-  // https://stackoverflow.com/questions/5999118/how-can-i-add-or-update-a-query-string-parameter
-  // function updateQueryStringParameter(uri, key, value) {
-  //   var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-  //   var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-  //   if (uri.match(re)) {
-  //     return uri.replace(re, '$1' + key + "=" + value + '$2');
-  //   }
-  //   else {
-  //     return uri + separator + key + "=" + value;
-  //   }
-  // }
 
   // Not supplying a value will remove the parameter
   // supplying one will add/update the parameter.
   // If no URL is supplied, it will be grabbed from window.location
-
   function UpdateQueryString(key, value, url) {
     if (!url) url = window.location.href;
     var re = new RegExp("([?&])" + key + "=.*?(&|#|$)(.*)", "gi"),
@@ -1584,10 +1585,6 @@ $(document).ready(function(){
       } else
         return url;
     }
-  }
-
-  function removeURLQuery(name, value, clear){
-
   }
 
 
