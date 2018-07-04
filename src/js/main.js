@@ -1280,6 +1280,9 @@ $(document).ready(function(){
       e.preventDefault();
       e.stopPropagation();
 
+      // enter is reserved for selecting first child
+      if ( e.keyCode === 13 ) return
+
       var postValue = $(this).val();
       var $sContainer = $(this).closest('[js-search-container]');
       var requestEndpoint = $sContainer.data("url");
@@ -1338,10 +1341,8 @@ $(document).ready(function(){
         // iterate through tags
         if ( tags.length > 0 ){
           $.each(tags, function(i, tag){
-            var itemsListHtml = ""; // collect list html
-            console.log('inside each tag -', tag);
+            var itemsListHtml = ""; // collect list html;
             $.each(tag.items, function(index, item){
-              console.log('inside each item -', item);
               itemsListHtml += '<li js-add-hint-tag data-query-value="'+ item.value +'"><a href="#">'+ item.label +'</a></li>';
             })
 
@@ -1526,6 +1527,14 @@ $(document).ready(function(){
         $(this).remove();
       })
     })
+    // select first tag on enter
+    .on('keydown', '[js-search-hints]', function(e){
+      if ( e.keyCode === 13 ){
+        var $sContainer = $(this).closest('[js-search-container]');
+        var $firstTag = $sContainer.find('.s-hints__list li a').first();
+        $firstTag.click();
+      }
+    })
 
 
     // RESET SEARCH
@@ -1553,7 +1562,7 @@ $(document).ready(function(){
     // name is a (category)
     // value is a (param)
     window.history.replaceState({}, null, UpdateQueryString(name, value));
-    console.log(window.location.search) // debug
+    // console.log(window.location.search) // debug
   }
 
   function removeURLQuery(name, value, clear){
