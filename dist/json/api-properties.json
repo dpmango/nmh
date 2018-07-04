@@ -1,0 +1,90 @@
+{
+  "pages": {
+    "count": 12,
+    "active": 2
+  },
+  "count": 133,
+  "items": [
+    {
+      "url": "https://nmh.ru/houses/prilesnoi/",
+      "carousel": [
+        {
+          "images": [
+            "http://via.placeholder.com/270x180",
+            "http://via.placeholder.com/540x360"
+          ]
+        },
+        {
+          "images": [
+            "http://via.placeholder.com/270x180",
+            "http://via.placeholder.com/540x360"
+          ]
+        }
+      ],
+      "meta": [
+        "8 сот."
+      ],
+      "name": "Прилесной участок в деревне Романцево",
+      "address": "Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки",
+      "price": {
+        "value": "18 000 000",
+        "postfix": " ₽"
+      }
+    },
+    {
+      "url": "https://nmh.ru/houses/prilichnii/",
+      "carousel": [
+        {
+          "images": [
+            "http://via.placeholder.com/270x180",
+            "http://via.placeholder.com/540x360"
+          ],
+          "url": "https://www.youtube.com/watch?v=0TV4V1VNNTY"
+        },
+        {
+          "images": [
+            "http://via.placeholder.com/270x180",
+            "http://via.placeholder.com/540x360"
+          ]
+        }
+      ],
+      "meta": [
+        "325 кв.м.",
+        "8 сот.",
+        "4 сп."
+      ],
+      "name": "Приличный дом в КП «Антоновка»",
+      "address": "Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки",
+      "price": {
+        "value": "12 000 000",
+        "prefix": "$"
+      }
+    },
+    {
+      "url": "https://nmh.ru/houses/prilesnoi/",
+      "carousel": [
+        {
+          "images": [
+            "http://via.placeholder.com/270x180",
+            "http://via.placeholder.com/540x360"
+          ]
+        },
+        {
+          "images": [
+            "http://via.placeholder.com/270x180",
+            "http://via.placeholder.com/540x360"
+          ]
+        }
+      ],
+      "meta": [
+        "8 сот.", "325 кв. м"
+      ],
+      "name": "Прилесной участок",
+      "address": "Калужское шоссе, 14 км от МКАД, пос. Первомайское, п. Лужки",
+      "price": {
+        "value": "3 000 000",
+        "postfix": " ₽"
+      }
+    }
+  ]
+}

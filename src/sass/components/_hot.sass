@@ -175,7 +175,11 @@
     span
       font-weight: 500
       display: inline-block
-      margin-left: 6px
+      // margin-left: 6px
+      &:first-child
+        margin-right: 6px
+      &:last-child
+        margin-left: 6px
 
   &__tag
     position: absolute

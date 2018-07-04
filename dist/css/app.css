@@ -7006,6 +7006,13 @@ html.mfp-helper body {
 .h-card__price span {
   font-weight: 500;
   display: inline-block;
+}
+
+.h-card__price span:first-child {
+  margin-right: 6px;
+}
+
+.h-card__price span:last-child {
   margin-left: 6px;
 }
 

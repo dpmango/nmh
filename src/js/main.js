@@ -27,7 +27,7 @@ $(document).ready(function(){
     updateHeaderActiveClass();
     initHeaderScroll();
     // benefitsTabFix();
-    cardsLoaded();
+    loadCards();
 
     initSelectric();
     initPopups();
@@ -446,17 +446,200 @@ $(document).ready(function(){
       $(this).parent().find('.page-information__paragraph-drop').slideToggle();
     })
 
-  function cardsLoaded(){
-    setTimeout(function(){
-      $('.h-card.is-loading').removeClass('is-loading')
-    }, 1000)
-  }
-  function loadCards(){
+
+  function loadCards(page){
     $('.h-card').addClass('is-loading');
+
+    $gridContainer = $('.search__grid');
+
+    var apiEndpoint = "/json/api-properties.json?" + (page ? page : "");
+
+    $.get(apiEndpoint)
+      .done(function(res) {
+        buildProperties(res);
+        buildPagination(res);
+      })
+      .fail(function(err) {
+        cardsLoaded();
+        // show error?
+      })
+
+    function buildProperties(res){
+      var properties = res.items;
+      var resultsHtml = "";
+
+      if ( properties.length > 0 ){
+        $.each(properties, function(index, item){
+
+          var itemGallery = ""
+          if ( item.carousel.length > 0 ){
+            $.each(item.carousel, function(i, gal){
+              if ( gal.url ){
+                var embedVideo = '<i class="icon icon-play" href="'+gal.url+'" js-popupVideo></i>'
+              }
+              itemGallery += '<div class="h-card__image">' +
+                  embedVideo +
+                  '<img src="'+ gal.images[0] +'" srcset="'+ gal.images[1] +' 2x">' +
+                '</div>'
+            })
+          }
+
+          var itemMeta = "";
+          if ( item.meta.length > 0 ){
+            $.each(item.meta, function(i, meta){
+              itemMeta += '<span>' + meta + '</span>'
+            })
+          }
+
+          var pricePostfix = item.price.postfix !== undefined ? item.price.postfix : "";
+          var pricePrefix = item.price.prefix !== undefined ? item.price.prefix : "";
+
+          resultsHtml += '<div class="search__col">' +
+            '<div class="h-card is-loading">' +
+              '<div class="h-card__images swiper-wrapper" js-hotCard-slider>' +
+                '<div class="swiper-wrapper">' +
+                  itemGallery +
+                '</div>' +
+                '<div class="h-card__images-next">' +
+                  '<svg class="ico ico-arrow-right">' +
+                    '<use xlink:href="img/sprite.svg#ico-arrow-right"></use>' +
+                  '</svg>' +
+                '</div>' +
+                '<div class="h-card__images-prev">' +
+                  '<svg class="ico ico-arrow-left">' +
+                    '<use xlink:href="img/sprite.svg#ico-arrow-left"></use>' +
+                  '</svg>' +
+                '</div>' +
+              '</div>' +
+              '<div class="h-card__content">' +
+                '<div class="h-card__info"> ' + itemMeta + ' </div>' +
+                '<a class="h-card__name" href="'+ item.url +'">'+ item.name +'</a>' +
+                '<div class="h-card__addres">'+ item.address +'</div>' +
+                '<div class="h-card__price">' +
+                  (pricePrefix ? '<span>' + pricePrefix + '</span>' : "") +
+                  item.price.value +
+                  '<span>' + pricePostfix + '</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        });
+
+        // reset and append
+        $gridContainer.html("");
+        $gridContainer.append(resultsHtml);
+
+      }
+    }
 
     cardsLoaded();
   }
 
+  function cardsLoaded(){
+
+    setTimeout(function(){
+      initSliders();
+      initPopups();
+      $('.h-card.is-loading').removeClass('is-loading')
+    }, 500)
+  }
+
+  function buildPagination(res){
+    var pages = res.pages;
+    var count = res.count;
+    var resultsHtml = "";
+    var $paginationContainer = $('.pagination');
+
+    if ( pages && count ){
+      var linksHtml = "";
+      var resultsPerPage = 10;
+      var linksArr = pagination(pages.active, pages.count);
+
+      $.each(linksArr, function(i, val){
+        if ( val !== "..." ){
+          linksHtml += '<li class="'+ ( val === pages.active ? "is-active" : "" ) +'" data-page="'+val+'"><a href="#">'+ val +'</a></li>'
+        } else {
+          linksHtml += '<li class="pagination__break">' +
+            '<svg class="ico ico-pagination-break">' +
+              '<use xlink:href="img/sprite.svg#ico-pagination-break"></use>' +
+            '</svg>' +
+          '</li>'
+        }
+      })
+
+      var countHtml = ((pages.active * resultsPerPage) + 1 ) + "-" + ((pages.active + 1) * resultsPerPage)
+
+      resultsHtml += '<div class="pagination__scope">'+countHtml+' из '+count+'</div>' +
+        '<div class="pagination__list" js-pagination>' +
+          linksHtml +
+        '</div>'
+
+      // reset and append
+      $paginationContainer.html("");
+      $paginationContainer.append(resultsHtml);
+
+      // detect break with delta
+      // https://gist.github.com/kottenator/9d936eb3e4e3c3e02598
+      function pagination(c, m) {
+        var current = c,
+            last = m,
+            delta = 2,
+            left = current - delta,
+            right = current + delta + 1,
+            range = [],
+            rangeWithDots = [],
+            l;
+        for (var i = 1; i <= last; i++) {
+          if (i == 1 || i == last || i >= left && i < right) {
+            range.push(i);
+          }
+        }
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = range[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var _i = _step.value;
+
+            if (l) {
+              if (_i - l === 2) {
+                rangeWithDots.push(l + 1);
+              } else if (_i - l !== 1) {
+                rangeWithDots.push('...');
+              }
+            }
+            rangeWithDots.push(_i);
+            l = _i;
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        return rangeWithDots;
+      }
+
+    }
+  }
+
+
+  // PAGINATION
+  _document.on('click', '[js-pagination] li', function(){
+    var targetPage = $(this).data("page");
+
+    loadCards(targetPage)
+  })
 
   //////////
   // PROPERTY PAGE
@@ -1156,7 +1339,7 @@ $(document).ready(function(){
                 '<div class="s-hints-property__id">ID '+ property.id +'</div>' +
                 '<div class="s-hints-property__name">'+ property.name +'</div>' +
                 '<div class="s-hints-property__price">'+
-                  '<span>' + pricePrefix + '</span> ' +
+                  (pricePrefix ? '<span>' + pricePrefix + '</span>' : "") +
                   property.price.value +
                   ' <span>' + pricePostfix + '</span>' +
                 '</div>' +
