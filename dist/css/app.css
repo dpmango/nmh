@@ -5620,8 +5620,13 @@ html.mfp-helper body {
 }
 
 .hints--mobile {
-  border: 1px solid #CCCBCB;
   margin-bottom: 40px;
+  padding-left: 0;
+  /* fix to break suggestions new line */
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  height: auto;
 }
 
 .hints--mobile .s-hints {
@@ -5635,6 +5640,40 @@ html.mfp-helper body {
     left: -21px;
     right: -21px;
   }
+}
+
+.hints--mobile .ico-search {
+  position: absolute;
+  left: 15px;
+  z-index: 2;
+  top: 15px;
+}
+
+.hints--mobile input {
+  min-height: auto;
+  min-height: 50px;
+  padding-left: 50px;
+  border: 1px solid #CCCBCB;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+}
+
+.hints--mobile .hints__suggestions {
+  margin-top: 12px;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  min-width: 1px;
+  margin-left: -6px;
+  margin-right: -6px;
+}
+
+.hints--mobile .hints__suggestions .s-hint-suggestion {
+  margin: 6px !important;
 }
 
 .hints.is-active .hints__reset {
