@@ -209,11 +209,40 @@
 
 +r($mobile)
   .s-hints-property
+    display: block
     padding-left: 35px
     padding-right: 25px
     &__image
+      display: none
     &__content
-      // max-width: calc(100% - 80px - 10px - 60px)
+      display: flex
+      align-items: center
+      margin-left: 0
+    &__id
+      flex: 0 0 auto
+      margin-right: 5px
+    &__name
+      flex: 1 1 auto
+    &__price
+      flex: 0 0 auto
+      margin-left: 5px
+      font-size: 14px
+      margin-top: 2px
+      text-align: right
+      min-width: 85px
+
++r(414)
+  .s-hints-property
+    &__content
+      flex-wrap: wrap
+    &__id
+      flex: 0 0 auto
+    &__name
+      flex: 0 0 100%
+    &__price
+      text-align: left
+      margin-left: 0
+
 
 /* a.k.a tag
 .s-hint-suggestion
