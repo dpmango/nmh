@@ -470,7 +470,7 @@ $(document).ready(function(){
     $gridContainer = $('.search__grid');
     var dataEndpoint = $gridContainer.closest('[data-properties-query-url]').data("properties-query-url");
 
-    if ( dataEndpoint ){
+    if ( $gridContainer.length > 0 && dataEndpoint ){
       var apiEndpoint = dataEndpoint + window.location.search // collect all params
 
       $.get(apiEndpoint)
@@ -1282,7 +1282,7 @@ $(document).ready(function(){
 
       var postValue = $(this).val();
       var $sContainer = $(this).closest('[js-search-container]');
-      var requestEndpoint = $sContainer.data("url"); // TODO
+      var requestEndpoint = $sContainer.data("url");
       var $hintContainer = $sContainer.find('.s-hints');
 
       // 3 symbols are minimum
@@ -1318,7 +1318,7 @@ $(document).ready(function(){
       }
 
       // when results are found
-      $.get('/json/api-hints.json?q='+postValue+'')
+      $.get(requestEndpoint + '?q=' + postValue )
         .done(function(res) {
           buildHints(res);
         })
@@ -1339,7 +1339,9 @@ $(document).ready(function(){
         if ( tags.length > 0 ){
           $.each(tags, function(i, tag){
             var itemsListHtml = ""; // collect list html
+            console.log('inside each tag -', tag);
             $.each(tag.items, function(index, item){
+              console.log('inside each item -', item);
               itemsListHtml += '<li js-add-hint-tag data-query-value="'+ item.value +'"><a href="#">'+ item.label +'</a></li>';
             })
 
@@ -1348,7 +1350,7 @@ $(document).ready(function(){
             '<div class="s-hints__section" data-query-name="'+ tag.name +'">' +
               '<div class="s-hints__section-name">'+ tag.title +'</div>' +
               '<ul class="s-hints__list">' +
-                itemsListHtml
+                itemsListHtml +
               '</ul>' +
             '</div>'
           })
@@ -1388,7 +1390,7 @@ $(document).ready(function(){
             resultsHtml += '<div class="s-hints__section">' +
               '<div class="s-hints__section-name">Объекты недвижимости</div>' +
               '<ul class="s-hints__list">' +
-                propertiesListHtml
+                propertiesListHtml +
               '</ul>' +
             '</div>'
           }
@@ -1428,7 +1430,7 @@ $(document).ready(function(){
             resultsHtml += '<div class="s-hints__no-results">' +
               '<div class="s-hints__no-results-text">К сожалению поиск не дал результатов. Попробуйте, например, добавить:</div>' +
               '<div class="s-hints__no-results-suggestions">' +
-                suggestionsListHtml
+                suggestionsListHtml +
               '</div>' +
             '</div>'
           }
@@ -1508,12 +1510,19 @@ $(document).ready(function(){
       '</div>';
 
       $('[js-search-tags]').append(createdElement);
+      // $('[js-search-apply]').fadeIn(); // show apply btn if any
+      loadCards();
       addURLQuery(qName, qValue);
       showResetBtn($tag);
     })
     // remove hint on click (in sContainer)
     .on('click', '.s-hint-suggestion .ico-close', function(){
       $(this).parent().fadeOut(250, function(){
+        var $tag = $(this);
+        var qValue = $tag.data("query-value");
+        var qName = $tag.closest("[data-query-name]").data("query-name");
+
+        removeURLQuery(qName, null)
         $(this).remove();
       })
     })

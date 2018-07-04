@@ -50,6 +50,7 @@
     color: $fontColor
     letter-spacing: 0.065em
     margin: 10px 0
+    width: 100%
     &-name
       font-size: 14px
       font-weight: 700
@@ -132,6 +133,23 @@
         min-height: calc(100vh - 100px)
         max-height: 100% !important
 
++r($mobile)
+  .s-hints
+    right: 0
+    &__wrapper
+      min-width: 1px
+    &__section
+      &-name
+        margin-left: 20px
+    &__list
+      a:not(.s-hints-property)
+        padding-left: 35px
+        padding-right: 25px
+
++r($mobile-s)
+  .s-hints
+    left: -15px
+    right: -15px
 
 @keyframes hintsLoading
   from
@@ -161,6 +179,7 @@
     flex: 1 1 auto
     max-width: 100%
     min-width: 1px
+    min-height: 0
     margin-left: 10px
 
   &__id
@@ -188,6 +207,13 @@
   &:hover
     background: #F6F6F6
 
++r($mobile)
+  .s-hints-property
+    padding-left: 35px
+    padding-right: 25px
+    &__image
+    &__content
+      // max-width: calc(100% - 80px - 10px - 60px)
 
 /* a.k.a tag
 .s-hint-suggestion
