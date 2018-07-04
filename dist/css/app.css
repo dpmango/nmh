@@ -5664,6 +5664,12 @@ html.mfp-helper body {
           transform: translate(0px, 10px);
 }
 
+@media print, (max-width: 375px) {
+  .hints--with-bg .s-hints {
+    left: 0;
+  }
+}
+
 .hints--with-bg .s-hints.is-active {
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);

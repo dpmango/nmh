@@ -112,24 +112,6 @@ $(document).ready(function(){
   //////////
   // COMMON
   //////////
-
-  var preventKeys = {
-    37: 1, 38: 1, 39: 1, 40: 1
-  };
-
-  function preventDefault(e) {
-    e = e || window.event;
-    if (e.preventDefault)
-      e.preventDefault();
-    e.returnValue = false;
-  }
-
-  function preventDefaultForScrollKeys(e) {
-    if (preventKeys[e.keyCode]) {
-      preventDefault(e);
-      return false;
-    }
-  }
   var lastScroll = 0;
 
   function disableScroll() {
@@ -138,13 +120,6 @@ $(document).ready(function(){
       'margin-top': '-' + lastScroll + 'px'
     });
     $('body').addClass('body-lock');
-    // var target = $('.page').get(0)
-    // if (window.addEventListener) // older FF
-    //   target.addEventListener('DOMMouseScroll', preventDefault, false);
-    // target.onwheel = preventDefault; // modern standard
-    // target.onmousewheel = target.onmousewheel = preventDefault; // older browsers, IE
-    // target.ontouchmove = preventDefault; // mobile
-    // target.onkeydown = preventDefaultForScrollKeys;
   }
 
   function enableScroll() {
@@ -152,13 +127,6 @@ $(document).ready(function(){
     $('body').removeClass('body-lock');
     _window.scrollTop(lastScroll)
     lastScroll = 0;
-    // var target = $('.page').get(0)
-    // if (window.removeEventListener)
-    //   target.removeEventListener('DOMMouseScroll', preventDefault, false);
-    // target.onmousewheel = target.onmousewheel = null;
-    // target.onwheel = null;
-    // target.ontouchmove = null;
-    // target.onkeydown = null;
   }
 
   function blockScroll(unlock) {
@@ -414,26 +382,29 @@ $(document).ready(function(){
   //////////
   _document
     // apply filters btn click
-    .on('click', '[js-search-apply]', function(){
-      $('[js-search-apply]').fadeOut();
-      loadCards();
-    })
+    // * REMOVED TO LIVE UPDATE
+    // .on('click', '[js-search-apply]', function(){
+    //   $('[js-search-apply]').fadeOut();
+    //   loadCards();
+    // })
     // filter change
     .on('change', '[js-search-filter]', function(){
       var queryName = $(this).closest('[js-query-builder]').data("query-name");
       addURLQuery(queryName, $(this).val())
 
-      loadCards();
+      // loadCards();
     })
     .on('click', '[js-search-reset]', function(e){
       var form = $(this).closest('form');
 
       form.find('input[type="text"]').val('');
       form.find('input[type="radio"]').prop('checked', false);
+      form.find('input[type="checkbox"]').prop('checked', false);
       form.find('[js-rangeslider]').each(function(i, slider){
         slider.noUiSlider.reset();
       })
-      $('[js-search-apply]').fadeOut();
+      // $('[js-search-apply]').fadeOut();
+      // loadCards();
       removeURLQuery(null, null, true);
     })
     // add query for the checkbox gruo
@@ -449,12 +420,14 @@ $(document).ready(function(){
 
       var queryName = $groupContainer.data("query-name");
       addURLQuery(queryName, queryValues.join(";"))
+      // loadCards();
     })
 
     // show button when something changed
-    .on('change', '[js-search-form]', function(){
-      $('[js-search-apply]').fadeIn();
-    })
+    // CHANGED TO LIVE UPDATE
+    // .on('change', '[js-search-form]', function(){
+    //   // $('[js-search-apply]').fadeIn();
+    // })
 
   _document
     // mobile toggler
@@ -657,7 +630,7 @@ $(document).ready(function(){
   _document.on('click', '[js-pagination] li', function(){
     var targetPage = $(this).data("page");
     addURLQuery("page", targetPage);
-    loadCards()
+    // loadCards();
   })
 
   //////////
@@ -1128,6 +1101,7 @@ $(document).ready(function(){
               if ( queryName && isRangeQuery == true){
                 addURLQuery(queryName + "-min", Math.floor(values[0])); // min
                 addURLQuery(queryName + "-max", Math.floor(values[1])); // max
+                // loadCards();
               }
             }
 
@@ -1512,7 +1486,8 @@ $(document).ready(function(){
 
       $('[js-search-tags]').append(createdElement);
       // $('[js-search-apply]').fadeIn(); // show apply btn if any
-      loadCards();
+      $sContainer.find('[js-search-hints]').val(""); // reset input
+      // loadCards();
       addURLQuery(qName, qValue);
       showResetBtn($tag);
     })
@@ -1563,6 +1538,7 @@ $(document).ready(function(){
     // value is a (param)
     window.history.replaceState({}, null, UpdateQueryString(name, value));
     // console.log(window.location.search) // debug
+    loadCards();
   }
 
   function removeURLQuery(name, value, clear){
@@ -1571,6 +1547,7 @@ $(document).ready(function(){
     } else {
       window.history.replaceState({}, null, UpdateQueryString(name, null));
     }
+    loadCards();
   }
 
 
