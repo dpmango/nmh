@@ -52,9 +52,11 @@
         border: 0
         min-height: 200px
 
-  &--mobile
+  // &--mobile
+  +r($tablet)
     // border: 1px solid #CCCBCB
-    margin-bottom: 40px
+    // margin-bottom: 40px
+    margin-bottom: 0px
     padding-left: 0
     .s-hints
       top: 53px
@@ -70,24 +72,29 @@
     height: auto
 
     .ico-search
+      order: 1
       position: absolute
-      left: 15px
+      left: 5px
       z-index: 2
-      top: 15px
+      top: 10px
 
     input
-      // width: calc(100% - 22px - 12px)
-      min-height: auto
-      min-height: 50px
+      order: 2
+      width: calc(100% - 22px - 12px)
+      // min-height: auto
+      // min-height: 50px
+      // padding-left: 50px
+      // border: 1px solid #CCCBCB
+      // border-radius: 3px
+      // &:focus
+      //   border-color: $colorPrimary
+      min-height: 40px
       padding-left: 50px
-      border: 1px solid #CCCBCB
-      border-radius: 3px
-      &:focus
-        border-color: $colorPrimary
 
     .hints
       &__suggestions
-        margin-top: 12px
+        order: 3
+        margin-top: 6px
         flex-wrap: wrap
         flex: 1 1 auto
         min-width: 1px
@@ -98,7 +105,9 @@
           // &:first-child
           //   margin-left: 0
 
-
+      &__reset
+        order: 4
+        margin-top: 6px
 
 
   /* active [search-contaienr]

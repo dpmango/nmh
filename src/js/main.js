@@ -547,7 +547,6 @@ $(document).ready(function(){
 
     if ( pages && count ){
       var linksHtml = "";
-      var resultsPerPage = 10;
       var linksArr = pagination(pages.active, pages.count);
 
       $.each(linksArr, function(i, val){
@@ -562,7 +561,7 @@ $(document).ready(function(){
         }
       })
 
-      var countHtml = ((pages.active * resultsPerPage) + 1 ) + "-" + ((pages.active + 1) * resultsPerPage)
+      var countHtml = res.from + "-" + res.to;
 
       resultsHtml += '<div class="pagination__scope">'+countHtml+' из '+count+'</div>' +
         '<div class="pagination__list" js-pagination>' +
@@ -1579,6 +1578,8 @@ $(document).ready(function(){
       // loadCards();
       addURLQuery(qName, qValue);
       showResetBtn($tag);
+
+      fixMobileOffset($sContainer);
     })
     // remove hint on click (in sContainer)
     .on('click', '.s-hint-suggestion .ico-close', function(){
@@ -1589,6 +1590,7 @@ $(document).ready(function(){
 
         removeURLQuery(qName, null)
         $(this).remove();
+        fixMobileOffset($(this).closest('[js-search-container]'))
       })
     })
     // select first tag on enter
@@ -1599,7 +1601,6 @@ $(document).ready(function(){
         $firstTag.click();
       }
     })
-
 
     // RESET SEARCH
     .on('click', '[js-search-reset]', function(){
@@ -1613,11 +1614,22 @@ $(document).ready(function(){
       $input.val(""); // remove input val
 
       removeURLQuery(null, null, true);
+      fixMobileOffset($sContainer)
     })
 
   function showResetBtn(el){
     // TODO
     el.closest('[js-search-container]').addClass('is-active');
+  }
+
+  function fixMobileOffset(container){
+    if ( _window.width() < 768 ){
+      $('.search').css({
+        'margin-top': 125 + container.find('.hints__suggestions').height() + 6
+      });
+    } else {
+      $('.search').attr('style', '')
+    }
   }
 
 
