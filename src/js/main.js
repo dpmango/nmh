@@ -6,6 +6,7 @@ $(document).ready(function(){
 
   var _window = $(window);
   var _document = $(document);
+  var urlParams = {};
 
   // BREAKPOINT SETTINGS
   var bp = {
@@ -27,6 +28,7 @@ $(document).ready(function(){
     updateHeaderActiveClass();
     initHeaderScroll();
     // benefitsTabFix();
+    defaultQuery();
     loadCards();
 
     initSelectric();
@@ -44,6 +46,7 @@ $(document).ready(function(){
     initMaps();
 
     hookPrint();
+    parseQueryToVal();
 
     positionScrollTop();
     _window.on('resize', debounce(positionScrollTop, 250));
@@ -575,7 +578,7 @@ $(document).ready(function(){
       function pagination(c, m) {
         var current = c,
             last = m,
-            delta = 2,
+            delta = 1,
             left = current - delta,
             right = current + delta + 1,
             range = [],
@@ -632,6 +635,92 @@ $(document).ready(function(){
     addURLQuery("page", targetPage);
     // loadCards();
   })
+
+  // PARSE QUERY
+  function parseQueryToVal(){
+    // check all params first
+
+    var match,
+      pl     = /\+/g,  // Regex for replacing addition symbol with a space
+      search = /([^&=]+)=?([^&]*)/g,
+      decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+      query  = window.location.search.substring(1);
+
+    while (match = search.exec(query)){
+      urlParams[decode(match[1])] = decode(match[2]);
+    }
+
+    console.log('urlParams', urlParams)
+
+    //find select by a checbox
+    $.each(urlParams, function(key, val){
+      var targetQuerySearch = key;
+      if ( key.indexOf('-min') !== -1 ){
+        // no need to check for max as it's linked
+        targetQuerySearch = targetQuerySearch.slice(0, -4);
+      }
+
+      var $target = $('[data-query-name="'+targetQuerySearch+'"]');
+
+      // sliders
+      if ( $target.is('.slider-group') ){
+        var $sliders = $target.find('[js-rangeslider]');
+
+        setTimeout(function(){
+          $sliders.each(function(i, slider){
+            slider.noUiSlider.set([
+              urlParams[targetQuerySearch+'-min'],
+              urlParams[targetQuerySearch+'-max'],
+            ])
+          })
+        }, 300)
+
+        return
+      }
+
+      // checkboxes
+      if ( $target.is('.ui-group') ){
+        var checkBoxValues = urlParams[targetQuerySearch].split(';');
+        var $checkBoxes = $target.find("input[type='checkbox']");
+
+        $checkBoxes.each(function(i, checkbox){
+          var $checkbox = $(checkbox);
+
+          if ( checkBoxValues.indexOf( $checkbox.val() ) !== -1 ){
+            $checkbox.attr("checked", true)
+          }
+        })
+
+        return
+      }
+
+      // order by - select
+      if ( $target.is('.search__filter-select') ){
+        setTimeout(function(){
+          var $select = $target.find("[js-selectric]");
+          var $selectValues = $select.find('option');
+          var targetIndex;
+
+          $selectValues.each(function(i, option){
+            if ( $(option).val() === urlParams[targetQuerySearch] ){
+              targetIndex = $(option).index();
+            }
+          })
+
+          $select.prop('selectedIndex', targetIndex).selectric('refresh')
+        }, 300);
+        return
+      }
+
+    })
+  }
+
+  // default query
+  function defaultQuery(){
+    if ( window.location.search === "" ){
+      window.location.search = $('[js-default-query]').data("query");
+    }
+  }
 
   //////////
   // PROPERTY PAGE

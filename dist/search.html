@@ -73,7 +73,8 @@
                   <div class="hints__reset" js-search-reset>Сбросить</div>
                   <!-- SEARCH HINTS-->
                   <div class="s-hints">
-                    <div class="s-hints__wrapper" js-scrollbar data-propagation>
+                    <!-- js-scrollbar data-propagation-->
+                    <div class="s-hints__wrapper">
                       <div class="s-hints__close" js-close-hints>
                         <svg class="ico ico-close">
                           <use xlink:href="img/sprite.svg#ico-close"></use>
@@ -213,7 +214,7 @@
         </header>
         <div class="page__content">
           <!-- SEARCH-->
-          <div class="search">
+          <div class="search" js-default-query data-query="?filter-by-price-min=0&amp;filter-by-price-max=35000000&amp;filter-by-meters-min=0&amp;filter-by-meters-max=300&amp;filter-by-area-min=0&amp;filter-by-area-max=15&amp;filter-by-badroom-min=0&amp;filter-by-badroom-max=5&amp;filter-by-distance-min=0&amp;filter-by-distance-max=35&amp;tag-house-type=&amp;order-by=price-desc&amp;page=1&amp;tag-location=">
             <div class="container">
               <div class="search__wrapper">
                 <!-- sidebar-->
@@ -234,7 +235,7 @@
                       <label>Кв. м</label>
                       <div class="slider-group__wrap">
                         <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
-                        <div js-rangeslider data-start-from="0" data-start-to="200" data-step="10" data-range-min="0" data-range-max="300"></div>
+                        <div js-rangeslider data-start-from="0" data-start-to="300" data-step="10" data-range-min="0" data-range-max="300"></div>
                       </div>
                     </div>
                     <!--slider group-->
@@ -242,7 +243,7 @@
                       <label>Участок (сот.)</label>
                       <div class="slider-group__wrap">
                         <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
-                        <div js-rangeslider data-start-from="0" data-start-to="7" data-step="1" data-range-min="0" data-range-max="15"></div>
+                        <div js-rangeslider data-start-from="0" data-start-to="15" data-step="1" data-range-min="0" data-range-max="15"></div>
                       </div>
                     </div>
                     <!--slider group-->
@@ -536,71 +537,6 @@
             <div class="m-search__wrapper">
               <form class="m-search__form" action="#">
                 <!-- keywords-->
-                <div class="m-search__keywords">
-                  <label>Ищите по расположению или особенности объекта.</label>
-                  <!-- parent container for search hints and tags logic-->
-                  <div class="hints hints--mobile hints--with-bg" js-search-container data-url="/json/api-hints.json">
-                    <svg class="ico ico-search">
-                      <use xlink:href="img/sprite.svg#ico-search"></use>
-                    </svg>
-                    <input type="text" placeholder="Можете добавить условие. Например, “гараж” или “д. Ватутинки”." js-search-hints>
-                    <div class="hints__suggestions" js-search-tags></div>
-                    <!-- SEARCH HINTS-->
-                    <div class="s-hints s-hints--mobile">
-                      <div class="s-hints__wrapper">
-                        <div class="s-hints__close" js-close-hints>
-                          <svg class="ico ico-close">
-                            <use xlink:href="img/sprite.svg#ico-close"></use>
-                          </svg>
-                        </div>
-                        <!-- loader-->
-                        <div class="s-hints__loader">
-                          <svg class="ico ico-hints-loader">
-                            <use xlink:href="img/sprite.svg#ico-hints-loader"></use>
-                          </svg><span>загрузка…</span>
-                        </div>
-                        <!-- list of sections to be appended with jQuery-->
-                        <!-- search for '[js-search-hints]' in main.js-->
-                        <!-- section-->
-                        <div class="s-hints__section">
-                          <div class="s-hints__section-name">Расположение</div>
-                          <ul class="s-hints__list">
-                            <li><a href="#">label</a></li>
-                          </ul>
-                        </div>
-                        <!-- section  -->
-                        <div class="s-hints__section">
-                          <div class="s-hints__section-name">Особенности недвижимости</div>
-                          <ul class="s-hints__list">
-                            <li><a href="#">label</a></li>
-                          </ul>
-                        </div>
-                        <!-- section  -->
-                        <div class="s-hints__section">
-                          <div class="s-hints__section-name">Объекты недвижимости</div>
-                          <ul class="s-hints__list">
-                            <li><a class="s-hints-property" href="#">
-                                <div class="s-hints-property__image"><img src="http://via.placeholder.com/90x60" srcset="http://via.placeholder.com/180x120 2x"></div>
-                                <div class="s-hints-property__content">
-                                  <div class="s-hints-property__id">ID 324</div>
-                                  <div class="s-hints-property__name">Прилесной участок в деревне Романцево</div>
-                                  <div class="s-hints-property__price">18 000 000 <span>₽</span></div>
-                                </div></a></li>
-                          </ul>
-                        </div>
-                        <!-- no results-->
-                        <!-- also rendered with JS-->
-                        <div class="s-hints__no-results">
-                          <div class="s-hints__no-results-text">К сожалению поиск не дал результатов. Попробуйте, например, добавить:</div>
-                          <div class="s-hints__no-results-suggestions">
-                            <div class="s-hint-suggestion">Гараж</div>
-                            <div class="s-hint-suggestion">Прилесной участок</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <!--slider group-->
                 <div class="slider-group" js-query-builder data-query-name="filter-by-price" data-query-min-max="true">
                   <label>Цена</label>
@@ -614,7 +550,7 @@
                   <label>Кв. м</label>
                   <div class="slider-group__wrap">
                     <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
-                    <div js-rangeslider data-start-from="0" data-start-to="200" data-step="10" data-range-min="0" data-range-max="300"></div>
+                    <div js-rangeslider data-start-from="0" data-start-to="300" data-step="10" data-range-min="0" data-range-max="300"></div>
                   </div>
                 </div>
                 <!--slider group-->
@@ -622,7 +558,7 @@
                   <label>Участок (сот.)</label>
                   <div class="slider-group__wrap">
                     <div class="slider-group__set"> <span js-range-from>0 </span> — <span js-range-to>300</span></div>
-                    <div js-rangeslider data-start-from="0" data-start-to="7" data-step="1" data-range-min="0" data-range-max="15"></div>
+                    <div js-rangeslider data-start-from="0" data-start-to="15" data-step="1" data-range-min="0" data-range-max="15"></div>
                   </div>
                 </div>
                 <!--slider group-->

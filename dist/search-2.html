@@ -73,7 +73,8 @@
                   <div class="hints__reset" js-search-reset>Сбросить</div>
                   <!-- SEARCH HINTS-->
                   <div class="s-hints">
-                    <div class="s-hints__wrapper" js-scrollbar data-propagation>
+                    <!-- js-scrollbar data-propagation-->
+                    <div class="s-hints__wrapper">
                       <div class="s-hints__close" js-close-hints>
                         <svg class="ico ico-close">
                           <use xlink:href="img/sprite.svg#ico-close"></use>
@@ -506,71 +507,6 @@
             <div class="m-search__wrapper">
               <form class="m-search__form" action="#">
                 <!-- keywords-->
-                <div class="m-search__keywords">
-                  <label>Ищите по расположению или особенности объекта.</label>
-                  <!-- parent container for search hints and tags logic-->
-                  <div class="hints hints--mobile hints--with-bg" js-search-container data-url="/json/api-hints.json">
-                    <svg class="ico ico-search">
-                      <use xlink:href="img/sprite.svg#ico-search"></use>
-                    </svg>
-                    <input type="text" placeholder="Можете добавить условие. Например, “гараж” или “д. Ватутинки”." js-search-hints>
-                    <div class="hints__suggestions" js-search-tags></div>
-                    <!-- SEARCH HINTS-->
-                    <div class="s-hints s-hints--mobile">
-                      <div class="s-hints__wrapper">
-                        <div class="s-hints__close" js-close-hints>
-                          <svg class="ico ico-close">
-                            <use xlink:href="img/sprite.svg#ico-close"></use>
-                          </svg>
-                        </div>
-                        <!-- loader-->
-                        <div class="s-hints__loader">
-                          <svg class="ico ico-hints-loader">
-                            <use xlink:href="img/sprite.svg#ico-hints-loader"></use>
-                          </svg><span>загрузка…</span>
-                        </div>
-                        <!-- list of sections to be appended with jQuery-->
-                        <!-- search for '[js-search-hints]' in main.js-->
-                        <!-- section-->
-                        <div class="s-hints__section">
-                          <div class="s-hints__section-name">Расположение</div>
-                          <ul class="s-hints__list">
-                            <li><a href="#">label</a></li>
-                          </ul>
-                        </div>
-                        <!-- section  -->
-                        <div class="s-hints__section">
-                          <div class="s-hints__section-name">Особенности недвижимости</div>
-                          <ul class="s-hints__list">
-                            <li><a href="#">label</a></li>
-                          </ul>
-                        </div>
-                        <!-- section  -->
-                        <div class="s-hints__section">
-                          <div class="s-hints__section-name">Объекты недвижимости</div>
-                          <ul class="s-hints__list">
-                            <li><a class="s-hints-property" href="#">
-                                <div class="s-hints-property__image"><img src="http://via.placeholder.com/90x60" srcset="http://via.placeholder.com/180x120 2x"></div>
-                                <div class="s-hints-property__content">
-                                  <div class="s-hints-property__id">ID 324</div>
-                                  <div class="s-hints-property__name">Прилесной участок в деревне Романцево</div>
-                                  <div class="s-hints-property__price">18 000 000 <span>₽</span></div>
-                                </div></a></li>
-                          </ul>
-                        </div>
-                        <!-- no results-->
-                        <!-- also rendered with JS-->
-                        <div class="s-hints__no-results">
-                          <div class="s-hints__no-results-text">К сожалению поиск не дал результатов. Попробуйте, например, добавить:</div>
-                          <div class="s-hints__no-results-suggestions">
-                            <div class="s-hint-suggestion">Гараж</div>
-                            <div class="s-hint-suggestion">Прилесной участок</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <!--slider group-->
                 <div class="slider-group">
                   <label>Цена</label>

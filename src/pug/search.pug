@@ -11,7 +11,7 @@ block header
 block content
   
   // SEARCH
-  .search
+  .search(js-default-query data-query="?filter-by-price-min=0&filter-by-price-max=35000000&filter-by-meters-min=0&filter-by-meters-max=300&filter-by-area-min=0&filter-by-area-max=15&filter-by-badroom-min=0&filter-by-badroom-max=5&filter-by-distance-min=0&filter-by-distance-max=35&tag-house-type=&order-by=price-desc&page=1&tag-location=")
     .container
       .search__wrapper
         
@@ -49,7 +49,7 @@ block content
                   span(js-range-to) 300
                 div(js-rangeslider 
                     data-start-from="0"
-                    data-start-to="200"
+                    data-start-to="300"
                     data-step="10"
                     data-range-min="0"
                     data-range-max="300")
@@ -64,7 +64,7 @@ block content
                   span(js-range-to) 300
                 div(js-rangeslider 
                     data-start-from="0"
-                    data-start-to="7"
+                    data-start-to="15"
                     data-step="1"
                     data-range-min="0"
                     data-range-max="15")
@@ -344,17 +344,17 @@ block content
     .m-search__wrapper()
       form(action="#").m-search__form
         // keywords
-        .m-search__keywords
-          label Ищите по расположению или особенности объекта.
-          //- .ui-group.ui-group--search
-          //-   input(type="text" placeholder="Название" js-autocomplete data-url="json/cities.json")
-          //-   +icon('ico-search')
-          // parent container for search hints and tags logic
-          .hints.hints--mobile.hints--with-bg(js-search-container data-url="/json/api-hints.json")
-            +icon('ico-search')
-            input(type="text" placeholder="Можете добавить условие. Например, “гараж” или “д. Ватутинки”." js-search-hints)
-            .hints__suggestions(js-search-tags)
-            include components/_search-hints-mobile
+        //- .m-search__keywords
+        //-   label Ищите по расположению или особенности объекта.
+        //-   //- .ui-group.ui-group--search
+        //-   //-   input(type="text" placeholder="Название" js-autocomplete data-url="json/cities.json")
+        //-   //-   +icon('ico-search')
+        //-   // parent container for search hints and tags logic
+        //-   .hints.hints--mobile.hints--with-bg(js-search-container data-url="/json/api-hints.json")
+        //-     +icon('ico-search')
+        //-     input(type="text" placeholder="Можете добавить условие. Например, “гараж” или “д. Ватутинки”." js-search-hints)
+        //-     .hints__suggestions(js-search-tags)
+        //-     include components/_search-hints-mobile
         
         //slider group
         .slider-group(js-query-builder data-query-name="filter-by-price" data-query-min-max="true")
@@ -381,7 +381,7 @@ block content
               span(js-range-to) 300
             div(js-rangeslider 
                 data-start-from="0"
-                data-start-to="200"
+                data-start-to="300"
                 data-step="10"
                 data-range-min="0"
                 data-range-max="300")
@@ -396,7 +396,7 @@ block content
               span(js-range-to) 300
             div(js-rangeslider 
                 data-start-from="0"
-                data-start-to="7"
+                data-start-to="15"
                 data-step="1"
                 data-range-min="0"
                 data-range-max="15")

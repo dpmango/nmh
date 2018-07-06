@@ -5149,6 +5149,7 @@ html.mfp-helper body {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  overflow-y: scroll;
 }
 
 .s-hints__close {
@@ -5541,10 +5542,10 @@ html.mfp-helper body {
   -webkit-border-radius: 4px;
           border-radius: 4px;
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.032em;
   text-align: center;
-  padding: 10px 15px;
+  padding: 9px 12px;
   cursor: pointer;
   white-space: nowrap;
   -webkit-transition: background 0.25s ease-in-out;
@@ -5559,8 +5560,8 @@ html.mfp-helper body {
 .s-hint-suggestion .ico {
   font-size: 9px;
   cursor: pointer;
-  margin-left: 15px;
-  margin-right: -5px;
+  margin-left: 10px;
+  margin-right: -3px;
   -webkit-transition: 0.25s ease-in-out;
   -o-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
