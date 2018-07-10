@@ -711,6 +711,39 @@ $(document).ready(function(){
         return
       }
 
+      // tags
+      if ( key.indexOf('tag-') !== -1 ){
+        var tagQueryName = key.split('tag-')[1]
+        var tagQueryVal = urlParams[key]
+
+        var $containers = $('[js-search-container]');
+
+        $containers.each(function(i, container){
+          var $container = $(container);
+
+          $.get('/json/api-tags.json?q='+tagQueryName+'' + tagQueryVal)
+            .done(function(res) {
+              var tagLabel;
+
+              $.each(res.tags, function(i, tag){
+                if ( tag.name === ("tag-" + tagQueryName) && tag.value === tagQueryVal ){
+                  tagLabel = tag.label
+                  var createdElement = '<div data-query-name="tag-'+tagQueryName+'" data-query-value="'+tagQueryVal+'" class="s-hint-suggestion"> <span>'+ tagLabel +'</span>' +
+                    '<svg class="ico ico-close">' +
+                      '<use xlink:href="img/sprite.svg#ico-close"></use>' +
+                    '</svg>' +
+                  '</div>';
+
+                  $container.find('[js-search-tags]').append(createdElement);
+                }
+              });
+            })
+            .fail(function(err) {
+              console.log(err);
+            })
+        })
+
+      }
     })
   }
 

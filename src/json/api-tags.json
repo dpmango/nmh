@@ -1,0 +1,29 @@
+{
+  "tags": [
+    {
+      "name": "tag-location",
+      "value": "prilevalnoe",
+      "label": "Прилевальное поселение"
+    },
+    {
+      "name": "tag-location",
+      "value": "prilesnoi",
+      "label": "КП «Прилесной дом»"
+    },
+    {
+      "name": "tag-location",
+      "value": "naprishkonovo",
+      "label": "д. Напришконово"
+    },
+    {
+      "name": "tag-special",
+      "value": "prilesnoi",
+      "label": "Прилесной участок"
+    },
+    {
+      "name": "tag-special",
+      "value": "prilichnoe",
+      "label": "Приличное окружение"
+    }
+  ]
+}

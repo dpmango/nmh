@@ -11,7 +11,7 @@ block header
 block content
   
   // SEARCH
-  .search(js-default-query data-query="?filter-by-price-min=0&filter-by-price-max=35000000&filter-by-meters-min=0&filter-by-meters-max=300&filter-by-area-min=0&filter-by-area-max=15&filter-by-badroom-min=0&filter-by-badroom-max=5&filter-by-distance-min=0&filter-by-distance-max=35&tag-house-type=&order-by=price-desc&page=1&tag-location=")
+  .search(js-default-query data-query="?filter-by-price-min=0&filter-by-price-max=35000000&filter-by-meters-min=0&filter-by-meters-max=300&filter-by-area-min=0&filter-by-area-max=15&filter-by-bedroom-min=0&filter-by-bedroom-max=5&filter-by-distance-min=0&filter-by-distance-max=35&house-type=&order-by=price-desc&page=1&tag-location=prilevalnoe&tag-special=prilesnoi")
     .container
       .search__wrapper
         
@@ -70,7 +70,7 @@ block content
                     data-range-max="15")
             
             //slider group
-            .slider-group(js-query-builder data-query-name="filter-by-badroom" data-query-min-max="true")
+            .slider-group(js-query-builder data-query-name="filter-by-bedroom" data-query-min-max="true")
               label Спальни
               .slider-group__wrap
                 .slider-group__set 
@@ -99,7 +99,7 @@ block content
                     data-range-min="0"
                     data-range-max="35")
             
-            .ui-group(js-query-builder data-query-name="tag-house-type")
+            .ui-group(js-query-builder data-query-name="house-type")
               label Ремонт
               .ui-checkbox.ui-checkbox--right
                 input(type="checkbox" name="filter" id="filter_1" value="turnkey")
@@ -402,7 +402,7 @@ block content
                 data-range-max="15")
         
         //slider group
-        .slider-group(js-query-builder data-query-name="filter-by-badroom" data-query-min-max="true")
+        .slider-group(js-query-builder data-query-name="filter-by-bedroom" data-query-min-max="true")
           label Спальни
           .slider-group__wrap
             .slider-group__set 
@@ -450,7 +450,7 @@ block content
       .m-search__head-title Тип ремонта
       .m-search__close(js-close-mobile)
         //- +icon('ico-close')
-    .m-search__wrapper(js-query-builder data-query-name="tag-house-type")
+    .m-search__wrapper(js-query-builder data-query-name="house-type")
       form(action="#").m-search__form.m-search__form--no-pad
 
         .ui-checkbox.ui-checkbox--right
