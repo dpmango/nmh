@@ -205,7 +205,7 @@ $(document).ready(function(){
 
   _document
     .on('click', '[js-footer-nav-collapse]', function(e){
-      if ( _window.width() < bp.tablet ){
+      if ( _window.width() <= bp.tablet ){
 
         if ( $(e.target).closest('.footer__nav-list').length > 0 ){
           e.stopPropagation();
@@ -1663,7 +1663,7 @@ $(document).ready(function(){
     var $target
     if ( container.is('.hints--with-bg') ){
       $target = $('.search-form__name');
-      if ( _window.width() < 992 ){
+      if ( _window.width() <= 992 ){
         var addHeight = 15 + container.find('.hints__suggestions').height() - 6;
         if ( addHeight < 15 ){ addHeight = 15 } // at least 15
         $target.css({ 'margin-bottom': addHeight });
@@ -1674,7 +1674,7 @@ $(document).ready(function(){
     } else {
       $target = $('.search')
 
-      if ( _window.width() < 768 ){
+      if ( _window.width() <= 768 ){
         var addHeight = 125 + container.height() - 40;
         $target.css({ 'margin-top': addHeight });
       } else {
@@ -1790,7 +1790,7 @@ $(document).ready(function(){
       var elWatcher = scrollMonitor.create( $(el) );
 
       var delay;
-      if ( $(window).width() < 768 ){
+      if ( $(window).width() <= 768 ){
         delay = 0
       } else {
         delay = $(el).data('animation-delay');
