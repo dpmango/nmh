@@ -5690,7 +5690,54 @@ html.mfp-helper body {
 }
 
 @media print, (max-width: 768px) {
-  .hints {
+  .hints--with-bg {
+    /* fix to break suggestions new line */
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+  .hints--with-bg .ico-search {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  .hints--with-bg input {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+        -ms-flex-order: 2;
+            order: 2;
+    width: -webkit-calc(100% - 22px - 12px);
+    width: calc(100% - 22px - 12px);
+    min-height: 40px;
+  }
+  .hints--with-bg .hints__suggestions {
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
+        -ms-flex-order: 3;
+            order: 3;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    margin-top: 6px;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    min-width: 1px;
+    margin-left: -6px;
+    margin-right: -6px;
+  }
+  .hints--with-bg .hints__suggestions .s-hint-suggestion {
+    margin: 6px !important;
+  }
+}
+
+@media print, (max-width: 768px) {
+  .hints:not(.hints--with-bg) {
     margin-bottom: 0px;
     padding-left: 0;
     /* fix to break suggestions new line */
@@ -5699,7 +5746,7 @@ html.mfp-helper body {
             flex-wrap: wrap;
     height: auto;
   }
-  .hints .s-hints {
+  .hints:not(.hints--with-bg) .s-hints {
     top: 53px;
     left: -41px;
     right: -41px;
@@ -5707,14 +5754,14 @@ html.mfp-helper body {
 }
 
 @media print, print and (max-width: 768px), print and (max-width: 680px), (max-width: 768px) and (max-width: 680px) {
-  .hints .s-hints {
+  .hints:not(.hints--with-bg) .s-hints {
     left: -21px;
     right: -21px;
   }
 }
 
 @media print, (max-width: 768px) {
-  .hints .ico-search {
+  .hints:not(.hints--with-bg) .ico-search {
     -webkit-box-ordinal-group: 2;
     -webkit-order: 1;
         -ms-flex-order: 1;
@@ -5724,7 +5771,7 @@ html.mfp-helper body {
     z-index: 2;
     top: 10px;
   }
-  .hints input {
+  .hints:not(.hints--with-bg) input {
     -webkit-box-ordinal-group: 3;
     -webkit-order: 2;
         -ms-flex-order: 2;
@@ -5734,7 +5781,7 @@ html.mfp-helper body {
     min-height: 40px;
     padding-left: 50px;
   }
-  .hints .hints__suggestions {
+  .hints:not(.hints--with-bg) .hints__suggestions {
     -webkit-box-ordinal-group: 4;
     -webkit-order: 3;
         -ms-flex-order: 3;
@@ -5751,10 +5798,10 @@ html.mfp-helper body {
     margin-left: -6px;
     margin-right: -6px;
   }
-  .hints .hints__suggestions .s-hint-suggestion {
+  .hints:not(.hints--with-bg) .hints__suggestions .s-hint-suggestion {
     margin: 6px !important;
   }
-  .hints .hints__reset {
+  .hints:not(.hints--with-bg) .hints__reset {
     -webkit-box-ordinal-group: 5;
     -webkit-order: 4;
         -ms-flex-order: 4;

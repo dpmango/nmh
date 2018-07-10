@@ -735,6 +735,9 @@ $(document).ready(function(){
                   '</div>';
 
                   $container.find('[js-search-tags]').append(createdElement);
+                  $container.addClass('is-active');
+
+                  fixMobileOffset($container)
                 }
               });
             })
@@ -1618,12 +1621,13 @@ $(document).ready(function(){
     .on('click', '.s-hint-suggestion .ico-close', function(){
       $(this).parent().fadeOut(250, function(){
         var $tag = $(this);
+        var $sContainer = $(this).closest('[js-search-container]')
         var qValue = $tag.data("query-value");
         var qName = $tag.closest("[data-query-name]").data("query-name");
 
         removeURLQuery(qName, null)
         $(this).remove();
-        fixMobileOffset($(this).closest('[js-search-container]'))
+        fixMobileOffset($sContainer)
       })
     })
     // select first tag on enter
@@ -1656,14 +1660,50 @@ $(document).ready(function(){
   }
 
   function fixMobileOffset(container){
-    if ( _window.width() < 768 ){
-      $('.search').css({
-        'margin-top': 125 + container.find('.hints__suggestions').height() + 6
-      });
+    console.log(container)
+    var $target
+    if ( container.is('.hints--with-bg') ){
+      $target = $('.search-form__name')
     } else {
-      $('.search').attr('style', '')
+      $target = $('.search')
+    }
+
+    if ( _window.width() < 768 ){
+      // container.find('.hints__suggestions').height()
+      if ( container.is('.hints--with-bg') ){
+        var addHeight = 15 + container.height() - 10;
+        $target.css({
+          'margin-bottom': addHeight
+        });
+      } else{
+        var addHeight = 125 + container.height() - 40;
+        $target.css({
+          'margin-top': addHeight
+        });
+      }
+
+
+    } else {
+      if ( container.is('.hints--with-bg') ){
+        $target.css({
+          'margin-bottom': 0
+        });
+      } else {
+        $target.attr('style', '')
+      }
     }
   }
+
+  _window.on('resize', debounce(function(){
+    if ( _window.width() < 768 ){
+
+    } else {
+      $('.search').attr('style', '')
+      $('.search-form__name').css({
+        'margin-bottom': 0
+      });
+    }
+  }, 200));
 
 
   // QUERY BUILDER
