@@ -5689,7 +5689,7 @@ html.mfp-helper body {
   min-height: 200px;
 }
 
-@media print, (max-width: 768px) {
+@media print, (max-width: 992px) {
   .hints--with-bg {
     /* fix to break suggestions new line */
     -webkit-flex-wrap: wrap;

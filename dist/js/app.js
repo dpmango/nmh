@@ -1660,45 +1660,36 @@ $(document).ready(function(){
   }
 
   function fixMobileOffset(container){
-    console.log(container)
     var $target
     if ( container.is('.hints--with-bg') ){
-      $target = $('.search-form__name')
+      $target = $('.search-form__name');
+      if ( _window.width() < 992 ){
+        var addHeight = 15 + container.find('.hints__suggestions').height() - 6;
+        if ( addHeight < 15 ){ addHeight = 15 } // at least 15
+        $target.css({ 'margin-bottom': addHeight });
+      } else {
+        $target.css({ 'margin-bottom': 0 });
+      }
+    // topbar
     } else {
       $target = $('.search')
-    }
 
-    if ( _window.width() < 768 ){
-      // container.find('.hints__suggestions').height()
-      if ( container.is('.hints--with-bg') ){
-        var addHeight = 15 + container.height() - 10;
-        $target.css({
-          'margin-bottom': addHeight
-        });
-      } else{
+      if ( _window.width() < 768 ){
         var addHeight = 125 + container.height() - 40;
-        $target.css({
-          'margin-top': addHeight
-        });
-      }
-
-
-    } else {
-      if ( container.is('.hints--with-bg') ){
-        $target.css({
-          'margin-bottom': 0
-        });
+        $target.css({ 'margin-top': addHeight });
       } else {
         $target.attr('style', '')
       }
+
     }
   }
 
   _window.on('resize', debounce(function(){
-    if ( _window.width() < 768 ){
-
-    } else {
+    if ( _window.width() > 768 ){
       $('.search').attr('style', '')
+    }
+
+    if ( _window.width() > 992 ){
       $('.search-form__name').css({
         'margin-bottom': 0
       });
