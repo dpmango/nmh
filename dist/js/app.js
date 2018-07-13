@@ -435,8 +435,10 @@ $(document).ready(function(){
   _document
     // mobile toggler
     .on('click', '.page-information__paragraph-head', function(){
-      $(this).toggleClass('is-active');
-      $(this).parent().find('.page-information__paragraph-drop').slideToggle();
+      if ( _window.width() <= 786 ){
+        $(this).toggleClass('is-active');
+        $(this).parent().find('.page-information__paragraph-drop').slideToggle();
+      }
     })
 
   // loads properties from API
@@ -753,7 +755,10 @@ $(document).ready(function(){
   // default query
   function defaultQuery(){
     if ( window.location.search === "" ){
-      window.location.search = $('[js-default-query]').data("query");
+      var defaultQueryData = $('[js-default-query]').data("query")
+      if ( defaultQueryData ){
+        window.history.replaceState({}, null, window.location.pathname + defaultQueryData);
+      }
     }
   }
 
@@ -1628,6 +1633,11 @@ $(document).ready(function(){
         removeURLQuery(qName, null)
         $(this).remove();
         fixMobileOffset($sContainer)
+
+        // reset if no active tags there
+        if ( $sContainer.find('.s-hint-suggestion').length === 0 ) {
+          $sContainer.removeClass('is-active');
+        }
       })
     })
     // select first tag on enter
